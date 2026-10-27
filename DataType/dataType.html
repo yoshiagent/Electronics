@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+    
+    <title>dataType</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <table style="width: 1000px; height: 330px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">&nbsp;boolean
+            (8 bit) - simple logical true/false<br>
+            &nbsp;byte (8 bit) - unsigned number from 0-255<br>
+            &nbsp;char (8 bit) - signed number from -128 to 127. <br>
+            &nbsp;unsigned char (8 bit) - same as ‘byte’<br>
+            &nbsp;word (16 bit) - unsigned number from 0-65535<br>
+            &nbsp;unsigned int (16 bit)- the same as ‘word’. <br>
+            &nbsp;int (16 bit) - signed number from -32768 to 32767. <br>
+            &nbsp;unsigned long (32 bit) - unsigned number from 0-4,294,967,295.
+            <br>
+            &nbsp;long (32 bit) - signed number from -2,147,483,648 to
+            2,147,483,647<br>
+            &nbsp;float (32 bit) - signed number from -3.4028235E38 to
+            3.4028235E38. </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 1000px; height: 330px;" border="1">
+      <tbody>
+        <tr>
+          <td>資料型態</td>
+          <td>說明</td>
+          <td>記憶體長度</td>
+          <td>數值範圍</td>
+        </tr>
+        <tr>
+          <td>boolean</td>
+          <td>布林</td>
+          <td>8 bits</td>
+          <td>true (1, HIGH), false (0, LOW)</td>
+        </tr>
+        <tr>
+          <td>byte</td>
+          <td>位元組</td>
+          <td>8 bits</td>
+          <td>0~255</td>
+        </tr>
+        <tr>
+          <td>char</td>
+          <td>字元</td>
+          <td>8 bits</td>
+          <td>-128~127</td>
+        </tr>
+        <tr>
+          <td>short</td>
+          <td>短整數</td>
+          <td>16 bits</td>
+          <td>-32768~32767</td>
+        </tr>
+        <tr>
+          <td>int</td>
+          <td>整數</td>
+          <td>16 bits</td>
+          <td>-32768~32767</td>
+        </tr>
+        <tr>
+          <td>word</td>
+          <td>字</td>
+          <td>16 bits</td>
+          <td>0~65535</td>
+        </tr>
+        <tr>
+          <td>long</td>
+          <td>長整數</td>
+          <td>32 bits</td>
+          <td>-2147483648~2147483647</td>
+        </tr>
+        <tr>
+          <td>float</td>
+          <td>浮點數</td>
+          <td>32 bits</td>
+          <td>+-3.4028235e+38</td>
+        </tr>
+        <tr>
+          <td>double</td>
+          <td>倍精度浮點數</td>
+          <td>32 bits</td>
+          <td>&gt;+-3.4028235e+38</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">C,C++
+            跨平台:&nbsp; (<a href="https://show6114.com/2016/01/26/how-to-c-2016/" target="_blank">現代 C 語言的寫法</a>)<br>
+            <br>
+            帶正負號的整數使用 int8_t、int16_t、int32_t、int64_t<br>
+            不帶號的整數使用 uint8_t、uint16_t、uint32_t、uint64_t<br>
+            32 與 64 位元長的浮點數使用 float 與 double</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1468px; height: 2907px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">void
+            setup() {&nbsp;&nbsp;&nbsp; <br>
+            &nbsp; Serial.begin(9600); <br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;Serial.println("--- Variable type: Size in SRAM (bytes) ---");<br>
+            <br>
+            /*<br>
+            &nbsp; C standard data type "unsigned int length 8 bits". <br>
+            &nbsp; Occupies one byte of memory.<br>
+            &nbsp; http://arduino.cc/forum/index.php/topic,41590.0.html<br>
+            &nbsp;
+            http://en.wikipedia.org/wiki/Stdint.h#Fixed_width_integer_types<br>
+            */<br>
+            &nbsp;Serial.print("uint8_t: ");<br>
+            &nbsp;Serial.println(sizeof(uint8_t));<br>
+            <br>
+            /*<br>
+            &nbsp;A boolean holds one of two values, true or false. <br>
+            &nbsp;Each boolean variable occupies one byte of memory.<br>
+            &nbsp;http://arduino.cc/en/Reference/BooleanVariables<br>
+            */<br>
+            &nbsp;Serial.print("boolean: ");<br>
+            &nbsp;Serial.println(sizeof(boolean));<br>
+            /*<br>
+            &nbsp;A data type that takes up 1 byte of memory that stores a
+            character value. <br>
+            &nbsp;Character literals are written in single quotes, like this:
+            'A' (for multiple<br>
+            &nbsp;characters - strings - use double quotes: "ABC"). <br>
+            &nbsp;http://arduino.cc/en/Reference/Char<br>
+            */<br>
+            &nbsp;Serial.print("char: ");<br>
+            &nbsp;Serial.println(sizeof(char));<br>
+            <br>
+            /*<br>
+            &nbsp;An unsigned data type that occupies 1 byte of memory. Same as
+            the byte datatype. <br>
+            &nbsp;The unsigned char datatype encodes numbers from 0 to 255.<br>
+            &nbsp;For consistency of Arduino programming style, the byte data
+            type is to be preferred. <br>
+            &nbsp;http://arduino.cc/en/Reference/UnsignedChar<br>
+            */<br>
+            &nbsp;Serial.print("unsigned char: ");<br>
+            &nbsp;Serial.println(sizeof(unsigned char));<br>
+            &nbsp;<br>
+            /*<br>
+            &nbsp;A byte stores an 8-bit unsigned number, from 0 to 255. <br>
+            &nbsp;http://arduino.cc/en/Reference/Byte<br>
+            */<br>
+            &nbsp;Serial.print("byte: ");<br>
+            &nbsp;Serial.println(sizeof(byte));<br>
+            &nbsp;<br>
+            /*<br>
+            &nbsp;Integers are your primary datatype for number storage, and
+            store a 2 byte value. <br>
+            &nbsp;This yields a range of -32,768 to 32,767 (minimum value of
+            -2^15 and a maximum value of (2^15) - 1). <br>
+            &nbsp;http://arduino.cc/en/Reference/Int<br>
+            */<br>
+            &nbsp;Serial.print("int: ");<br>
+            &nbsp;Serial.println(sizeof(int));<br>
+            <br>
+            /*<br>
+            &nbsp;Unsigned ints (unsigned integers) are the same as ints in that
+            they store a 2 byte value. <br>
+            &nbsp;Instead of storing negative numbers however they only store
+            positive values, yielding a <br>
+            &nbsp;useful range of 0 to 65,535 (2^16) - 1). <br>
+            &nbsp;http://arduino.cc/en/Reference/UnsignedInt<br>
+            */<br>
+            &nbsp;Serial.print("unsigned int: ");<br>
+            &nbsp;Serial.println(sizeof(unsigned int));<br>
+            <br>
+            &nbsp;// A word stores a 16-bit unsigned number, from 0 to 65535.<br>
+            &nbsp;// Same as an unsigned int. <br>
+            &nbsp;// http://arduino.cc/en/Reference/Word<br>
+            &nbsp;Serial.print("word: ");<br>
+            &nbsp;Serial.println(sizeof(word));<br>
+            &nbsp;<br>
+            /*<br>
+            &nbsp;Long variables are extended size variables for number storage,
+            and store 32 bits (4 bytes), <br>
+            &nbsp;from -2,147,483,648 to 2,147,483,647. <br>
+            &nbsp;http://arduino.cc/en/Reference/Long <br>
+            */<br>
+            &nbsp;Serial.print("long: ");<br>
+            &nbsp;Serial.println(sizeof(long));<br>
+            <br>
+            /*<br>
+            &nbsp;Unsigned long variables are extended size variables for number
+            storage, and store 32 bits (4 bytes). <br>
+            &nbsp;Unlike standard longs unsigned longs won't store negative
+            numbers, making their range from 0 <br>
+            &nbsp;to 4,294,967,295 (2^32 - 1). <br>
+            &nbsp;http://arduino.cc/en/Reference/UnsignedLong<br>
+            */<br>
+            &nbsp;Serial.print("unsigned long: ");<br>
+            &nbsp;Serial.println(sizeof(unsigned long));<br>
+            <br>
+            /*<br>
+            &nbsp;Datatype for floating-point numbers, a number that has a
+            decimal point.<br>
+            &nbsp;Floating-point numbers can be as large as 3.4028235E+38 and as
+            low as -3.4028235E+38. <br>
+            &nbsp;They are stored as 32 bits (4 bytes) of information. <br>
+            &nbsp;http://arduino.cc/en/Reference/Float<br>
+            */<br>
+            &nbsp;Serial.print("float: ");<br>
+            &nbsp;Serial.println(sizeof(float));<br>
+            &nbsp;<br>
+            /*<br>
+            &nbsp;Double precision floating point number. Occupies 4 bytes. <br>
+            &nbsp;The double implementation on the Arduino is currently exactly
+            the same as the float, <br>
+            &nbsp;with no gain in precision.<br>
+            &nbsp;http://arduino.cc/en/Reference/Double<br>
+            */<br>
+            &nbsp;Serial.print("double: ");<br>
+            &nbsp;Serial.println(sizeof(double));<br>
+            &nbsp;<br>
+            <br>
+            &nbsp;delay(8500);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table><p>
+    </p><br><br><br><p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;"><br>
+            <br>
+            <img src="images/union_002.png" alt=""><br>
+            unsigned int a=(data&gt;&gt;4) &amp; 0xF;&nbsp; //top 4 bits of data<br>
+            unsigned int b=data &amp; 0xF;// bottom 4 bits of data<br>
+            <br>
+            Why “&amp; 0xF” in the first line? Because if your data is more than
+            8 bits, <br>
+            you want to remove the higher ones from the result (called masking),
+            <br>
+            leaving only the single nybble of 4 bits.<br>
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">send
+            the 16-bit value as two 8-bit values<br>
+            Serial.write(0xCC);//send the start byte<br>
+            Serial.write(sensorVal&gt;&gt;8 &amp;0xff);//send the higher byte<br>
+            Serial.write(sensorVal &amp; 0xff);// send the lower byte<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">uint16_t&nbsp;
+            data = 1000;<br>
+            uint8_t&nbsp; buf[2];<br>
+            buf[0] = data &amp; 255;<br>
+            buf[1] = (data &gt;&gt; 8)&nbsp; &amp; 255;<br>
+            Serial.write(buf, 2);</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p><br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="red36C">使用union</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24"><br>
+            <br>
+            <img src="images/union4.png" alt=""><br>
+            <br>#define Led&nbsp; 12<br>
+<span style="color: #cc0000;">union uData</span><br>
+{<br>
+byte b[2];<br>
+int value;<br>
+};<br>
+<span style="color: #cc0000;">union uData</span> data;<br>
+#define Led&nbsp; 8<br>
+void setup() {<br>
+pinMode(Led,OUTPUT);<br>
+digitalWrite(Led,0);<br>
+<span style="color: #cc0000;">data.b[0]</span>=0x34;<br>
+<span style="color: #cc0000;">data.b[1]</span>=0x12;<br>
+if(<span style="color: #cc0000;">data.value</span>==0x1234)<br>
+digitalWrite(Led,1);<br>
+}<br>
+<br>
+void loop() {<br>
+&nbsp; }</td>
+        </tr>
+      </tbody>
+    </table><p>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C">2個Arduino <br>使用Serial.write() 與Serial.read()傳送2 Byte data</td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C"><br>
+            <table style="width: 100%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36C">傳送端</td>
+                </tr>
+              </tbody>
+            </table>
+            <br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24"><span style="color: #330099;">union uData<br>{<br>byte b[2];<br>int value;<br>};</span><br><br>union uData data;<br>void setup() {<br>Serial.begin(9600);<br>delay(1000);<br>}<br><br>void loop() {<br>data.value=0x3456;<br>&nbsp;//while(!(UCSR0A &amp; (1&lt;&lt;UDRE0)));// 若UDRE0=0 等待<br><span style="color: #990000;">Serial.write</span>(0x21);//起始 字元<br>&nbsp;//while(!(UCSR0A &amp; (1&lt;&lt;UDRE0)));// 若UDRE0=0 等待<br><span style="color: #990000;">Serial.write</span>(data.b[0]);<br>// while(!(UCSR0A &amp; (1&lt;&lt;UDRE0)));// 若UDRE0=0 等待<br><span style="color: #990000;">Serial.write</span>(data.b[1]);<br>delay(1000);<br>}</td></tr></tbody></table>或<br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">union uData<br>{<br>byte b[2];<br>int value;<br>};<br><br>union uData data;<br>void setup() {<br>Serial.begin(9600);<br>delay(1000);<br>}<br><br>void loop() {<br>data.value=0x3456;<br>Serial.write(0x21);//起始 字元<br>Serial.write(<span style="color: #990000;">data.b,2</span>);<br>delay(1000);<br>}</td></tr></tbody></table><br><br>
+            <br>
+            <table style="width: 100%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36C">接收端<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">#define Led&nbsp; 12<br>union uData<br>{<br>byte b[2];<br>int value;<br>};<br><br>union uData data;<br>&nbsp; <br>void setup() {<br>&nbsp;Serial.begin(9600);<br>pinMode(Led,OUTPUT);<br>digitalWrite(Led,1);<br>}<br><br>void loop() {<br>&nbsp; if(Serial.available()&gt;0)<br>{ <br>&nbsp; if(<span style="color: #990000;">Serial.read()</span>==0x21) //判斷是否為起始字元<br>&nbsp; {<br>&nbsp;&nbsp; //delay(10);//若資料傳遞不正確 可再加長<br>&nbsp;&nbsp; // Wait until data is received&nbsp; (不用delay)<br>&nbsp;&nbsp; while ( !(UCSR0A &amp; (1 &lt;&lt; RXC0)) )&nbsp; ;<br>&nbsp;&nbsp; <span style="color: #6600cc;">data.b[0]</span>=<span style="color: #990000;">Serial.read()</span>;<br>&nbsp;&nbsp; <br>//delay(10);//若資料傳遞不正確 可再加長<br>&nbsp; // Wait until data is received&nbsp; (不 用delay)&nbsp; <br>&nbsp;&nbsp; while ( !(UCSR0A &amp; (1 &lt;&lt; RXC0)) )&nbsp; ;<br>&nbsp;&nbsp; <span style="color: #6600cc;">data.b[1]</span>=<span style="color: #990000;">Serial.read()</span>;<br>&nbsp;&nbsp; if(<span style="color: #6600cc;">data.value</span>==0x3456)<br>&nbsp;&nbsp;&nbsp; { //Toggle D12<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(Led,1-digitalRead(Led));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //asm("SBI 0x03,4"); <br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; }<br>&nbsp;<br>&nbsp; }<br>&nbsp;}</td></tr></tbody></table><br>或<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">#define Led&nbsp; 12<br>union uData<br>{<br>byte b[2];<br>int value;<br>};<br><br>union uData data;<br>&nbsp;<br>void setup() {<br>&nbsp;Serial.begin(9600);<br>pinMode(Led,OUTPUT);<br>digitalWrite(Led,1);<br>}<br><br>void loop() {<br>&nbsp; if(Serial.available()&gt;0)<br>{<br>&nbsp; if(Serial.read()==0x21) //判斷是否為起始字元<br>&nbsp; {<br>&nbsp;// delay(10);//若資料傳遞不正確 可再加長<br>&nbsp; Serial.<span style="color: #990000;">readBytes</span>(<span style="color: #990000;">data.b</span>,2);<br>&nbsp;&nbsp; if(data.value==0x3456)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp; //Toggle D12<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(Led,1-digitalRead(Led));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //asm("SBI 0x03,4"); <br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; }<br>&nbsp;<br>&nbsp; }<br>&nbsp;}</td></tr></tbody></table><br>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p><br><p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><br>
+            Arduino序列埠通訊程式Serial.read()讀取到 ÿ 字元(<a href="https://swf.com.tw/?p=729" target="_blank">web</a>)<br>
+            <br>
+            Arduino 傳兩筆資料到 Android (app inventor)手機(<a href="https://blog.cavedu.com/2015/04/05/arduino-multidata-to-app/" target="_blank">web</a>)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  
+
+</body></html>

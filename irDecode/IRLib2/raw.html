@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+
+
+
+
+
+
+    <title>raw</title>
+<link type="text/css" rel="stylesheet" href="kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+<body class="w3-container f24">
+  <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/1838_001.png" alt=""><img src="images/1838_002.png" alt=""><br><img src="images/1838_003.png" alt=""><br>IRM1838(<a href="docs/IRM1838.pdf" target="_blank">pdf</a>)</td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/ir.gif" alt=""><br></td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>ir protocols(<a href="docs/irProtocols.pdf" target="_blank">pdf</a>)<br>ir Protocol(<a href="https://www.sbprojects.net/knowledge/ir/index.php" target="_blank">SB-Project</a>)<br><img src="images/sb_001.png" alt=""></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/irRemotes1.jpg" alt="" style="width: 228px; height: 275px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; <img src="images/irReceiver.png" alt="">&nbsp; </td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>NEC protocol<br><br><img src="images/nec-ir-modulation.png"><br><br><img src="images/NECMessageFrame.png" alt=""><br><br><br>NEC IR transmission frame<br>For an address or command the LSB is transmitted first and MSB at last. When a key pressed in the remote following bits transmitted sequentially.<br>(1) Header<br>&nbsp;&nbsp;&nbsp;&nbsp; a 9ms (16x562.5us)leading pulse burst + a 4.5ms space<br>(2) 8 Bit Address<br>(3) 8 Bit logical inverse of Address*<br>(4) 8 Bit Command<br>(5) 8 Bit logical inverse of Command<br>(6) Termination pulse.&nbsp; (a 562.5µs pulse burst to mark the end of the space)<br><br>*<br>Extended Mode : NEC address can be extended upto 16 bit if reliability 
+is not a concern. This is done by utilizing both the address and inverse address field. But in this case total message length may not be same. 
+In this way the number of different device address can be upto 65536.<br><br><br>REPEAT CODES:<br><br><img src="images/NEC-Protocol-1.png" alt=""><br><br><br>a 9ms leading pulse burst<br>a 2.25ms space<br>a 562.5µs pulse burst to mark the end of the space (and hence end of the transmitted repeat code).<br><br><img src="images/nec-ir-protocol_repeat.png" alt=""></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>接收<br><img src="images/irR.png" alt=""></td></tr></tbody></table>
+<p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>(IRLib2 <a href="https://github.com/cyborg5/IRLib2" target="_blank">GitHub</a>)<br>(<a href="files/IRLib2.zip">IRlib2.zip</a>)解壓縮後 將以下資料夾 <br><img src="images/IRLib2_001.png" alt=""><br>全部放到Arduino libraries下<br>(<a href="docs/IRLibReference.pdf" target="_blank">IRLibReference.pdf</a>)<br>Using an Infrared Library on Arduino(<a href="https://learn.adafruit.com/using-an-infrared-library/overview" target="_blank">ref</a>)<br><br><br>The protocols are enumerated in IRLibProtocols/<a href="docs/IRLibProtocols.h" target="_blank">IRLibProtocols.h</a> at approximately line 14 as follows.<br>#define UNKNOWN 0<br>#define NEC 1<br>#define SONY 2<br>#define RC5 3<br>#define RC6 4<br>#define PANASONIC_OLD 5<br>#define JVC 6<br>#define NECX 7<br>#define SAMSUNG36 8<br>#define GICABLE 9 <br>#define DIRECTV 10<br>#define RCMM 11</td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>dump</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>#include "IRLibAll.h"<br>
+  IRrecvPCI <span style="color: red;">myReceiver(2)</span>; //create receiver and pass pin number<br>
+IRdecode <span style="color: #6600cc;">myDecoder</span>;&nbsp;&nbsp; //create decoder<br>
+  <br>
+void setup() {<br>
+&nbsp; Serial.begin(115200);<br>
+&nbsp; <span style="color: red;">myReceiver.enableIRIn()</span>; // Start the receiver<br>
+&nbsp; Serial.println("Ready to receive IR signals");<br>
+}<br>
+  <br>
+void loop() {<br>
+&nbsp; //Continue looping until you get a complete signal received<br>
+&nbsp; if (<span style="color: red;">myReceiver.getResults()</span>) {<br>
+&nbsp;&nbsp;&nbsp; <span style="color: #6600cc;">myDecoder.decode()</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Decode it<br>
+&nbsp;&nbsp;&nbsp; <span style="color: #6600cc;">myDecoder.dumpResults(<span style="color: red;">true</span>)</span>;&nbsp; //Now print results. Use false for less detail<br>
+&nbsp;&nbsp;&nbsp; <span style="color: #6600cc;">myReceiver.enableIRIn()</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Restart receiver<br>
+&nbsp; }<br>
+}<br><br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Key :CH-&nbsp;&nbsp;&nbsp;&nbsp; 00000000(00) 11111111(FF) 1010(A) 0010(2) 0101(5) 1101(D)<br>
+  <br>
+Decoded NEC(1): Value:FFA25D Adrs:0 (32 bits) <br>
+Raw samples(68): Gap:57894<br>
+  <span style="color: #6600cc;">Head: m8974&nbsp; s4494</span><br>
+0:<span style="color: blue;">m550 s582</span>&nbsp;&nbsp;&nbsp; 1:<span style="color: blue;">m526 s586</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;2:<span style="color: blue;">m546 s606</span>&nbsp;&nbsp;&nbsp; 3:<span style="color: blue;">m522 s578</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+4:<span style="color: blue;">m530 s582</span>&nbsp;&nbsp;&nbsp; 5:<span style="color: blue;">m550 s574</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;6:m<span style="color: blue;">554 s578</span>&nbsp;&nbsp;&nbsp; 7:<span style="color: blue;">m526 s610</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+8:<span style="color: red;">m522 s1710</span>&nbsp;&nbsp;&nbsp; 9:<span style="color: red;">m526 s1706</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;10:<span style="color: red;">m554 s1690</span>&nbsp;&nbsp;&nbsp; 11:<span style="color: red;">m546 s1706</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+12:<span style="color: red;">m530 s1706</span>&nbsp;&nbsp;&nbsp; 13:<span style="color: red;">m550 s1690</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;14:<span style="color: red;">m550 s1702</span>&nbsp;&nbsp;&nbsp; 15:<span style="color: red;">m534 s1706</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <br>
+16:<span style="color: red;">m554 s1686</span>&nbsp;&nbsp;&nbsp; 17:<span style="color: blue;">m602 s526</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;18:<span style="color: red;">m550 s1686</span>&nbsp;&nbsp;&nbsp; 19:<span style="color: blue;">m550 s582</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+20:<span style="color: blue;">m546 s578</span>&nbsp;&nbsp;&nbsp; 21:<span style="color: blue;">m530 s610</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;22:<span style="color: red;">m522 s1706</span>&nbsp;&nbsp;&nbsp; 23:<span style="color: blue;">m526 s586</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+24:<span style="color: blue;">m546 s578</span>&nbsp;&nbsp;&nbsp; 25:<span style="color: red;">m554 s1686</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;26:<span style="color: blue;">m550 s610</span>&nbsp;&nbsp;&nbsp; 27:<span style="color: red;">m518 s1686</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+28:<span style="color: red;">m554 s1706</span>&nbsp;&nbsp;&nbsp; 29:<span style="color: red;">m526 s1706</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;30:<span style="color: blue;">m554 s578</span>&nbsp;&nbsp;&nbsp; 31:<span style="color: red;">m530 s1706</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br>
+  <br>
+32:<span style="color: #6600cc;">m550</span><br>
+Extent=67874<br>
+Mark&nbsp; min:518&nbsp;&nbsp;&nbsp; &nbsp;max:602<br>
+Space min:526&nbsp;&nbsp;&nbsp; &nbsp;max:1710<br>
+  <br>
+  <span style="color: #666666;">Decoded <span style="color: red;">Unknown</span>(0): Value:0 Adrs:0 (0 bits) <br>
+Raw samples(4): Gap:1858<br>
+&nbsp; Head: m2878&nbsp; s314<br>
+0:m502<br>
+Extent=3694<br>
+Mark&nbsp; min:502&nbsp;&nbsp;&nbsp; &nbsp;max:502<br>
+Space min:32767&nbsp;&nbsp;&nbsp; &nbsp;max:0</span></td></tr></tbody>
+</table>
+<br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><span style="color: #6600cc;">myDecoder.dumpResults(<span style="color: red;">false</span>)</span>;<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Ready to receive IR signals<br>
+Decoded NEC(1): Value:FFA25D Adrs:0 (32 bits) <br>
+Decoded NEC(1): Value:FFFFFFFF Adrs:0 (0 bits) <br>
+Decoded NEC(1): Value:FFA25D Adrs:0 (32 bits) <br>
+Decoded NEC(1): Value:FFFFFFFF Adrs:0 (0 bits) <br>
+Decoded NEC(1): Value:FFA25D Adrs:0 (32 bits) <br>
+Decoded NEC(1): Value:FFFFFFFF Adrs:0 (0 bits) <br>
+Decoded NEC(1): Value:FFA25D Adrs:0 (32 bits) <br>
+Decoded NEC(1): Value:FFFFFFFF Adrs:0 (0 bits) <br>
+Decoded NEC(1): Value:FFFFFFFF Adrs:0 (0 bits)<br>
+Decoded NEC(1): Value:FFFFFFFF Adrs:0 (0 bits)<br>
+Decoded NEC(1): Value:FFFFFFFF Adrs:0 (0 bits) </td></tr></tbody>
+</table>
+</td></tr></tbody></table><br>
+</td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Get raw data</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>#include &lt;IRLibRecvPCI.h&gt;<br>IRrecvPCI myReceiver(2);//pin number for the receiver<br>void setup() {<br>&nbsp; Serial.begin(115200);<br>&nbsp; myReceiver.enableIRIn(); // Start the receiver<br>&nbsp; Serial.println("Ready to receive IR signals");<br>}<br><br>void loop() {<br>&nbsp; //Continue looping until you get a complete signal received<br>&nbsp; if (myReceiver.getResults()) {<br>&nbsp;&nbsp;&nbsp; Serial.println("Do a cut-and-paste of the following lines into the ");<br>&nbsp;&nbsp;&nbsp; Serial.println("designated location in rawSend.ino");<br>&nbsp;&nbsp;&nbsp; Serial.print("\n#define RAW_DATA_LEN ");<br>&nbsp;&nbsp;&nbsp; Serial.println(recvGlobal.recvLength,DEC);<br>&nbsp;&nbsp;&nbsp; Serial.print("uint16_t rawData[RAW_DATA_LEN]={\n\t");<br>&nbsp;&nbsp;&nbsp; for(bufIndex_t i=1;i&lt;recvGlobal.recvLength;i++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(recvGlobal.recvBuffer[i],DEC);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(", ");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if( (i % 8)==0) Serial.print("\n\t");<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; Serial.println("1000};");//Add arbitrary trailing space<br>&nbsp;&nbsp;&nbsp; myReceiver.enableIRIn();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Restart receiver<br>&nbsp; }<br>}</td></tr></tbody></table>
+<p></p>
+<p>
+</p><br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Send raw data</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>//0x00FF6897<br>
+//key 0<br>#define RAW_DATA_LEN 68<br>
+uint16_t rawData0[RAW_DATA_LEN]={<br>
+&nbsp;&nbsp;&nbsp; <span style="color: #6600cc;">8990, 4474</span>, <span style="color: blue;">570, 570</span>, <span style="color: blue;">558, 570</span>, <span style="color: blue;">514, 594</span>, <br>
+&nbsp;&nbsp;&nbsp; <span style="color: blue;">562, 562, 542, 590, 542, 570, 562, 562, <br>
+&nbsp;&nbsp;&nbsp; 566, 554,</span> <span style="color: red;">550, 1694, 566, 1674, 562, 1694, <br>
+&nbsp;&nbsp;&nbsp; 542, 1694, 566, 1674, 562, 1694, 542, 1690, <br>
+&nbsp;&nbsp;&nbsp; 566, 1666</span>, <span style="color: #006600;">574, 566, 562, 1666, 574, 1690, <br>
+&nbsp;&nbsp;&nbsp; 546, 566,</span> <span style="color: #6600cc;">558, 1698, 538, 570, 562, 566, <br>
+&nbsp;&nbsp;&nbsp; 562, 570,</span> <span style="color: #990000;">538, 1694, 566, 566, 538, 570, <br>
+&nbsp;&nbsp;&nbsp; 562, 1694</span>, <span style="color: #000066;">542, 570, 558, 1694, 546, 1690, <br>
+&nbsp;&nbsp;&nbsp; 566, 1674</span>, <span style="color: red;">566</span>, 1000};</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Send<br><img src="images/irT.png" alt=""></td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>#include &lt;IRLibSendBase.h&gt;&nbsp;&nbsp;&nbsp; //We need the base code<br>#include &lt;IRLib_HashRaw.h&gt;&nbsp;&nbsp;&nbsp; //Only use raw sender<br><br>IRsendRaw mySender;<br><br><br>/* Cut and paste the output from "rawRecv.ino" below here. It will <br>&nbsp;* consist of a #define RAW_DATA_LEN statement and an array definition<br>&nbsp;* beginning with "uint16_t rawData[RAW_DATA_LEN]= {…" and concludes<br>&nbsp;* with "…,1000};"<br>&nbsp;*/<br><br>//0x00FF6897<br><span style="color: red;">//key 0</span><br>#define RAW_DATA_LEN 68<br>uint16_t rawData<span style="color: red;">0</span>[RAW_DATA_LEN]={<br>&nbsp;&nbsp;&nbsp; 8990, 4474, 570, 570, 558, 570, 514, 594, <br>&nbsp;&nbsp;&nbsp; 562, 562, 542, 590, 542, 570, 562, 562, <br>&nbsp;&nbsp;&nbsp; 566, 554, 550, 1694, 566, 1674, 562, 1694, <br>&nbsp;&nbsp;&nbsp; 542, 1694, 566, 1674, 562, 1694, 542, 1690, <br>&nbsp;&nbsp;&nbsp; 566, 1666, 574, 566, 562, 1666, 574, 1690, <br>&nbsp;&nbsp;&nbsp; 546, 566, 558, 1698, 538, 570, 562, 566, <br>&nbsp;&nbsp;&nbsp; 562, 570, 538, 1694, 566, 566, 538, 570, <br>&nbsp;&nbsp;&nbsp; 562, 1694, 542, 570, 558, 1694, 546, 1690, <br>&nbsp;&nbsp;&nbsp; 566, 1674, 566, 1000};<br>//0x00FF30CF<br><span style="color: red;">//key 1</span><br>//#define RAW_DATA_LEN 68<br>uint16_t rawData<span style="color: red;">1</span>[RAW_DATA_LEN]={<br>&nbsp;&nbsp;&nbsp; 8998, 4466, 582, 546, 582, 550, 558, 550, <br>&nbsp;&nbsp;&nbsp; 578, 546, 586, 546, 558, 554, 578, 546, <br>&nbsp;&nbsp;&nbsp; 582, 550, 554, 1678, 582, 1658, 578, 1678, <br>&nbsp;&nbsp;&nbsp; 558, 1678, 582, 1658, 578, 1678, 558, 1678, <br>&nbsp;&nbsp;&nbsp; 582, 1658, 578, 546, 582, 554, 554, 1678, <br>&nbsp;&nbsp;&nbsp; 582, 1658, 578, 546, 582, 554, 554, 550, <br>&nbsp;&nbsp;&nbsp; 582, 546, 582, 1658, 578, 1678, 558, 550, <br>&nbsp;&nbsp;&nbsp; 582, 546, 582, 1658, 578, 1678, 558, 1678, <br>&nbsp;&nbsp;&nbsp; 578, 1658, 582, 1000};<br>/*<br>&nbsp;* Cut-and-paste into the area above.<br>&nbsp;*/<br>&nbsp;<br>void setup() {<br>&nbsp;<br>
+}&nbsp; <br>void loop() {<br>&nbsp;&nbsp; /*Pass the buffer,length, optionally frequency*/<br>&nbsp;&nbsp;&nbsp; mySender.send(rawData<span style="color: red;">0</span>,RAW_DATA_LEN,38);<br>&nbsp;&nbsp;&nbsp; delay(2000);<br>&nbsp;&nbsp;&nbsp; mySender.send(rawData<span style="color: red;">1</span>,RAW_DATA_LEN,38);<br>&nbsp;&nbsp;&nbsp; delay(2000);<br>}</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>//接收顯示<br>//顯示於I2C LCD<br>#include &lt;LiquidCrystal_I2C.h&gt;<br>LiquidCrystal_I2C lcd(0x3F,16,2);<br>#include &lt;IRLibAll.h&gt;<br>uint32_t val;<br>//Create a receiver object to listen on pin 2<br>IRrecvPCI myReceiver(2);<br><br>//Create a decoder object <br>IRdecode myDecoder;&nbsp;&nbsp; <br><br>void setup() {<br>&nbsp; lcd.init();<br>&nbsp; lcd.backlight();<br>&nbsp; lcd.setCursor(0, 0);<br>&nbsp; myReceiver.enableIRIn(); // Start the receiver<br>&nbsp; lcd.setCursor(0, 0);<br>&nbsp; lcd.print("Ready to receive");<br>}<br><br>void loop() {<br>&nbsp; //Continue looping until you get a complete signal received<br>&nbsp; if (myReceiver.getResults()) {<br>&nbsp;&nbsp;&nbsp; myDecoder.decode();&nbsp;&nbsp;&nbsp; //Decode it<br>&nbsp;&nbsp;&nbsp; val=myDecoder.<span style="color: red;">value</span>;<br>&nbsp;&nbsp;&nbsp; if(val==0xFFFFFFFF)<br>&nbsp;&nbsp;&nbsp;&nbsp; {lcd.setCursor(0, 1);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("Reapeat");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>&nbsp;&nbsp;&nbsp;&nbsp; else if(val==0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {lcd.clear();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("unknown protocol");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {lcd.clear();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("Code:");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(5, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print(val,HEX);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>&nbsp;&nbsp;&nbsp; myReceiver.enableIRIn();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Restart receiver<br>&nbsp; }</td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>//LCD顯示+遙控<br>#include &lt;LiquidCrystal_I2C.h&gt;<br>LiquidCrystal_I2C lcd(0x3F,16,2);<br>#include &lt;IRLibAll.h&gt;<br>#define led 13<br>IRrecvPCI&nbsp; myReceiver(2);<br>IRdecode&nbsp; myDecoder;&nbsp; <br>uint32_t val;<br>void setup() {<br>pinMode(led,OUTPUT);<br>&nbsp;lcd.init();<br>&nbsp; lcd.backlight();<br>&nbsp; lcd.setCursor(0, 0);<br>&nbsp; myReceiver.enableIRIn(); // Start the receiver<br>&nbsp; lcd.setCursor(0, 0);<br>&nbsp; lcd.print("Ready to receive");<br>&nbsp; }<br><br>void loop() {<br>if (myReceiver.getResults()) {<br>&nbsp;&nbsp;&nbsp; myDecoder.decode();&nbsp;&nbsp;&nbsp; //Decode it<br>&nbsp;&nbsp;&nbsp; val=myDecoder.value;<br>&nbsp;&nbsp;&nbsp; if(val==0xFFFFFFFF)<br>&nbsp;&nbsp;&nbsp;&nbsp; {lcd.setCursor(0, 1);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("Reapeat");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; else if(val==0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {lcd.clear();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("unknown protocol");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (val==0xFF30CF) digitalWrite(led,1);//key :1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (val==0xFF6897) digitalWrite(led,0);//key: 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.clear();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("Code:");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(5, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print(val,HEX);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>&nbsp;&nbsp;&nbsp;&nbsp; myReceiver.enableIRIn();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Restart receiver<br>}<br>&nbsp;&nbsp;&nbsp; <br>}</td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<p><br></p>
+<p></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+
+
+</body></html>

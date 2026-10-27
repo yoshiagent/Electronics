@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+
+
+
+
+
+    
+    <title>First</title>
+    
+  <link type="text/css" rel="stylesheet" href="kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+  <body class="f24 w3-container f36"><br><table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="blue36 f48">Introduction</td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<table style="width: 100%" class="w3-table-all" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;"><span style="color: red;">Access
+            Point</span> (AP): 允許其他無線設備聯入，提供無線連接無線網路的服務，<span style="color: #cc0000;">無
+              線分享器</span>就是結合Wi-Fi和路由功能的AP<br>
+            <br>
+            <span style="color: red;">Station</span> (Sta) :連接到AP的裝置，一般可無線上網的3C產品(<span style="color: #cc0000;">PC,
+              手機,平板...</span>)通常都處於STA模式，STA模式不允許其他聯網裝置聯入<br><br>AP
+            會每隔100ms廣播它的識別名稱(Service Set IDentifier,            SSID)，讓處於通訊範圍內的裝置辨識並加入網路。<br>多數的AP會設定密碼，Wi-Fi提供WEP,            WPA或WPA2加密機制，彼此連線的裝置必須具備相同的加密功能，才能相連。</td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>esp pinout (<a href="https://honeststore.com.tw/esp8266-pin-out/" target="_blank">link</a>)</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" class="w3-table-all" border="1">
+<tbody>
+<tr>
+<td>ESP8266 : AP, Sta, AP+Sta mode</td></tr></tbody></table>
+<table style="width: 100%" class="w3-table-all" border="1">
+      <tbody>
+        <tr>
+          <td class="red24"><span style="color: #330099;">Station mode</span><br><img src="images/First_001.png" alt=""><br>
+            WiFi.mode(WIFI_STA)<br>
+            <hr><br>
+            <span style="color: #330099;">AP mode</span><br>
+            <img src="images/First_002.png" alt=""><br>
+            WiFi.mode(WIFI_AP)
+            <hr><span style="color: #330099;">AP+Station mode</span><br>
+            <br>
+            <img src="images/First_003.png" alt=""><br>
+            WiFi.mode(WIFI_AP_STA)<br>
+          </td>
+        </tr>
+      </tbody>
+    </table><br><table style="width: 100%" class="w3-table-all" border="1">
+      <tbody>
+        <tr>
+          <td><a href="ThingSpeak.html" target="_top">IOT
+              架構(以ThingSpeak為例)</a><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+       <table style="width: 100%" class="w3-table-all" border="1">
+      <tbody>
+        <tr>
+          <td><a href="https://www.esp8266.com/wiki/doku.php?id=esp8266-module-family" target="_blank">ESP8266 Family</a></td>
+        </tr>
+      </tbody>
+    
+</table>
+<p>
+    </p><p>
+    </p><table style="width: 100%" class="w3-table-all" border="1">
+      <tbody>
+        <tr>
+          <td>ESP8266 Pinout Reference(<a href="https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/" target="_blank">web</a>)(<a href="docs/ESP8266_Pinout_Diagrams.pdf" target="_blank">PDF</a>)</td>
+        </tr>
+      </tbody>
+    
+</table>
+<p></p>
+<table style="width: 100%" class="w3-table-all" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/esp01_02.png" alt=""><br>
+            ESP-01S&nbsp;&nbsp; Data Sheet(<a href="docs/esp-01s.pdf" target="_blank">pdf</a>)<br>
+            <img src="images/ESP01S-Q40.jpg" alt=""><br><table style="width: 100%" class="w3-table-all" border="1">
+<tbody>
+<tr>
+<td class="f36"><span style="color: red;">ESP-01S 轉接板</span></td></tr></tbody></table>
+<table style="width: 100%" class="w3-table-all" border="1">
+<tbody>
+<tr>
+<td><br><br>Arduino--ESP-01S<br><img src="images/EXPb_003.png" alt="" style="width: 395px; height: 430px;">&nbsp; <img src="images/esp_pc.png" alt=""><br><br><br>ESP-01S----PC<br><img src="images/ESP_ADP_001.png" alt=""><br><img src="images/ESP_ADP_002.png" alt=""></td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <table style="width: 100%" class="w3-table-all" border="1">
+              <tbody>
+                <tr>
+                  <td><img src="images/esp01adp_001.png" alt=""><br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <table style="width: 100%" class="w3-table-all" border="1">
+              <tbody>
+                <tr>
+                  <td><br>
+                    <span style="color: #cc0000;">燒錄韌體</span>或<span style="color: #cc0000;">Arduino
+                      upload sketch</span> 時 &nbsp; <span style="color: #cc0000;">GPIO0
+                      需接地</span><br>
+                    <img src="images/ESP8266_arduino_010.png" alt=""><br>
+                    <br>
+                    <img src="images/EXPb_011.png" alt=""></td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <br>
+            <table style="width: 100%" border="1">
+              <tbody>
+                <tr>
+                  <td>通訊模式 GPIO0 浮接<br>
+                    <img src="images/EXPb_010.png" alt=""></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p><br>
+<p>
+    </p>
+    <br>
+    <p></p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td>使用Arduino IDE+USB Uploader 燒錄程式 或 韌體(Firmware)</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/ESP_ADP_001.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/ESP_ADP_002.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/ESP_ADP_003.png" alt=""><br>
+            通訊模式</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/ESP_ADP_004.png" alt=""><br>
+            ESP-01S&nbsp; 燒錄Firmware&nbsp; 或&nbsp; Arduino ESP upload </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/ThingSpeak_008a.png" alt=""><br><img src="images/esp_adP_005.png" alt=""><br><br><br></td></tr></tbody></table>
+<p><br>
+    </p>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/ThingSpeak_008.png" alt=""><br>
+            <img src="images/EXPb_003.png" alt=""><br>
+            <br>
+            <br>
+            <img src="images/EXPb_004.png" alt=""><br>
+            ATmega328P&nbsp; 通訊(工作)模式</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><a href="ESP_arduinoIDE.html" target="_blank">***** Arduino
+              開發 ESP8266</a></td>
+        </tr>
+      </tbody>
+    
+</table>
+<p>
+    </p>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td>先觀察出廠 韌體(固件)版本</td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><br>
+            <img src="images/ESP_ADP_003.png" alt=""><br>
+            GPIO0 浮接</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%; height: 491px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/buyDefult_001.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 100%; height: 306px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/buyDefult_005.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">若需重新回復出廠 韌體<br>
+            <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">回復原廠設定(<a href="firmware.html" target="_blank">link</a>)</td></tr></tbody>
+</table>
+<br>
+            <a href="files/esp8266_firmwareTool.zip">Tools</a><br>
+            <br>
+            Firmware:&nbsp; <a href="files/ESP8266_8Mbit_V1.5.4.1_20161202.bin.zip">ESP8266_8Mbit_V1.5.4.1_20161202.zip
+              </a><br> <a href="docs/4a-esp8266_at_instruction_set_cn_v1.5.4.pdf" target="_top">AT Command 1.54 Manual.pdf</a><br>
+            <br>
+            <span style="color: #0000ee;">燒錄完成後 GPIO0浮接 即可進入AT COMMAND MODE
+              (BAUD: 115200)<br>
+              AT: OK</span></td>
+        </tr>
+      </tbody>
+    </table><p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">motoBlockly(<a href="https://www.motoduino.com/wp-content/themes/storefront/moto_iot_blockly_v33/demos/code/index.html" target="_blank">web</a>)(<a href="https://www.motoduino.com/" target="_blank">web</a>)<br>iotBlockly(<a href="https://github.com/ms-iot/samples/tree/develop/IoTBlockly" target="_blank">GitHub</a>)</td></tr></tbody></table>
+<p><br></p>
+<p><br></p></body></html>

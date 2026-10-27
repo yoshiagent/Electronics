@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Demo_BT_IR_SM</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/BT_laneGate_001.png"><br>
+            <a href="files/bt_ir_SM.apk">bt_ir_SM.apk</a><br>
+            <br>
+            bt_ir_SM.aia</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 1042px; height: 790px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/StepMotorIrDec.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 876px; height: 70px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24C">A5接地: ir<br>
+            A5接+:BT<br>
+            需重新上電 </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 999px; height: 1702px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">int
+            condf;<br>
+            int irin;<br>
+            int pin[4]={5,6,7,8};<br>
+            int out[4][4]={{1,1,0,0},{0,1,1,0},{0,0,1,1},{1,0,0,1}};<br>
+            void stepM(int steps,int dt)<br>
+            {<br>
+            &nbsp;for(int k=0;k&lt;steps;k++)<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; for (int i=0;i&lt;4;i++)<br>
+            &nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int j=0;j&lt;4;j++)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            digitalWrite(pin[j],out[i][j]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; }<br>
+            }<br>
+            <br>
+            void stepMrev(int steps,int dt)<br>
+            {<br>
+            &nbsp;for(int k=0;k&lt;steps;k++)<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; for (int i=3;i&gt;=0;i--)<br>
+            &nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int j=0;j&lt;4;j++)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            digitalWrite(pin[j],out[i][j]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; }<br>
+            }<br>
+            <br>
+            void setup()<br>
+            { condf=digitalRead(A5);<br>
+            &nbsp; if(condf==HIGH)<br>
+            &nbsp; Serial.begin(2400);&nbsp;&nbsp; //ir<br>
+            &nbsp; else<br>
+            &nbsp; Serial.begin(115200);//BT<br>
+            &nbsp; for(int i=0;i&lt;4;i++)<br>
+            &nbsp; pinMode( pin[i] , OUTPUT);<br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; if (Serial.available() &gt; 0) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; irin = Serial.read();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (irin==0x11)&nbsp; stepM(128,5); //one
+            turn 2048/4=512<br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (irin==0x21)&nbsp; stepMrev(128,5);
+            //rev<br>
+            &nbsp;&nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

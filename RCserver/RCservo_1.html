@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <title>RCservo_1</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <table style="width: 726px; height: 100px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">
+            <div class="blue24C">伺 服馬達（servo motor），因常用於遙控模型飛機，所以又常稱為RC伺服機（RC
+              Servo，Radio Control Servo，Remote Control Servo）、伺服馬達舵機。 </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 497px; height: 229px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RC_001.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 506px; height: 55px;" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C">使用 電源模組 馬達電源</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 923px; height: 760px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RC_002.png" alt=""><br>
+            <a href="file:///C:/Dropbox/%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F/Pancake.io/iotRobot/RCserver/svg/RCserver.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 938px; height: 684px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36" style="text-align: left; background-color: white;">#include
+            &lt;Servo.h&gt;<br>
+            Servo myS;<br>
+            <br>
+            void&nbsp; setup(){<br>
+            &nbsp; myS.attach(9);&nbsp;&nbsp; <br>
+            &nbsp; myS.write(90); //0~180<br>
+            }<br>
+            <br>
+            void loop(){}<br>
+            <br>
+            /*<br>
+            產生50 HZ 信號<br>
+            使用Servo物件時, D9,D10 PWM不能使用<br>
+            */</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 330px; height: 312px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24"><img src="images/RC_005.png" alt=""><br>
+            //upload<span class="blue24C">&nbsp;之後，裝上舵臂</span><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 584px; height: 586px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">#include
+            &lt;Servo.h&gt;<br>
+            Servo myS;<br>
+            void setup()<br>
+            {<br>
+            &nbsp;&nbsp;myS.attach(9);<br>
+            &nbsp;&nbsp;myS.write(90);<br>
+            }<br>
+            void loop()<br>
+            {<br>
+            &nbsp;&nbsp;myS.write(180);<br>
+            &nbsp;&nbsp;delay(1000);<br>
+            &nbsp;&nbsp;myS.write(90);<br>
+            &nbsp;&nbsp;delay(1000);<br>
+            &nbsp;&nbsp;myS.write(0);<br>
+            &nbsp;&nbsp;delay(1000);<br>
+            &nbsp;&nbsp;myS.write(90);<br>
+            &nbsp;&nbsp;delay(1000);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 597px; height: 395px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C"><img src="images/RC_006.png" alt=""><br>
+            //旋轉1度約需<span class="red36">4~5</span> ms</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 696px; height: 714px;" border="1">
+      <tbody>
+        <tr>
+          <td>
+            <p class="blue24" style="font-family: Verdana, Geneva, sans-serif; font-size: 24px; font-weight: bold; color: rgb(0, 0, 255); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">#include
+              &lt;Servo.h&gt;<br>
+              Servo myS;<br>
+              void setup()<span>&nbsp;</span><br>
+              {<span>&nbsp;</span><br>
+              &nbsp;&nbsp;&nbsp;myS.attach(9);<span>&nbsp;</span><br>
+              }</p>
+            <p class="blue24" style="font-family: Verdana, Geneva, sans-serif; font-size: 24px; font-weight: bold; color: rgb(0, 0, 255); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">void
+              loop()<span>&nbsp;</span><br>
+              {<br>
+              &nbsp;&nbsp;&nbsp;for(int i = 0; i &lt;= 180; i=i+1)<span>&nbsp;</span><br>
+              &nbsp;&nbsp;&nbsp; {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myS.write(i);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delay(5);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int i = 180; i &gt;= 0;
+              i=i-1)</p>
+            <p class="blue24" style="font-family: Verdana, Geneva, sans-serif; font-size: 24px; font-weight: bold; color: rgb(0, 0, 255); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">&nbsp;&nbsp;&nbsp;{<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myS.write(i);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delay(5);<br>
+              &nbsp;&nbsp;&nbsp; }<br>
+              }</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 916px; height: 760px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RC_003.png" alt=""><br>
+            <a href="file:///C:/Dropbox/%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F/Pancake.io/iotRobot/RCserver/svg/RCserverVR.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 680px; height: 506px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#include
+            &lt;Servo.h&gt;<br>
+            Servo myS;<br>
+            int vin=0;
+            
+
+<p class="blue24">void setup()<br>
+              {<br>
+              &nbsp;&nbsp;myS.attach(9);<br>
+              }</p>
+            void loop()<br>
+            {<br>
+            &nbsp;&nbsp;vin=analogRead(A1); <br>
+            &nbsp;&nbsp;vin = map(vin, 0, 1023, 0, 180); <br>
+            &nbsp;&nbsp;myS.write(vin); <br>
+            &nbsp;&nbsp;delay(100);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table style="width: 935px; height: 760px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RC_004.png" alt=""><br>
+            <a href="file:///C:/Dropbox/%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F/Pancake.io/iotRobot/RCserver/svg/RCserverVRLCD.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 746px; height: 809px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">#include
+            &lt;Wire.h&gt;<br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            #include &lt;Servo.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            Servo myS;<br>
+            int vin=0;<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; myS.attach(9);<br>
+            }<br>
+            void loop()<br>
+            {<br>
+            &nbsp; vin=analogRead(A1);<br>
+            &nbsp; vin = map(vin, 0, 1023, 0, 180);<br>
+            &nbsp; myS.write(vin);<br>
+            &nbsp; lcd.clear();<br>
+            &nbsp; lcd.cursor();<br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; lcd.print("vin=");<br>
+            &nbsp; lcd.print(vin);<br>
+            &nbsp; delay(100);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p>
+<p><br></p><br>
+<p><br>
+    </p>
+    <p><br>
+    </p><br><p><br>
+    </p><br><p><br>
+    </p><br><p><br>
+    </p><br><p></p>
+    <p><br>
+    </p><br><p></p>
+    <p><br>
+    </p><br><p></p>
+    <p><br>
+    </p><br><p></p>
+    <p><br>
+    </p>
+    <br><br><p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+</body></html>

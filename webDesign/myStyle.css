@@ -1,0 +1,22 @@
+table {  
+  width: 100px;  
+  margin-top: auto;  
+  margin-right: auto;  
+  margin-bottom: auto;  
+  margin-left: auto;  
+  border-top-style: none;  
+  border-right-style: none;  
+  border-bottom-style: none;  
+  border-left-style: none;
+}
+
+td {  
+  border-top-style: none;  
+  border-right-style: none;  
+  border-bottom-style: none;  
+  border-left-style: none;
+}
+
+body {  
+  background-color: white;
+}

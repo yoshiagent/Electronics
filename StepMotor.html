@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <title>StepMotor</title>
+    
+  <link type="text/css" rel="stylesheet" href="kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+  <body class="w3-container f24">
+    <br><br>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="f36">Stepper Motor</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;"><a href="https://www.youtube.com/watch?v=ChJXW7VDMhw" target="_blank">Basic Structure and Operating Principle of Stepper
+              Motors</a>(uTube)<br>
+            (<a href="Utube/BasicStepper.mp4" target="_blank">if not available</a>)&nbsp;
+            (2 min)<br>
+            <br>
+            Stepper Motor - How It Works(4:42)(<a href="https://www.youtube.com/watch?v=TWMai3oirnM" target="_blank">YouTube</a>)<br>
+            How does a Stepper Motor work ?(5:52)(<a href="https://www.youtube.com/watch?v=eyqwLiowZiU" target="_blank">YouTube</a>)<br>
+            Stepper Motors and how to use them(6:46)(<a href="https://www.youtube.com/watch?v=bkqoKWP4Oy4" target="_blank">YouTube</a>)<br>
+            <a href="https://www.youtube.com/watch?v=Qc8zcst2blU" target="_blank">Working
+              principles of several stepper motors (bipolar, unipolar,
+              reluctance and can-stack)</a>&nbsp; (<a href="Utube/principlesSeveral%20stepper.mp4" target="_blank">if not available</a>)(37min)<br>
+            <br>
+            <strong><a href="https://www.youtube.com/watch?v=xlqUiT9gvQs" target="_blank">How a Stepper Motor works</a>(uTube)&nbsp; (<a href="Utube/StepperMotor.mp4" target="_blank">if not available</a>) (6min)</strong><br>
+            <br>
+            <a href="https://www.youtube.com/watch?v=MHdz3c6KLrg" target="_blank">How
+              the Stepper motors are made and how they operate - Part 1</a>(uTube)<br>
+            (<a href="Utube/HowStepperOperateP1.mp4" target="_blank">if not
+              available</a>) (5min)<br>
+            <br>
+            <a href="https://www.youtube.com/watch?v=t-3VnLadIbc" target="_blank">How
+              the Stepper motors are made and how they operate - Part 2</a>
+            (uTube)<br>
+            &nbsp;(<a href="Utube/HowStepperOperateP2.mp4" target="_blank">if
+              not available</a>) (7 min)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <br>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width:100%;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/stepper01.jpg"><br>
+            <br>
+            <br>
+            <br>
+            2048 steps per shaft revolution <br>
+            <br>
+            <img alt="" src="images/stepMreducer.jpg"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/StepMapp.jpg"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><a href="https://www.youtube.com/watch?v=15K9N1yVnhc" target="_blank">28BYJ-48 Stepper Motor Disassembly</a>(uTube) (<a href="Utube/28BYJ/28BYJ-48Disassembly.mp4" target="_blank">if not
+              available</a>)(9 min)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <br>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/SchStepMotor0.png"><br>
+            <a href="svg/SchStepMotor0.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><a href="uln2003A.html">ULN2003A</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <table style="width:100%;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/SchStepMotor.png"><br>
+            <br>
+            <a href="svg/SchStepMotor.svg">svg</a><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <br>
+    <br>
+    <br>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/stepMStructure1.png"><br>
+            <br>
+            <a href="svg/stepMStructure1.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="width: 538.15px;"><img alt="" src="images/StepM1.gif"><br>
+          </td>
+          <td style="width: 259.85px;"><img alt="" src="images/StepM1anim.gif"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <br>
+    <p> </p>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/stepM2003_001.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width:100%;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/ULN2003A_StepMotor1.png" style="width: 986px; height: 687px;"><br>
+            <br>
+            <a href="svg/ATMEGA_ULN2003_stepM.pdf">pdf</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="svg/ATMEGA_ULN2003_stepM.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <table style="width:100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">#define
+            in1&nbsp; 5<br>
+            #define in2&nbsp; 6<br>
+            #define in3&nbsp; 7<br>
+            #define in4&nbsp; 8<br>
+            int dt=5;//delay time<br>
+            <br>
+            void setup() {<br>
+            &nbsp; pinMode( in1 , OUTPUT);<br>
+            &nbsp; pinMode( in2 , OUTPUT);<br>
+            &nbsp; pinMode( in3 , OUTPUT);<br>
+            &nbsp; pinMode( in4 , OUTPUT);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; digitalWrite(in1,HIGH);<br>
+            &nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp; digitalWrite(in2,HIGH);<br>
+            &nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp; digitalWrite(in3,HIGH);<br>
+            &nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp; digitalWrite(in4,HIGH);<br>
+            &nbsp; delay(dt);<br>
+            }<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width:100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">//
+            進階寫法<br>
+            int pin[4]={5,6,7,8};<br>
+            int out[4][4]={{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}};<br>
+            int dt=5 ;//delay time<br>
+            void setup() {<br>
+            &nbsp; for(int i=0;i&lt;4;i++)<br>
+            &nbsp; pinMode( pin[i] , OUTPUT);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            for (int i=0;i&lt;4;i++)<br>
+            &nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; for(int j=0;j&lt;4;j++)&nbsp; //四支腳分別送一次<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+            digitalWrite(pin[j],out[i][j]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            &nbsp;}<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/stepMStructure2.png"><br>
+            <a href="svg/stepMStructure2Phase.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="width: 533.433px;"><img alt="" src="images/StepM2.gif"><br>
+          </td>
+          <td style="width: 261.567px;"><img alt="" src="images/StepM2anim.gif"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">#define
+            in1&nbsp; 5<br>
+            #define in2&nbsp; 6<br>
+            #define in3&nbsp; 7<br>
+            #define in4&nbsp; 8<br>
+            int dt=5;//delay time<br>
+            <br>
+            void setup() {<br>
+            &nbsp; pinMode( in1 , OUTPUT);<br>
+            &nbsp; pinMode( in2 , OUTPUT);<br>
+            &nbsp; pinMode( in3 , OUTPUT);<br>
+            &nbsp; pinMode( in4 , OUTPUT);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; digitalWrite(in1,HIGH);<br>
+            &nbsp; digitalWrite(in2,HIGH);<br>
+            &nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp; digitalWrite(in2,HIGH);<br>
+            &nbsp; digitalWrite(in3,HIGH);<br>
+            &nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp; digitalWrite(in3,HIGH);<br>
+            &nbsp; digitalWrite(in4,HIGH);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,HIGH);<br>
+            &nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp; digitalWrite(in4,HIGH);<br>
+            &nbsp; delay(dt);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">//
+            進階寫法<br>
+            int pin[4]={5,6,7,8};<br>
+            int out[4][4]=<span>{{1,1,0,0},{0,1,1,0},{0,0,1,1},{1,0,0,1}}</span>;<br>
+            int dt=5;//delay time<br>
+            void setup() {<br>
+            &nbsp; for(int i=0;i&lt;4;i++)<br>
+            &nbsp; pinMode( pin[i] , OUTPUT);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            for (int i=0;i&lt;4;i++)<br>
+            &nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; for(int j=0;j&lt;4;j++)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(pin[j],out[i][j]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            &nbsp;}<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">//
+            轉一圈<br>
+            #define in1&nbsp; 5<br>
+            #define in2&nbsp; 6<br>
+            #define in3&nbsp; 7<br>
+            #define in4&nbsp; 8<br>
+            int dt=5;//delay time<br>
+            <br>
+            void setup() {<br>
+            &nbsp; pinMode( in1 , OUTPUT);<br>
+            &nbsp; pinMode( in2 , OUTPUT);<br>
+            &nbsp; pinMode( in3 , OUTPUT);<br>
+            &nbsp; pinMode( in4 , OUTPUT);<br>
+            &nbsp; for (int k=0;k&lt;512;k++)<br>
+            &nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in1,HIGH);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in2,HIGH);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in2,HIGH);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in3,HIGH);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in3,HIGH);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in4,HIGH);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in1,HIGH);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(in4,HIGH);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            <br>
+            <br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; <br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">//
+            轉一圈&nbsp; 進階寫法<br>
+            int pin[4]={5,6,7,8};<br>
+            int out[4][4]={{1,1,0,0},{0,1,1,0},{0,0,1,1},{1,0,0,1}};<br>
+            int dt=5;//delay time<br>
+            void setup() <br>
+            {<br>
+            &nbsp; for(int i=0;i&lt;4;i++)<br>
+            &nbsp; pinMode( pin[i] , OUTPUT);<br>
+            &nbsp; <br>
+            &nbsp; for(int k=0;k&lt;512;k++)<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; for (int i=0;i&lt;4;i++)<br>
+            &nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int j=0;j&lt;4;j++)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            digitalWrite(pin[j],out[i][j]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; }<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            <br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width:100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">//
+            轉一圈&nbsp; 進階寫法&nbsp; 函式<br>
+            int pin[4]={5,6,7,8};<br>
+            int out[4][4]={{1,1,0,0},{0,1,1,0},{0,0,1,1},{1,0,0,1}};<br>
+            void stepM(int steps,int dt)<br>
+            {<br>
+            &nbsp;for(int k=0;k&lt;steps;k++)<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; for (int i=0;i&lt;4;i++)<br>
+            &nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int j=0;j&lt;4;j++)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            digitalWrite(pin[j],out[i][j]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; }<br>
+            }<br>
+            <br>
+            void setup() <br>
+            {<br>
+            &nbsp; for(int i=0;i&lt;4;i++)<br>
+            &nbsp; pinMode( pin[i] , OUTPUT);<br>
+            &nbsp; <br>
+            &nbsp; stepM(512,5); //one turn 2048/4=512<br>
+            &nbsp; <br>
+            }<br>
+            <br>
+            void loop() {<br>
+            <br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td>三相激磁 是否更有力?</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td>偵錯 : 步進馬達不轉<br>
+            拿掉一條線<br>
+            兩條線互換</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><img src="images/SchStepMotor0.png"><br>
+            如何找出 共接線?</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td>如何 將程式改為 for 迴圈?</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <hr>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td>紅外線遙控器 控制步進馬達</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/irDcoder_0002.png"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C"><a href="iRremoteSerial.html">紅外線遙控器解碼板</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/StepMotorIrDec.png" style="width: 988px; height: 687px;"><br>
+            <br>
+            <a href="svg/ATMEGA_ULN2003_stepM_irDec.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width:100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">int
+            irin;<br>
+            int pin[4]={5,6,7,8};<br>
+            int out[4][4]={{1,1,0,0},{0,1,1,0},{0,0,1,1},{1,0,0,1}};<br>
+            void stepM(int steps,int dt)<br>
+            {<br>
+            &nbsp;for(int k=0;k&lt;steps;k++)<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; for (int i=0;i&lt;4;i++)<br>
+            &nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int j=0;j&lt;4;j++)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            digitalWrite(pin[j],out[i][j]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; }<br>
+            }<br>
+            <br>
+            <br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; Serial.begin(<span>2400</span>);<br>
+            &nbsp; for(int i=0;i&lt;4;i++)<br>
+            &nbsp; pinMode( pin[i] , OUTPUT);<br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; if (Serial.available() &gt; 0) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; irin = Serial.read();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (irin==0x11)&nbsp; stepM(512,5); //one
+            turn 2048/4=512<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (irin==0x21)&nbsp; stepM(128,5);
+            //1/4turn<br>
+            &nbsp;&nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">//
+            增加LED指示<br>
+            int irin;<br>
+            int pin[4]={5,6,7,8};<br>
+            int out[4][4]={{1,1,0,0},{0,1,1,0},{0,0,1,1},{1,0,0,1}};<br>
+            void stepM(int steps,int dt)<br>
+            {<br>
+            <span>digitalWrite(A5,HIGH);</span><br>
+            for(int k=0;k&lt;steps;k++)<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; for (int i=0;i&lt;4;i++)<br>
+            &nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int j=0;j&lt;4;j++)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            digitalWrite(pin[j],out[i][j]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; }<br>
+            <span>digitalWrite(A5,LOW);</span><br>
+            }<br>
+            <br>
+            <br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; Serial.begin(<span>2400</span>);<br>
+            &nbsp; for(int i=0;i&lt;4;i++)<br>
+            &nbsp; pinMode( pin[i] , OUTPUT);<br>
+            &nbsp; <span>pinMode(A5,OUTPUT);</span><br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; if (Serial.available() &gt; 0) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; irin = Serial.read();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (irin==0x11)&nbsp; stepM(512,5); //one
+            turn 2048/4=512<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (irin==0x21)&nbsp; stepM(128,5);
+            //1/4turn<br>
+            &nbsp;&nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <hr>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td>車道柵欄</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><br>
+            <img src="images/stepGate_001.jpg" alt=""><img src="images/stepGate_002.jpg" alt=""><img src="images/stepGate_003.jpg" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">int
+            irin;<br>
+            int pin[4]={5,6,7,8};<br>
+            int out[4][4]={{1,1,0,0},{0,1,1,0},{0,0,1,1},{1,0,0,1}};<br>
+            void stepM(int steps,int dt)<br>
+            {<br>
+            &nbsp;for(int k=0;k&lt;steps;k++)<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; for (int i=0;i&lt;4;i++)<br>
+            &nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int j=0;j&lt;4;j++)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            digitalWrite(pin[j],out[i][j]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; }<br>
+            }<br>
+            <br>
+            <span>void stepMrev(int steps,int dt)<br>
+              {<br>
+              &nbsp;for(int k=0;k&lt;steps;k++)<br>
+              &nbsp; {<br>
+              &nbsp;&nbsp;&nbsp; for (int i=3;i&gt;=0;i--)<br>
+              &nbsp;&nbsp;&nbsp; {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int j=0;j&lt;4;j++)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              digitalWrite(pin[j],out[i][j]);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+              &nbsp;&nbsp;&nbsp; }<br>
+              &nbsp; }<br>
+              }</span><br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; Serial.begin(<span>2400</span>);<br>
+            &nbsp; for(int i=0;i&lt;4;i++)<br>
+            &nbsp; pinMode( pin[i] , OUTPUT);<br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; if (Serial.available() &gt; 0) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; irin = Serial.read();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (irin==0x11)&nbsp; stepM(512,5); //one
+            turn 2048/4=512<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (irin==0x21)&nbsp; stepMrev(512,5);
+            //rev<br>
+            &nbsp;&nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p> </p>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C"><a href="irSensor.html" target="_blank">紅外線感應</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="blue36C"><a href="Demo_BT_IR_SM.html">藍芽遙控</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C">ESP8266 + Arduino 遙控</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Shift register74595(<a href="docs/74HC_HCT595-1371408.pdf" target="_blank">.pdf</a>) (<a href="https://diyi0t.com/shift-register-tutorial-for-arduino-and-esp8266/" target="_blank">ref</a>)</td></tr></tbody></table>
+<p><br></p>
+<p><br>
+    </p>
+    <p> </p>
+    <p><br>
+    </p>
+</body></html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>AnalogInput</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red48C">類比輸入<br>
+            val=analogRead(pin)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 1303px; height: 607px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/inOut_001.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1318px; height: 512px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/inOut_002.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1120px; height: 1551px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C"><img alt="" src="images/Ainp_003.png"><br>
+            <br>
+            <a href="svg/ATMEGA_Ain.pdf">pdf</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="svg/ATMEGA_Ain.svg">svg</a><br>
+            <br>
+            <br>
+            <img alt="" src="images/VR_04.JPG"><img alt="" src="images/Ainp_004.png"><a href="svg/Sch_VarResisor.pdf">pdf</a>&nbsp; <a href="svg/Sch_VarResisor.svg">svg<br>
+            </a><br>
+            使用三用電表量測 A5 電壓<br>
+            <br>
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 375px; height: 184px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/serial_001.png"><br>
+            <br>
+            <br>
+            <img alt="" src="images/serial_002.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <p><br>
+    </p>
+    <table style="width: 697px; height: 210px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp; apin&nbsp; A5<br>
+            int val;<br>
+            void setup() {<br>
+            Serial.begin(9600);<br>
+            }<br>
+            <br>
+            <br>
+            void loop() {<br>
+            &nbsp; val= analogRead(apin);<br>
+            &nbsp; Serial.println(val);<br>
+            &nbsp; delay(1000);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <br>
+    <br>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">調光燈</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 685px; height: 425px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp; led&nbsp; 11<br>
+            #define&nbsp; apin&nbsp; A5<br>
+            int val;<br>
+            void setup() {<br>
+            &nbsp;&nbsp;&nbsp; <br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;&nbsp;&nbsp; val=analogRead(apin);<br>
+            &nbsp;&nbsp;&nbsp; val=<span class="red24">map</span>(val,0,1023,0,255);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(led,val);<br>
+            &nbsp;&nbsp;&nbsp; delay(100);<br>
+            &nbsp;}<br>
+            <br>
+            <img alt="" src="images/map_001.png"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <hr>
+    <p><br>
+    </p>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 676px; height: 370px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp; led&nbsp; 11<br>
+            #define&nbsp; apin&nbsp; A5<br>
+            int val;<br>
+            void setup() {<br>
+            &nbsp;&nbsp;&nbsp; pinMode(led,OUTPUT);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;&nbsp;&nbsp; val=analogRead(apin);<br>
+            &nbsp;&nbsp;&nbsp; if (val&gt;512)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(led,HIGH);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp; else<br>
+            &nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(led,LOW);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;}</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <p><br>
+    </p>
+    <table style="width: 672px; height: 55px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C"><a href="joystick.html">搖桿 Joystick</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

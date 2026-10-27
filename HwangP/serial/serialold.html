@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+<title>serial</title>
+<link type="text/css" rel="stylesheet" href="mystyle.css"></head>
+<body><p><br></p>
+<p></p><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="red36C">Arduino (電腦)<br>
+與 <br>
+Serial monitor(人機介面---電腦與人的翻譯者)&nbsp;
+<br>
+</td></tr></tbody></table><p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24">ASII Code Table(<a href="docs/ASCII_CODE_TABLE.pdf" target="_blank">PDF</a>) (<a href="docs/ASCII_table.pdf" target="_blank">含extended</a>)<br><a href="https://www.rapidtables.com/convert/number/ascii-hex-bin-dec-converter.html" target="_blank">Converter</a><br><img src="images/ascii_000.png" alt=""><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24C" style="text-align: left; background-color: white;">在文字處理中, CR, LF, CR/LF是不同作業系統上使用的換行符.<br><span style="color: #cc0000;">Windows</span>採用回車 換行<span style="color: #990000;">CR/LF</span>表示下一行, <br>而<span style="color: #330099;">UNIX/Linux</span>採用換行符<span style="color: #330099;">LF</span>表示下一行，<br>蘋果機(<span style="color: black;">MAC OS系統</span>)則採用回車符<span style="color: black;">CR</span>表示下一行.<br><br>CR用符號<span class="blue24">'/r’</span>表示, 十進位制ASCII程式碼是13, 十六進位制程式碼為0x0D; <br>LF使用<span class="blue24">'/n’</span>符號表示, 十進位制ASCII程式碼是10, 十六進位制程式碼為0x0A.<br><br>所以Windows平臺上換行在文字檔案中是使用 0x0d 0x0a 兩個位元組表示, <br>而UNIX和蘋果平臺上換行則是使用0x0a或0x0d一個位元組表示.</td></tr></tbody></table><br><img src="images/ascii_001.png" alt=""><br><br><img src="images/ascii_002.png" alt=""><br><img src="images/ascii_003.png" alt=""></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/uart_001.png" alt=""><br><br><img src="images/uart_003.png" alt=""><br><br><img src="images/uart_002.png" alt=""><br><img src="images/uart_004.png" alt=""><br><br></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">PROTOCOLS: UART - I2C - SPI - Serial communications #001(11:57)(<a href="https://www.youtube.com/watch?v=IyGwvGzrqp8&amp;t=33s" target="_blank">YouTube</a>)</td></tr></tbody>
+</table><p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;"><img src="images/U.png" alt=""><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">void setup() {<br>&nbsp; Serial.begin(<span style="color: #990000;">1200</span>);<br>&nbsp; delay(1000);<br>}<br><br>void loop() {<br>Serial.write(0b01010101); <br>//Serial.write(85);<br>&nbsp;//Serial.write(0x55);<br>&nbsp;//&nbsp; Serial.write('U');<br><br>//Serial.write(0b00110011);<br>// Serial.write('3');<br><br>&nbsp; delay(20);<br>}</td></tr></tbody></table><br><br>'U'<br><img src="images/serial_U.png" alt=""><br>下降緣觸發<br>&nbsp;Autoset<br><br>'3'&nbsp;&nbsp;&nbsp; 00110011<br><img src="images/serial_3.png" alt=""><br><br>'5'&nbsp;&nbsp; 00110101<br><img src="images/serial_5.png" alt=""><br><br><br>'U'&nbsp; delay(10)&nbsp; '3'<br><img src="images/serial_U_d10_3.png" alt=""></td></tr></tbody></table></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24">Serial (<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/" target="_blank">Arduino.cc</a>)</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue36">Serial.write()(<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/write/" target="_blank">Arduino.cc</a>)<br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">Syntax:<br>
+Serial.write(<span style="color: #cc0000;">val</span>)<br>
+Serial.write(<span style="color: #330099;">str</span>)<br>
+Serial.write(<span style="color: #330033;">buf</span>, <span style="color: black;">len</span>)<br><br>Parameters:<br>Serial: serial port object.<br><span style="color: #990000;">val</span>: a value to send as <span style="color: #cc0000;">a single byte</span>. (0~255)<br>str: a string to send as <span style="color: #330099;">a series of bytes</span>.<br>buf: an <span style="color: #330033;">array</span> to send as <span style="color: #330033;">a series of bytes</span>.<br>len: the <span style="color: black;">number of bytes</span> to be sent from the array.<br><br>Returns<br>write() will return the number of bytes written, though reading that number is optional. <br>Data type: size_t. (無號整數,0~系統之整數最大值)</td></tr></tbody></table><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">//Example Code<br>void setup() {<br>&nbsp; Serial.begin(9600);<br>}<br><br>void loop() {<br><span style="color: #666666;">/* send a byte with the value 45*/</span><br>&nbsp; Serial.write(45); //送出一個byte 0010 1101<br><br><span style="color: #666666;">/*send the string "hello" and return the length of the string.*/</span><br>&nbsp; int bytesSent = Serial.write("hello");//送出5個byte<br>&nbsp; //bytesSent=5<br>&nbsp; //Serial.write(bytesSent);  //送出binary 5--&gt;0000 0101<br>&nbsp; Serial.print(bytesSent); //送出5的ASCII Code--&gt;0011 0101&nbsp; <br>&nbsp;
+delay(1000);<br>}<br><br><img src="images/serial_019.png" alt=""><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">Serial.<span style="color: #990000;">write</span>(5) 送出 0000 0101&nbsp; serial monitor 顯示不出來<br><img src="images/ascii_004.png" alt=""><br>ENQ <span class="blue24C">不可見之控制碼</span>（<span class="blue24C">要求接收後發出回應(ACK)來驗證該設備是否online</span>）<br><br>Serial.<span style="color: #990000;">print</span>(5) 送出 0011 0101&nbsp; serial monitor顯示 5<br><br>Serial.<span style="color: #990000;">write</span>(5+<span style="color: #990000;">48</span>) 送出 0011 0101&nbsp; serial monitor 顯示5<br><img src="images/ascii_001.png" alt=""></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24"><span style="color: #990000;">Serial.write()</span> Writes <span style="color: #990000;">binary</span> data to the serial port. <br>This data is sent as a <span style="color: #990000;">byte</span> or <span style="color: #990000;">series of bytes</span>; <br>to send the <span style="color: #330099;">characters representing the digits of a number</span> use the <span style="color: #330099;">Serial.print()</span> function instead.<br><br>Serial.<span style="color: #990000;">write(數)</span>&nbsp; : <span style="color: #990000;"><span style="color: blue;">Serial.write(123)---&gt;0111 1011</span><br></span><br><span style="color: #990000;"><span style="color: #990000;"><img src="images/serial_016.png" alt=""></span><br><span style="color: blue;">serial monitor 收到後印出</span> {<br><img src="images/serial_017.png" alt=""><br><br></span><span style="color: #990000;"><span style="color: blue;">Serial.<span style="color: #990000;">print(字)</span>&nbsp;&nbsp; : Serial.print(123)--&gt;"1" ,"2" ,"3" 一共3個Byte</span><br></span>0011 0001&nbsp; , &nbsp; 0011 0010 , 0011 0011<br><span style="color: #990000;" class="blue24"><img src="images/serial_018.png" alt=""><br><br><span style="color: black;">Serial monitor :<br>一律將收到的binary 轉為ASCII code顯示出來<br>一律將欲傳送的資料一個一個的轉為binary傳送<br>為"人"與"電腦"的翻譯者</span><br></span></td></tr></tbody></table>
+
+<p><br></p><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24">Serial.read()</td></tr></tbody>
+  </table><p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">Returns<br>
+The <span style="color: #990000;">first byte</span> of incoming serial data available (or -1 if no data is available). Data type: <span style="color: #990000;">int</span>.</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24"><br>#define led 12<br>void setup(){<br>Serial.begin(115200);<br>pinMode(led,OUTPUT);<br>digitalWrite(led,LOW);<br>}<br>void loop(){<br>if(Serial.available()){<br>&nbsp;&nbsp;&nbsp; if(Serial.read()==<span style="color: #990000;">49</span>)<br>&nbsp; digitalWrite(led,HIGH);<br>&nbsp; else<br>&nbsp; digitalWrite(led,LOW);<br>&nbsp; delay(2000);<br>}<br>}<br><br><img src="images/read_001.png" alt=""><br><br><img src="images/read_002.png" alt=""><br><br>//試試 Serial.read()==<span style="color: #990000;">1<br></span>//試試 Serial.read()==<span style="color: #990000;">'1'</span></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Arduino 1---Transmitter</td></tr></tbody></table><br>void setup(){<br>Serial.begin(115200);<br>}<br>void loop(){<br>Serial.<span style="color: #990000;">write</span>(1);<br>delay(2000);<br>Serial.<span style="color: #990000;">write</span>(0);<br>delay(2000);<br><br>}</td></tr></tbody></table><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Arduino 2---Receiver</td></tr></tbody></table><br>#define led 12<br>void setup(){<br>Serial.begin(115200);<br>pinMode(led,OUTPUT);<br>digitalWrite(led,LOW);<br>}<br>void loop(){<br>if(Serial.<span style="color: #990000;">available()</span>){<br>&nbsp;&nbsp;&nbsp; if(Serial.<span style="color: #990000;">read()</span>==1)<br>&nbsp; digitalWrite(led,HIGH);<br>&nbsp; else<br>&nbsp; digitalWrite(led,LOW);<br>&nbsp; delay(2000);<br>}<br>}</td></tr></tbody></table></td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24C">收到什麼就送出什麼</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24"><span style="color: #990000;">int8_t</span>&nbsp; x;<br>void setup(){<br>Serial.<span style="color: #990000;">begin</span>(115200);<br>}<br>void loop(){<br>if(Serial.<span style="color: #990000;">available()</span>){<br>&nbsp; x=Serial.<span style="color: #990000;">read()</span>;<br>&nbsp; Serial.<span style="color: #990000;">write</span>(x);<br>}<br>}</td></tr></tbody></table><br><span class="red36C">或</span><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">void setup(){<br>Serial.<span style="color: #990000;">begin</span>(115200);<br>}<br>void loop(){<br>if(Serial.<span style="color: #990000;">available()</span>){<br>&nbsp; Serial.<span style="color: #990000;">write</span>(Serial.<span style="color: #990000;">read()</span>);<br>}<br>}</td></tr></tbody></table><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24C" style="text-align: left; background-color: white;">電腦只認識0,1二進位<br>Serial monitor 將二進位 轉換成"文字"顯示給"人"看。<br>123是"1", "2", "3"三個"文字"<br>ASCII Code 為二進位與"文字"之轉換表<br>Unicode(萬國碼) 亦為二進位與"文字"之轉換表</td></tr></tbody></table><br><img src="images/serial_012.png" alt=""><br><br><img src="images/serial_013.png" alt=""><br><br><img src="images/serial_014.png" alt=""><br><br><img src="images/serial_015.png" alt=""></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24"><span class="blue36">Serial.print() (<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/print/" target="_blank">Arduino.cc</a>)</span><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">Prints data to the serial port as <span style="color: #990000;">human-readable ASCII text</span>. This command can take many forms. <br>
+  <span style="color: #990000;">Numbers</span> are printed using an ASCII character for <span style="color: #990000;">each digit</span>. <br><span style="color: #990000;">Floats</span> are similarly printed as ASCII digits, defaulting to two decimal places. <br>
+<span style="color: #990000;">Bytes</span> are sent as a single character. <br>
+<span style="color: #990000;">Characters</span> and <span style="color: #990000;">strings</span> are sent as is. <br>
+For example-<br>
+Serial.print(78) gives '7' '8'<br>
+Serial.print(1.23456) gives '1' '.' '2' '3'<br>
+Serial.print(<span style="color: #990000;">'N'</span>) gives&nbsp; 'N'<br>
+Serial.print(<span style="color: #990000;">"Hello world."</span>) gives 'H' 'e' 'l' 'l' 'o' ' ' 'w' 'o' 'r' 'l' 'd' '.'<br><br>An optional second parameter specifies the base (format) to use; permitted values are BIN(binary, or base 2), OCT(octal, or base 8), DEC(decimal, or base 10), HEX(hexadecimal, or base 16). <br>For floating point numbers, this parameter specifies the number of decimal places to use. <br>For example-<br><br>Serial.print(78, BIN) gives "1001110"<br>Serial.print(78, OCT) gives "116"<br>Serial.print(78, DEC) gives "78"<br>Serial.print(78, HEX) gives "4E"<br>Serial.print(1.23456, 0) gives "1"<br>Serial.print(1.23456, 2) gives "1.23"<br>Serial.print(1.23456, 4) gives "1.2346"<br><br>Syntax<br>Serial.print(<span style="color: #990000;">val</span>)<br>Serial.print(<span style="color: #990000;">val</span>, <span style="color: #990000;">format</span>)<br><br>Parameters<br>val: the value to print. Allowed data types: any data type.<br><br>Returns<br>print() returns the number of bytes written, though reading that number is optional. Data type: size_t.<br><br>Example Code<br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">void setup() {<br>&nbsp; Serial.begin(115200); <br>}<br><br>void loop() {<br>&nbsp; // print labels<br>&nbsp; Serial.print("NO FORMAT");&nbsp; // prints a label<br>&nbsp; Serial.print("\t");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // prints a tab<br><br>&nbsp; Serial.print("DEC");<br>&nbsp; Serial.print("\t");<br><br>&nbsp; Serial.print("HEX");<br>&nbsp; Serial.print("\t");<br><br>&nbsp; Serial.print("OCT");<br>&nbsp; Serial.print("\t");<br><br>&nbsp; Serial.print("BIN");<br>&nbsp; Serial.println();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // carriage return and line feed after the last label<br><br>&nbsp; for (int x = 0; x &lt; 64; x++) { // only part of the ASCII chart, change to suit<br>&nbsp;&nbsp;&nbsp; // print it out in many formats:<br>&nbsp;&nbsp;&nbsp; Serial.print(x);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // print as an ASCII-encoded decimal - same as "DEC"<br>&nbsp;&nbsp;&nbsp; Serial.print("\t\t");&nbsp; // prints two tabs to accomodate the label lenght<br><br>&nbsp;&nbsp;&nbsp; Serial.print(x, DEC);&nbsp; // print as an ASCII-encoded decimal<br>&nbsp;&nbsp;&nbsp; Serial.print("\t");&nbsp;&nbsp;&nbsp; // prints a tab<br><br>&nbsp;&nbsp;&nbsp; Serial.print(x, HEX);&nbsp; // print as an ASCII-encoded hexadecimal<br>&nbsp;&nbsp;&nbsp; Serial.print("\t");&nbsp;&nbsp;&nbsp; // prints a tab<br><br>&nbsp;&nbsp;&nbsp; Serial.print(x, OCT);&nbsp; // print as an ASCII-encoded octal<br>&nbsp;&nbsp;&nbsp; Serial.print("\t");&nbsp;&nbsp;&nbsp; // prints a tab<br><br>&nbsp;&nbsp;&nbsp; Serial.println(x, BIN);&nbsp; // print as an ASCII-encoded binary<br>&nbsp;&nbsp;&nbsp; // then adds the carriage return with "println"<br>&nbsp;&nbsp;&nbsp; delay(200);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // delay 200 milliseconds<br>&nbsp; }<br>&nbsp; Serial.println();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // prints another carriage return<br>}</td></tr></tbody></table><br><br>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24"><img src="images/ascii_001.png" alt=""><br>The commands Serial.print(217) or Serial.print("217") will both print the same thing: 00110010 00110001 00110111. <br>This is because the print command first converts any number to a string representation and then uses the command Serial.write() to send each character as individual ASCII bits.<br><br>Serial.print(<span style="color: #990000;">"217"</span>,HEX)------WRONG!<br>Serial.print(217,HEX) --------OK!<br>Serial.print(65535,HEX) --------OK!<br>
+</td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="red36">Serial.println() (<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/println/" target="_blank">Arduino.cc</a>)</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">void setup(){<br>Serial.begin(115200);<br>}<br><br>void loop(){<br>if(Serial.<span style="color: #990000;">available()</span>){<br>Serial.<span style="color: #990000;">println</span>(<span style="color: #990000;">Serial.read()</span>); <br>}<br>}</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24C" style="text-align: left; background-color: white;"><img src="images/serial_003.png" alt=""><br><img src="images/serial_005.png" alt=""><br><img src="images/serial_008.png" alt=""><br><br>如果設定為：<br>(1) NL &amp; CR 就會在送出的字元代碼之後加上 13 與 10<br>(2) 沒有行結尾 ==&gt; 只送出字元代碼<br>(3) NL ==&gt; 在字元代碼之後加上 10<br>(4) CR ==&gt; 在字元代碼之後加上13</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/serial_001.png" alt=""><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24">ASII Code Table(<a href="docs/ASCII_CODE_TABLE.pdf" target="_blank">PDF</a>)<br>
+  <a href="https://www.rapidtables.com/convert/number/ascii-hex-bin-dec-converter.html" target="_blank">Converter</a><br>
+  <img src="images/ascii_000.png" alt=""><br>
+  <br>
+  <img src="images/ascii_001.png" alt=""><br>
+  <br>
+  <img src="images/ascii_002.png" alt=""><br>
+  <img src="images/ascii_003.png" alt=""></td></tr></tbody>
+</table>
+<br><br><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24C" style="text-align: left; background-color: white;">
+<ol>
+<li>第二個代碼皆為13，第三個代碼皆為10</li>
+<li> 第一個代碼為傳送的字元代碼</li>
+<li>第二個代碼13代表CR(游標歸位)</li>
+<li>第三個代碼10代表NL(下一行)</li>
+<li>兩位數 像10 就是依序傳出1(49)與0(48)再加上歸位(13)與下一行(10)</li></ol></td></tr></tbody></table></td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><span class="blue24C">顯示16進位</span></td></tr></tbody></table><br>void setup(){<br>Serial.begin(115200);<br>}<br><br>void loop(){<br>if(Serial.available()){<br>Serial.println(Serial.read(),<span style="color: #990000;">HEX</span>); <br>}<br>}<br><br><img src="images/serial_006.png" alt=""></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><span class="blue24C">顯示二進位</span></td></tr></tbody></table><br>void setup(){<br>Serial.begin(115200);<br>}<br><br>void loop(){<br>if(Serial.available()){<br>Serial.println(Serial.read(),<span style="color: #990000;">BIN</span>);<br>}<br>}<br><br><img src="images/serial_009.png" alt=""></td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<hr>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue36C">補充說明</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Serial.read()</td></tr></tbody>
+  </table>
+  <br>
+  <br>
+Returns<br>
+The first byte of incoming serial data available (or -1 if no data is available). Data type: <span style="color: #990000;">int</span>.<br>
+  <br>
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Serial.readBytes()</td></tr></tbody>
+  </table>
+  <br>
+Serial.readBytes() reads characters from the serial port into a buffer. 
+The function terminates if the determined length has been read, or it 
+times out (see Serial.setTimeout()).<br>
+  <br>
+Serial.readBytes() returns the number of characters placed in the buffer. <br>
+A 0 means no valid data was found.<br>
+  <br>
+Syntax<br>
+  <span style="color: #990000;">Serial.readBytes(buffer, length)</span><br>
+  <br>
+Parameters<br>
+buffer: the buffer to store the bytes in. Allowed data types: or array of <span style="color: #990000;">char</span> or <span style="color: #990000;">byte</span>.<br>
+length: the number of bytes to read. Allowed data types: int.<br>
+  <br>
+Returns<br>
+The number of bytes placed in the buffer. Data type: size_t.<br>
+  <br>
+Example:<br>
+char readData[10];//The character array is used as buffer to read into.<br>
+int x = Serial.readBytes(readData,10);//10 is the length of data to read.<br>
+  <br>
+  <br>
+The function continuously read the received data from the buffer and if 
+target number of character is received it will return with the number of
+ character. And if the number of character it read is less than 
+specified number and timeout time is completes than it will return the 
+number of characters, which is less than the target length.<br>
+  <br>
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Serial.readBytesUntil()</td></tr></tbody>
+  </table>
+Serial.readBytesUntil() reads characters from the serial buffer into an 
+array. The function terminates (checks being done in this order) if the 
+determined length has been read, if it times out (see 
+Serial.setTimeout()), or if the terminator character is detected (in 
+which case the function returns the characters up to the last character 
+before the supplied terminator). The terminator itself is not returned 
+in the buffer.<br>
+  <br>
+Syntax<br>
+  <span style="color: #990000;">Serial.readBytesUntil(character, buffer, length)</span><br>
+  <br>
+Parameters<br>
+  <br>
+character: the character to search for. Allowed data types: char.<br>
+buffer: the buffer to store the bytes in. Allowed data types: array of char or byte.<br>
+length: the number of bytes to read. Allowed data types: int.<br>
+  <br>
+Returns<br>
+Data type: size_t.<br>
+  <br>
+Example:<br>
+char readData[10];<span style="color: #666666;">//The character array is used as buffer to read into.</span><br>
+int x = Serial.readBytesUntil(“\n”,readData,10);<span style="color: #666666;">//10 is the length of data to read.</span><br>
+  <br>
+The function continuously read the received data and store in the variable provided.<br>
+  <br>
+The function can exit by three events-<br>
+  <br>
+1.The timeout time completes, by default the timeout time is one second.<br>
+2. Before the timeout time, the function received the specified number of characters ( 10 char ).<br>
+3.Before above two events, the function received terminating character ( “\n” newline character ).<br>
+In all the three exit case the Serial.readBytesUntil() function return the number of character read in the buffer variable.<br>
+  <br>
+The default wait time is one second, which can be modified with the help of function Serial.setTimeout().<br>
+  <br>
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">void setup() <br>
+{<br>
+&nbsp;&nbsp;&nbsp; Serial.begin(115200); &nbsp;&nbsp;&nbsp;&nbsp; <br>
+}<br>
+void loop() <br>
+{<br><span style="color: #666666;">/*The character array is used as buffer to read into.*/</span><br>
+&nbsp;&nbsp;&nbsp; char readData[10]="0000000000";<br><span style="color: #666666;">/*It require two 
+things, variable name to read into, number of bytes to read.*/</span><br>
+&nbsp;&nbsp;&nbsp; int x = Serial.readBytesUntil("\n",readData,10);<br><span style="color: #666666;">/*display number of character received in readData variable.*/</span><br>
+&nbsp;&nbsp;&nbsp; Serial.println(x);<br><span style="color: #666666;">/*send back the 10 bytes of data.*/</span><br>
+&nbsp;&nbsp;&nbsp; Serial.println(readData);<br>
+&nbsp;&nbsp;&nbsp; delay(500);<br>
+}&nbsp;&nbsp; <br>
+    <br>
+</td></tr></tbody></table>
+  <br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">於Serial Monitor 傳送 123<br><img src="images/readByteUntil.png" alt=""><br><br><img src="images/readByteUntil_1.png" alt=""><br><br><img src="images/readByteUntil_2.png" alt=""><br><br><img src="images/readByteUntil_3.png" alt=""></td></tr></tbody></table>
+  <br>
+</td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">Serial.readString()<br>Description<br>Serial.readString() reads characters from the serial buffer into a String. The function terminates if it times out (see setTimeout()).<br><br>Syntax<br>Serial.readString()<br><br>Parameters<br>Serial: serial port object. See the list of available serial ports for each board on the Serial main page.<br><br>Returns<br>A String read from the serial buffer<br><br>Example:<br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">String a;<br>void setup() {<br>Serial.begin(115200);<br>}<br><br>void loop() {<br>while(Serial.available()) {<br>a= Serial.readString();<br>Serial.println(a);<br>}<br>}</td></tr></tbody></table></td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">Serial.readStringUntil()<br><br>Description<br>readStringUntil() reads characters from the serial buffer into a String. The function terminates if it times out (see setTimeout()).<br><br>Serial.readStringUntil() inherits from the Stream utility class.<br><br>Syntax<br>Serial.readStringUntil(terminator)<br><br>Parameters<br>Serial: serial port object. See the list of available serial ports for each board on the Serial main page.<br>terminator: the character to search for. Allowed data types: char.<br><br>Returns<br>The entire String read from the serial buffer, up to the terminator character<br><br>Notes and Warnings<br>The terminator character is discarded from the serial buffer. </td></tr></tbody></table><br><br>void setup() <br>{<br>&nbsp;&nbsp;&nbsp; Serial.begin(115200); <br>&nbsp;&nbsp;&nbsp;&nbsp; <br>}<br>void loop() <br>{<br>&nbsp;&nbsp;&nbsp; String readData;<br>&nbsp;&nbsp;&nbsp; readData= Serial.readStringUntil('3');<br>&nbsp;&nbsp;&nbsp; Serial.println(readData);<br>&nbsp;&nbsp;&nbsp; delay(500);<br>}&nbsp;&nbsp; <br><br>//傳送 12345<br><img src="images/readStringU_001.png" alt=""></td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="red36">Serial.print()</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24C">於Serial Monitor中顯示不換行</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">void setup(){<br>Serial.begin(115200);<br>}<br><br>void loop(){<br>if(Serial.available()){<br>Serial.<span style="color: #cc0000;">print</span>(Serial.read(),<span style="color: #990000;">HEX</span>); <br>}<br>}<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/serial_004.png" alt=""><br>0---&gt;30DA<br>
+</td></tr></tbody></table>
+  
+</td></tr></tbody></table><br><p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">Serial.write(0x45);&nbsp;&nbsp; // will write 0100 0101 to the cable<br>
+  <br>
+Serial.print in the other hand is more versatile , it will do the 
+conversion for you from ASCII to binary it also can convert to BIN/ HEX/OCT/DEC but you need to specify a second argument like so<br>
+  <br>
+Serial.print(76, BIN) gives "0100 1100"<br>
+Serial.print(76, OCT) gives "114"<br>
+Serial.print("L", DEC) gives "76"<br>
+Serial.print(76, HEX) gives "4C" <br>
+</td></tr></tbody></table>
+<p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;"><br>Serial.write(0x48);&nbsp;&nbsp; // H<br>Serial.write(0x45);&nbsp;&nbsp; // E<br>Serial.write(0x4C);&nbsp;&nbsp; // L<br>Serial.write(0x4C);&nbsp;&nbsp; // L<br>Serial.write(0x4F);&nbsp;&nbsp; // O<br><br><img src="images/nVEeo.jpg" alt=""><br><br>Serial.print("HELLO");<br><img src="images/nVEeo%20%281%29.jpg" alt=""><br><br>Serial.println("HELLO");<br><img src="images/f6U7E.jpg" alt=""><br>Serial.println()&nbsp; will add&nbsp; 2 bytes 0x0D and 0x0A</td></tr></tbody>
+</table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">The commands Serial.print(217) or Serial.print("217") will both print the same thing: 00110010 00110001 00110111. This is because the print command first converts any number to a string representation and then uses the command Serial.write() to send each character as individual ASCII bits.</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">Serial.write()
+            和Serial.print()的主要差異<br>
+            <br>
+            例如：<br>
+            Serial.print(65); // 輸出’6’和’5′&nbsp;&nbsp;&nbsp;&nbsp; 0x36,0x35<br>
+            <br>Serial.write(65); <br>
+            // Serial monitor 解釋為 ’A’&nbsp; ,<br>
+            //若傳給另一Arduino 就是 0x41 &nbsp;&nbsp; 0100 0001<br>
+  <br>
+Serial.print()與Serial.println() 有多種format 可用，適合顯示(與人溝通)<br>
+Serial.wrte()則無，適於晶片與晶片間通訊<br>
+  <br>
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">Serial.write("123"); 相當於<br>
+Serial.print("123") ;<br>
+Serial.print(123) ;<br>
+相當於<br>
+Serial.write(0x31);<br>
+Serial.write(0x32);<br>
+Serial.write(0x33);</td></tr></tbody>
+  </table>
+  <br>
+  <br>
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">Serial.println("123") ;<br>
+相當於:<br>
+Serial.write(0x31);<br>
+Serial.write(0x32);<br>
+Serial.write(0x33);<br>
+Serial.write(0x0d);<br>
+Serial.write(0x0a);</td></tr></tbody>
+  </table>
+</td>        </tr>
+      </tbody>
+    
+</table>
+<p></p>
+<p><br></p>
+<hr>
+<hr>
+<p><br></p><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue36C">人&lt;-----&gt;晶片<br>Serial Monitor 與 Arduino 通訊</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">Serial monitor 以ASCII code傳送資料<br><br>使用<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/read/" target="_blank">Serial.read()</a>；讀取序列埠視窗傳來的數字時<br>1.會回傳ASC II碼<br>2.將一個數字一個數字讀取，必須使用字串的方式存取傳來的數字<br>3.翻譯ASC II碼，C語言內有幾個重要的函式可以負責。<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24C">先將傳來的數字儲存成字串，再將字串轉換為數字，可透過下表來轉換字串為數字<br>
+  <br>
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>轉換字串函數</td>
+<td>轉換數字</td>
+<td>註解</td></tr>
+<tr>
+<td>atoi(字串,字數);</td>
+<td>-32768 ~ 32767</td>
+<td>字串轉整數</td></tr>
+<tr>
+<td>atol(字串,字數);</td>
+<td>-2,147,483,648 到 2,147,483,647</td>
+<td>字串轉長整數</td></tr>
+<tr>
+<td>atof(字串,字數);</td>
+<td>-3.4028235E+38 至 3.4028235E+38</td>
+<td>字串轉浮點數(小數)</td></tr></tbody>
+  </table>
+  <br>
+</td></tr></tbody></table>
+<br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">//攝氏轉華氏<br>
+byte cmd[9] ;<br>
+void setup(){<br>
+Serial.begin(9600);<br>
+Serial.setTimeout(10); // 設定為每10毫秒結束一次讀取(數字愈小愈快)<br>
+}<br>
+  <br>
+void loop(){<br>
+if(Serial.available()){<br>
+&nbsp;Serial.readBytes(cmd,9);<br>
+&nbsp;Serial.println(<span style="color: #990000;">atof</span>(cmd)*0.6+32);<br>
+}<br>
+}<br>
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">cmd 有9個 byte<br>
+若於serial monitor 輸入25再傳送<br>
+傳了兩個byte 後每隔10ms沒資料進來，就timeout 一次<br>
+直到9次 完成讀取動作</td></tr></tbody>
+  </table>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue36C">第二種方法</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">void setup(){<br>Serial.begin(115200);<br>Serial.setTimeout(10); // 設定為每10毫秒結束一次讀取(數字愈小愈快)<br>}<br><br>void loop(){<br>if(Serial.available()){<br>&nbsp;int x = Serial.parseInt();<br>&nbsp;Serial.println(x);<br><br>}<br>}<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>輸入12&nbsp; 23&nbsp; 50</td></tr></tbody></table><br><img src="images/serial_010.png" alt=""><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>發現每個輸入的數字下方都會有個0，作為輸入結束的代碼</td></tr></tbody></table><br><br>int x,y;<br>void setup(){<br>Serial.begin(9600);<br>Serial.setTimeout(10); // 設定為每10毫秒結束一次讀取(數字愈小愈快)<br>}<br><br>void loop(){<br>while(Serial.available()){<br>&nbsp; x = Serial.parseInt();<br>&nbsp; y = Serial.parseInt();<br>&nbsp;Serial.print(x);&nbsp; // 這邊的x就是我們輸入的值<br>
+&nbsp;Serial.print(" , ");<br>
+&nbsp;Serial.println(y); //這邊的y就是回傳的中止碼0<br>}<br>}<br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>攝氏轉華氏</td></tr></tbody></table><br>float x;<br>int y;<br>void setup(){<br>Serial.begin(115200);<br>Serial.setTimeout(10); // 設定為每10毫秒結束一次讀取(數字愈小愈快)<br>}<br><br>void loop(){<br>while(Serial.available()){<br>&nbsp; x = Serial.parseFloat();<br>&nbsp; y = Serial.parseInt();<br>&nbsp; Serial.println(x*0.6+32);&nbsp; // 這邊的x就是我們輸入的值<br>}<br>}<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>由serial monitor 控制 Servo Motor</td></tr></tbody></table>void setup(){<br>Serial.begin(115200);<br>Serial.setTimeout(10); // 設定為每10毫秒結束一次讀取(數字愈小愈快)<br>servo.attach(9);<br>}<br><br>void loop(){<br>while(Serial.available()){<br>&nbsp; x = Serial.parseInt();<br>&nbsp; y = Serial.parseInt();<br>&nbsp; Serial.print(x);<br>&nbsp;Serial.print(" , ");<br>&nbsp;Serial.println(y);<br>&nbsp;servo.write(x);<br>&nbsp;delay(100);<br>}<br><br>&nbsp;<br>}</td></tr></tbody></table>
+<p><br></p><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">Serial.<span style="color: #990000;">setTimeout()</span> (<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/settimeout/" target="_blank">Arduino.ref</a>)<br>sets the maximum milliseconds to wait for serial data. <br>It <span style="color: #990000;">defaults</span> to <span style="color: #990000;">1000 milliseconds</span>.<br><br>Serial functions that use the timeout value set via Serial.setTimeout():<br><br>Serial.find()<br>Serial.findUntil()<br>Serial.parseInt()<br>Serial.parseFloat()<br><a href="https://www.arduino.cc/en/Serial.ReadBytes" target="_blank">Serial.readBytes()</a><br>Serial.readBytesUntil()<br>Serial.readString()<br>Serial.readStringUntil()</td></tr></tbody></table>
+<br><p><br></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">byte
+            byte_2[]={0x31,0x41};<br>
+            void setup() {<br>
+            &nbsp;Serial.begin(9600);<br>&nbsp;&nbsp;
+           Serial.write(byte_2,sizeof(byte_2));<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;<br>
+            <br>
+            }<br>
+            //Serial monitor 一律轉為ASCII Code 顯示</td>
+        </tr>
+      </tbody>
+    
+</table>
+<p></p>
+<p><br></p><br>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">Serial.read()<br>
+            return : <br>
+            the first byte of incoming serial data available (or -1 if no data            is available) - int</td>
+        </tr>
+      </tbody>
+    
+</table>
+<p></p><br>
+<p><br></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C">晶片&lt;-----&gt;晶片<br>2 個 Arduino<br>使用Serial.write() 與Serial.read()傳送2 Byte data</td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C"><br>
+            <table style="width: 100%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36C">傳送端</td>
+                </tr>
+              </tbody>
+            </table>
+            <br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24"><span style="color: #330099;">union uData<br>{<br>byte b[2];<br>int value;<br>};</span><br><br>union uData data;<br>void setup() {<br>Serial.begin(9600);<br>delay(1000);<br>}<br><br>void loop() {<br>data.value=0x3456;<br><span style="color: #990000;">Serial.write</span>(0x21);//起始 字元<br><span style="color: #990000;">Serial.write</span>(data.b[0]);<br><span style="color: #990000;">Serial.write</span>(data.b[1]);<br>delay(1000);<br>}</td></tr></tbody></table>或<br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">union uData<br>{<br>byte b[2];<br>int value;<br>};<br><br>union uData data;<br>void setup() {<br>Serial.begin(9600);<br>delay(1000);<br>}<br><br>void loop() {<br>data.value=0x3456;<br>Serial.write(0x21);//起始 字元<br>Serial.write(<span style="color: #990000;">data.b,2</span>);<br>delay(1000);<br>}</td></tr></tbody></table><br><br><br>
+            <table style="width: 100%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36C">接收端<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">#define Led&nbsp; 12<br>union uData<br>{<br>byte b[2];<br>int value;<br>};<br><br>union uData data;<br>&nbsp; <br>void setup() {<br>&nbsp;Serial.begin(9600);<br>pinMode(Led,OUTPUT);<br>digitalWrite(Led,1);<br>}<br><br>void loop() {<br>&nbsp; if(Serial.available()&gt;0)<br>{ <br>&nbsp; if(<span style="color: #990000;">Serial.read()</span>==0x21) //判斷是否為起始字元<br>&nbsp; {<br>&nbsp;&nbsp; //delay(10);//若資料傳遞不正確 可再加長<br>&nbsp;&nbsp; // Wait until data is received&nbsp; (不用delay)<br>&nbsp;&nbsp; while ( !(UCSR0A &amp; (1 &lt;&lt; RXC0)) )&nbsp; ;<br>&nbsp;&nbsp; <span style="color: #6600cc;">data.b[0]</span>=<span style="color: #990000;">Serial.read()</span>;<br>&nbsp;&nbsp; <br>//delay(10);//若資料傳遞不正確 可再加長<br>&nbsp; // Wait until data is received&nbsp; (不 用delay)&nbsp; <br>&nbsp;&nbsp; while ( !(UCSR0A &amp; (1 &lt;&lt; RXC0)) )&nbsp; ;<br>&nbsp;&nbsp; <span style="color: #6600cc;">data.b[1]</span>=<span style="color: #990000;">Serial.read()</span>;<br>&nbsp;&nbsp; if(<span style="color: #6600cc;">data.value</span>==0x3456)<br>&nbsp;&nbsp;&nbsp; { //Toggle D12<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(Led,1-digitalRead(Led));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //asm("SBI 0x03,4"); <br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; }<br>&nbsp;<br>&nbsp; }<br>&nbsp;}</td></tr></tbody></table><br>
+或<br>
+<br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">#define Led&nbsp; 12<br>
+union uData<br>
+{<br>
+byte b[2];<br>
+int value;<br>
+};<br>
+  <br>
+union uData data;<br>
+&nbsp;<br>
+void setup() {<br>
+&nbsp;Serial.begin(9600);<br>
+pinMode(Led,OUTPUT);<br>
+digitalWrite(Led,1);<br>
+}<br>
+  <br>
+void loop() {<br>
+&nbsp; if(Serial.available()&gt;0)<br>
+{<br>
+&nbsp; if(Serial.read()==0x21) //判斷是否為起始字元<br>
+&nbsp; {<br>
+&nbsp;// delay(10);//若資料傳遞不正確 可再加長<br>
+&nbsp; Serial.<span style="color: #990000;">readBytes</span>(<span style="color: #990000;">data.b</span>,2);<br>
+&nbsp;&nbsp; if(data.value==0x3456)<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp; //Toggle D12<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(Led,1-digitalRead(Led));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //asm("SBI 0x03,4"); <br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp; }<br>
+&nbsp;<br>
+&nbsp; }<br>
+&nbsp;}</td></tr></tbody>
+</table>
+或 使用interrupt<br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">#define Led&nbsp; 12<br>union uData<br>{<br>byte b[2];<br>int value;<br>};<br><br>union uData data;<br><br>void <span style="color: #cc0000;">serialEvent()</span> {<br>&nbsp;&nbsp; if(Serial.available()&gt;0)<br>{<br>&nbsp; if(Serial.read()==0x21) //判斷是否為起始字元<br>&nbsp; {<br>&nbsp;&nbsp; Serial.readBytes(data.b,2);<br>&nbsp;&nbsp; if(data.value==0x3456)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp; //Toggle D12<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(Led,1-digitalRead(Led));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //asm("SBI 0x03,4");<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; }<br>&nbsp;<br>&nbsp; }<br>}<br>&nbsp;<br>void setup() {<br>&nbsp;Serial.begin(9600);<br>pinMode(Led,OUTPUT);<br>digitalWrite(Led,1);<br>}<br><br>void loop() {<br>&nbsp; <br>&nbsp;}</td></tr></tbody></table><br>或<br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">#define Led&nbsp; 12<br><span style="color: #990000;">volatile</span> int flag=0;<br>union uData<br>{<br>byte b[2];<br>int value;<br>};<br><br>union uData data;<br><br>void <span style="color: #990000;">serialEvent()</span> {<br>&nbsp;&nbsp; if(Serial.available()&gt;0)<br>{<br>&nbsp; if(Serial.read()==0x21) //判斷是否為起始字元<br>&nbsp; {<br>&nbsp;<br>&nbsp; Serial.readBytes(data.b,2);<br>&nbsp;&nbsp; if(data.value==0x3456)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flag=1-flag;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; }<br>&nbsp;<br>&nbsp; }<br>}<br>&nbsp;<br>void setup() {<br>&nbsp;Serial.begin(9600);<br>pinMode(Led,OUTPUT);<br>digitalWrite(Led,1);<br>}<br><br>void loop() {<br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(Led,flag);<br>&nbsp;&nbsp; }</td></tr></tbody></table><br>            </td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br>
+  </p><p><br></p>
+</body></html>

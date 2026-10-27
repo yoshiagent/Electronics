@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <title>ASCII</title>
+    <style type="text/css">
+
+	@media all and (max-width: 576px) {
+		.calc { width:100%; }
+	}
+	@media all and (min-width: 577px) {
+		.dtable { width:360px; }
+		.calc { width:360px; }
+		tr:hover { background:#ffffe0; }
+	}
+	.calc { padding:10px; }
+	.calc td { padding:0 !important }
+	.calc table { margin:0 !important }
+	.calc input { font-size:x-large; text-align:center; padding:5px 0px; }
+	.calc button { margin-top:5px; }
+	#char { width:50px; margin-right:30px; }
+	#dec  { width:65px; }
+	#hex  { width:55px; }
+	#bin  { width:150px; }
+	#html { width:115px; }
+	#escape { width:75px; }
+	
+	.dtable tr td:first-child { text-align:right }
+	.dtable tr td:nth-child(2) { text-align:center }
+	.dtable tr td:nth-child(4) { text-align:center }
+	.dtable thead {
+	
+	}
+</style> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+    <script>
+		$(document).ready(function() {
+			$('#char').keydown(function() {
+				$('#char').val('');
+			});
+			$('#char').keyup(function() {
+				ConvertChar();
+			});
+			$('#dec').keyup(function() {
+				ConvertDec();
+			});
+			//$('#hex').change(function() {
+			//$('#hex')[0].oninput = function() {
+			$('#hex').keyup(function() {
+				ConvertHex();
+			//};
+			});
+			//$('#bin').change(function() {
+			//$('#bin')[0].oninput = function() {
+			$('#bin').keyup(function() {
+				ConvertBin();
+			//};
+			});
+
+			$(".dtable tr").click(function() {
+				var i=$(this).index();
+				//if( i==0 ) return;
+				var id=$(this).parent().parent().prop("id");
+				if( id=="calc" ) return;
+				var dec = $(this).children("td:nth-child(1)").text();
+				var hex = $(this).children("td:nth-child(2)").text();
+				var bin = $(this).children("td:nth-child(3)").text();
+				var chr = $(this).children("td:nth-child(4)").text();
+				var desc = $(this).children("td:nth-child(5)").html();
+				
+			    $("#dialog").dialog({
+			      modal: true,
+			      title: "ASCII char "+chr,
+			      buttons: [{
+			      	icons: { primary: "ui-icon-close" },
+			      	text: "Close",
+			        click: function() {
+			          $( this ).dialog( "close" );
+			        }
+			      }]
+			    });
+			    $("#dialog p:first-child").html(chr);
+			    $("#dialog p:nth-child(3)").html(dec);
+			    $("#dialog p:nth-child(5)").html(hex);
+			    $("#dialog p:nth-child(7)").html(bin);
+			    if(desc=="&nbsp;") {
+			    	$("#dialog p:nth-child(8)").hide();
+			    	$("#dialog p:nth-child(9)").hide();
+			    }
+			    else {
+			    	$("#dialog p:nth-child(9)").html(desc);
+			    	$("#dialog p:nth-child(8)").show();
+			    	$("#dialog p:nth-child(9)").show();
+			    }
+			});
+	        $("tr a").click(function(e){
+	            e.stopPropagation(); 
+	        });
+		});
+		
+		function GetEscape(d,h)
+		{
+			code = '\\x'+h;
+			if( d==0 ) code='\\0';
+			if( d==7 ) code='\\a';
+			if( d==8 ) code='\\b';
+			if( d==9 ) code='\\t';
+			if( d==10 ) code='\\n';
+			if( d==11 ) code='\\v';
+			if( d==12 ) code='\\f';
+			if( d==13 ) code='\\r';
+			if( d==34 ) code='\\\"';
+			if( d==39 ) code='\\\'';
+			if( d==63 ) code='\\\?';
+			if( d==92 ) code='\\\\';
+			return code;
+		}
+		function ConvertChar()
+		{
+			var c = $('#char').val();
+			if(c=='')return;
+			var d = c.charCodeAt(0);
+			$('#dec').val(d);
+			var h=d.toString(16).toUpperCase();
+			var b=d.toString(2);
+			while( b.length<8 ) b = "0"+b;
+			$('#hex').val(h);
+			$('#bin').val(b);
+			$('#html').val('&#'+d+';');
+			$('#escape').val(GetEscape(d,h));
+		}
+		function ConvertDec()
+		{
+			var d = $('#dec').val();
+			if(d=='') return;
+			d = parseInt(d);
+			if(d>255 || d<0) return;
+			var c = String.fromCharCode(d);
+			$('#char').val(c);
+			var h=d.toString(16).toUpperCase();
+			while( h.length<2 ) h = "0"+h;
+			var b=d.toString(2);
+			while( b.length<8 ) b = "0"+b;
+			$('#hex').val(h);
+			$('#bin').val(b);
+			$('#html').val('&#'+d+';');
+			$('#escape').val(GetEscape(d,h));
+		}
+		function ConvertHex()
+		{
+			var h = $('#hex').val();
+			while( h.length<2 ) h = "0"+h;
+			if(h.length!=2) return;
+			var d = parseInt(h,16);
+			if(d>255 || d<0) return;
+			var c = String.fromCharCode(d);
+			$('#char').val(c);
+			h=d.toString(16).toUpperCase();
+			while( h.length<2 ) h = "0"+h;
+			var b=d.toString(2);
+			while( b.length<8 ) b = "0"+b;
+			$('#dec').val(d);
+			//$('#hex').val(h);
+			$('#bin').val(b);
+			$('#html').val('&#'+d+';');
+			$('#escape').val(GetEscape(d,h));
+		}
+		function ConvertBin()
+		{
+			var b = $('#bin').val();
+			if(b.length>8) return;
+			if(b.length==0) return;
+			d = parseInt(b,2);
+			if(d>255 || d<0) return;
+			c = String.fromCharCode(d);
+			$('#char').val(c);
+			var h=d.toString(16).toUpperCase();
+			while( h.length<2 ) h = "0"+h;
+			b=d.toString(2);
+			while( b.length<8 ) b = "0"+b;
+			$('#dec').val(d);
+			$('#hex').val(h);
+			//$('#bin').val(b);
+			$('#html').val('&#'+d+';');
+			$('#escape').val(GetEscape(d,h));
+		}
+	</script>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body><br>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td>
+            <h2 class="red36">ASCII Quick Lookup</h2>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="blue24">Enter Character / Decimal code / Hex code / Binary
+            code to get other values:</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <form class="blue36">
+      <table style="width: 695px; height: 250px;" class="calc" id="calc">
+        <tbody>
+          <tr>
+            <td>
+              <table style="width: 632px; height: 80px;">
+                <tbody>
+                  <tr class="blue24">
+                    <td style="width: 145.167px;">Char:</td>
+                    <td style="width: 213.783px;">HTML Code:</td>
+                    <td style="height: 32px;">Escape Code:</td>
+                  </tr>
+                  <tr>
+                    <td><input class="blue36" id="char" autofocus="" type="text"></td>
+                    <td><input id="html" class="outtext" readonly="readonly" type="text"></td>
+                    <td><input id="escape" class="outtext" readonly="readonly" type="text"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table style="width: 660px; height: 80px;">
+                <tbody>
+                  <tr class="blue24">
+                    <td>Decimal:</td>
+                    <td>Hex:</td>
+                    <td>Binary:</td>
+                  </tr>
+                  <tr>
+                    <td><input id="dec" type="text"></td>
+                    <td><input id="hex" type="text"></td>
+                    <td><input id="bin" type="text"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td><button type="reset" title="Reset" class="btn" tabindex="3">
+                Reset</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+    <p><br>
+    </p>
+    <h3 class="blue324"><a href="ASCIIctr.html">ASCII control characters</a></h3>
+    <h3><a href="ASCIIprintable.html">ASCII printable characters</a></h3>
+    <h3><a href="ASCIIext.html">Extended ASCII characters</a></h3>
+<p>從鍵盤進入數位世界</p>
+<p>鍵盤 keycode(<a href="https://dotblogs.com.tw/corner/2009/07/19/9583" target="_blank">web</a>)</p>
+<p>keycode info(<a href="https://keycode.info/" target="_blank">web</a>)</p>
+<p><br></p>
+    <p><br>
+    </p>
+  
+
+</body></html>

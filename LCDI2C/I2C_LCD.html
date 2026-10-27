@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+
+
+    
+    <title>IIC LCD</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  <link type="text/css" rel="stylesheet" href="kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+  <body class="f24 w3-container">
+    <p><br>
+    </p>
+    <table style="width: 223px; height: 51px;" border="0">
+      <tbody>
+        <tr>
+          <td class="blue36C">LCD (I2C)</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24">Library: &nbsp;&nbsp; <a href="files/LiquidCrystal_I2C.zip">LiquidCrystal_I2C.zip</a><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24">I2C :Inter Integrated Circuit<br>
+            LCD: Liquid Crystal Display<br><br>HD44780U.pdf(<a href="docs/HD44780U.pdf" target="_blank">pdf</a>)<br>Character Codes A00(<a href="docs/A00.pdf" target="_blank">pdf</a>)<br>Character Codes A02(<a href="docs/A02.pdf" target="_blank">pdf</a>)</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <table border="1" width="200">
+      <tbody>
+        <tr>
+          <td width="47%">
+            <p><img src="images/I2CLCD_003.jpg" height="168" width="300"><img src="images/I2CLCD_002.jpg" height="225" width="225"></p>
+            <p><img src="images/two-wire-i2c-arduino-lcd-display-4.jpeg" height="313" width="540"></p>
+            <p class="blue24">short : L</p>
+            <p class="blue24">open: H</p>
+            <p class="blue24">default address:0x27</p>
+            <p class="blue24">(不同公司產品Address可能不同)</p>
+            <table style="width: 100%" border="1">
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>A2</td>
+                  <td>A1</td>
+                  <td>A0</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <br>
+            <table style="width: 100%" border="1">
+              <tbody>
+                <tr>
+                  <td>0 </td>
+                  <td>0 </td>
+                  <td>1 </td>
+                  <td>1 </td>
+                  <td>1 </td>
+                  <td>A2</td>
+                  <td>A1</td>
+                  <td>A0</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="blue24"></p>
+            <p class="blue24"><br>
+            </p>
+          </td>
+          <td width="53%">
+            <p>&nbsp;</p>
+            <p class="blue36">SDA--&gt;A4</p>
+            <p class="blue36">SCL--&gt;A5</p>
+            <p><img src="images/I2CWire.png" height="287" width="464"></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <table style="width: 1076px; height: 809px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/I2CWiring.png"><br>
+            <a href="svg/LCDI2C.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 1127px; height: 1544px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">
+            <p class="blue24">//1.</p>
+            <p class="blue24">//先以此程式確定 Address</p>
+            <p class="blue24">//<span class="red24">Address Scanner</span></p>
+            <p class="blue24">#include &lt;Wire.h&gt;</p>
+            <p class="blue24">void setup()<br>
+              {<br>
+              Wire.begin();</p>
+            <p class="blue24"> Serial.begin(9600);<br>
+              while (!Serial); // Leonardo: wait for serial monitor<br>
+              Serial.println("\nI2C Scanner");<br>
+              }<br>
+            </p>
+            <p class="blue24">void loop()<br>
+              {<br>
+              byte error, address;<br>
+              int nDevices;</p>
+            <p class="blue24"> Serial.println("Scanning...");</p>
+            <p class="blue24"> nDevices = 0;<br>
+              for(address = 1; address &lt; 127; address++ ) <br>
+              {<br>
+              // The i2c_scanner uses the return value of<br>
+              // the Write.endTransmisstion to see if<br>
+              // a device did acknowledge to the address.<br>
+              Wire.beginTransmission(address);<br>
+              error = Wire.endTransmission();</p>
+            <p class="blue24"> if (error == 0)<br>
+              {<br>
+              Serial.print("I2C device found at address 0x");<br>
+              if (address&lt;16) <br>
+              Serial.print("0");<br>
+              Serial.print(address,HEX);<br>
+              Serial.println(" !");</p>
+            <p class="blue24"> nDevices++;<br>
+              }<br>
+              else if (error==4) <br>
+              {<br>
+              Serial.print("Unknow error at address 0x");<br>
+              if (address&lt;16) <br>
+              Serial.print("0");<br>
+              Serial.println(address,HEX);<br>
+              } <br>
+              }<br>
+              if (nDevices == 0)<br>
+              Serial.println("No I2C devices found\n");<br>
+              else<br>
+              Serial.println("done\n");</p>
+            <p class="blue24"> delay(5000); // wait 5 seconds for next scan<br>
+              }</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <table style="width: 1069px; height: 396px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">
+            <p>//2.a</p>
+            <p>//0x3F</p>
+            <p>#include &lt;<span class="red24">LiquidCrystal_I2C.h</span>&gt;<br>
+              LiquidCrystal_I2C lcd(<span class="red24">0x3F</span>,16,2); <br>
+              void setup()<br>
+              {<br>
+              &nbsp;&nbsp; lcd.init(); <br>
+              &nbsp;&nbsp; lcd.<span class="red24">backlight</span>();<br>
+              &nbsp;}<br>
+              <br>
+              void loop()<br>
+              {<br>
+              }</p>
+          </td>
+          <td class="blue24" style="text-align: left; background-color: white;">//2.b<br>
+            //0x3F <br>
+            <br>
+            #include &lt;<span class="red24">LiquidCrystal_I2C.h</span>&gt;<br>
+            LiquidCrystal_I2C lcd(<span class="red24">0x3F</span>,16,2); <br>
+            void setup()<br>
+            {<br>
+            &nbsp;&nbsp; lcd.init(); <br>
+            &nbsp;&nbsp; lcd.<span class="red24">noBacklight</span>();//(預設)<br>
+            &nbsp;}<br>
+            <br>
+            void loop()<br>
+            {<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 1120px; height: 458px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//3.a<br>#include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; <span class="red24">lcd.cursor();</span><br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; lcd.print("0123456789");<br>
+            &nbsp; }<br>
+            void loop()<br>
+            {<br>
+            &nbsp; }</td>
+          <td style="text-align: left; background-color: white;" class="blue24">//3.b<br>#include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; <span class="red24">lcd.noCursor();//預設</span><br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; lcd.print("0123456789");<br>
+            &nbsp; }<br>
+            void loop()<br>
+            {<br>
+            &nbsp; }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1069px; height: 653px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">
+            <p>//4.a</p>
+            <p>//0x3F</p>
+            <p>#include &lt;<span class="red24">LiquidCrystal_I2C.h</span>&gt;<br>
+              LiquidCrystal_I2C lcd(<span class="red24">0x3F</span>,16,2); <br>
+              void setup()<br>
+              {<br>
+              &nbsp;&nbsp; lcd.init(); <br>
+              &nbsp;&nbsp; lcd.backlight();<br>
+              &nbsp;&nbsp; lcd.setCursor(0,0);<br>
+              &nbsp;&nbsp; lcd.print("Hello, world!");<br>
+              &nbsp;&nbsp; lcd.setCursor(0,1);<br>
+              &nbsp;&nbsp; lcd.print("JAMES");<br>
+              &nbsp;&nbsp; <span class="red24">lcd.noBlink();//游標位置不閃爍 (預設)</span> </p>
+            <p>}<br>
+              <br>
+              void loop()<br>
+              {<br>
+              }</p>
+          </td>
+          <td class="blue24" style="text-align: left; background-color: white;">//4.b<br>
+            //0x3F
+            
+
+
+
+
+<p><br>
+              #include &lt;<span class="red24">LiquidCrystal_I2C.h</span>&gt;<br>
+              LiquidCrystal_I2C lcd(<span class="red24">0x3F</span>,16,2); <br>
+              void setup()<br>
+              {<br>
+              &nbsp;&nbsp; lcd.init(); <br>
+              &nbsp;&nbsp; lcd.backlight();<br>
+              &nbsp;&nbsp; lcd.setCursor(0,0);<br>
+              &nbsp;&nbsp; lcd.print("Hello, world!");<br>
+              &nbsp;&nbsp; lcd.setCursor(0,1);<br>
+              &nbsp;&nbsp; lcd.print("JAMES");<br>
+              &nbsp;&nbsp; <span class="red24">lcd.blink();//游標位置閃爍</span> </p>
+            <p>}<br>
+              <br>
+              void loop()<br>
+              {<br>
+              }</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <table style="width: 1089px; height: 554px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//5.a<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; lcd.print("0123");<br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; lcd.print("AB");<br>
+            &nbsp; <br>
+            &nbsp;}<br>
+            void loop()<br>
+            {<br>
+            &nbsp; }</td>
+          <td class="blue24" style="text-align: left; background-color: white;">//5.b<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; lcd.print("0123");<br>
+            &nbsp; <span class="red24">lcd.clear();</span><br>
+            &nbsp; <span>lcd.setCursor(0,0);</span><br>
+            &nbsp; lcd.print("AB");<br>
+            &nbsp; <br>
+            &nbsp;}<br>
+            void loop()<br>
+            {<br>
+            &nbsp; }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 1083px; height: 681px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//6<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp;&nbsp; lcd.init();<br>
+            &nbsp;&nbsp; lcd.backlight();<br>
+            &nbsp;&nbsp; lcd.setCursor(0,0);<br>
+            &nbsp;&nbsp; lcd.print("Hello, world!");<br>
+            &nbsp;&nbsp; lcd.setCursor(0,1);<br>
+            &nbsp;&nbsp; lcd.print("JAMES");<br>
+            &nbsp;&nbsp; lcd.blink();<br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp;&nbsp; <span class="red24">lcd.display();//顯示</span><br>
+            &nbsp;&nbsp; delay(1000);<br>
+            &nbsp;&nbsp; <span class="red24">lcd.noDisplay();//不顯示</span><br>
+            &nbsp;&nbsp; delay(1000);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 963px; height: 522px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">//7<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp;<span class="red24"> //lcd.leftToRight();&nbsp;&nbsp; //預設</span><br>
+            &nbsp; lcd.print("0123456789");<br>
+            &nbsp; lcd.setCursor(15,1);<br>
+            &nbsp; <span class="red24">lcd.rightToLeft();</span><br>
+            &nbsp; lcd.print("0123456789");<br>
+            &nbsp; }<br>
+            void loop()<br>
+            {<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <hr>
+    <p><br>
+    </p>
+    <table style="width: 838px; height: 952px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/Ram_000.png"><br>
+            <br>
+            <br>
+            <img alt="" src="images/Ram_001.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 998px; height: 458px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//8<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; lcd.blink();<br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; lcd.print("0123456789ABCDEF01");<br>
+            &nbsp; lcd.setCursor(0,1);<br>
+            &nbsp; lcd.print("0123456789ABCDEF01");<br>
+            &nbsp;}<br>
+            void loop()<br>
+            {}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <table style="width: 998px; height: 458px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//9<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; lcd.blink();<br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; lcd.print("0123456789ABCDEF01");<br>
+            &nbsp; lcd.setCursor(0,1);<br>
+            &nbsp; lcd.print("0123456789ABCDEF01");<br>
+            &nbsp; <span class="red24">lcd.scrollDisplayLeft();//記憶體往左移1位</span><br>
+            &nbsp;}<br>
+            void loop()<br>
+            {}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 998px; height: 458px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//10<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; lcd.blink();<br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; lcd.print("0123456789ABCDEF01");<br>
+            &nbsp; lcd.setCursor(0,1);<br>
+            &nbsp; lcd.print("0123456789ABCDEF01");<br>
+            &nbsp; <span class="red24"></span><br>
+            &nbsp;}<br>
+            void loop()<br>
+            {<br>
+            <span class="red24">lcd.scrollDisplayLeft();//記憶體往左移1位</span><br>
+            delay(1000);<br>
+            <span class="red24">lcd.scrollDisplayRight();//記憶體往右移1位</span><br>
+            delay(1000);<br>
+            <br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 881px; height: 586px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//11<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; lcd.print("0123456789");<br>
+            &nbsp; lcd.setCursor(39,0);<br>
+            &nbsp; lcd.print("A");<br>
+            &nbsp; delay(1000);<br>
+            &nbsp; lcd.scrollDisplayRight();//記憶體往右移1位<br>
+            &nbsp; delay(1000);<br>
+            }<br>
+            void loop()<br>
+            {<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <table style="width: 929px; height: 586px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">//12<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; lcd.print("0123456789");<br>
+            &nbsp; lcd.scrollDisplayRight();<br>
+            &nbsp; lcd.scrollDisplayRight();<br>
+            &nbsp; delay(3000);<br>
+            &nbsp; lcd.blink();<br>
+            &nbsp; <span class="red24">lcd.home();</span><span class="red24"></span><br>
+            }<br>
+            void loop()<br>
+            {<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 998px; height: 458px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//13<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; lcd.blink();<br>
+            &nbsp; lcd.setCursor(15,0);<br>
+            &nbsp; <span class="red24">lcd.autoscroll(); //記憶體自動左捲</span><br>
+            &nbsp; lcd.print("0");<br>
+            &nbsp;}<br>
+            void loop()<br>
+            {</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 977px; height: 618px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//14<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; lcd.blink();<br>
+            &nbsp; <span class="red24">lcd.noAutoscroll();//記憶體不自動左捲(預設)</span><br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; lcd.print("0123456789");<br>
+            &nbsp; delay(3000);<br>
+            &nbsp; lcd.setCursor(15,1);<br>
+            &nbsp; <span class="red24">lcd.autoscroll(); //記憶體自動左捲</span><br>
+            &nbsp; lcd.print("0");<br>
+            &nbsp;}<br>
+            void loop()<br>
+            {<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 955px; height: 618px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//15<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; lcd.print("0123456789");<br>
+            &nbsp; delay(3000);<br>
+            &nbsp; lcd.setCursor(16,1);<br>
+            &nbsp; <span class="red24">lcd.autoscroll();</span><br>
+            &nbsp; lcd.print("0");<br>
+            &nbsp; delay(1000);<br>
+            &nbsp; lcd.print("1");<br>
+            &nbsp; delay(3000);<br>
+            <span class="red24">&nbsp; lcd.noAutoscroll();</span><br>
+            &nbsp; lcd.setCursor(<span class="pur24">2</span>,1);<br>
+            &nbsp; lcd.print("2");<br>
+            &nbsp; delay(1000);<br>
+            &nbsp; lcd.print("3");<br>
+            }<br>
+            void loop()<br>
+            {<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 916px; height: 416px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">//16<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; <span class="red24">lcd.setCursor(40,0);//等於(0,1)</span><br>
+            &nbsp; lcd.print("AB");<br>
+            &nbsp; }<br>
+            void loop()<br>
+            {<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <table style="width: 916px; height: 416px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">//17<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; <span class="red24">lcd.setCursor(80,0);//並不等於(0,0)</span><br>
+            &nbsp; lcd.print("AB");<br>
+            &nbsp; }<br>
+            void loop()<br>
+            {<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <table style="width: 869px; height: 476px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">// 陣列<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            char* myNotes[&nbsp; ]={"Do ", "Re ", "Mi ","Fa ", "So "};<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; for(int i=0;i&lt;5;i++){<br>
+            &nbsp; lcd.print(myNotes[i]);<br>
+            &nbsp; delay(1000);<br>
+            &nbsp; }<br>
+            &nbsp; }<br>
+            void loop()<br>
+            {<br>
+            &nbsp; }</td>
+        </tr>
+      </tbody>
+    </table>
+    <br><p><br>
+    </p><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//Serial Monitor --&gt;LCD<br>#include &lt;LiquidCrystal_I2C.h&gt;<br>LiquidCrystal_I2C lcd(0x3F,16,2);<br>void setup()<br>{<br>&nbsp; Serial.begin(9600);<br>&nbsp; lcd.init();<br>&nbsp; lcd.backlight();<br>&nbsp; lcd.cursor();<br>&nbsp; lcd.setCursor(0,0);<br>&nbsp; <br>&nbsp; }<br>void loop()<br>{<br>if (Serial.available()) {<br>&nbsp;&nbsp;&nbsp; // 等待一小段時間，確認資料都接收下來了<br>&nbsp;&nbsp;&nbsp; delay(100);<br>&nbsp;&nbsp;&nbsp; // 清除舊訊息<br>&nbsp;&nbsp;&nbsp; lcd.clear();<br>&nbsp;&nbsp;&nbsp; // 讀取新訊息<br>&nbsp;&nbsp;&nbsp; while (Serial.available() &gt; 0) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 將訊息顯示在 LCD 上<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.<span style="color: red;">write</span>(Serial.read());<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp; }<br>}</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//AnalogRead --&gt;LCD<br>#include &lt;LiquidCrystal_I2C.h&gt;<br>LiquidCrystal_I2C lcd(0x3F,16,2);<br>int val;<br>void setup()<br>{<br>&nbsp; <br>&nbsp; Serial.begin(9600);<br>&nbsp; lcd.init();<br>&nbsp; lcd.backlight();<br>&nbsp; lcd.cursor();<br>&nbsp; lcd.setCursor(0,0);<br>&nbsp;<br>&nbsp; }<br>void loop()<br>{<br>val=analogRead(A1);<br>lcd.clear();<br>lcd.print(val);<br>delay(100);<br>}</td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<p><br></p><br><br>
+    <hr><br>
+    <hr> <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">自訂自型(只能訂8個)</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <table style="width: 1007px; height: 1457px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">
+            <p class="blue36">//18</p>
+            <p class="blue36">/*</p>
+            <h2 class="blue36">createChar()</h2>
+            <h4 class="blue36">Create a custom character (gylph) for use on the LCD. Up to eight characters of 5x8 pixels are supported (numbered 0 to 7). </h4>
+            <p class="blue36">*/</p>
+            <img src="images/LCD_001.png">
+            <p class="blue24"><br>
+              #include "LiquidCrystal_I2C.h"</p>
+            <p class="blue24">LiquidCrystal_I2C lcd(0x3F,16,2); <br>
+              byte charYear[8] = {<br>
+              0x10,<br>
+              0x1F,<br>
+              0x02,<br>
+              0x0F,<br>
+              0x0A,<br>
+              0x1F,<br>
+              0x02,<br>
+              0x00<br>
+              };</p>
+            <p class="blue24">void setup()<br>
+              {<br>
+              lcd.init(); // initialize the lcd <br>
+              lcd.backlight();<br>
+              lcd.createChar(0, charYear);<br>
+              lcd.<span class="red24">home()</span>;<br>
+              lcd.write(0);<br>
+            </p>
+            <p class="blue24">}</p>
+            <p><span class="blue24">void loop()<br>
+                {<br>
+                <br>
+                }</span><br>
+            </p>
+            <p>&nbsp;</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <table style="width: 931px; height: 941px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">
+            <p class="blue24">//19</p>
+            <p class="blue24"><br>
+              #include "LiquidCrystal_I2C.h"</p>
+            <p class="blue24">LiquidCrystal_I2C lcd(0x3F,16,2); <br>
+              byte charYear[8] = {<br>
+              0x10,<br>
+              0x1F,<br>
+              0x02,<br>
+              0x0F,<br>
+              0x0A,<br>
+              0x1F,<br>
+              0x02,<br>
+              0x00<br>
+              };</p>
+            <p class="blue24">byte heart[8] = {0x0,0xa,0x1f,0x1f,0xe,0x4,0x0,0x0};<br>
+              void setup()<br>
+              {<br>
+              lcd.init(); // initialize the lcd <br>
+              lcd.backlight();<br>
+              lcd.createChar(0, charYear);<br>
+              lcd.createChar(1, heart);<br>
+              <span class="red24">lcd.home();</span><br>
+              lcd.print("Hello world...");</p>
+            <p class="blue24"><br>
+              lcd.setCursor(0,1);//Change to 2nd row<br>
+              lcd.write(0);<br>
+              lcd.write(1);</p>
+            <p class="blue24">}</p>
+            <p><span class="blue24">void loop()<br>
+                {<br>
+                lcd.scrollDisplayRight();<br>
+                delay(500);<br>
+                lcd.scrollDisplayLeft();<br>
+                delay(500);<br>
+                }</span><br>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 928px; height: 970px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">
+            <p class="blue24">//20</p>
+            <p class="blue24"><br>
+              #include "LiquidCrystal_I2C.h"<br>
+            </p>
+            <p class="blue24">byte bell[8] = {0x4,0xe,0xe,0xe,0x1f,0x0,0x4};<br>
+              byte note[8] = {0x2,0x3,0x2,0xe,0x1e,0xc,0x0};<br>
+              byte clock1[8] = {0x0,0xe,0x15,0x17,0x11,0xe,0x0};<br>
+              byte heart[8] = {0x0,0xa,0x1f,0x1f,0xe,0x4,0x0};<br>
+              byte duck[8] = {0x0,0xc,0x1d,0xf,0xf,0x6,0x0};<br>
+              byte check[8] = {0x0,0x1,0x3,0x16,0x1c,0x8,0x0};<br>
+              byte cross[8] = {0x0,0x1b,0xe,0x4,0xe,0x1b,0x0};<br>
+              byte retarrow[8] = { 0x1,0x1,0x5,0x9,0x1f,0x8,0x4};</p>
+            <p class="blue24">LiquidCrystal_I2C lcd(0x3F,16,2); </p>
+            <p class="blue24">void setup()<br>
+              {<br>
+              lcd.init(); <br>
+              lcd.backlight();</p>
+            <p class="blue24">lcd.createChar(0, bell);<br>
+              lcd.createChar(1, note);<br>
+              lcd.createChar(2, clock1);<br>
+              lcd.createChar(3, heart);<br>
+              lcd.createChar(4, duck);<br>
+              lcd.createChar(5, check);<br>
+              lcd.createChar(6, cross);<br>
+              lcd.createChar(7, retarrow);<br>
+              lcd.home();<br>
+              for (int j=0; j&lt;8; j++) {<br>
+              &nbsp;&nbsp;&nbsp;lcd.write(j);<br>
+              }<br>
+              }<br>
+              void loop(){}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <hr>
+    <hr> <br>
+    <br>
+    <br>
+    <table style="width: 968px; height: 457px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">//21<br>
+            //&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp; 0x41&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 65<br>
+            <br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; <span class="red24">lcd.write</span>(65);<br>
+            &nbsp;//lcd.write(0x41);<br>
+            //lcd.print("A");<br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; <br>
+            &nbsp; }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 893px; height: 330px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//22<br>
+            // 打開Serial monitor&nbsp; 選擇沒有行結尾&nbsp;&nbsp;&nbsp; 傳送 A<br>
+            //&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp; 0x41&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 65<br><br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            void setup()<br>
+            {<br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; Serial.begin(9600);<br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; if (Serial.available()) {<br>
+            &nbsp;&nbsp;&nbsp; <span class="red24">lcd.write(Serial.read());&nbsp; //A<br>
+              &nbsp;&nbsp; // lcd.print(Serial.read());&nbsp;&nbsp;&nbsp; //65<br>
+              &nbsp; //lcd.print(Serial.read(),HEX);&nbsp; //41<br>
+            </span> &nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 533px; height: 180px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36">
+            <p><a href="https://www.arduino.cc/en/Reference/LiquidCrystal">LCD Functions</a></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/pinout.jpg" alt=""><br></td></tr></tbody></table>
+<p><br>
+    </p>
+    <p>&nbsp;</p>
+    <br>
+    <p>&nbsp;</p>
+  
+
+</body></html>

@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+
+
+
+
+
+
+    
+    <title>ThingSpeak</title>
+    <link type="text/css" rel="stylesheet" href="mystyle.css">
+  <link type="text/css" rel="stylesheet" href="kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+  <body class="f24 w3-container">
+    <p><br></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/ThingSpeak_000.png" alt="" style="width: 800px; height: 547px;"><br>
+            <br>
+            ESP8266 對 Access Point(寬頻分享器)而言為 Station<br>
+            api.thingspeak.com 為HTTP Server&nbsp;&nbsp;&nbsp; ESP8266為Client<br>
+          </td>
+        </tr>
+      </tbody>
+    
+</table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">ThingSpeak stores data in channels. Channels support an unlimited number of timestamped observations (think of these as <span style="color: red;">rows</span> in a spreadsheet). Each channel has up to 8 fields (think of these as <span style="color: red;">columns</span> in a speadsheet). <br><br>Channels may be <span style="color: red;">public</span>, where anyone can see the data,<br>&nbsp;or <span style="color: red;">private</span>, where only the owner and select users can read the data. <br><br>Each channel has an associated <span style="color: red;">Write API Key</span> that is used to control who can write to a channel. <br>In addition, <span style="color: red;">private</span> channels have one or more <span style="color: red;">Read API Keys</span> to control who can read from private channel. <br>An API Key is not required to read from public channels. <br>Each channel can have up to 8 fields. <br>One field is created by default.<br><br>1channel 最多可有 8個 Field<br>public channel :Write API Key<br>private channel:Write API Key ,Read API Key<br><br>ThingSpeak有提供免費、非商業用途的IoT雲端服務，使用此免費方案時，物聯網裝置的訊息發送時間間隔不可小於15秒、每年可發送300萬則訊息（每一天約8200則）。<br><br>ThingSpeak平台的資料儲存空間叫做Channel（通道），每次上傳的資料最多能有8個欄位（field）。例如，從控制板送出溫度和濕度資料，就需要「溫度」和「濕度」兩個欄位。<br><br>ThingSpeak提供前端兩種上傳資料的方式：<br>REST：透過GET或POST的HTTP協定上傳資料。<br>MQTT：使用輕量的通訊協定上傳資料。</td></tr></tbody></table><br>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><a href="ThingSpeakAcount.html" target="_blank">ThingSpeak</a>&nbsp;
+            申請帳號</td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><img src="images/TS_005.png" alt=""><br><br><img src="images/TS_004.png" alt=""><br>#include &lt;<span style="color: red;">ThingSpeak.h</span>&gt;<br>#include &lt;ESP8266WiFi.h&gt;<br><br>//----------------&nbsp; Fill in your credentails&nbsp;&nbsp; ---------------------<br>char ssid[] = "<span style="color: #6600cc;">RouterSSID</span>";&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>char pass[] = "<span style="color: #6600cc;">RouterPassword</span>"; <br>unsigned long channelID =<span style="color: #6600cc;">10*****84</span>;&nbsp; <br>const char * myWriteAPIKey = "<span style="color: #6600cc;">CP********EY</span>";&nbsp; <br>//------------------------------------------------------------------<br><br>WiFiClient&nbsp; client;<br><br>int value = 0;<br><br>void setup() {<br>&nbsp; //Initialize serial and wait for port to open:<br>&nbsp; Serial.begin(115200);<br>&nbsp; while (!Serial) {<br>&nbsp;&nbsp;&nbsp; ; // wait for serial port to connect. Needed for native USB port only<br>&nbsp; }<br><br>&nbsp; WiFi.mode(WIFI_STA);<br>&nbsp; ThingSpeak.begin(client); <br>}<br><br>void loop() {<br><br>&nbsp; // Connect or reconnect to WiFi<br>&nbsp; if(WiFi.status() != WL_CONNECTED){<br>&nbsp;&nbsp;&nbsp; Serial.println("");<br>&nbsp;&nbsp;&nbsp; Serial.print("Attempting to connect to SSID: ");<br>&nbsp;&nbsp;&nbsp; Serial.print(ssid);<br>&nbsp;&nbsp;&nbsp; while(WiFi.status() != WL_CONNECTED){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WiFi.begin(ssid, pass);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(".");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(5000);&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; } <br>&nbsp;&nbsp;&nbsp; Serial.println("\nConnected.");<br>&nbsp; }<br>&nbsp; <br>&nbsp; // Write to ThingSpeak. There are up to 8 fields in a channel, allowing you to store up to 8 different<br>&nbsp; // pieces of information in a channel.&nbsp; Here, we write to field 1.<br>&nbsp; int x = ThingSpeak.writeField(channelID, 1, value, myWriteAPIKey);<br>&nbsp; <br>&nbsp; // Check the return code<br>&nbsp; if(x == 200){<br>&nbsp;&nbsp;&nbsp; Serial.println("Channel update successful.");<br>&nbsp; }<br>&nbsp; else{<br>&nbsp;&nbsp;&nbsp; Serial.println("Problem updating channel. HTTP error code " + String(x));<br>&nbsp; }<br><br>&nbsp; value++;<br>&nbsp; if(value &gt; 99){<br>&nbsp;&nbsp;&nbsp; value = 0;<br>&nbsp; }<br>&nbsp; <br>&nbsp; delay(20000); // Wait 20 seconds before sending a new value<br>}</td></tr></tbody></table><br>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>DHT11</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/DHT11_001.png" alt=""><br>
+            <img src="images/DHT11_002.png" alt=""><br>
+            <br>
+            <br>
+            ESP-01S DHT11 v1.0<br>
+            <br>
+            <br>
+            <img src="images/ThingSpeak_005.png" alt=""><br>
+            <img src="images/ThingSpeak_006.png" alt=""></td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/DHT11_003.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24C"><img src="images/ThingSpeak_007.png" alt=""><br>
+            <br>
+            <img src="images/ThingSpeak_102.png" alt=""></td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p> </p>
+    <p> </p>
+    <br><table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36"><br>
+            <a href="https://www.mathworks.com/help/thingspeak/collect-data-in-a-new-channel.html" target="_blank">Create&nbsp; a new channel</a><br>
+            <br>
+            <img src="images/ThingSpeak_100.png" alt=""><br>
+            <br>
+            <br>
+            <br>
+            <img src="images/ThingSpeak_101.png" alt=""><br>
+            <br>
+            <img src="images/ThingSpeak_103.png" alt=""><br><br><img src="images/Ts_001.png" alt="" style="width: 796px; height: 427px;"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/ThingSpeak_001.png" alt="" style="width: 763px; height: 261px;"><br>
+            <a href="https://thingspeak.com/channels/491085" target="_blank">https://thingspeak.com</a><br>
+            <span style="color: blue;"><span style="font-family: Verdana,Geneva,sans-serif;">https://thingspeak.com/channels/<span style="color: #cc0000;">491085</span></span></span><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">1. 使用ThingSpeak.h---Write, Read<br>2. 使用ESP8266HTTPClient.h---GET, POST<br>3. 使用ESP8266WiFi.h&nbsp; ----GET ,&nbsp; POST</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><span style="color: red;">1. 使用ThingSpeak library</span><br>ThingSpeak Library(<a href="https://github.com/mathworks/thingspeak-arduino" target="_blank">gitHub</a>)(<a href="files/thingspeak-arduino-master.zip">.zip</a>)<br>請先下載安裝Library</td></tr></tbody>
+  </table>
+  <br>
+#include &lt;DHTesp.h&gt;<br>
+#include &lt;ThingSpeak.h&gt;<br>
+#include &lt;ESP8266WiFi.h&gt;<br>
+//*-- IoT Information<br>
+#define SSID&nbsp;&nbsp;&nbsp; "<span style="color: #330099;">Router SSID</span>"<br>
+#define PASS&nbsp;&nbsp;&nbsp; "<span style="color: #330099;">Router Password</span>"<br>
+//----------- Channel details ----------------//<br>
+unsigned long Channel_ID = <span style="color: #330099;">xxxxx</span>; // Your Channel ID<br>
+#define myWriteAPIKey&nbsp; "<span style="color: #330099;">xxxxxxxxxxx</span>" //Your write API key<br>
+//-------------------------------------------//<br>
+  <br>
+#define Field_Number_1&nbsp; 1<br>
+#define Field_Number_2&nbsp; 2<br>
+  <br>
+DHTesp dht;<br>
+WiFiClient&nbsp; client;<br>
+  <br>
+float temperature, humidity;<br>
+void setup() {<br>
+&nbsp;&nbsp; dht.setup(2, DHTesp::DHT11);<br>
+&nbsp;&nbsp;&nbsp; Serial.begin( 115200 );<br>
+&nbsp;&nbsp;&nbsp; Serial.println( "ESP8266 Ready!" );<br>
+&nbsp;&nbsp;&nbsp; ThingSpeak.begin(client);<br>
+&nbsp;&nbsp;&nbsp; // Connecting to a WiFi network<br>
+&nbsp;&nbsp;&nbsp; Serial.print("Connect to ");<br>
+&nbsp;&nbsp;&nbsp; Serial.println( SSID );<br>
+&nbsp;&nbsp;&nbsp; WiFi.begin( SSID, PASS );<br>
+&nbsp;&nbsp;&nbsp; while( WiFi.status() != WL_CONNECTED )<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(500);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( "." );<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; Serial.println( "" );<br>
+  <br>
+&nbsp;&nbsp;&nbsp; Serial.println( "WiFi connected" );<br>
+&nbsp;&nbsp;&nbsp; Serial.println( "IP address: " );<br>
+&nbsp;&nbsp;&nbsp; Serial.println( WiFi.localIP() );<br>
+&nbsp;&nbsp;&nbsp; Serial.println( "" );<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;<br>
+}<br>
+  <br>
+void loop() {<br>
+&nbsp;&nbsp;&nbsp; humidity= dht.getHumidity();<br>
+&nbsp;&nbsp;&nbsp; temperature = dht.getTemperature();<br>
+  <br>
+&nbsp;&nbsp;&nbsp; // 確認取回的溫溼度數據可用<br>
+&nbsp;&nbsp;&nbsp; if( isnan( humidity ) || isnan( temperature ) )<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println( "Failed to read form DHT11" );<br>
+&nbsp;&nbsp;&nbsp; return;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; else<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // DHT11 溫度與濕度傳送&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( "Humidity: " );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( humidity );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( ", Temperature: " );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println( temperature );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; updateDHT11();<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+  <br>
+void updateDHT11()<br>
+{<br>
+  <br>
+&nbsp; ThingSpeak.writeField(Channel_ID, Field_Number_1, String((int)temperature), myWriteAPIKey);<br>
+&nbsp; delay(15000);<br>
+&nbsp; ThingSpeak.writeField(Channel_ID, Field_Number_2, String((int)humidity), myWriteAPIKey);<br>
+&nbsp; delay(15000);<br>
+  <br>
+}</td></tr></tbody>
+</table>
+<p></p><br>
+<p></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C">測試完成 刪除 Serial 部分<br>
+            ESP01S 直接插入DH11模組</td>
+        </tr>
+      </tbody>
+    
+</table>
+<br><img src="images/DH11Esp01s_001.jpg" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//移除Serial<br><br>#include &lt;DHTesp.h&gt;<br>
+#include &lt;ThingSpeak.h&gt;<br>
+#include &lt;ESP8266WiFi.h&gt;<br>
+//*-- IoT Information<br>
+#define SSID&nbsp;&nbsp;&nbsp; "<span style="color: #330099;">Router SSID</span>"<br>
+#define PASS&nbsp;&nbsp;&nbsp; "<span style="color: #330099;">Router Password</span>"<br>
+//----------- Channel details ----------------//<br>
+unsigned long Channel_ID = <span style="color: #330099;">xxxxx</span>; // Your Channel ID<br>
+#define myWriteAPIKey&nbsp; "<span style="color: #330099;">xxxxxxxxxxx</span>" //Your write API key<br>
+//-------------------------------------------//<br>
+  <br>
+#define Field_Number_1&nbsp; 1<br>
+#define Field_Number_2&nbsp; 2<br>
+  <br>
+DHTesp dht;<br>
+WiFiClient&nbsp; client;<br>
+  <br>
+float temperature, humidity;<br>
+void setup() {<br>
+&nbsp;&nbsp; dht.setup(2, DHTesp::DHT11);<br>
+&nbsp;&nbsp; ThingSpeak.begin(client);<br>
+&nbsp;&nbsp;&nbsp; WiFi.begin( SSID, PASS );<br>
+&nbsp;&nbsp;&nbsp; while( WiFi.status() != WL_CONNECTED )<br>
+&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp; delay(500);&nbsp; &nbsp;&nbsp;&nbsp; }<br>&nbsp;}<br>
+  <br>
+void loop() {<br>
+&nbsp;&nbsp;&nbsp; humidity= dht.getHumidity();<br>
+&nbsp;&nbsp;&nbsp; temperature = dht.getTemperature();<br>
+  <br>
+&nbsp;&nbsp;&nbsp; // 確認取回的溫溼度數據可用<br>
+&nbsp;&nbsp;&nbsp; if( isnan( humidity ) || isnan( temperature ) )<br>
+&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp; return;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; else<br>
+&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp; updateDHT11();&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+  <br>
+void updateDHT11()<br>
+{<br>
+  <br>
+&nbsp; ThingSpeak.writeField(Channel_ID, Field_Number_1, String((int)temperature), myWriteAPIKey);<br>
+&nbsp; delay(15000);<br>
+&nbsp; ThingSpeak.writeField(Channel_ID, Field_Number_2, String((int)humidity), myWriteAPIKey);<br>
+&nbsp; delay(15000);<br>
+  <br>
+}</td></tr></tbody></table><p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">Read From Thingspeak<br>
+ThingSpeak Library(<a href="https://github.com/mathworks/thingspeak-arduino" target="_blank">gitHub</a>)(<a href="files/thingspeak-arduino-master.zip">.zip</a>)<br>請先下載安裝Library<br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">#include "ThingSpeak.h"<br>
+#include &lt;ESP8266WiFi.h&gt;<br>
+#define ssid&nbsp; "<span style="color: #330099;">xxxxx</span>"&nbsp; // your network SSID (name)<br>
+#define pass&nbsp; "<span style="color: #330099;">xxxxxxxx</span>"&nbsp;&nbsp; // your network password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+//---------Channel Details---------//<br>
+unsigned long counterChannelNumber = <span style="color: #330099;">12345</span>;&nbsp;&nbsp; // Channel ID<br>
+#define myCounterReadAPIKey&nbsp; "<span style="color: #330099;">CHXEV2VDBJ</span>" // Read API Key<br>
+#define FieldNumber1&nbsp; 1&nbsp; // The field you wish to read<br>
+#define FieldNumber2&nbsp; 2&nbsp; // The field you wish to read<br>
+//-------------------------------//<br>
+int statusCode;<br>
+WiFiClient&nbsp; client;<br>
+void setup()<br>
+{<br>
+&nbsp; Serial.begin(115200);<br>
+&nbsp; WiFi.mode(WIFI_STA);<br>
+&nbsp; ThingSpeak.begin(client);<br>
+}<br>
+    <br>
+void loop()<br>
+{<br>
+&nbsp; //----------------- Network -----------------//<br>
+&nbsp; if (WiFi.status() != WL_CONNECTED)<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; Serial.print("Connecting to ");<br>
+&nbsp;&nbsp;&nbsp; Serial.print(ssid);<br>
+&nbsp;&nbsp;&nbsp; Serial.println(" ....");<br>
+&nbsp;&nbsp;&nbsp; while (WiFi.status() != WL_CONNECTED)<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WiFi.begin(ssid, pass);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(5000);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; Serial.println("Connected to Wi-Fi Succesfully.");<br>
+&nbsp; }<br>
+&nbsp; //--------- End of Network connection--------//<br>
+    <br>
+&nbsp; //---------------- Channel 1 ----------------//<br>
+&nbsp; long temp = ThingSpeak.readLongField(counterChannelNumber, FieldNumber1, myCounterReadAPIKey);<br>
+&nbsp; statusCode = ThingSpeak.getLastReadStatus();<br>
+&nbsp; if (statusCode == 200)<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; Serial.print("Temperature: ");<br>
+&nbsp;&nbsp;&nbsp; Serial.println(temp);<br>
+&nbsp; }<br>
+&nbsp; else<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; Serial.println("Unable to read channel / No internet connection");<br>
+&nbsp; }<br>
+&nbsp; delay(100);<br>
+&nbsp; //-------------- End of Channel 1 -------------//<br>
+    <br>
+&nbsp; //---------------- Channel 2 ----------------//<br>
+&nbsp; long humidity = ThingSpeak.readLongField(counterChannelNumber, FieldNumber2, myCounterReadAPIKey);<br>
+&nbsp; statusCode = ThingSpeak.getLastReadStatus();<br>
+&nbsp; if (statusCode == 200)<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; Serial.print("Humidity: ");<br>
+&nbsp;&nbsp;&nbsp; Serial.println(humidity);<br>
+&nbsp; }<br>
+&nbsp; else<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; Serial.println("Unable to read channel / No internet connection");<br>
+&nbsp; }<br>
+&nbsp; delay(20000);<br>
+&nbsp; //-------------- End of Channel 2 -------------//<br>
+}</td></tr></tbody>
+  </table>
+</td></tr></tbody></table><p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">https://api.thingspeak.com/channels/935349/feeds.json?results=1<br>https://api.thingspeak.com/channels/935349/feeds.xml?results=1<br>https://api.thingspeak.com/channels/935349/feeds.csv?results=1<br>935349 為channel ID<br>read data(<a href="https://www.mathworks.com/help/thingspeak/readdata.html" target="_blank">web</a>)</td></tr></tbody></table>
+<p></p>
+<p><br></p><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><span style="color: red;">2. 使用 ESP8266HTTPClient.h <br></span></td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//Example 2.1 <a href="https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266HTTPClient/examples/BasicHttpClient/BasicHttpClient.ino" target="_blank">使用範例</a><br>#include &lt;ESP8266WiFi.h&gt;<br>#include &lt;ESP8266HTTPClient.h&gt;<br>#define SSID&nbsp;&nbsp;&nbsp; "ampTony"<br>#define PASS&nbsp;&nbsp;&nbsp; "123456789A"<br><br>void setup() {<br><br>&nbsp;&nbsp;&nbsp; Serial.begin( 115200 );<br>&nbsp;&nbsp;&nbsp; Serial.println( "ESP8266 Ready!" );<br>&nbsp;&nbsp;&nbsp; // Connecting to a WiFi network<br>&nbsp;&nbsp;&nbsp; Serial.print("Connect to ");<br>&nbsp;&nbsp;&nbsp; Serial.println( SSID );<br>&nbsp;&nbsp;&nbsp; WiFi.begin( SSID, PASS );<br>&nbsp;&nbsp;&nbsp; while( WiFi.status() != WL_CONNECTED )<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(500);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( "." );<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; Serial.println( "" );<br>&nbsp;&nbsp;&nbsp; Serial.println( "WiFi connected" );<br>&nbsp;&nbsp;&nbsp; Serial.println( "IP address: " );<br>&nbsp;&nbsp;&nbsp; Serial.println( WiFi.localIP() );<br>&nbsp;&nbsp;&nbsp; Serial.println( "" );<br>}<br><br>void loop() {<br>&nbsp;&nbsp; if (WiFi.status() == WL_CONNECTED) {<br>&nbsp;&nbsp;&nbsp; <span style="color: #6600cc;">WiFiClient client;<br>&nbsp;&nbsp;&nbsp; HTTPClient http;</span><br><br>&nbsp;&nbsp;&nbsp; Serial.print("[HTTP] begin...\n");<br>&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; if (<span style="color: #6600cc;">http.begin(client, "http://iot.ntue.edu.tw/EL/ESP8266/httpClientTest.html")</span>) {&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print("[HTTP] GET...\n");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // start connection and send HTTP header<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #6600cc;">int httpCode = http.GET();</span><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // httpCode will be negative on error<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (<span style="color: #6600cc;">httpCode &gt; 0</span>) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // HTTP <span style="color: #330000;">header</span> has been send and Server response header has been handled<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.printf("[HTTP] GET... code: %d\n", httpCode);<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // file found at server<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (<span style="color: #6600cc;">httpCode == HTTP_CODE_OK || httpCode == HTTP_CODE_MOVED_PERMANENTLY</span>) <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String payload = <span style="color: #330099;">http.getString()</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(payload);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else { Serial.printf("[HTTP] GET... failed, error:%s\n",http.errorToString(httpCode).c_str()); }<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #6600cc;">http.end()</span>;<br>&nbsp;&nbsp;&nbsp; } else {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.printf("[HTTP} Unable to connect\n");<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; }<br><br>&nbsp; delay(10000);<br>}</td></tr></tbody></table><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//Example 2.2<br>#include &lt;ESP8266HTTPClient.h&gt;<br>HTTPClient&nbsp; _httpClient;<br><br>UrlString = String("http://api.thingspeak.com/update?api_key=XXXX") + "&amp;field1=" + String((int)temperature) +<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "&amp;field2=" + String((int)humidity);//XXXX替換為你的APIKeys<br><br>_httpClient.begin(UrlString);<br>int httpCode = _httpClient.GET();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Send the request<br><br>String payload = _httpClient.getString();&nbsp;&nbsp;&nbsp; //Get the response payload<br>Serial.println(httpCode);&nbsp;&nbsp; //Print HTTP return code<br>Serial.println(payload);&nbsp;&nbsp;&nbsp; //Print request response payload<br><br>_httpClient.end();&nbsp; //Close connection<br>delay(15000);<br>
+  </td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//Example 2.3<br>//使用ESP8266HTTPClient GET<br>
+#include &lt;DHTesp.h&gt;<br>
+#include &lt;ESP8266WiFi.h&gt;<br>
+#include &lt;ESP8266HTTPClient.h&gt;<br>#define wKey&nbsp;&nbsp;&nbsp; "LSODUBHEK01D9JA0"<br>
+DHTesp dht;<br>
+  <br>
+//*-- IoT Information<br>
+#define mSSID&nbsp;&nbsp;&nbsp; "RouterSSID"<br>
+#define PASS&nbsp;&nbsp;&nbsp; "RouterPWD"<br>
+String UrlString;//thingSpeak網站傳送get請求的url<br>
+HTTPClient _httpClient;<br>
+  <br>
+int _httpGET(String url) {<br>
+&nbsp; _httpClient.end();<br>
+&nbsp; _httpClient.begin(url);<br>
+&nbsp; return _httpClient.GET();<br>
+}<br>
+  <br>
+float temperature, humidity;<br>
+void setup() {<br>
+&nbsp;&nbsp; dht.setup(2, DHTesp::DHT11);<br>
+&nbsp;&nbsp;&nbsp; Serial.begin( 115200 );<br>
+&nbsp;&nbsp;&nbsp; Serial.println( "ESP8266 Ready!" );<br>
+&nbsp;&nbsp;&nbsp; // Connecting to a WiFi network<br>
+&nbsp;&nbsp;&nbsp; Serial.print("Connect to ");<br>
+&nbsp;&nbsp;&nbsp; Serial.println( mSSID );<br>
+&nbsp;&nbsp;&nbsp; WiFi.begin( mSSID, PASS );<br>
+&nbsp;&nbsp;&nbsp; while( WiFi.status() != WL_CONNECTED )<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(500);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( "." );<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; Serial.println( "" );<br>
+  <br>
+&nbsp;&nbsp;&nbsp; Serial.println( "WiFi connected" );<br>
+&nbsp;&nbsp;&nbsp; Serial.println( "IP address: " );<br>
+&nbsp;&nbsp;&nbsp; Serial.println( WiFi.localIP() );<br>
+&nbsp;&nbsp;&nbsp; Serial.println( "" );<br>
+&nbsp; <br>
+&nbsp; <br>
+}<br>
+  <br>
+void loop() {<br>
+&nbsp;&nbsp;&nbsp; humidity= dht.getHumidity();<br>
+&nbsp;&nbsp;&nbsp; temperature = dht.getTemperature();<br>
+  <br>
+&nbsp;&nbsp;&nbsp; // 確認取回的溫溼度數據可用<br>
+&nbsp;&nbsp;&nbsp; if( isnan( humidity ) || isnan( temperature ) )<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println( "Failed to read form DHT11" );<br>
+&nbsp;&nbsp;&nbsp; return;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; else<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // DHT11 溫度與濕度傳送&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( "Humidity: " );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( humidity );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( ", Temperature: " );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println( temperature );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; updateDHT11();<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+  <br>
+void updateDHT11()<br>
+{<br>
+  <br>UrlString = String("http://api.thingspeak.com/update?api_key=") +wKey+"&amp;field1="+String((int)temperature)+"&amp;field2="+String((int)humidity);<br>
+&nbsp; <br>if (_httpGET(UrlString) &gt; 0) {<br>
+&nbsp;&nbsp;&nbsp; delay(15000);&nbsp; //thinkSpeak網站限制上傳頻率 所以這裡延時15s<br>
+&nbsp; }<br>
+  }</td></tr></tbody>
+</table>
+<p></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/DH11Esp01s_001.jpg" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    
+</table>
+<p></p>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//Example 2.4<br>//ESP8266HTTPClient&nbsp; GET<br>//移除Serial<br>#include &lt;DHTesp.h&gt;<br>
+#include &lt;ESP8266WiFi.h&gt;<br>
+#include &lt;ESP8266HTTPClient.h&gt;<br>
+#define wKey&nbsp;&nbsp;&nbsp; "LSODUBHEK01D9JA0"<br>
+DHTesp dht;<br>
+  <br>
+//*-- IoT Information<br>
+#define mSSID&nbsp;&nbsp;&nbsp; "RouterSSID"<br>
+#define PASS&nbsp;&nbsp;&nbsp; "RouterPWD"<br>
+String UrlString;//thingSpeak網站傳送get請求的url<br>
+HTTPClient _httpClient;<br>
+  <br>
+int _httpGET(String url) {<br>
+&nbsp; _httpClient.end();<br>
+&nbsp; _httpClient.begin(url);<br>
+&nbsp; return _httpClient.GET();<br>
+}<br>
+  <br>
+float temperature, humidity;<br>
+void setup() {<br>
+&nbsp;&nbsp; dht.setup(2, DHTesp::DHT11);<br>
+&nbsp;&nbsp;&nbsp; WiFi.begin( mSSID, PASS );<br>
+&nbsp;&nbsp;&nbsp; while( WiFi.status() != WL_CONNECTED )<br>
+&nbsp;&nbsp;&nbsp; {&nbsp; delay(500);&nbsp; }<br>&nbsp;}<br>
+  <br>
+void loop() {<br>
+&nbsp;&nbsp;&nbsp; humidity= dht.getHumidity();<br>
+&nbsp;&nbsp;&nbsp; temperature = dht.getTemperature();<br>
+  <br>
+&nbsp;&nbsp;&nbsp; // 確認取回的溫溼度數據可用<br>
+&nbsp;&nbsp;&nbsp; if( isnan( humidity ) || isnan( temperature ) )<br>
+&nbsp;&nbsp;&nbsp; {&nbsp; return;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; else<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // DHT11 溫度與濕度傳送&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; updateDHT11();<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+  <br>
+void updateDHT11()<br>
+{<br>
+  <br>UrlString = String("http://api.thingspeak.com/update?api_key=") 
++wKey+"&amp;field1="+String((int)temperature)+"&amp;field2="+String((int)humidity);<br>&nbsp; <br>
+if (_httpGET(UrlString) &gt; 0) {<br>
+&nbsp;&nbsp;&nbsp; delay(15000);&nbsp; //thinkSpeak網站限制上傳頻率 所以這裡延時15s<br>
+&nbsp; }<br>
+  }</td></tr></tbody>
+</table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//Example 2.5<br>//ESP8266HTTPClient&nbsp; POST<br>#include &lt;DHTesp.h&gt;<br>
+#include &lt;ESP8266WiFi.h&gt;<br>
+#include &lt;ESP8266HTTPClient.h&gt;<br>
+#define SSID&nbsp;&nbsp;&nbsp; "<span style="color: #330099;">Router SSID</span>"<br>
+#define PASS&nbsp;&nbsp;&nbsp; "<span style="color: #330099;">Router PassWord</span>"<br>
+#define url "<span style="color: red;">http</span>://api.thingspeak.com/update/"<br>
+#define THING_SPEAK_WRITE_API_KEY&nbsp; "<span style="color: #330099;">Your Write API KEY</span>"<br>
+DHTesp dht;<br>
+HTTPClient _httpClient;<br>
+String params;<br>
+float temperature, humidity;<br>
+void setup() {<br>
+&nbsp;&nbsp;&nbsp; dht.setup(2, DHTesp::DHT11);<br>
+&nbsp;&nbsp;&nbsp; WiFi.begin( SSID, PASS );<br>
+&nbsp;&nbsp;&nbsp; while( WiFi.status() != WL_CONNECTED )<br>
+&nbsp;&nbsp;&nbsp; { delay(500);}<br>
+&nbsp;&nbsp;&nbsp; Serial.println("WiFi connected");<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+}<br>
+  <br>
+void loop() {<br>
+&nbsp;&nbsp;&nbsp; humidity= dht.getHumidity();<br>
+&nbsp;&nbsp;&nbsp; temperature = dht.getTemperature();<br>
+  <br>
+&nbsp;&nbsp;&nbsp; // 確認取回的溫溼度數據可用<br>
+&nbsp;&nbsp;&nbsp; if( isnan( humidity ) || isnan( temperature ) )<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+&nbsp;&nbsp;&nbsp; return;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; else<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // DHT11 溫度與濕度傳送&nbsp;&nbsp; &nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; updateDHT11();<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+  <br>
+void updateDHT11()<br>
+{<br>
+&nbsp; <br>
+&nbsp; params = "field1=" + String((int)temperature)+"&amp;field2=" + String((int)humidity);<br>
+&nbsp; _httpClient.begin(url);<br>
+&nbsp; _httpClient.addHeader("X-THINGSPEAKAPIKEY", THING_SPEAK_WRITE_API_KEY);<br>
+&nbsp; _httpClient.addHeader("Content-Type", "application/x-www-form-urlencoded");<br>
+&nbsp; if (_httpClient.POST(params)) {<br>
+&nbsp;&nbsp; delay(15000);&nbsp; //thinkSpeak網站限制上傳頻率 所以這裡延時15s<br>
+&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; _httpClient.end();<br>
+}</td></tr></tbody>
+</table>
+<p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><a href="https://www.mathworks.com/help/thingspeak/read-and-post-temperature-data.html" target="_blank">Documentation</a><br>ESP8266HTTPClient(<a href="https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266HTTPClient" target="_blank">GitHub</a>)</td>
+        </tr>
+      </tbody>
+    </table><br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><span style="color: red;">3. 使用ESP8266WiFi.h&nbsp; ----GET ,&nbsp; POST</span></td></tr></tbody></table>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><a href="http://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/client-examples.html" target="_blank">Client</a></td>
+        </tr>
+      </tbody>
+    </table><p>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;"><a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods" target="_blank">HTTP get</a><br>
+            Client request<br>
+            <br>
+            <span style="color: blue;">GET /index.html HTTP/1.1</span><br>
+            <span style="color: #6600cc;">Host: www.example.com</span><br>
+            <br>
+<br>
+client.print(<span style="color: blue;">"GET /index.html" + " HTTP/1.1</span><span style="color: red;">\r\n</span>" ) <br>
+            client.print("<span style="color: #6600cc;">Host:www.example.com<span style="color: red;">\r\n</span></span>")<br>
+            client.print("Connection: close<span style="color: red;">\r\n\r\n</span>")<br>
+<br>
+<br>
+            A client request (consisting in this case of the request line and            only one <span style="color: blue;">header field</span>) is followed by a <span class="red24">blank
+              line</span>, so that the request ends with a <span class="red24">double
+              newline</span>, each in the form of a carriage return followed by
+            a line feed. <br>
+            <br>
+The "Host" field distinguishes between various DNS names sharing a            single IP address, allowing name-based virtual hosting. <br>
+            While optional in HTTP/1.0, it is mandatory in HTTP/1.1.</td>
+        </tr>
+      </tbody>
+    </table><p>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">Request
+            the Data<br>
+            If connection is successful, we should send request the host to            provide specific information we need. This is done using the HTTP
+            GET request as in the following lines:<br>
+<br>
+client.print("GET /<span style="color: blue;">index.html</span>" + " HTTP/1.1<span style="color: red;">\r\n</span>" )<br>
+            client.print("Host:<span style="color: #6600cc;">www.example.com<span style="color: red;">\r\n</span></span>")<br>
+            client.print("Connection: close<span style="color: red;">\r\n</span>")<br>
+client.print(<span class="red24">"\r\n"</span>);<br>
+<br>            Read Reply from the Server<br>
+            Then, while connection by our client is still alive (while            (client.connected()), see below) we can read line by line and print
+            out server’s response:<br>
+            <br>
+            while (client.connected())<br>
+            {<br>
+            &nbsp; if (client.available())<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; String line = client.readStringUntil('\n');<br>
+            &nbsp;&nbsp;&nbsp; Serial.println(line);<br>
+            &nbsp; }<br>
+            }<br>
+            The inner if (client.available()) is checking if there are any data            available from the server. If so, then they are printed out.<br>
+            <br>
+            Once server sends all requested data it will disconnect and program            will exit the while loop.</td>
+        </tr>
+      </tbody>
+    </table><p>
+    </p>
+    <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">使用WiFiClient
+
+
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">ESP8266Wifi gives raw access to wifi functions independent of the protocol you are going to use.<br><br>WifiClient
+ can send and receive data to a server but you have to format the data 
+yourself e.g. message headers and parsing the response.<br><br>ESP8266HTTPClient specifically knows how to communicate with a http web server and does all the formatting and parsing needed.<br><br><br>If
+ you are making http requests like GET or POST then it is normally best 
+to use the ESP8266HTTPClient to keep the application code simpler and to
+ benefit from the tried and tested HTTP handling.</td></tr></tbody></table></td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">//Example 3.1<br>//使用WiFiClient GET<br>#include
+            &lt;DHTesp.h&gt; <br>
+            #include &lt;ESP8266WiFi.h&gt;<br>
+            DHTesp dht;<br>
+            <br>
+            //*-- IoT Information<br>
+            #define SSID&nbsp;&nbsp;&nbsp; "<span class="red24C">路由器名稱</span>"<br>
+            #define PASS&nbsp;&nbsp;&nbsp; "<span class="red24C">路由器連線密碼</span>"<br>
+            #define HOST&nbsp;&nbsp;&nbsp; "api.thingspeak.com" // ThingSpeak IP            Address: 184.106.153.149<br>
+            #define PORT&nbsp;&nbsp;&nbsp; 80<br>String writeAPIKey="<span style="color: red;">LSXXXXXXXXXXJA0</span>"; // 換上自己的 Write API Key<br>
+            <span style="color: #666666;"></span><br><span style="color: #006600;"></span><br>
+            <span style="color: #666666;">// 設定 ESP8266 作為 Client 端</span><br>
+            <span style="color: #6600cc;">WiFiClient client;</span><br>
+            float temperature, humidity;<br>
+            void setup() {<br>
+            &nbsp;&nbsp; <span style="color: #990000;">dht.setup(2,
+              DHTesp::DHT11);</span><br>
+            &nbsp;&nbsp;&nbsp; <span style="color: #666666;">Serial.begin(
+              115200 );<br>
+              &nbsp;&nbsp;&nbsp; Serial.println( "ESP8266 Ready!" );<br>
+              &nbsp;&nbsp;&nbsp; // Connecting to a WiFi network<br>
+              &nbsp;&nbsp;&nbsp; Serial.print("Connect to ");<br>
+              &nbsp;&nbsp;&nbsp; Serial.println( SSID );</span><br>
+            &nbsp;&nbsp;&nbsp; <span style="color: #6600cc;">WiFi.begin( SSID,
+              PASS );</span><br>
+            <span style="color: #666666;">//因不需由外部連入 使用Router分配動態IP即可<br>
+              &nbsp;&nbsp;&nbsp; // 持續等待並連接到指定的 WiFi SSID<br>
+              &nbsp;&nbsp;&nbsp; while( WiFi.status() != WL_CONNECTED )<br>
+              &nbsp;&nbsp;&nbsp; {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(500);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( "." );<br>
+              &nbsp;&nbsp;&nbsp; }<br>
+              &nbsp;&nbsp;&nbsp; Serial.println( "" );<br>
+              <br>
+              &nbsp;&nbsp;&nbsp; Serial.println( "WiFi connected" );<br>
+              &nbsp;&nbsp;&nbsp; Serial.println( "IP address: " );<br>
+              &nbsp;&nbsp;&nbsp; Serial.println( WiFi.localIP() );<br>
+              &nbsp;&nbsp;&nbsp; Serial.println( "" );<br>
+              &nbsp;&nbsp; </span><br>
+            &nbsp;&nbsp; <br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;&nbsp;&nbsp; <span style="color: #990000;">humidity=
+              dht.getHumidity();<br>
+              &nbsp;&nbsp;&nbsp; temperature = dht.getTemperature();</span><br>
+            <br>
+            &nbsp;&nbsp;&nbsp; <span style="color: #666666;">// 確認取回的溫溼度數據可用<br>
+              &nbsp;&nbsp;&nbsp; if( isnan( humidity ) || isnan( temperature ) )<br>
+              &nbsp;&nbsp;&nbsp; {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println( "Failed              to read form DHT11" );<br>
+              &nbsp;&nbsp;&nbsp; return;<br>
+              &nbsp;&nbsp;&nbsp; }<br>
+              &nbsp;&nbsp;&nbsp; else<br>
+              &nbsp;&nbsp;&nbsp; {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // DHT11              溫度與濕度傳送&nbsp;&nbsp;&nbsp;&nbsp; <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(              "Humidity: " );<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( humidity              );<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( ",              Temperature: " );<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(              temperature );</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #993300;">updateDHT11();<br>
+              &nbsp;&nbsp;&nbsp;<span style="color: #666666;"> }</span></span><br>
+            <br>
+            &nbsp;&nbsp;&nbsp; // 每隔多久傳送一次資料<br>
+            &nbsp;&nbsp;&nbsp; delay( 20000 ); // 20 second<br>
+            }<br>
+            <br>
+            void <span style="color: #993300;">updateDHT11()</span><br>
+            {<br>
+            &nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp; <span style="color: #666666;">if( !</span><span style="color: #6600cc;">client.connect( HOST, PORT )</span> <span style="color: #666666;">)<br>
+              &nbsp;&nbsp;&nbsp; {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(              "connection failed" );<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;<br>
+              &nbsp;&nbsp;&nbsp; }<br>
+              &nbsp;&nbsp;&nbsp; else<br>
+              &nbsp;&nbsp;&nbsp; {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 準備上傳到 ThingSpeak IoT              Server 的資料<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 已經預先設定好 ThingSpeak              IoT Channel 的欄位<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // field1：溫度；field2：濕度</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #666666;">/*<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 使用 GET 傳送資料的格式<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GET /update?key=[THINGSPEAK_KEY]&amp;field1=[data              1]&amp;filed2=[data&nbsp; 2]...;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              */</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String getStr = "GET /update?key="+ writeAPIKey + <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "&amp;field1=" + String((int)temperature) +<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "&amp;field2=" + String((int)humidity) +<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " HTTP/1.1<span style="color: #6600cc;">\r\n</span>";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; client.print( getStr );<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; client.print( "Host:            api.thingspeak.com<span style="color: #6600cc;">\r\n</span>" );<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; client.print(            "Connection: close<span style="color: #6600cc;">\r\n\r\n</span>" );<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(10);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #666666;">
+              //<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //              處理遠端伺服器回傳的訊息，程式碼可以寫在這裡！<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #6600cc;">client.stop();</span><br>
+            &nbsp;&nbsp;&nbsp;<span style="color: #666666;"> }</span><br>
+            }</td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">//Example 3.2<br>//使用WiFiClient GET<br>#include
+            &lt;DHTesp.h&gt; <br>
+            #include &lt;ESP8266WiFi.h&gt;<br>
+            DHTesp dht;<br>
+            <br>
+            <br>
+            //*-- IoT Information<br>
+            #define SSID&nbsp;&nbsp;&nbsp; "<span class="red24C">路由器名稱</span>"<br>
+            #define PASS&nbsp;&nbsp;&nbsp; "<span class="red24C">路由器連線密碼</span>"<br>
+            #define HOST&nbsp;&nbsp;&nbsp; "api.thingspeak.com" // ThingSpeak IP            Address: 184.106.153.149<br>
+            #define PORT&nbsp;&nbsp;&nbsp; 80<br>String writeAPIKey="<span style="color: red;">LSXXXXXXXXXXJA0</span>"; // 換上自己的 Write API Key<span style="color: #006600;"></span><br>
+            <br>
+            <span style="color: #6600cc;">WiFiClient client;</span><br>
+            float <span style="color: #ff6600;">temperature</span>, <span style="color: #ff6600;">humidity</span>;<br>
+            void setup() {<br>
+            &nbsp;&nbsp; <span style="color: #990000;">dht.setup(2,
+              DHTesp::DHT11);</span><br>
+            &nbsp;&nbsp; <span style="color: #6600cc;">WiFi.begin( SSID, PASS
+              );</span><br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;&nbsp;&nbsp; <span style="color: #990000;">humidity=
+              dht.getHumidity();<br>
+              &nbsp;&nbsp;&nbsp; temperature = dht.getTemperature();<br>
+              &nbsp;</span>&nbsp;&nbsp; <span style="color: #993300;">updateDHT11();<br>
+              &nbsp;&nbsp;&nbsp;<span style="color: #666666;"> </span></span>delay(
+            20000 ); // 20 second<br>
+            }<br>
+            <br>
+            void <span style="color: #993300;">updateDHT11()</span><br>
+            {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #666666;"></span><span style="color: #6600cc;">client.connect( HOST, PORT )<span style="color: #990000;">;</span></span><span style="color: #666666;"><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;</span> String getStr = "GET /update?key="+ writeAPIKey + <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "&amp;field1=" + String((int)temperature) +<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "&amp;field2=" + String((int)humidity) +<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " HTTP/1.1\r\n";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #6600cc;">client.print</span>(
+            getStr );<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #6600cc;">client.print</span>(
+            "Host: api.thingspeak.com\r\n" );<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #6600cc;">client.print</span>(
+            "Connection: close<span style="color: red;">\r\n\r\n</span>" );<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(10);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #6600cc;">client.stop();</span><br>
+            &nbsp;&nbsp; }</td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//Example 3.3<br>//使用WiFiClient&nbsp; POST<br>
+#include &lt;DHTesp.h&gt;<br>
+#include &lt;ESP8266WiFi.h&gt;<br>
+DHTesp dht;<br>
+//*-- IoT Information<br>
+#define SSID&nbsp;&nbsp;&nbsp; "Router SSID"<br>
+#define PASS&nbsp;&nbsp;&nbsp; "Router Password"<br>
+#define HOST&nbsp;&nbsp;&nbsp; "api.thingspeak.com" // ThingSpeak IP Address: 184.106.153.149<br>
+#define PORT&nbsp;&nbsp;&nbsp; 80<br>
+String APIKEY&nbsp; = "<span style="color: red;">Your Write Key</span>";<br>WiFiClient client;<br>
+float temperature, humidity;<br>
+void setup() {<br>
+&nbsp;&nbsp; dht.setup(2, DHTesp::DHT11);<br>
+&nbsp;&nbsp;&nbsp; Serial.begin( 115200 );<br>
+&nbsp;&nbsp;&nbsp; Serial.println( "ESP8266 Ready!" );<br>
+&nbsp;&nbsp;&nbsp; // Connecting to a WiFi network<br>
+&nbsp;&nbsp;&nbsp; Serial.print("Connect to ");<br>
+&nbsp;&nbsp;&nbsp; Serial.println( SSID );<br>
+&nbsp;&nbsp;&nbsp; WiFi.begin( SSID, PASS );<br>
+//因不需由外部連入 使用Router分配動態IP即可<br>
+&nbsp;&nbsp;&nbsp; // 持續等待並連接到指定的 WiFi SSID<br>
+&nbsp;&nbsp;&nbsp; while( WiFi.status() != WL_CONNECTED )<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(500);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( "." );<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; Serial.println( "" );<br>
+  <br>
+&nbsp;&nbsp;&nbsp; Serial.println( "WiFi connected" );<br>
+&nbsp;&nbsp;&nbsp; Serial.println( "IP address: " );<br>
+&nbsp;&nbsp;&nbsp; Serial.println( WiFi.localIP() );<br>
+&nbsp;&nbsp;&nbsp; Serial.println( "" );<br>
+&nbsp; <br>
+&nbsp; <br>
+}<br>
+  <br>
+void loop() {<br>
+&nbsp;&nbsp;&nbsp; humidity= dht.getHumidity();<br>
+&nbsp;&nbsp;&nbsp; temperature = dht.getTemperature();<br>
+  <br>
+&nbsp;&nbsp;&nbsp; // 確認取回的溫溼度數據可用<br>
+&nbsp;&nbsp;&nbsp; if( isnan( humidity ) || isnan( temperature ) )<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println( "Failed to read form DHT11" );<br>
+&nbsp;&nbsp;&nbsp; return;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; else<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // DHT11 溫度與濕度傳送&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( "Humidity: " );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( humidity );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print( ", Temperature: " );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println( temperature );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; updateDHT11();<br>
+&nbsp;&nbsp;&nbsp; }<br>
+  <br>
+&nbsp;&nbsp;&nbsp; // 每隔多久傳送一次資料<br>
+&nbsp;&nbsp;&nbsp; delay( 20000 ); // 20 second<br>
+}<br>
+  <br>
+void updateDHT11()<br>
+{<br>
+&nbsp;&nbsp;&nbsp; // 設定 ESP8266 作為 Client 端<br>
+&nbsp;&nbsp;&nbsp; WiFiClient client;<br>
+&nbsp;&nbsp;&nbsp; if( !client.connect( HOST, PORT ) )<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println( "connection failed" );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; else<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 準備上傳到 ThingSpeak IoT Server 的資料<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 已經預先設定好 ThingSpeak IoT Channel 的欄位<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // field1：溫度；field2：濕度<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String postStr = APIKEY + "&amp;field1=" + String((int)temperature) + \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "&amp;field2=" + String((int)humidity) + "\r\n\r\n";<br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; client.print( "POST /update HTTP/1.1\n" );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; client.print( "Host: api.thingspeak.com\n" );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; client.print( "Connection: close\n" );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; client.print( "X-THINGSPEAKAPIKEY: "+APIKEY+"\n" );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; client.print( "Content-Type: application/x-www-form-urlencoded\n" );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; client.print( "Content-Length: " );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; client.print( postStr.length() );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; client.print( "\n\n" );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; client.print( postStr );<br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; client.stop();<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+</td></tr></tbody></table><p></p>
+<p><br></p>
+<p><br>
+    </p>
+</body></html>

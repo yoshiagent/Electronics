@@ -1,0 +1,1404 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="297mm"
+   height="210mm"
+   id="svg2985"
+   version="1.1"
+   inkscape:version="0.48.4 r"
+   sodipodi:docname="numberSys.svg"
+   inkscape:export-filename="D:\Dropbox\public\chsn\course\1\images\numberSysconv.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs2987">
+    <marker
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Send"
+       style="overflow:visible;">
+      <path
+         id="path5844"
+         style="fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.3) rotate(180) translate(-2.3,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Send-5"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5844-9"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker7840"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7842"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker7844"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7846"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker7848"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7850"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker7852"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7854"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker7856"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7858"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker7860"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7862"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker7864"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7866"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     inkscape:document-units="mm"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.99"
+     inkscape:cx="367.77778"
+     inkscape:cy="420.40404"
+     inkscape:current-layer="layer4"
+     id="namedview2989"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata2991">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:none">
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+       x="704.04041"
+       y="178.43793"
+       id="text2998"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3000"
+         x="704.04041"
+         y="178.43793" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+       x="357.57578"
+       y="105.71064"
+       id="text3023"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3025"
+         x="357.57578"
+         y="105.71064" /></text>
+    <rect
+       style="fill:#00ff00;fill-opacity:1;stroke:#ff0000;stroke-width:7.79527569;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5614"
+       width="458.58588"
+       height="322.22223"
+       x="569.69696"
+       y="123.89246"
+       ry="20.202021" />
+    <g
+       id="g3630"
+       transform="translate(79.797979,-28.277967)">
+      <g
+         id="g3417">
+        <g
+           id="g3327"
+           transform="translate(-1.2988892,0)">
+          <text
+             sodipodi:linespacing="125%"
+             id="text2994-6"
+             y="192.33519"
+             x="556.56561"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#ff0000;font-family:Arial;-inkscape-font-specification:Arial Bold"
+               y="192.33519"
+               x="556.56561"
+               id="tspan2996-3"
+               sodipodi:role="line">100</tspan></text>
+          <g
+             transform="translate(-249.4288,81.818182)"
+             id="g3246-8">
+            <text
+               xml:space="preserve"
+               style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+               x="809.09088"
+               y="192.57933"
+               id="text2994-7"
+               sodipodi:linespacing="125%"><tspan
+                 sodipodi:role="line"
+                 id="tspan2996-97"
+                 x="809.09088"
+                 y="192.57933"
+                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">10</tspan></text>
+            <text
+               xml:space="preserve"
+               style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+               x="851.51514"
+               y="166.31671"
+               id="text2994-6-1-82-6-19"
+               sodipodi:linespacing="125%"><tspan
+                 sodipodi:role="line"
+                 id="tspan2996-3-5-54-3-1"
+                 x="851.51514"
+                 y="166.31671"
+                 style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">2</tspan></text>
+          </g>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="579.79797"
+           y="360.51001"
+           id="text2994-6-1-77"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-32"
+             x="579.79797"
+             y="360.51001"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0000ff;font-family:Arial;-inkscape-font-specification:Arial Bold">1</tspan></text>
+      </g>
+      <g
+         transform="translate(2.7114868,0)"
+         id="g3429">
+        <g
+           id="g3336"
+           transform="translate(-3.8328877,0)">
+          <text
+             sodipodi:linespacing="125%"
+             id="text2994-1"
+             y="192.33519"
+             x="683.29663"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#ff0000;font-family:Arial;-inkscape-font-specification:Arial Bold"
+               y="192.33519"
+               x="683.29663"
+               id="tspan2996-9"
+               sodipodi:role="line">10</tspan></text>
+          <g
+             transform="translate(-132.03372,81.818182)"
+             id="g3246-5">
+            <text
+               xml:space="preserve"
+               style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+               x="809.09088"
+               y="192.57933"
+               id="text2994-36"
+               sodipodi:linespacing="125%"><tspan
+                 sodipodi:role="line"
+                 id="tspan2996-8"
+                 x="809.09088"
+                 y="192.57933"
+                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">10</tspan></text>
+            <text
+               xml:space="preserve"
+               style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+               x="851.51514"
+               y="166.31671"
+               id="text2994-6-1-82-6-1"
+               sodipodi:linespacing="125%"><tspan
+                 sodipodi:role="line"
+                 id="tspan2996-3-5-54-3-0"
+                 x="851.51514"
+                 y="166.31671"
+                 style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">1</tspan></text>
+          </g>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="690.90906"
+           y="360.01196"
+           id="text2994-6-1-2-1"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-6-9"
+             x="690.90906"
+             y="360.01196"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0000ff;font-family:Arial;-inkscape-font-specification:Arial Bold">5</tspan></text>
+      </g>
+      <g
+         id="g3441">
+        <g
+           id="g3345">
+          <g
+             transform="translate(-19.191919,81.818182)"
+             id="g3246">
+            <text
+               xml:space="preserve"
+               style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+               x="809.09088"
+               y="192.57933"
+               id="text2994"
+               sodipodi:linespacing="125%"><tspan
+                 sodipodi:role="line"
+                 id="tspan2996"
+                 x="809.09088"
+                 y="192.57933"
+                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">10</tspan></text>
+            <text
+               xml:space="preserve"
+               style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+               x="851.51514"
+               y="166.31671"
+               id="text2994-6-1-82-6"
+               sodipodi:linespacing="125%"><tspan
+                 sodipodi:role="line"
+                 id="tspan2996-3-5-54-3"
+                 x="851.51514"
+                 y="166.31671"
+                 style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">0</tspan></text>
+          </g>
+          <text
+             sodipodi:linespacing="125%"
+             id="text2994-6-1-7"
+             y="192.57933"
+             x="811.34937"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#ff0000;font-family:Arial;-inkscape-font-specification:Arial Bold"
+               y="192.57933"
+               x="811.34937"
+               id="tspan2996-3-5-29"
+               sodipodi:role="line">1</tspan></text>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="810.10095"
+           y="360.2561"
+           id="text2994-6-1-4-4"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-4-9"
+             x="810.10095"
+             y="360.2561"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0000ff;font-family:Arial;-inkscape-font-specification:Arial Bold">7</tspan></text>
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text2994-6-1-1"
+         y="450.15509"
+         x="527.27271"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="450.15509"
+           x="527.27271"
+           id="tspan2996-3-5-93"
+           sodipodi:role="line"><tspan
+   style="fill:#0000ff"
+   id="tspan3977">157</tspan>=1x<tspan
+   style="fill:#ff0000"
+   id="tspan3810">100</tspan>+5x<tspan
+   style="fill:#ff0000"
+   id="tspan3812">10</tspan>+7x<tspan
+   style="fill:#ff0000"
+   id="tspan3814">1</tspan></tspan></text>
+    </g>
+    <rect
+       style="fill:#00ff00;fill-opacity:1;stroke:#ff0000;stroke-width:7.79527569;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5612"
+       width="483.83838"
+       height="326.26263"
+       x="11.111111"
+       y="119.85206"
+       ry="19.191919" />
+    <g
+       id="g3928"
+       transform="translate(3.0303031,-34.343435)">
+      <g
+         transform="translate(-3.030303,10.10101)"
+         id="g3780">
+        <g
+           id="g3501"
+           transform="translate(727.20377,231.31314)">
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             x="-362.21667"
+             y="41.208923"
+             id="text2994-75"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan2996-98"
+               x="-362.21667"
+               y="41.208923"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">2</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             x="-338.98434"
+             y="15.956407"
+             id="text2994-6-1-82-6-5"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan2996-3-5-54-3-9"
+               x="-338.98434"
+               y="15.956407"
+               style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">0</tspan></text>
+        </g>
+        <g
+           id="g3501-4"
+           transform="translate(623.68588,231.31314)">
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             x="-362.21667"
+             y="41.208923"
+             id="text2994-75-5"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan2996-98-7"
+               x="-362.21667"
+               y="41.208923"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">2</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             x="-338.98434"
+             y="15.956407"
+             id="text2994-6-1-82-6-5-8"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan2996-3-5-54-3-9-9"
+               x="-338.98434"
+               y="15.956407"
+               style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">1</tspan></text>
+        </g>
+        <g
+           id="g3501-2"
+           transform="translate(516.55865,231.31314)">
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             x="-362.21667"
+             y="41.208923"
+             id="text2994-75-7"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan2996-98-8"
+               x="-362.21667"
+               y="41.208923"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">2</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             x="-338.98434"
+             y="15.956407"
+             id="text2994-6-1-82-6-5-9"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan2996-3-5-54-3-9-6"
+               x="-338.98434"
+               y="15.956407"
+               style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">2</tspan></text>
+        </g>
+        <g
+           id="g3501-7"
+           transform="translate(411.11108,231.31314)">
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             x="-362.21667"
+             y="41.208923"
+             id="text2994-75-6"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan2996-98-82"
+               x="-362.21667"
+               y="41.208923"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">2</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             x="-338.98434"
+             y="15.956407"
+             id="text2994-6-1-82-6-5-3"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan2996-3-5-54-3-9-92"
+               x="-338.98434"
+               y="15.956407"
+               style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">3</tspan></text>
+        </g>
+      </g>
+      <g
+         id="g3770">
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="258.62445"
+           y="199.64999"
+           id="text2994-3"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-6"
+             x="258.62445"
+             y="199.64999"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#ff0000;font-family:Arial;-inkscape-font-specification:Arial Bold">2</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="50.505016"
+           y="199.39609"
+           id="text2994-6-1-8-0"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-0-0"
+             x="50.505016"
+             y="199.39609"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#ff0000;font-family:Arial;-inkscape-font-specification:Arial Bold">8</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="154.35481"
+           y="199.64999"
+           id="text2994-6-1-0-6"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-9-6"
+             x="154.35481"
+             y="199.64999"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#ff0000;font-family:Arial;-inkscape-font-specification:Arial Bold">4</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="363.63635"
+           y="199.64999"
+           id="text2994-6-1-19"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-01"
+             x="363.63635"
+             y="199.64999"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#ff0000;font-family:Arial;-inkscape-font-specification:Arial Bold">1</tspan></text>
+      </g>
+      <g
+         transform="translate(-1.010101,33.333333)"
+         id="g3760">
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="53.535347"
+           y="343.08438"
+           id="text2994-6-1-09"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-51"
+             x="53.535347"
+             y="343.08438"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0000ff;font-family:Arial;-inkscape-font-specification:Arial Bold">1</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="157.23904"
+           y="343.08438"
+           id="text2994-6-1-45"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-08"
+             x="157.23904"
+             y="343.08438"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0000ff;font-family:Arial;-inkscape-font-specification:Arial Bold">1</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="259.41931"
+           y="342.84024"
+           id="text2994-6-1-82-9"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-54-7"
+             x="259.41931"
+             y="342.84024"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0000ff;font-family:Arial;-inkscape-font-specification:Arial Bold">0</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="364.64645"
+           y="343.08438"
+           id="text2994-6-1-67"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-07"
+             x="364.64645"
+             y="343.08438"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0000ff;font-family:Arial;-inkscape-font-specification:Arial Bold">1</tspan></text>
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text2994-6-1-99"
+         y="455.2056"
+         x="26.262621"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="455.2056"
+           x="26.262621"
+           id="tspan2996-3-5-324"
+           sodipodi:role="line"><tspan
+   style="fill:#0000ff"
+   id="tspan3975">1101</tspan>=1x<tspan
+   id="tspan3802"
+   style="fill:#ff0000">8</tspan>+1x<tspan
+   id="tspan3804"
+   style="fill:#ff0000">4</tspan>+0x<tspan
+   id="tspan3806"
+   style="fill:#ff0000">2</tspan>+1x<tspan
+   id="tspan3808"
+   style="fill:#ff0000">1</tspan></tspan></text>
+    </g>
+    <rect
+       style="fill:#00ff00;fill-opacity:1;stroke:#ff0000;stroke-width:7.79527569;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5616"
+       width="325.25253"
+       height="266.66666"
+       x="343.43436"
+       y="468.33691"
+       ry="18.181818" />
+    <g
+       transform="translate(14.141416,20.20202)"
+       style="display:inline"
+       id="g4217">
+      <g
+         transform="translate(168.68687,11.111111)"
+         id="g4081">
+        <g
+           transform="translate(17.581358,500.14476)"
+           style="display:inline"
+           id="g4000-8">
+          <text
+             sodipodi:linespacing="125%"
+             id="text2994-17-8"
+             y="57.225773"
+             x="320.202"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+               y="57.225773"
+               x="320.202"
+               id="tspan2996-5-7"
+               sodipodi:role="line">16</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text2994-6-1-82-1-5"
+             y="32.983372"
+             x="364.64642"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             xml:space="preserve"><tspan
+               style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+               y="32.983372"
+               x="364.64642"
+               id="tspan2996-3-5-54-2-8"
+               sodipodi:role="line">0</tspan></text>
+        </g>
+        <g
+           transform="translate(-72.317628,500.14476)"
+           style="display:inline"
+           id="g4000-8-1">
+          <text
+             sodipodi:linespacing="125%"
+             id="text2994-17-8-0"
+             y="57.225773"
+             x="320.202"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+               y="57.225773"
+               x="320.202"
+               id="tspan2996-5-7-8"
+               sodipodi:role="line">16</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text2994-6-1-82-1-5-0"
+             y="32.983372"
+             x="364.64642"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             xml:space="preserve"><tspan
+               style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+               y="32.983372"
+               x="364.64642"
+               id="tspan2996-3-5-54-2-8-2"
+               sodipodi:role="line">1</tspan></text>
+        </g>
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text2994-6-1-97-0"
+         y="630.18658"
+         x="430.79889"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0000ff;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="630.18658"
+           x="430.79889"
+           id="tspan2996-3-5-3-7"
+           sodipodi:role="line">2</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text2994-34-7-3"
+         y="630.12799"
+         x="520.54456"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0000ff;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="630.12799"
+           x="520.54456"
+           id="tspan2996-67-12-2"
+           sodipodi:role="line">A</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text2994-6-1-97-0-5"
+         y="693.82294"
+         x="373.22314"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="693.82294"
+           x="373.22314"
+           id="tspan2996-3-5-3-7-3"
+           sodipodi:role="line"><tspan
+   id="tspan4191"
+   style="fill:#0000ff">2A</tspan>=2x<tspan
+   id="tspan4193"
+   style="fill:#ff0000">16</tspan>+<tspan
+   style="fill:#0000ff"
+   id="tspan4349">A</tspan>x<tspan
+   id="tspan4195"
+   style="fill:#ff0000">1</tspan></tspan></text>
+      <g
+         id="g4161">
+        <g
+           transform="translate(96.369241,438.52859)"
+           style="display:inline"
+           id="g4000-8-2">
+          <text
+             sodipodi:linespacing="125%"
+             id="text2994-17-8-06"
+             y="57.225773"
+             x="320.202"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#ff0000;font-family:Arial;-inkscape-font-specification:Arial Bold"
+               y="57.225773"
+               x="320.202"
+               id="tspan2996-5-7-3"
+               sodipodi:role="line">16</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text2994-6-1-82-1-5-08"
+             y="32.983372"
+             x="364.64642"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+             xml:space="preserve"><tspan
+               style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+               y="32.983372"
+               x="364.64642"
+               id="tspan2996-3-5-54-2-8-1"
+               sodipodi:role="line" /></text>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="521.85999"
+           y="495.9985"
+           id="text2994-6-1-22"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-7"
+             x="521.85999"
+             y="495.9985"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#ff0000;font-family:Arial;-inkscape-font-specification:Arial Bold">1</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="BasicNum"
+     style="display:inline">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4351"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"><flowRegion
+         id="flowRegion4353"><rect
+           id="rect4355"
+           width="60.60606"
+           height="41.414143"
+           x="965.65656"
+           y="57.225796" /></flowRegion><flowPara
+         id="flowPara4357"></flowPara></flowRoot>    <rect
+       style="fill:#00ff00;fill-opacity:1;stroke:#ff0000;stroke-width:7.79527569;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect4822"
+       width="827.27271"
+       height="98.989906"
+       x="80.808083"
+       y="7.7308502" />
+    <g
+       id="g4774">
+      <text
+         sodipodi:linespacing="125%"
+         id="text2994-2"
+         y="93.774986"
+         x="336.87756"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="93.774986"
+           x="336.87756"
+           id="tspan2996-2"
+           sodipodi:role="line">B</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text2994-34"
+         y="93.774986"
+         x="393.31009"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="93.774986"
+           x="393.31009"
+           id="tspan2996-67"
+           sodipodi:role="line">A</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text2994-34-5"
+         y="93.774986"
+         x="281.55835"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="93.774986"
+           x="281.55835"
+           id="tspan2996-67-1"
+           sodipodi:role="line">C</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text2994-34-7"
+         y="93.774986"
+         x="170.37303"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="93.774986"
+           x="170.37303"
+           id="tspan2996-67-12"
+           sodipodi:role="line">E</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text2994-34-9"
+         y="93.774986"
+         x="115.53231"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="93.774986"
+           x="115.53231"
+           id="tspan2996-67-5"
+           sodipodi:role="line">F</tspan></text>
+      <g
+         transform="translate(-61.616163,-20.202017)"
+         id="g4401-2"
+         style="display:inline">
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="879.28491"
+           y="94.843674"
+           id="text2994-6-1-66"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-23"
+             x="879.28491"
+             y="94.843674"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">1</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="552.33643"
+           y="94.589767"
+           id="text2994-6-1-8-3"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-0-2"
+             x="552.33643"
+             y="94.589767"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">8</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="598.76849"
+           y="94.589767"
+           id="text2994-6-1-4-1"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-4-1"
+             x="598.76849"
+             y="94.589767"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">7</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="645.07361"
+           y="94.599533"
+           id="text2994-6-1-9-3"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-5-2"
+             x="645.07361"
+             y="94.599533"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">6</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="691.40808"
+           y="94.345627"
+           id="text2994-6-1-2-15"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-6-8"
+             x="691.40808"
+             y="94.345627"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">5</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="784.7605"
+           y="94.599533"
+           id="text2994-6-1-93-3"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-06-4"
+             x="784.7605"
+             y="94.599533"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">3</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="738.26007"
+           y="94.843674"
+           id="text2994-6-1-0-5"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-9-0"
+             x="738.26007"
+             y="94.843674"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">4</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="831.64185"
+           y="94.843674"
+           id="text2994-6-1-97-3"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-3-3"
+             x="831.64185"
+             y="94.843674"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">2</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="506.06058"
+           y="94.589767"
+           id="text2994-6-1-6-90"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-2-5"
+             x="506.06058"
+             y="94.589767"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">9</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="924.24237"
+           y="94.599533"
+           id="text2994-6-1-82-1"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-54-8"
+             x="924.24237"
+             y="94.599533"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">0</tspan></text>
+      </g>
+      <g
+         transform="translate(0,0.00976769)"
+         id="g4659">
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="379.46051"
+           y="49.135223"
+           id="text2994-6-1-6-9"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-2-3"
+             x="379.46051"
+             y="49.135223"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">10</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="326.11221"
+           y="49.379364"
+           id="text2994-6-1-6-9-1"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-2-3-9"
+             x="326.11221"
+             y="49.379364"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">11</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="268.2522"
+           y="49.379364"
+           id="text2994-6-1-6-9-1-7"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-2-3-9-7"
+             x="268.2522"
+             y="49.379364"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">12</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="212.49179"
+           y="49.135223"
+           id="text2994-6-1-6-9-1-0"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-2-3-9-8"
+             x="212.49179"
+             y="49.135223"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">13</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="156.47748"
+           y="49.379364"
+           id="text2994-6-1-6-9-1-2"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-2-3-9-4"
+             x="156.47748"
+             y="49.379364"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">14</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+           x="101.01003"
+           y="49.135223"
+           id="text2994-6-1-6-9-1-2-5"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2996-3-5-2-3-9-4-0"
+             x="101.01003"
+             y="49.135223"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">15</tspan></text>
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text2994-34-7-5"
+         y="93.774986"
+         x="225.15515"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="93.774986"
+           x="225.15515"
+           id="tspan2996-67-12-4"
+           sodipodi:role="line">D</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="convertion"
+     style="display:none">
+    <g
+       id="g7792"
+       transform="translate(63.636364,-83.838384)">
+      <g
+         transform="translate(-4.040404,0)"
+         id="g7582">
+        <rect
+           style="fill:#00ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.35433072;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect7525-57"
+           width="43.434345"
+           height="53.535355"
+           x="369.69696"
+           y="519.85205"
+           ry="19.191919" />
+        <rect
+           style="fill:#00ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.35433072;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect7525-4"
+           width="43.434345"
+           height="53.535355"
+           x="369.69696"
+           y="581.4682"
+           ry="19.191919" />
+        <rect
+           style="fill:#00ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.35021681;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect7525-9"
+           width="42.42836"
+           height="53.539467"
+           x="370.19995"
+           y="458.23383"
+           ry="19.193394" />
+        <rect
+           style="fill:#00ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.35433072;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect7525"
+           width="43.434345"
+           height="53.535355"
+           x="369.69696"
+           y="211.77126"
+           ry="19.191919" />
+        <rect
+           style="fill:#00ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.35433072;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect7525-5"
+           width="43.434345"
+           height="53.535355"
+           x="369.69696"
+           y="273.38742"
+           ry="19.191919" />
+        <rect
+           style="fill:#00ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.35433072;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect7525-3"
+           width="43.434345"
+           height="53.535355"
+           x="369.69696"
+           y="335.0036"
+           ry="19.191919" />
+        <rect
+           style="fill:#00ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.32375595;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect7525-2"
+           width="38.414417"
+           height="50.535625"
+           x="372.20691"
+           y="398.11957"
+           ry="18.116545" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5657"
+         y="251.16519"
+         x="49.055416"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           y="251.16519"
+           x="49.055416"
+           id="tspan5659"
+           sodipodi:role="line">157除以2=78  餘 1</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5657-2"
+         y="313.79144"
+         x="53.17535"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           y="313.79144"
+           x="53.17535"
+           id="tspan5659-7"
+           sodipodi:role="line">78  除以2=39  餘 0</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5657-2-0"
+         y="376.41769"
+         x="53.4566"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           y="376.41769"
+           x="53.4566"
+           id="tspan5659-7-8"
+           sodipodi:role="line">39  除以2=19  餘 1</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5657-2-0-6"
+         y="439.04398"
+         x="49.055416"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           y="439.04398"
+           x="49.055416"
+           id="tspan5659-7-8-4"
+           sodipodi:role="line">19  除以2=9     餘 1</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5657-2-0-6-8"
+         y="501.6702"
+         x="53.835354"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           y="501.6702"
+           x="53.835354"
+           id="tspan5659-7-8-4-3"
+           sodipodi:role="line">9    除以2=4     餘 1</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5657-2-0-6-8-0"
+         y="564.29651"
+         x="53.535351"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           y="564.29651"
+           x="53.535351"
+           id="tspan5659-7-8-4-3-3"
+           sodipodi:role="line">4   除以2=2      餘 0</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5766"
+         y="680.45813"
+         x="520.20197"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           y="680.45813"
+           x="520.20197"
+           id="tspan5768"
+           sodipodi:role="line">1  0  0  1  1  1  0  1</tspan></text>
+      <rect
+         ry="19.315142"
+         y="577.62122"
+         x="234.53685"
+         height="51.128315"
+         width="33.956596"
+         id="rect7527"
+         style="fill:#00ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.35433072;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:0.35433071, 0.35433071;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5657-2-0-6-8-0-3"
+         y="618.84192"
+         x="56.565655"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           y="618.84192"
+           x="56.565655"
+           id="tspan5659-7-8-4-3-3-9"
+           sodipodi:role="line">2   除以2=1      餘 0</tspan></text>
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         id="path5791"
+         d="m 407.07071,235.00357 c 446.46464,0 453.53535,1.0101 453.53535,1.0101 l 0,394.9495"
+         style="fill:none;stroke:#000000;stroke-width:7.08661413;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7.08661417, 7.08661417;stroke-dashoffset:0;marker-end:url(#Arrow2Send)" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         id="path5793"
+         d="m 249.49495,630.96317 0,37.37374 260.60606,0"
+         style="fill:none;stroke:#000000;stroke-width:7.08661413;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7.08661417, 7.08661417;stroke-dashoffset:0;marker-end:url(#Arrow2Send)" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         id="path5795"
+         d="m 412.82563,600.35446 166.15132,0 10e-6,34.86337"
+         style="fill:none;stroke:#000000;stroke-width:6.47524405;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6.47524426, 6.47524426;stroke-dashoffset:0;marker-end:url(#Arrow2Send)" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         id="path5797"
+         d="m 415.15152,295.60963 396.96969,1.01011 0,331.31312"
+         style="fill:none;stroke:#000000;stroke-width:7.08661413;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7.08661417, 7.08661417;stroke-dashoffset:0;marker-end:url(#Arrow2Send)" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         id="path5799"
+         d="m 417.17172,364.2965 351.51515,0 -1.0101,262.62627"
+         style="fill:none;stroke:#000000;stroke-width:7.08661413;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7.08661417, 7.08661417;stroke-dashoffset:0;marker-end:url(#Arrow2Send)" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         id="path5801"
+         d="m 407.00056,421.80212 307.44901,0 0.96987,208.21713"
+         style="fill:none;stroke:#000000;stroke-width:6.9463315;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6.94633174, 6.94633174;stroke-dashoffset:0;marker-end:url(#Arrow2Send)" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         id="path5803"
+         d="m 413.95337,491.38119 256.56493,0 0.90339,139.75455"
+         style="fill:none;stroke:#000000;stroke-width:6.71053123;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6.71053117, 6.71053117;stroke-dashoffset:0;marker-end:url(#Arrow2Send)" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         id="path5805"
+         d="m 410.88637,548.92535 214.22116,-1.0152 -10e-6,83.24721"
+         style="fill:none;stroke:#000000;stroke-width:6.63712454;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6.6371248, 6.6371248;stroke-dashoffset:0;marker-end:url(#Arrow2Send)" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="conversion16">
+    <g
+       id="g8053"
+       transform="translate(84.848485,30.30303)">
+      <text
+         sodipodi:linespacing="125%"
+         id="text8047"
+         y="250.15509"
+         x="533.33331"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           y="250.15509"
+           x="533.33331"
+           id="tspan8049"
+           sodipodi:role="line">9  D</tspan></text>
+      <rect
+         ry="18.914885"
+         y="130.17117"
+         x="325.47064"
+         height="50.068813"
+         width="45.018307"
+         id="rect7527-8"
+         style="fill:#00ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.40373296;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:0.40373295, 0.40373295;stroke-dashoffset:0" />
+      <rect
+         ry="19.170311"
+         y="127.96301"
+         x="429.32309"
+         height="53.475079"
+         width="59.535686"
+         id="rect7525-34"
+         style="fill:#00ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.4146066;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5657-4"
+         y="169.347"
+         x="98.550369"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Kaiti Std;-inkscape-font-specification:Adobe Kaiti Std"
+         xml:space="preserve"><tspan
+           y="169.347"
+           x="98.550369"
+           id="tspan5659-6"
+           sodipodi:role="line">157除以16= 9  餘 13</tspan></text>
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         id="path5791-1"
+         d="m 496.85654,153.07221 95.49481,1.01067 0,51.73753"
+         style="fill:none;stroke:#000000;stroke-width:6.86027336;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6.86027352, 6.86027352;stroke-dashoffset:0;marker-end:url(#Arrow2Send)" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         id="path5793-9"
+         d="m 347.47475,187.52882 1.0101,48.48485 169.69697,1.0101"
+         style="fill:none;stroke:#000000;stroke-width:7.08661413;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7.08661417, 7.08661417;stroke-dashoffset:0;marker-end:url(#Arrow2Send)" />
+    </g>
+  </g>
+</svg>

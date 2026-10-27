@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>irRemoteCar</title>
+<link type="text/css" rel="stylesheet" href="kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+<body class="w3-container f24">
+  <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>紅外線接收器 改善接收器穩定度:<br>Vcc與GND間 接一個22uF電容<br>輸出接腳 接20k歐姆提升電阻</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>#include &lt;IRLibAll.h&gt;<br>#define&nbsp;&nbsp; DirR&nbsp;&nbsp;&nbsp; 12<br>#define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>//#define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 6<br>//#define&nbsp;&nbsp; PwmR&nbsp; 5<br>#define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>#define&nbsp;&nbsp; PwmR&nbsp; 10<br>IRrecvPCI&nbsp; myReceiver(2);<br>IRdecode&nbsp; myDecoder;&nbsp; <br>uint32_t val;<br><br>void cm(int dL,int dR,int sL,int sR){<br>&nbsp; analogWrite(PwmL,0);<br>&nbsp; analogWrite(PwmR,0);<br>&nbsp; delay(200);//防止突然反向<br>&nbsp; digitalWrite(DirL,dL);<br>&nbsp; digitalWrite(DirR,dR);<br>&nbsp; analogWrite(PwmL,sL);<br>&nbsp; analogWrite(PwmR,sR);<br>}<br><br>void setup()<br>{<br>&nbsp; pinMode( DirL , OUTPUT);<br>&nbsp; pinMode( DirR , OUTPUT);<br>&nbsp; // pinMode(9,INPUT_PULLUP);<br>&nbsp;// pinMode(10,INPUT_PULLUP);<br>&nbsp; cm(HIGH,HIGH,0,0);<br>&nbsp; myReceiver.enableIRIn();<br>&nbsp; <br>}<br><br>void loop()<br>{if (myReceiver.getResults()) {<br>&nbsp;&nbsp;&nbsp; myDecoder.decode();&nbsp;&nbsp;&nbsp; //Decode it<br>&nbsp;&nbsp;&nbsp; val=myDecoder.value;<br>&nbsp;&nbsp;&nbsp;&nbsp; if (val==0xFFA25D) cm(1,1,250,250);//key :CH-<br>&nbsp;&nbsp;&nbsp;&nbsp; if (val==0xFF629D) cm(1,1,0,0);//key: CH<br>&nbsp;&nbsp;&nbsp;&nbsp; myReceiver.enableIRIn();&nbsp; //Restart receiver<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp; }</td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>//I2C LCD+遙控<br>#include &lt;IRLibAll.h&gt;<br>#include &lt;LiquidCrystal_I2C.h&gt;<br>LiquidCrystal_I2C lcd(0x3F,16,2);<br>#define&nbsp;&nbsp; DirR&nbsp;&nbsp;&nbsp; 12<br>#define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>//#define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 6<br>//#define&nbsp;&nbsp; PwmR&nbsp; 5<br>#define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>#define&nbsp;&nbsp; PwmR&nbsp; 10<br>IRrecvPCI&nbsp; myReceiver(2);<br>IRdecode&nbsp; myDecoder;&nbsp; <br>uint32_t val;<br><br>void cm(int dL,int dR,int sL,int sR){<br>&nbsp; analogWrite(PwmL,0);<br>&nbsp; analogWrite(PwmR,0);<br>&nbsp; delay(200);&nbsp; <br>&nbsp; digitalWrite(DirL,dL);<br>&nbsp; digitalWrite(DirR,dR);<br>&nbsp; analogWrite(PwmL,sL);<br>&nbsp; analogWrite(PwmR,sR);<br>}<br><br>void setup()<br>{<br>&nbsp; pinMode( DirL , OUTPUT);<br>&nbsp; pinMode( DirR , OUTPUT);<br>&nbsp; // pinMode(9,INPUT_PULLUP);<br>&nbsp;// pinMode(10,INPUT_PULLUP);<br>&nbsp; cm(HIGH,HIGH,0,0);<br>&nbsp; myReceiver.enableIRIn();<br>&nbsp; lcd.init();<br>&nbsp; lcd.backlight();<br>&nbsp; lcd.setCursor(0, 0);<br>&nbsp; lcd.setCursor(0, 0);<br>&nbsp; lcd.print("Ready to receive");<br>}<br><br>void loop()<br>{if (myReceiver.getResults()) {<br>&nbsp;&nbsp;&nbsp; myDecoder.decode();&nbsp;&nbsp;&nbsp; //Decode it<br>&nbsp;&nbsp;&nbsp; val=myDecoder.value;<br>&nbsp; if(val==0xFFFFFFFF)<br>&nbsp;&nbsp;&nbsp;&nbsp; {lcd.setCursor(0, 1);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("Reapeat");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; else if(val==0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {lcd.clear();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("unknown protocol");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {if (val==0xFFA25D) cm(1,1,250,250);//key :CH-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (val==0xFF629D) cm(1,1,0,0);//key: CH<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.clear();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("Code:");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(5, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print(val,HEX);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; myReceiver.enableIRIn();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Restart receiver<br>&nbsp; }<br>}</td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+
+
+</body></html>

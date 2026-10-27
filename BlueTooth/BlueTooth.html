@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+
+
+    
+    <title>BlueTooth</title>
+    
+  <link type="text/css" rel="stylesheet" href="kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+  <body class="w3-container f24">
+    <br>
+    <br>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td>Arduino 電路與程式</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36"><br>
+            <span class="blue36C">藍芽板</span><br>
+            <br>
+            第一組<br>
+            CS1#1<br>
+            CS1#2<br>
+            CS1#3<br>
+            CS1#4<br>
+            第二組<br>
+            CS2#1<br>
+            CS2#2<br>
+            CS2#3<br>
+            CS2#4<br>
+            <br>
+            第十組<br>
+            CS10#1<br>
+            CS10#2<br>
+            CS10#3<br>
+            CS10#4<br>
+            <br>
+            第十一組<br>
+            CS11#1<br>
+            CS11#2<br>
+            CS11#3<br>
+            CS11#4<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <br>
+    <p></p>
+    <p><br>
+    </p>
+    <p> <br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">//upload
+            to ATmega328&nbsp;&nbsp;&nbsp; <br>
+            #define&nbsp; led&nbsp; 6<br>
+            void setup() {<br>
+            delay(500);<br>
+            pinMode(led,OUTPUT);<br>
+            digitalWrite(led,LOW);<br>
+            Serial.begin(38400);<br>
+            delay(500);<br>
+            Serial.println("AT+NAME=<span>James</span>");<br>
+            delay(500);<br>
+            Serial.println("AT+PSWD=<span>1234</span>");<br>
+            delay(500);<br>
+            digitalWrite(led,HIGH);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            <br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">//upload
+            to ATmega328&nbsp; <br>
+            //IC_LCD 版本<br>
+            #define&nbsp; led&nbsp; 6<br>
+            #include &lt;Wire.h&gt;<br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            char val;<br>
+            String&nbsp; s="";<br>
+            void setup() {<br>
+            Serial.begin(38400);<br>
+            &nbsp;lcd.init(); <br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; delay(500);<br>
+            pinMode(led,OUTPUT);<br>
+            digitalWrite(led,LOW);<br>
+            <br>
+            lcd.clear();<br>
+            lcd.setCursor(0,0);<br>
+            s="AT+NAME=<span style="color: #cc0000;">James</span>";<br>
+            lcd.print(s);<br>
+            Serial.println(s);<br>
+            &nbsp;delay(500);<br>
+            &nbsp;s="";<br>
+            &nbsp; while (Serial.available()) {<br>
+            &nbsp;&nbsp;&nbsp; val = Serial.read();<br>
+            &nbsp;&nbsp;&nbsp; s=s+val;<br>
+            &nbsp;&nbsp;&nbsp; //Serial.print(val);<br>
+            &nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp; lcd.setCursor(0,1);<br>
+            &nbsp;&nbsp;&nbsp; lcd.print(s);<br>
+            delay(2000);<br>
+            lcd.clear();<br>
+            lcd.setCursor(0,0);<br>
+            s="AT+PSWD=<span style="color: #cc0000;">1234</span>";<br>
+            lcd.print(s);<br>
+            Serial.println(s);<br>
+            delay(500);<br>
+            s="";<br>
+            &nbsp; while (Serial.available()) {<br>
+            &nbsp;&nbsp;&nbsp; val = Serial.read();<br>
+            &nbsp;&nbsp;&nbsp; s=s+val;<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp; lcd.setCursor(0,1);<br>
+            &nbsp;&nbsp;&nbsp; lcd.print(s);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(10,1);<br>
+            &nbsp;lcd.print("Done!");<br>
+            <br>
+            digitalWrite(led,HIGH);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            <br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C">換上藍牙板(加上jumper)&nbsp; 上電 設定&nbsp; NAME</td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 1021px; height: 760px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/BTLED_001.png" alt=""><br>
+            <a href="svg/BT_LED.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C">以USB Uploader 上傳以下程式<br>
+            完成後 再換成 藍牙板(移除Jumper)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">#define
+            led&nbsp; 6<br>
+            int&nbsp; inB;<br>
+            void setup() {<br>
+            <br>
+            &nbsp; Serial.begin(<span>115200</span>);<br>
+            &nbsp; pinMode(led,OUTPUT) ;<br>
+            &nbsp; digitalWrite(led,LOW);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            <br>
+            &nbsp; if (Serial.available() &gt; 0) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; inB = Serial.read();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='1') digitalWrite(led,HIGH);//LED
+            ON<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='0') digitalWrite(led,LOW); //LED
+            OFF<br>
+            &nbsp;&nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p> </p>
+    <br>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td>Android 手機設定</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td>先將手機與藍芽板配對 (1234)<br>
+            <br>
+            <img src="images/btPair_003.png" alt="">&nbsp; &nbsp; &nbsp;&nbsp; <img src="images/btPair_001.png" alt=""><br>
+            <img src="images/btPair_004.png" alt="">&nbsp; <img src="images/btPair_005.png" alt=""></td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/Set_000.png" alt="">&nbsp; <img src="images/Set_001.png" alt=""></td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 726px; height: 40px;" border="1">
+      <tbody>
+        <tr>
+          <td>Android 手機程式<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/ai2_BT_001.png" alt=""><br>
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <br>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td>App Inventor 2(<a href="https://appinventor.mit.edu/explore/ai2" target="_blank">web</a>)<br><br><img alt="" src="images/ai2_BT_LED_002.png" style="width: 953px; height: 214px;"><br>
+            <a href="files/UniversalBT.aia" target="_blank">UniversalBT.aia</a><br>
+            <br>
+            <a href="files/UniversalBT.aia.zip">UniversalBT.aia.zip</a><br>
+            <a href="files/UniversalBT.apk.zip">UniversalBT.apk.zip</a><br><a href="files/UniversalBT.apk"><span style="color: #0000ee;">UniversalBT.apk</span></a><br>
+          </td>
+        </tr>
+      </tbody>
+    </table><p>
+    </p><br><p><br>
+    </p><p> </p>
+    <p> </p>
+    <br>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td>以下二選一<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/QRirobot.png"><br>
+            <a href="files/UniversalBT.apk">萬用藍芽遙控器</a></td>
+          <td><img src="images/QRiot.png"><br>
+            <br>
+            <a href="files/UniversalBT.apk">萬用藍芽遙控器</a></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td>使用 serialEvent</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">#define
+            led&nbsp; 6<br>
+            static int inB;<br>
+            void serialEvent() {<br>
+            &nbsp; inB = Serial.read();<br>
+            }<br>
+            <br>
+            void setup() {<br>
+            &nbsp;&nbsp; Serial.begin(115200);<br>
+            &nbsp;&nbsp; pinMode(led,OUTPUT) ;<br>
+            &nbsp;&nbsp; digitalWrite(led,LOW);<br>
+            }<br>
+            void loop() {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='1') digitalWrite(led,HIGH);//LED
+            ON<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='0') digitalWrite(led,LOW); //LED
+            OFF<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">#define
+            led&nbsp; 6<br>
+            static int inB;<br>
+            void serialEvent() {<br>
+            &nbsp; inB = Serial.read();<br>
+            &nbsp; if (inB=='1') digitalWrite(led,HIGH);//LED ON<br>
+            &nbsp; if (inB=='0') digitalWrite(led,LOW); //LED OFF<br>
+            }<br>
+            <br>
+            void setup() {<br>
+            &nbsp;&nbsp; Serial.begin(115200);<br>
+            &nbsp;&nbsp; pinMode(led,OUTPUT) ;<br>
+            &nbsp;&nbsp; digitalWrite(led,LOW);<br>
+            }<br>
+            void loop() {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; <br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">#define
+            led&nbsp; 6<br>
+            #define led1 7&nbsp; <br>
+            static int inB;<br>
+            void serialEvent() {<br>
+            &nbsp; inB = Serial.read();<br>
+            &nbsp; if (inB=='1') digitalWrite(led,HIGH);//LED ON<br>
+            &nbsp; if (inB=='0') digitalWrite(led,LOW); //LED OFF<br>
+            }<br>
+            <br>
+            void setup() {<br>
+            &nbsp;&nbsp; Serial.begin(115200);<br>
+            &nbsp;&nbsp; pinMode(led,OUTPUT) ;<br>
+            &nbsp;&nbsp; pinMode(led1,OUTPUT) ;<br>
+            &nbsp;&nbsp; digitalWrite(led,LOW);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;&nbsp; digitalWrite(led1,HIGH);<br>
+            &nbsp;&nbsp; delay(500); <br>
+            &nbsp;&nbsp; digitalWrite(led1,LOW);<br>
+            &nbsp;&nbsp; delay(500);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <hr>
+    <hr>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/BTcar_001.png" alt=""><br>
+            <a href="svg/BT_Car.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/PWMBoard.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/BT_Bluino.jpg" alt=""><img src="images/BT_BluinoApp.jpg" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">#define&nbsp;&nbsp;
+            DirR&nbsp;&nbsp;&nbsp; 12<br>
+            #define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            int inB;<br>
+            <br>
+            void cM(int dL,int dR,int sL,int sR){<br>
+            &nbsp; digitalWrite(DirL,dL);<br>
+            &nbsp; digitalWrite(DirR,dR);<br>
+            &nbsp; analogWrite(PwmL,sL);<br>
+            &nbsp; analogWrite(PwmR,sR);<br>
+            }<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; Serial.begin(<span>115200</span>);<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; cM(HIGH,HIGH,0,0);<br>
+            <br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; if (Serial.available() &gt; 0) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; inB= Serial.read();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='0') cM(HIGH,HIGH,0,0); //停<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='1') cM(HIGH,HIGH,255,255);//前進<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='2') cM(LOW,LOW,255,255);//後退<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='3') cM(LOW,HIGH,255,255);//逆時針<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='4') cM(HIGH,LOW,255,255);//順時針<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            }<br>
+            <br>
+            //若前進 直接 後退<br>
+            //若左轉 直接 右轉<br>
+            //可能會有什麼問題? &nbsp;&nbsp;&nbsp; </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p> </p>
+    <br>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">#define&nbsp;&nbsp;
+            DirR&nbsp;&nbsp;&nbsp; 12<br>
+            #define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            int inB;<br>
+            <br>
+            void cM(int dL,int dR,int sL,int sR){<br>
+            &nbsp; digitalWrite(DirL,dL);<br>
+            &nbsp; digitalWrite(DirR,dR);<br>
+            &nbsp; analogWrite(PwmL,sL);<br>
+            &nbsp; analogWrite(PwmR,sR);<br>
+            }<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; Serial.begin(115200);<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; cM(HIGH,HIGH,0,0);<br>
+            <br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; if (Serial.available() &gt; 0) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; inB= Serial.read();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='0') <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {cM(LOW,LOW,0,0); //停<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(200);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='1')<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; { cM(LOW,LOW,0,0); //停<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(200);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cM(HIGH,HIGH,255,255);//前進<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; }&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='2') <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cM(LOW,LOW,0,0); //停<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(200);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cM(LOW,LOW,255,255);//後退<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='3')<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; { cM(LOW,LOW,0,0); //停<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(200);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cM(LOW,HIGH,255,255);//逆時針<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='4') {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cM(LOW,LOW,0,0); //停<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(200);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cM(HIGH,LOW,255,255);//順時針<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">#define&nbsp;&nbsp;
+            DirR&nbsp;&nbsp;&nbsp; 12<br>
+            #define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            int inB;<br>
+            <br>
+            void cM(int dL,int dR,int sL,int sR){<br>
+            &nbsp; <span>digitalWrite(PwmL,0);<br>
+              &nbsp; digitalWrite(PwmR,0);<br>
+              &nbsp; delay(200);</span><br>
+            &nbsp; digitalWrite(DirL,dL);<br>
+            &nbsp; digitalWrite(DirR,dR);<br>
+            &nbsp; analogWrite(PwmL,sL);<br>
+            &nbsp; analogWrite(PwmR,sR);<br>
+            }<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; Serial.begin(115200);<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; cM(LOW,LOW,0,0);<br>
+            <br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; if (Serial.available() &gt; 0) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; inB= Serial.read();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='0') cM(LOW,LOW,0,0); //停<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='1') cM(HIGH,HIGH,255,255);//前進<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='2') cM(LOW,LOW,255,255);//後退<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='3') cM(LOW,HIGH,255,255);//逆時針<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='4') cM(HIGH,LOW,255,255);//順時針<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>使用語音控制輪型機器人(App Inventor 2)</td></tr></tbody>
+</table>
+<p></p><br>
+<hr>
+    <hr><br>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/Bt_I2C_001.png" alt=""><br>
+            <a href="svg/BT_LCDI2C.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">//<span>注意 LCD Address</span><br>
+            #include &lt;Wire.h&gt;<br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            byte inB;<br>
+            LiquidCrystal_I2C lcd(<span>0x3F</span>,16,2); <br>
+            void setup(){<br>
+            &nbsp; lcd.init(); <br>
+            &nbsp; Serial.begin(115200);<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp;<br>
+            &nbsp; }<br>
+            <br>
+            void loop(){ <br>
+            &nbsp; if (Serial.available() &gt; 0) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; inB = Serial.read();<br>
+            &nbsp; &nbsp;&nbsp; lcd.clear();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0,0);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; lcd.<span>print</span>(inB) ;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(8,0);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; lcd.<span>print</span>(<span>char(inB)</span>);<span></span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0,1);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; lcd.<span>write(inB) ;</span><br>
+            &nbsp;&nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td><a href="../ASCII.html" target="_blank">ASCII&nbsp;
+              Code</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">void
+            setup() <br>
+            {<br>
+            &nbsp; Serial.begin(9600);<br>
+            }<br>
+            void loop() <br>
+            {<br>
+            &nbsp; Serial.write(0x48); // H<br>
+            &nbsp; Serial.write(0x65); // e<br>
+            &nbsp; Serial.write(0x6C); // l<br>
+            &nbsp; Serial.write(0x6C); // l<br>
+            &nbsp; Serial.write(0x6F); // o<br>
+            &nbsp; Serial.write(0x21); // !<br>
+            &nbsp; Serial.write(0x0A); // \n&nbsp; 換行<br>
+            &nbsp; delay(1000);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">顯
+            示器: <br>
+            如 Serial Monitor , LCD <br>
+            一律將收到的8位元之二進位以ASCII 之字元顯示</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">The
+            write() command sends a raw byte across the serial line. <br>
+            print(), on the other hand, will try and interpret the number and
+            send the ASCII-encoded version of that number. <br>
+            For example, Serial.print(72) would print '7'&nbsp; '2' in the
+            console.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;"><span>參考: </span><br>
+            <a href="https://www.arduino.cc/en/Serial/Print" target="_blank">print(
+              )</a><br>
+            <a href="https://www.arduino.cc/en/Serial/Write" target="_blank">write()</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>使用Serial.write() 與Serial.read()傳送2 Byte data</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">send
+            the 16-bit value as two 8-bit values<br>
+            Serial.write(0xCC);//send the start byte<br>
+            Serial.write(sensorVal&gt;&gt;8 &amp;0xff);//send the higher byte<br>
+            Serial.write(sensorVal &amp; 0xff);// send the lower byte<br>
+          </td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">uint16_t&nbsp;
+            data = 1000;<br>
+            uint8_t&nbsp; buf[2];<br>
+            buf[0] = data &amp; 255;<br>
+            buf[1] = (data &gt;&gt; 8)&nbsp; &amp; 255;<br>
+            Serial.write(buf, 2);</td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="red36C">使用union</td></tr></tbody></table>
+<p></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24"><br>
+            <br>
+            <img src="images/union4.png" alt=""><br>
+            <br>#define Led&nbsp; 12<br>
+<span style="color: #cc0000;">union uData</span><br>
+{<br>
+byte b[2];<br>
+int value;<br>
+};<br>
+<span style="color: #cc0000;">union uData</span> data;<br>
+#define Led&nbsp; 8<br>
+void setup() {<br>
+pinMode(Led,OUTPUT);<br>
+digitalWrite(Led,0);<br>
+<span style="color: #cc0000;">data.b[0]</span>=0x34;<br>
+<span style="color: #cc0000;">data.b[1]</span>=0x12;<br>
+if(<span style="color: #cc0000;">data.value</span>==0x1234)<br>
+digitalWrite(Led,1);<br>
+}<br>
+<br>void loop() {<br>
+&nbsp; }</td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C">2個Arduino <br>使用Serial.write() 與Serial.read()傳送2 Byte data</td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C">
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue36C">送端</td>
+                </tr>
+              </tbody>
+            </table><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24"><span style="color: #330099;">nion uData<br>{<br>byte b[2];<br>int value;<br>};</span><br><br>union uData data;<br>void setup() {<br>Serial.begin(9600);<br>delay(1000);<br>}<br><br>void loop() {<br>data.value=0x3456;<br>&nbsp;//while(!(UCSR0A &amp; (1&lt;&lt;UDRE0)));// 若UDRE0=0 等待<br><span style="color: #990000;">Serial.write</span>(0x21);//起始 字元<br>&nbsp;//while(!(UCSR0A &amp; (1&lt;&lt;UDRE0)));// 若UDRE0=0 等待<br><span style="color: #990000;">Serial.write</span>(data.b[0]);<br>// while(!(UCSR0A &amp; (1&lt;&lt;UDRE0)));// 若UDRE0=0 等待<br><span style="color: #990000;">Serial.write</span>(data.b[1]);<br>delay(1000);<br>}</td></tr></tbody></table>或<br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">union uData<br>{<br>byte b[2];<br>int value;<br>};<br><br>union uData data;<br>void setup() {<br>Serial.begin(9600);<br>delay(1000);<br>}<br><br>void loop() {<br>data.value=0x3456;<br>Serial.write(0x21);//起始 字元<br>Serial.write(<span style="color: #990000;">data.b,2</span>);<br>delay(1000);<br>}</td></tr></tbody></table><br><br>
+            <br>
+            <table style="width: 100%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36C">接收端<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">#define Led&nbsp; 12<br>union uData<br>{<br>byte b[2];<br>int value;<br>};<br><br>union uData data;<br>&nbsp; <br>void setup() {<br>&nbsp;Serial.begin(9600);<br>pinMode(Led,OUTPUT);<br>digitalWrite(Led,1);<br>}<br><br>void loop() {<br>&nbsp; if(Serial.available()&gt;0)<br>{ <br>&nbsp; if(<span style="color: #990000;">Serial.read()</span>==0x21) //判斷是否為起始字元<br>&nbsp; {<br>&nbsp;&nbsp; //delay(10);//若資料傳遞不正確 可再加長<br>&nbsp;&nbsp; // Wait until data is received&nbsp; (不用delay)<br>&nbsp;&nbsp; while ( !(UCSR0A &amp; (1 &lt;&lt; RXC0)) )&nbsp; ;<br>&nbsp;&nbsp; <span style="color: #6600cc;">data.b[0]</span>=<span style="color: #990000;">Serial.read()</span>;<br>&nbsp;&nbsp; <br>//delay(10);//若資料傳遞不正確 可再加長<br>&nbsp; // Wait until data is received&nbsp; (不 用delay)&nbsp; <br>&nbsp;&nbsp; while ( !(UCSR0A &amp; (1 &lt;&lt; RXC0)) )&nbsp; ;<br>&nbsp;&nbsp; <span style="color: #6600cc;">data.b[1]</span>=<span style="color: #990000;">Serial.read()</span>;<br>&nbsp;&nbsp; if(<span style="color: #6600cc;">data.value</span>==0x3456)<br>&nbsp;&nbsp;&nbsp; { //Toggle D12<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(Led,1-digitalRead(Led));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //asm("SBI 0x03,4"); <br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; }<br>&nbsp;<br>&nbsp; }<br>&nbsp;}</td></tr></tbody></table><br>或<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">#define Led&nbsp; 12<br>union uData<br>{<br>byte b[2];<br>int value;<br>};<br><br>union uData data;<br>&nbsp;<br>void setup() {<br>&nbsp;Serial.begin(9600);<br>pinMode(Led,OUTPUT);<br>digitalWrite(Led,1);<br>}<br><br>void loop() {<br>&nbsp; if(Serial.available()&gt;0)<br>{<br>&nbsp; if(Serial.read()==0x21) //判斷是否為起始字元<br>&nbsp; {<br>&nbsp;// delay(10);//若資料傳遞不正確 可再加長<br>&nbsp; Serial.<span style="color: #990000;">readBytes</span>(<span style="color: #990000;">data.b</span>,2);<br>&nbsp;&nbsp; if(data.value==0x3456)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp; //Toggle D12<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(Led,1-digitalRead(Led));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //asm("SBI 0x03,4"); <br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; }<br>&nbsp;<br>&nbsp; }<br>&nbsp;}</td></tr></tbody></table><br>
+            </td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>使用拉桿控制輪型機器人速度(App Inventor 2)</td></tr></tbody>
+</table>
+<p>
+    </p>
+    <hr>
+    <hr>
+    <p><br>
+    </p>
+    <table style="width:100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">//<span>紅外線感測 與 藍芽遙控&nbsp; (練習程式合併)</span><br>
+            <span>//#define 與 #include 區</span><br>
+            <span>#define led&nbsp; 6</span><br>
+            #define led1&nbsp; 7<br>
+            #define irIn A3<br>
+            <span>//宣告區</span><br>
+            <span>int&nbsp; inB;</span><br>
+            int val;<br>
+            <span>//setup() 設定區:只執行一次</span><br>
+            void setup() {<br>
+            &nbsp; <span>Serial.begin(115200);<br>
+              &nbsp; pinMode(led,OUTPUT) ;<br>
+              &nbsp; digitalWrite(led,LOW);</span><br>
+            &nbsp; pinMode(led1,OUTPUT) ;<br>
+            &nbsp; digitalWrite(led1,LOW);<br>
+            }<br>
+            <span>//loop() 無限迴圈區</span><br>
+            void loop() {<br>
+            &nbsp;&nbsp;&nbsp; val=analogRead(irIn);<br>
+            &nbsp;&nbsp;&nbsp; if(val&gt;500)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(led1,LOW);<br>
+            &nbsp;&nbsp;&nbsp; else<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(led1,HIGH);<br>
+            &nbsp;&nbsp; <span>if (Serial.available() &gt; 0) {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp; inB = Serial.read();<br>
+              &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='1')
+              digitalWrite(led,HIGH);//LED ON<br>
+              &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='0') digitalWrite(led,LOW);
+              //LED OFF<br>
+              &nbsp;&nbsp; }</span><br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p><br>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/Btnetwork.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>RoboRemo(<a href="https://www.roboremo.com/" target="_blank">web</a>)(<a href="docs/manual_v214.pdf" target="_blank">pdf</a>)<br>Google play&nbsp;&nbsp; 搜尋:&nbsp; RoboRemoFree Arduino Bluetooth</td></tr></tbody></table>
+<p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+</body></html>

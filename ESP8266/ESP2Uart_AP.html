@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+
+
+
+
+
+
+
+
+    
+    <title>ESP2Uart</title>
+    <link type="text/css" rel="stylesheet" href="mystyle.css">
+  <link type="text/css" rel="stylesheet" href="kai.css"></head>
+  <body class="f24">
+    <br><br>
+    <br>
+    <br>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red36">Transparent UART<br>
+            ESP8266 as softAP<br>
+            without router (no internet)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36">1. 準備 ESP8266 Transparent UART</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C"><a href="ESP_arduinoIDE.html" target="_blank">Arduino
+              開發 ESP8266</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <p></p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><a href="https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html#soft-access-point" target="_blank"><span style="color: #0000ee;" class="blue36">ESP8266WiFi
+                Documentation</span></a><br>
+            <span style="color: #0000ee;"><span style="font-family: Verdana,Geneva,sans-serif;">(<a href="https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WiFi" target="_blank">GitHub</a>)</span></span></td>
+        </tr>
+      </tbody>
+    
+</table>
+<p><a href="http://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/soft-access-point-class.html" target="_blank"></a></p>
+<p><a href="http://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/soft-access-point-class.html" target="_blank"><br>
+      </a> </p>
+    <a href="http://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/soft-access-point-class.html" target="_blank"> </a> <a href="http://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/soft-access-point-class.html" target="_blank"> </a><a href="http://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/soft-access-point-class.html" target="_blank"> </a><a href="http://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/soft-access-point-class.html" target="_blank"> </a>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36"><a href="http://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/soft-access-point-class.html" target="_blank">Soft Access Point Class</a><br>
+            <a href="https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/soft-access-point-examples.html" target="_blank">Soft Access Point example</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36"><img src="images/WiFiMode_002a.png"><br>
+            ESP8266: &nbsp; AP + Server<br>
+            區網<br>
+<hr style="color: #cc0000;"><br>ESP8266 RX,TX接至PC或ATMeaga等晶片<br>ESP8266執行工作:&nbsp;&nbsp;&nbsp; WiFi&lt;---&gt;Uart<br><br>例1: 工作模式(ESP&lt;--&gt;PC)(GPIO 0浮接)<br><img src="images/ESP_ADP_003.png" alt=""><br><br>例2: ESP&lt;--&gt;ATMega晶片<br>ESP:RX,TX&lt;--&gt;WiFi<br><img src="images/EXPb_004.png" alt=""><br><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">1.
+            Station(手機 或 PC) 可以連到 ESP8266 Soft AP<br>
+            2. WiFi &lt;--&gt; UART</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24C"><img src="images/ESP_ADP_004.png" alt=""><br>
+            &nbsp; Arduino ESP sketch upload<br>
+            (GPIO0接地 燒錄完成浮接)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C">連線</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white; width: 646.9px;" class="blue24">ESP8266WiFi library(<a href="https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html#soft-access-point" target="_blank">web</a>)(socket server)<br><br><a href="http://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/soft-access-point-class.html" target="_blank">Soft Access Point Class</a><br>
+            <br>#include &lt;ESP8266WiFi.h&gt;<br>#define&nbsp; ssid &nbsp; "<span class="pur24">yourSSID</span>"//自訂
+            SSID CSggx<span class="pur24"></span><br>
+            #define&nbsp; pw &nbsp;&nbsp; "<span class="pur24">yourPWD8</span>"
+            //自訂密碼至少<span style="color: red;">8</span>個字<br>//&nbsp;
+            connect to this IP (可改) 預設192.168.4.1<br>
+            IPAddress ip(192, 168, <span class="pur24">40</span>, 1); <br>
+            IPAddress netmask(255, 255, 255, 0);<br>
+            IPAddress ip_gateWay(192, 168, <span class="pur24">40</span>, 1);<br>
+            <br><br><br>
+            //WiFi.mode(WIFI_AP)<br>
+            WiFi.softAP(ssid, password)<br>//預設值為192.168.4.1<br>
+            WiFi.softAPConfig (ip, ip_gateway, netmask)<br>
+            <br>
+            若有需要<br>
+            WiFi.softAPIP()&nbsp;&nbsp; //詢問IP</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <br>
+    <p></p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36">建立Server 與client 物件</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">//
+            建立 Server<br>
+            #include &lt;<a href="https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WiFi/src/ESP8266WiFi.h" target="_blank">ESP8266WiFi.h</a>&gt;<br><span style="color: #999999;" class="f18">/*<br>The <span style="color: #003300;">constructor</span> for the WiFiServer class receives as argument the port where the socket server will be listening to incoming connections. The port is specified as an integer.<br>Note that the port is one of the parameters that the <span style="color: #003300;">socket client</span> will need to know in order to be able to reach the socket server hosted on the ESP8266.<br>*/</span><br><span class="red24 f18">WiFiServer server(port)<br><span style="color: #999999;">/*<br>connect the ESP8266 to the WiFi network, so it can be reached by clients connected to that same network.<br>Call the <span style="color: #003333;">begin</span> method on the WiFiServer object. This method call is used to initialize the socket server.<br>*/</span><br></span>server.begin();<br><br>//建立連進server之client 物件<br>//#include &lt;WiFiClient.h&gt; 已於ESP8266WiFi.h include<br><br><span class="red24">WiFiClient client;&nbsp;</span>
+            //連進softAP之client</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36">Wi-Fi to UART </td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">//Wi-Fi
+            to UART&nbsp;&nbsp;&nbsp; 將此程式碼 燒至esp8266&nbsp; &nbsp;<br>
+            //AP Mode <br>
+            #include &lt;ESP8266WiFi.h&gt;<br>
+            #include &lt;WiFiClient.h&gt;//可略<br><br>
+            #define UART_BAUD 115200<br>
+            #define packTimeout 5 // ms<br>
+            #define bufferSize 8192<br>
+            //#define bufferSize 8<br>
+            #define port 9876&nbsp;&nbsp; //若使用RoboRemo 需用此Port<br>
+            #define&nbsp; ssid &nbsp; "<span class="pur24">yourSSID</span>"//自訂
+            SSID CS<span class="pur24">ggx</span><br>
+            #define&nbsp; pw &nbsp;&nbsp; "<span class="pur24">yourPWD8</span>"
+            //自訂密碼至少8個字<br>#define&nbsp; led&nbsp; 2<br><br>
+            <span class="red24" style="color: #330099;">WiFiServer server(port);</span>//設定Server port<br>
+            <span class="red24"><span style="color: #003300;">WiFiClient client;</span>&nbsp;</span>
+            //連進softAP之client<br>
+            byte buf1[bufferSize];<br>
+            byte i1=0;<br>
+            byte buf2[bufferSize];<br>
+            byte i2=0;<br>
+            <br>
+            void setup() {<br>&nbsp; pinMode(led,OUTPUT);<br>&nbsp; digitalWrite(led,1);<br>
+            &nbsp; delay(500);<br>
+            &nbsp; Serial.begin(UART_BAUD);<br><span style="color: #666666;"><span style="color: blue;">&nbsp; WiFi.mode(WIFI_AP);</span> </span><br>
+            &nbsp; <span class="red24">WiFi.softAP(ssid, pw);</span> //設為soft
+            AP<br>
+            <span style="color: #666666;">/*<br>
+              default IP address of 192.168.4.1. <br>
+              This address may be changed using softAPConfig<br>
+              softAPConfig (local_ip, gateway, subnet)<br>
+              */</span><br>
+            &nbsp;<span style="color: #666666;">&nbsp;</span> //若不改變IP(192.168.4.1) 紅色部分可省 <br>&nbsp;&nbsp; <span style="color: red;">IPAddress ip(192, 168, <span class="pur24">40</span>, 1); //&nbsp;
+            connect to this IP (可改)<br>&nbsp;&nbsp;
+           IPAddress netmask(255, 255, 255, 0);<br>&nbsp;&nbsp;
+           IPAddress ip_gateWay(192, 168, <span class="pur24">40</span>, 1);</span><br>&nbsp;&nbsp; <span class="red24">WiFi.softAPConfig(ip, </span><span class="red24">ip_gateWay,
+              netmask);</span> <br>
+            &nbsp; <span class="red24" style="color: #330099;"><br>&nbsp;&nbsp; server.begin();</span> // start TCP
+            server (initialize)<br>&nbsp;&nbsp; digitalWrite(led,0);<br>
+            }<br>
+            <br>
+            <br>
+            void loop() {<br>
+            //等待 client 連入&nbsp; <br>if(!<span style="color: #003300;">client</span>.connected()) { // if client not connected<br>
+            &nbsp;&nbsp;&nbsp; <span style="color: #003300;">client</span> = server.available(); // wait for it to
+            connect<br>
+            &nbsp;&nbsp;&nbsp; return;//若沒有client， 以下程式碼皆不執行(回loop起始點)<br>
+            &nbsp; }<br>
+            <br><span style="color: #663300;">service(client);</span><br><br>
+            }<br><br><br><span style="color: #663300;">void service(WiFiClient client){<br>
+&nbsp; // here we have a connected client<br>
+  <br>
+&nbsp; if(client.available()) {<br>
+&nbsp;&nbsp;&nbsp; while(client.available()) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buf1[i1] = (byte)client.read(); // read char from client<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(i1&lt;bufferSize-1) i1++;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; // now send to UART:<br>
+&nbsp;&nbsp;&nbsp; Serial.write(buf1, i1);<br>
+&nbsp;&nbsp;&nbsp; i1 = 0;<br>
+&nbsp; }<br>
+  <br>
+&nbsp; if(Serial.available()) {<br>
+  <br>
+&nbsp;&nbsp;&nbsp; // read the data until pause:<br>
+&nbsp; <br>
+&nbsp;&nbsp;&nbsp; while(1) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(Serial.available()) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buf2[i2] = (char)Serial.read(); // read char from UART<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(i2&lt;bufferSize-1) i2++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //delayMicroseconds(packTimeoutMicros);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(packTimeout);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(!Serial.available()) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp; <br>
+&nbsp;&nbsp;&nbsp; // now send to WiFi:<br>&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #333300;"><span style="color: #333300;">cl</span>ient.flush();<br></span><span style="color: #663300;"><span style="color: #333300;"><span style="color: #333300;">&nbsp;&nbsp;&nbsp;&nbsp; </span></span>client.write((char*)buf2, i2);<br>
+&nbsp;&nbsp;&nbsp; i2 = 0;<br>
+&nbsp; }<br>
+&nbsp;}<br><br></span><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><span style="color: #666666;">//return (<a href="https://www.arduino.cc/reference/en/language/structure/control-structure/return/" target="_blank">web</a>)<br></span>
+  <span style="color: #666666;"><br>
+void loop() {<br>
+&nbsp; // brilliant code idea to test here<br></span>
+  <span style="color: #666666;"><br>
+&nbsp; return;<br></span>
+  <span style="color: #666666;"><br>
+&nbsp; // the rest of a dysfunctional sketch here<br>
+&nbsp; // this code will never be executed<br>
+}</span></td></tr></tbody>
+</table></td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//設定 ESP8266為AP<br>#define&nbsp; ssid&nbsp;&nbsp; "yourSSID"//自訂 SSID CSggx<br>#define&nbsp; pw&nbsp;&nbsp;&nbsp; "yourPWD8" //自訂密碼至少8個字<br><span style="color: red;" class="f24">WiFi.softAP(ssid, pw); //預設&nbsp; ip:192.168.4.1<br><br><br><span style="color: #cc33cc;" class="f24">若有需要自訂IP:<br>IPAddress ip(192, 168, 40, 1); //&nbsp; connect to this IP (可改)<br>IPAddress netmask(255, 255, 255, 0);<br>IPAddress ip_gateWay(192, 168, 40, 1);<br>WiFi.softAPConfig(ip, ip_gateWay, netmask);</span><br><br></span><span style="color: #330099;"></span>
+<hr style="color: black; border-style: solid; margin-left: 0px; margin-right: auto;"><span style="color: #330099;">//設定 並啟動Server<br></span><span style="color: red;"><span style="color: #003300;">#define port 9876</span>&nbsp;&nbsp; //若使用RoboRemo 需用此Port<br><span style="color: #003300;">WiFiServer server(port);</span>//設定Server port<br><span style="color: #003300;">WiFiClient client;&nbsp;</span> //連進softAP之client<br></span><span style="color: #003300;">server.begin()</span>;<br>
+<hr style="color: black; margin-left: 0px; margin-right: auto;">//撰寫服務程式 如: void service(){}<br>
+<hr style="color: black; margin-left: 0px; margin-right: auto;">//loop()<br>//Server 等待連線<br>//連入者給于 client 物件<br>//service(client)&nbsp; 服務連入者</td></tr></tbody></table>
+<p></p><br>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C"><a href="APExample.html" target="_blank">建立AP範例</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C">服務</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left;width: 50%"><a href="http://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/server-class.html" target="_blank">Server Class</a><br>
+            <br>
+            <br>
+            <br>
+            <img src="images/server_001.png" alt=""><br>
+            WiFiServer server(port)<br>
+            server.begin()<br>
+            <br>
+          </td>
+          <td style="text-align: left;width: 50%" class="blue24"><a href="http://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/client-class.html" target="_blank" class="blue24">Client Class</a><br>
+            <img src="images/client_001.png" alt=""><br>
+            <br>
+            #include &lt;WiFiClient.h&gt;<br>
+            WiFiClient client<br>
+            client.connect(server, port)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24C">當Server 需用到Server Class 與 Client Class<br>
+            啟動Server 等待Client 連入<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <hr>
+    <hr>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36">2. 使用ESP8266 UART Transparent</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24C"><img src="images/ESP_ADP_003.png" alt=""><br>
+            通訊模式</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24">PC 或 NB 當 client<br>
+            先將PC 或 NB 以WiFi 連到 ESP8266 AP<br>
+            開啟SocketTest <br>
+            <img src="images/socket_002.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="files/SocketTest.zip">SocketTest.zip</a><br>
+            <br>
+            <img src="images/socket.png" alt=""><br>
+            <br>
+            <img src="images/socket_003.png" alt=""><br>
+            <br>
+            試試從Serial monitor 傳送 OK!<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36">Google Play&nbsp; 搜尋TCP<br>
+            <br>
+            <img src="images/socket_011.png" alt=""><br>
+            <br>
+            <br>
+            <img src="images/socket_012.png" alt=""><br>
+            <img src="images/socket_013.png" alt=""><br>
+            <br>
+            <img src="images/socket_014.png" alt=""><br>
+            <br>
+            <img src="images/socket_015.png" alt=""><br>
+            <br>
+            <img src="images/socket_010.png" alt=""><br>
+            <br>
+            試試其他APP</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24">使用app inventor 自行設計app<br>
+            <img src="images/UwiFi.jpg" alt=""><br>
+            <img src="images/universalWiFi.png" alt=""><br>
+            <a href="http://ai2.appinventor.mit.edu/reference/other/extensions.html">How
+              to use app inventor extension</a><br>
+            <br>source code<br>
+            <span style="color: #0000ee;"><a href="files/Universal_WiFi.aia.zip">Universal_WiFi.aia.zip</a><br>
+              <a href="files/Universal_WiFi_aia_aix.zip">Universal_WiFi.aia,aixs.zip</a>(含
+              extensions)<br>
+              <br>
+              apk<br>
+              <a href="files/Universal_WiFi.txt">Universal_WiFi.txt(更名
+                --&gt;apk)</a><br>
+              <a href="files/Universal_WiFi.apk.zip">Universal_WiFi.apk.zip</a><br><br></span><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>WiFi Manager Extension(<a href="https://puravidaapps.com/wifi.php" target="_blank">web</a>) </td></tr></tbody></table><span style="color: #0000ee;">若有問題:開啟 手機 位置<br>
+            </span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24C">將ESP-01 與ATMEGA328P-PU 連接</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24C"><img src="images/ThingSpeak_008.png" alt=""><br>
+            <img src="images/EXPb_003.png" alt=""><br>
+            <br>
+            <br>
+            <img src="images/EXPb_004.png" alt=""><br>
+            Arduino 工作模式</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C">使用ESP8266 控制 LED</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//
+            將此程式燒入 ATMEGA328P-PU<br>
+            #define led&nbsp; <span style="color: red;">6</span><br>
+            int&nbsp; inB;<br>
+            void setup() {<br>
+            <br>
+            &nbsp; Serial.begin(<span class="red24">115200</span>);<br>
+            &nbsp; pinMode(led,OUTPUT) ;<br>
+            &nbsp; digitalWrite(led,LOW);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            <br>
+            &nbsp; if (Serial.available() &gt; 0) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; inB = Serial.read();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='1') digitalWrite(led,HIGH);//LED
+            ON<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='0') digitalWrite(led,LOW); //LED
+            OFF<br>
+            &nbsp;&nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C">使用ESP8266 控制 HwangProbot<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">#define&nbsp;&nbsp;
+            DirR&nbsp;&nbsp;&nbsp; 12<br>
+            #define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            int inB;<br>
+            <br>
+            void cM(int dL,int dR,int sL,int sR){<br>
+            &nbsp; digitalWrite(DirL,dL);<br>
+            &nbsp; digitalWrite(DirR,dR);<br>
+            &nbsp; analogWrite(PwmL,sL);<br>
+            &nbsp; analogWrite(PwmR,sR);<br>
+            }<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; Serial.begin(<span class="red24">115200</span>);<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; cM(HIGH,HIGH,0,0);<br>
+            <br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; if (Serial.available() &gt; 0) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; inB= Serial.read();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='0') cM(HIGH,HIGH,0,0); //停<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='1') cM(HIGH,HIGH,255,255);//前進<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='2') cM(LOW,LOW,255,255);//後退<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='3') cM(LOW,HIGH,255,255);//逆時針<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='4') cM(HIGH,LOW,255,255);//順時針<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p> </p>
+    <br>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36">Google Play <br>
+            <br>
+            <img src="images/RoboRemo_001.png" alt=""><br>
+            <a href="docs/RoboRemo_manual_v213.pdf" target="_blank">Manual.pdf</a><br>
+            <br>
+            說明影片<br>
+            <br>
+            <a href="https://www.roboremo.com/" target="_blank">https://www.roboremo.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_000c.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_edit_001.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_000b.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_add_001.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_add_002.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_edit_003.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_edit_004.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_edit_005.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_edit_006.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_edit_007.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_000d.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_edit_002.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_002b.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_002a.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_002.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/RoboRemo_000f.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br>
+    </p><br><p><br>
+    </p>
+    <p> </p>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36"><span class="dead-link" style="color:#888;text-decoration:line-through" title="原始連結檔案不存在,已停用">Station UART Transparent<br>
+            透過Router</span></td>
+        </tr>
+      </tbody>
+    </table><br><table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36">請練習看library 之Source code (<a href="https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WiFi" target="_blank">GitHub</a>)<br>
+          </td>
+        </tr>
+      </tbody>
+    
+</table>
+<p>
+    </p>
+    <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>WiFi event handlers</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">/*<br>&nbsp;&nbsp;&nbsp; This sketch shows how to use WiFi event handlers.<br><br>&nbsp;&nbsp;&nbsp; In this example, ESP8266 works in AP mode.<br>&nbsp;&nbsp;&nbsp; Three event handlers are demonstrated:<br>&nbsp;&nbsp;&nbsp; - station connects to the ESP8266 AP<br>&nbsp;&nbsp;&nbsp; - station disconnects from the ESP8266 AP<br>&nbsp;&nbsp;&nbsp; - ESP8266 AP receives a probe request from a station<br>*/<br><br>#include &lt;ESP8266WiFi.h&gt;<br>#include &lt;stdio.h&gt;<br><br><br>#define APSSID "esp8266"<br>#define APPSK&nbsp; "12345678"<br>#define led 2<br>const char* ssid&nbsp;&nbsp;&nbsp;&nbsp; = APSSID;<br>const char* password = APPSK;<br><br>WiFiEventHandler stationConnectedHandler;<br>WiFiEventHandler stationDisconnectedHandler;<br>WiFiEventHandler probeRequestPrintHandler;<br>WiFiEventHandler probeRequestBlinkHandler;<br><br>bool blinkFlag;<br><br>void setup() {<br>&nbsp; Serial.begin(115200);<br>&nbsp; pinMode(led, OUTPUT);<br>&nbsp; digitalWrite(led, 0);<br><br>&nbsp; // Don't save WiFi configuration in flash - optional<br>&nbsp; WiFi.persistent(false);<br><br>&nbsp; // Set up an access point<br>&nbsp; WiFi.mode(WIFI_AP);<br>&nbsp; WiFi.softAP(ssid, password);<br><br>&nbsp; // Register event handlers.<br>&nbsp; // Callback functions will be called as long as these handler objects exist.<br>&nbsp; // Call "onStationConnected" each time a station connects<br>&nbsp; stationConnectedHandler = WiFi.onSoftAPModeStationConnected(&amp;onStationConnected);<br>&nbsp; // Call "onStationDisconnected" each time a station disconnects<br>&nbsp; stationDisconnectedHandler = WiFi.onSoftAPModeStationDisconnected(&amp;onStationDisconnected);<br>&nbsp; // Call "onProbeRequestPrint" and "onProbeRequestBlink" each time<br>&nbsp; // a probe request is received.<br>&nbsp; // Former will print MAC address of the station and RSSI to Serial,<br>&nbsp; // latter will blink an LED.<br>&nbsp; probeRequestPrintHandler = WiFi.onSoftAPModeProbeRequestReceived(&amp;onProbeRequestPrint);<br>&nbsp; probeRequestBlinkHandler = WiFi.onSoftAPModeProbeRequestReceived(&amp;onProbeRequestBlink);<br>}<br><br>void onStationConnected(const WiFiEventSoftAPModeStationConnected&amp; evt) {<br>&nbsp; Serial.print("Station connected: ");<br>&nbsp; Serial.println(macToString(evt.mac));<br>}<br><br>void onStationDisconnected(const WiFiEventSoftAPModeStationDisconnected&amp; evt) {<br>&nbsp; Serial.print("Station disconnected: ");<br>&nbsp; Serial.println(macToString(evt.mac));<br>}<br><br>void onProbeRequestPrint(const WiFiEventSoftAPModeProbeRequestReceived&amp; evt) {<br>&nbsp; Serial.print("Probe request from: ");<br>&nbsp; Serial.print(macToString(evt.mac));<br>&nbsp; Serial.print(" RSSI: ");<br>&nbsp; Serial.println(evt.rssi);<br>}<br><br>void onProbeRequestBlink(const WiFiEventSoftAPModeProbeRequestReceived&amp;) {<br>&nbsp; // We can't use "delay" or other blocking functions in the event handler.<br>&nbsp; // Therefore we set a flag here and then check it inside "loop" function.<br>&nbsp; blinkFlag = true;<br>}<br><br>void loop() {<br>&nbsp; if (millis() &gt; 10000 &amp;&amp; probeRequestPrintHandler) {<br>&nbsp;&nbsp;&nbsp; // After 10 seconds, disable the probe request event handler which prints.<br>&nbsp;&nbsp;&nbsp; // Other three event handlers remain active.<br>&nbsp;&nbsp;&nbsp; Serial.println("Not printing probe requests any more (LED should still blink)");<br>&nbsp;&nbsp;&nbsp; probeRequestPrintHandler = WiFiEventHandler();<br>&nbsp; }<br>&nbsp; if (blinkFlag) {<br>&nbsp;&nbsp;&nbsp; blinkFlag = false;<br>&nbsp;&nbsp;&nbsp; digitalWrite(led, 1);<br>&nbsp;&nbsp;&nbsp; delay(100);<br>&nbsp;&nbsp;&nbsp; digitalWrite(led, 0);<br>&nbsp; }<br>&nbsp; delay(10);<br>}<br><br>String macToString(const unsigned char* mac) {<br>&nbsp; char buf[20];<br>&nbsp; snprintf(buf, sizeof(buf), "%02x:%02x:%02x:%02x:%02x:%02x",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);<br>&nbsp; return String(buf);<br>}</td></tr></tbody></table>
+<p><br></p>
+<p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <br>
+    <p></p>
+  
+
+</body></html>

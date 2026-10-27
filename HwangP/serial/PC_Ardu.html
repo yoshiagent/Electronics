@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>PC_Ardu</title>
+<link type="text/css" rel="stylesheet" href="mystyle.css"></head>
+<body>
+  <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue36C">人&lt;-----&gt;晶片<br>Serial Monitor 與 Arduino 通訊</td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24"><br>#define led 12<br>void setup(){<br>Serial.begin(115200);<br>pinMode(led,OUTPUT);<br>digitalWrite(led,LOW);<br>}<br>void loop(){<br>if(Serial.available()){<br>&nbsp;&nbsp;&nbsp; if(Serial.read()==<span style="color: #990000;">49</span>)<br>&nbsp; digitalWrite(led,HIGH);<br>&nbsp; else<br>&nbsp; digitalWrite(led,LOW);<br>&nbsp; delay(2000);<br>}<br>}<br><br><img src="images/read_001.png" alt=""><br><br><img src="images/read_002.png" alt=""><br><br>//試試 Serial.read()==<span style="color: #990000;">1<br></span>//試試 Serial.read()==<span style="color: #990000;">'1'</span></td></tr></tbody>
+</table>
+<p></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">Serial monitor 以ASCII code傳送資料<br><br>使用<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/read/" target="_blank">Serial.read()</a>；讀取序列埠視窗傳來的數字時<br>1.會回傳ASC II碼<br>2.將一個數字一個數字讀取，必須使用字串的方式存取傳來的數字<br>3.翻譯ASC II碼，C語言內有幾個重要的函式可以負責。<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24C">先將傳來的數字儲存成字串，再將字串轉換為數字，可透過下表來轉換字串為數字<br>
+  <br>
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>轉換字串函數</td>
+<td>轉換數字</td>
+<td>註解</td></tr>
+<tr>
+<td>atoi(字串,字數);</td>
+<td>-32768 ~ 32767</td>
+<td>字串轉整數</td></tr>
+<tr>
+<td>atol(字串,字數);</td>
+<td>-2,147,483,648 到 2,147,483,647</td>
+<td>字串轉長整數</td></tr>
+<tr>
+<td>atof(字串,字數);</td>
+<td>-3.4028235E+38 至 3.4028235E+38</td>
+<td>字串轉浮點數(小數)</td></tr></tbody>
+  </table>
+  <br>
+</td></tr></tbody></table><br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">//攝氏轉華氏<br>
+byte cmd[9] ;<br>
+void setup(){<br>
+Serial.begin(9600);<br>
+Serial.setTimeout(10); // 設定為每10毫秒結束一次讀取(數字愈小愈快)<br>
+}<br>
+  <br>
+void loop(){<br>
+if(Serial.available()){<br>
+&nbsp;Serial.readBytes(cmd,9);<br>
+&nbsp;Serial.println(<span style="color: #990000;">atof</span>(cmd)*0.6+32);<br>
+}<br>
+}<br>
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">cmd 有9個 byte<br>
+若於serial monitor 輸入25再傳送<br>
+傳了兩個byte 後每隔10ms沒資料進來，就timeout 一次<br>
+直到9次 完成讀取動作</td></tr></tbody>
+  </table>
+</td></tr></tbody></table></td></tr></tbody></table><p></p>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue36C">使用<br><span class="blue24">Serial.parseInt()(<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/parseint/" target="_blank">Arduino.cc</a>)<br>Serial.parseFloat()(<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/parsefloat/" target="_blank">Arduino.cc</a>)</span></td></tr></tbody></table>
+<p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">void setup(){<br>Serial.begin(115200);<br>Serial.setTimeout(10); // 設定為每10毫秒結束一次讀取(數字愈小愈快)<br>}<br><br>void loop(){<br>if(Serial.available()){<br>&nbsp;int x = Serial.parseInt();<br>&nbsp;Serial.println(x);<br><br>}<br>}<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>輸入12&nbsp; 23&nbsp; 50</td></tr></tbody></table><br><img src="images/serial_010.png" alt=""><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>發現每個輸入的數字下方都會有個0，作為輸入結束的代碼</td></tr></tbody></table><br><br>int x,y;<br>void setup(){<br>Serial.begin(115200);<br>Serial.setTimeout(10); // 設定為每10毫秒結束一次讀取(數字愈小愈快)<br>}<br><br>void loop(){<br>while(Serial.available()){<br>&nbsp; x = Serial.parseInt();<br>&nbsp; y = Serial.parseInt();<br>&nbsp;Serial.print(x);&nbsp; // 這邊的x就是我們輸入的值<br>
+&nbsp;Serial.print(" , ");<br>
+&nbsp;Serial.println(y); //這邊的y就是回傳的中止碼0<br>}<br>}<br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>攝氏轉華氏</td></tr></tbody></table><br>float x;<br>int y;<br>void setup(){<br>Serial.begin(115200);<br>Serial.setTimeout(10); // 設定為每10毫秒結束一次讀取(數字愈小愈快)<br>}<br><br>void loop(){<br>while(Serial.available()){<br>&nbsp; x = Serial.parseFloat();<br>&nbsp; y = Serial.parseInt();<br>&nbsp; Serial.println(x*0.6+32);&nbsp; // 這邊的x就是我們輸入的值<br>}<br>}<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>由serial monitor 控制 Servo Motor</td></tr></tbody></table>#include &lt;Servo.h&gt;<br>Servo servo;<br>int x,y;<br>void setup(){<br>Serial.begin(115200);<br>Serial.setTimeout(10); // 設定為每10毫秒結束一次讀取(數字愈小愈快)<br>servo.attach(9);<br>}<br><br>void loop(){<br>while(Serial.available()){<br>&nbsp; x = Serial.parseInt();<br>&nbsp; y = Serial.parseInt();<br>&nbsp; Serial.print(x);<br>&nbsp;Serial.print(" , ");<br>&nbsp;Serial.println(y);<br>&nbsp;servo.write(x);<br>&nbsp;delay(100);<br>} <br>}</td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+
+
+</body></html>

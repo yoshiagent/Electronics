@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+
+
+
+
+
+    
+    <title>I2C</title>
+    <link type="text/css" rel="stylesheet" href="mystyle.css">
+  <link type="text/css" rel="stylesheet" href="Kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+  <body class="w3-container f24">
+    <br><br><p></p>
+<p><br></p>
+<p></p>
+    <table style="width: 100%; " border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/arduino_atmega328_Web-copy.jpg" height="680" width="961"><br><br></td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br></p>
+<table style="width: 100%; " border="1">
+      <tbody>
+        <tr>
+          <td>
+            <p><img src="images/I2C-diagram.jpg" height="360" width="978"></p>
+<p>pull-up resistor 1K~10K (<a href="https://magicjackting.pixnet.net/blog/post/180304702" target="_blank">I2C Bus 提昇電阻之計算</a>)</p>
+<p></p><br><br>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/I2C_002.png" alt="" style="width: 832px; height: 208px;"><br><br><img src="images/I2C_014.png" alt=""><br><img src="images/I2C_015.png" alt=""><br><br><img src="images/I2C_005.png" alt="" style="width: 474px; height: 349px;"><img src="images/I2C_006.png" alt="" style="width: 407px; height: 335px;"><br><img src="images/I2C_007.png" alt="" style="width: 799px; height: 307px;"><br><br><img src="images/I2C_008.png" alt="" style="width: 957px; height: 434px;"><br><br><img src="images/I2C_003.png" alt="" style="width: 938px; height: 381px;"><br>for ATmega328P<br><img src="images/I2C_016.png" alt=""><br>
+  <img src="images/I2C_017.png" alt=""><br><img src="images/I2C_018.png" alt="" style="width: 926px; height: 258px;"><br>
+</td></tr></tbody></table><p></p>          </td>
+        </tr>
+      </tbody>
+    
+</table>
+<p></p>
+<p><br>
+    </p>
+    <table style="width:100%;" border="1">
+      <tbody>
+        <tr>
+          <td>
+            <p>address 編號長度為7位元共128個，其中某些位址保留於特殊用途，因此可用的slave位址有112個</p>
+            <p>有些IC在出廠時就預設,如:</p>
+            <p>DS1307時鐘IC的位址為:0x68</p>
+            <p>溫度感測器TC74的位址為:0x90</p>
+            <p>Wii左手把位址為:0x52</p>
+            <p><a href="http://www.i2c-bus.org/addressing/">http://www.i2c-bus.org/addressing/</a></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br></p><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>// master_sender.ino<br>#include &lt;Wire.h&gt;<br>#define&nbsp; SLAVE_ADDRESS&nbsp; 1<br>char incomingByte = 0;<br><br>void setup() { <br>&nbsp;&nbsp;&nbsp; /*join I2C bus as a Master */<br>&nbsp; Wire.begin();&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp; <br>&nbsp; Serial.begin(9600);<br>&nbsp; Serial.println("Type something to send:");<br>}<br><br>void loop() {<br>}<br><br>void serialEvent()<br>{<br>&nbsp; /* read one byte from serial port*/<br>&nbsp; incomingByte = Serial.read();<br><br>&nbsp; /* send the received data to slave */<br>&nbsp; Wire.beginTransmission(SLAVE_ADDRESS);<br>&nbsp; Wire.write(incomingByte);<br>&nbsp; Wire.endTransmission();<br>}</td>
+<td>// slave_receiver.ino<br>#include &lt;Wire.h&gt;<br>#define SLAVE_ADDRESS&nbsp; 1<br>char incomingByte = 0;<br><br>void setup() {&nbsp; <br> /* join I2C bus as a slave <br>with address 1<br>*/<br>&nbsp; Wire.begin(SLAVE_ADDRESS);<br>/* register event&nbsp; */ <br>&nbsp; Wire.onReceive(receiveEvent); <br>&nbsp; <br>&nbsp; Serial.begin(9600);<br>&nbsp; Serial.println("Received data:");<br>}<br><br>void loop() {<br>}<br><br>void receiveEvent(int howMany)<br>{<br>&nbsp; while (Wire.available()) <br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; /* receive one byte from Master*/<br>&nbsp;&nbsp;&nbsp; incomingByte = Wire.read();<br>&nbsp;&nbsp;&nbsp; Serial.print(incomingByte);<br>&nbsp; }<br>}</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>程式說明:<br><br>Master 使用 Wire.begin() 加入 I2C bus<br>當 serial port 上有收到資料時，Arduino 會自動執行 serialEvent()。<br>在 serialEvent() 函式中，Master 首先會從 serial port 讀取一個 byte 的資料，然後再將資料透過 I2C 送給 Slave 1。<br>每當 Master 要送資料給 Slave 的時候，要先呼叫 Wire.beginTransmission() 建立傳輸，緊接著呼叫 Wire.write() <span style="color: red;">把資料放到 buffer</span>，最後呼叫 Wire.endTransmission() 真正送出資料並結束傳輸。</td>
+<td>程式說明:<br><br>Slave 一樣是使用 Wire.begin() 加入 I2C bus，但是必須傳入一個參數指定所用的 address<br>利用 Wire.onReceive(receiveEvent) 註冊事件，之後當 Master 送資料給 Slave 時，Arduino 就會自動呼叫 receiveEvent()<br>在 receiveEvent() 中，程式的邏輯很簡單，只是利用 Wire.available() 檢查是否有資料，接著利用 Wire.read() 將資料出來再丟到 serial port 上。</td></tr></tbody></table>
+<p><br></p>
+<p><br>
+    </p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="width: 453.483px;">
+            <p>// 1.</p>
+            <p>// Wire Master Writer</p>
+            <p>#include &lt;Wire.h&gt;</p>
+            <p>void setup()<br>
+              {<br>
+              Wire.begin(); <br>
+              /* address optional for master*/<br>
+              }</p>
+            <p>byte x = 0;</p>
+            <p>void loop()<br>
+              {<br>
+              Wire.<span style="color: red;">beginTransmission(4)</span>;<br>
+              /* transmit to device #4*/</p>
+<p>
+              Wire.write("x is ");<br>/* sends five bytes*/</p>
+<p>
+              Wire.write(x); <br>
+              /* sends one byte */</p>
+<p>
+              Wire.<span style="color: red;">endTransmission</span>(); <br>
+              /* stop transmitting*/</p>
+            <p><span> x++;<br>
+                delay(500);<br>
+                }</span><br>
+            </p>
+          </td>
+          <td style="width: 452.517px;">
+            <p>// Wire Slave Receiver</p>
+            <p>#include &lt;Wire.h&gt;</p>
+            <p>void setup()<br>
+              {<br>
+              Wire.begin(4); <br>
+              /* join i2c bus with address #4 */<br>
+              </p><p>Wire.onReceive(receiveEvent); <br>
+              // register event<br>
+              Serial.begin(9600); <br>
+              }</p>
+            <p>void loop()<br>
+              {<br>
+              delay(100);<br>
+              }</p>
+            <p><span>void receiveEvent(int howMany)<br>
+                {<br>
+                while(1 &lt; Wire.available()) <br>
+                /* loop through all but the last <br></span><span>&nbsp;&nbsp;&nbsp; "x is "<br>*/<br>
+                {<br>
+                char c = Wire.read(); <br>
+                /* receive byte as a character*/<br>
+                Serial.print(c); <br>
+                }<br>
+                int x = Wire.read(); <br>
+                /* receive byte as an integer*/<br>
+                Serial.println(x); <br>
+                }<br>
+              </span> </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br></p>
+<table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="width: 478.9px;">
+            <p>//2.</p>
+            <p>// Wire Master <span class="red24">Reader</span>
+            </p>
+            <p><span class="red24">#include &lt;Wire.h&gt;</span></p>
+            <p>void setup()<br>
+              {<br>
+              <span class="red24">Wire.begin(); </span><br>
+              Serial.begin(9600); <br>
+              }</p>
+            <p>void loop()<br>
+              {<br>
+              <span class="red24">Wire.requestFrom(2, 6); </span><br>
+              /* request 6 bytes from slave device #2&nbsp; */</p>
+            <p> while(<span class="red24">Wire.available()</span>)
+              <br>
+              /* slave may send less than requested*/<br>
+              { <br>
+              char c = <span class="red24">Wire.read()</span>;<br>
+              /* receive a byte as character*/<br>
+              Serial.print(c); <br>
+              }</p>
+            delay(500);<br>
+            }</td>
+          <td style="width: 472.1px;">
+            <p>// Wire Slave <span class="red24">Sender</span></p>
+            <p><span class="red24">#include &lt;Wire.h&gt;</span></p>
+            <p>void setup()<br>
+              {<br>
+              <span class="red24">Wire.begin(2);</span> <br>
+              /* join i2c bus with address #2 */<br>
+              <span class="red24">Wire.onRequest(requestEvent)</span>;<br>
+              // register event<br>
+              }</p>
+            <p>void loop()<br>
+              {<br>
+              delay(100);<br>
+              }</p>
+            <br>
+            void <span class="red24">requestEvent()</span><br>
+            {<br>
+            <span class="red24">Wire.write("hello ")</span>; <br>
+            /* respond with message of 6 bytes &nbsp; as expected by master */<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<p><br></p>
+<p><br></p><br>
+<p><br></p><br>
+<p><br></p><br>
+<p><br></p>
+<p><br></p><br>
+<p><br></p><br>
+<p><br></p><br><br>
+<p></p>
+<p><br></p>
+<p><br></p><br>
+<p><br></p><br><br>
+<p><br></p><br>
+<p><br></p><br>
+<p></p>
+<p><br></p><br>
+<p><br></p>
+<p><br></p>
+<p><br>
+    </p></body></html>

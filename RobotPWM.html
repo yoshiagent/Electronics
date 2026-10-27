@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>RobotPWM</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 666px; height: 480px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/pwmMotor_001.png"><br>
+            <br>
+            <a href="svg/PWMBoard_MotorL.pdf">pdf</a>&nbsp;&nbsp;&nbsp; <a href="svg/PWMBoard_MotorL.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 778px; height: 613px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/PWMBoard.png"><br>
+            <br>
+            <br>
+            <a href="svg/PWMBoard.pdf">pdf</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+              href="svg/PWMBoard.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 1110px; height: 847px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/PWMBoard_002.png"><br>
+            <a href="svg/ATMEGA_PWM_Driver.pdf">pdf&nbsp;</a>&nbsp; <a href="svg/ATMEGA_PWM_Driver.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <table style="width: 1057px; height: 544px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white; width: 507px;"><br>
+            #define&nbsp;&nbsp; DirL &nbsp;&nbsp; 11<br>
+            #define &nbsp; DirR &nbsp;&nbsp; 12<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; digitalWrite(DirL,HIGH);<br>
+            &nbsp; digitalWrite(DirR,HIGH);<br>
+            &nbsp; analogWrite(PwmL,255);<br>
+            &nbsp; analogWrite(PwmR,255);<br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; <br>
+            }<br>
+            //<span class="blue24C">直行校正<br>
+              //試試後退、順時針自轉、逆時針自轉</span><br>
+            <span class="blue24C">、逆時針繞圓圈</span><span class="blue24C">、順時針繞圓圈<br>
+              //將M2反過來接再試試<br>
+            </span> </td>
+          <td style="width: 238.833px;"><img style="width: 534px; height: 293px;"
+              alt="" src="images/PWMBoard.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1262px; height: 980px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white; width: 471px;">//<span
+              class="red36C">前進函式</span><br>
+            #define&nbsp;&nbsp; DirR &nbsp;&nbsp; 12<br>
+            #define &nbsp; DirL &nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            <br>
+            void <span class="red24">cF()</span>{<br>
+            &nbsp; digitalWrite(DirL,HIGH);<br>
+            &nbsp; digitalWrite(DirR,HIGH);<br>
+            &nbsp; analogWrite(PwmL,255);<br>
+            &nbsp; analogWrite(PwmR,255);<br>
+            }<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; <span class="red24">cF()</span>;<br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; <br>
+            }</td>
+          <td style="width: 737.75px;"><img alt="" src="images/function_001.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 981px; height: 645px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//<span
+              class="red36C">後退函式</span><br>
+            #define&nbsp;&nbsp; DirR &nbsp;&nbsp; 12<br>
+            #define &nbsp; DirL &nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            <br>
+            void <span class="red24">cB()</span>{<br>
+            &nbsp; digitalWrite(DirL,LOW);<br>
+            &nbsp; digitalWrite(DirR,LOW);<br>
+            &nbsp; analogWrite(PwmL,255);<br>
+            &nbsp; analogWrite(PwmR,255);<br>
+            }<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; <span class="red24">cB()</span>;<br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; <br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 981px; height: 645px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//<span
+              class="red36C">前進3秒,後退3秒</span><br>
+            #define&nbsp;&nbsp; DirR &nbsp;&nbsp; 12<br>
+            #define &nbsp; DirL &nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            <br>
+            void <span class="red24">cF()</span>{<br>
+            &nbsp; digitalWrite(DirL,HIGH);<br>
+            &nbsp; digitalWrite(DirR,HIGH);<br>
+            &nbsp; analogWrite(PwmL,255);<br>
+            &nbsp; analogWrite(PwmR,255);<br>
+            }<br>
+            <br>
+            void <span class="red24">cB()</span>{<br>
+            &nbsp; digitalWrite(DirL,LOW);<br>
+            &nbsp; digitalWrite(DirR,LOW);<br>
+            &nbsp; analogWrite(PwmL,255);<br>
+            &nbsp; analogWrite(PwmR,255);<br>
+            }<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; <br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; <span class="red24">cF()</span>;<br>
+            &nbsp; delay(3000);<br>
+            <span class="red24">&nbsp; cB()</span>;<br>
+            &nbsp; delay(3000);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 1037px; height: 916px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//<span
+              class="red36C">前進與後退 共用函式</span><br>
+            #define&nbsp;&nbsp; DirR &nbsp;&nbsp; 12<br>
+            #define &nbsp; DirL &nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            <br>
+            void <span class="red24">cFB(int HL)</span>{<br>
+            &nbsp; digitalWrite(DirL,<span class="red24">HL</span>);<br>
+            &nbsp; digitalWrite(DirR,<span class="red24">HL</span>);<br>
+            &nbsp; analogWrite(PwmL,255);<br>
+            &nbsp; analogWrite(PwmR,255);<br>
+            }<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; <br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; <span class="red24">cFB(HIGH)</span>;<br>
+            &nbsp; delay(3000);<br>
+            <span class="red24">&nbsp; cFB(LOW)</span>;<br>
+            &nbsp; delay(3000);<br>
+            &nbsp; <br>
+            }&nbsp; </td>
+          <td><img alt="" src="images/function_002.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 981px; height: 645px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;"><br>
+            #define&nbsp;&nbsp; DirR &nbsp;&nbsp; 12<br>
+            #define &nbsp; DirL &nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            <br>
+            void <span class="red24">cM(int dL,int dR)</span>{<br>
+            &nbsp; digitalWrite(DirL,dL);<br>
+            &nbsp; digitalWrite(DirR,dR);<br>
+            &nbsp; analogWrite(PwmL,255);<br>
+            &nbsp; analogWrite(PwmR,255);<br>
+            }<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; <br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; <span class="red24">cM(HIGH,HIGH)</span>;<br>
+            &nbsp; delay(3000);<br>
+            <span class="red24">&nbsp; cM(LOW,LOW)</span>;<br>
+            &nbsp; delay(3000);<br>
+            <span class="red24">&nbsp; cM(LOW,HIGH)</span>;<br>
+            &nbsp; delay(3000);<br>
+            <span class="red24">&nbsp; cM(HIGH,LOW)</span>;<br>
+            &nbsp; delay(3000);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 981px; height: 645px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//<span
+              class="red36C">全功能函式</span><br>
+            #define&nbsp;&nbsp; DirR &nbsp;&nbsp; 12<br>
+            #define &nbsp; DirL &nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            <br>
+            void cM(<span class="red24">int dL,int dR,int sL,int sR</span>){<br>
+            &nbsp; <span class="pur24">digitalWrite(PwmL,0);<br>
+              &nbsp; digitalWrite(PwmR,0);<br>
+              &nbsp; delay(200);&nbsp; </span><br>
+            &nbsp; digitalWrite(DirL,<span class="red24">dL</span>);<br>
+            &nbsp; digitalWrite(DirR,<span class="red24">dR</span>);<br>
+            &nbsp; analogWrite(PwmL,<span class="red24">sL</span>);<br>
+            &nbsp; analogWrite(PwmR,<span class="red24">sR</span>);<br>
+            }<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; <br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp;&nbsp; <span class="red24">cM(HIGH,HIGH,255,255)</span>;<br>
+            &nbsp;&nbsp; delay(3000);<br>
+            &nbsp;&nbsp; <span class="red24">cM(LOW,LOW,255,255)</span>;<br>
+            &nbsp;&nbsp; delay(3000);<br>
+            <span class="red24">&nbsp;&nbsp; cM(HIGH,HIGH,255,150)</span>;<br>
+            &nbsp;&nbsp; delay(3000);<br>
+            &nbsp;&nbsp; <span class="red24">cM(HIGH,HIGH,150,255)</span>;<br>
+            &nbsp;&nbsp; delay(3000);<br>
+            &nbsp;&nbsp; <span class="red24">cM(HIGH,HIGH,0,0)</span>;<br>
+            &nbsp;&nbsp; delay(3000);<br>
+            &nbsp;&nbsp; <span class="red24">cM(HIGH,LOW,255,255)</span>;<br>
+            &nbsp;&nbsp; delay(3000);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <br>
+    <p> </p>
+  </body>
+</html>

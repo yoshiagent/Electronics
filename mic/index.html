@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Sound control</title>
+    <link type="text/css" rel="stylesheet" href="mystyle.css">
+  </head>
+  <body>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 818px; height: 760px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/mic_001.png" alt=""><br>
+            <a href="svg/ATMEGA_mic.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 713px; height: 905px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">//1.Serial
+            port 測試選擇電阻 (正常時vin落在500~600)<br>
+            #define Ain&nbsp; A2<br>
+            int vin;<br>
+            int diff;<br>
+            int vmax;<br>
+            int vmin;<br>
+            void setup() {<br>
+            Serial.begin(9600);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;&nbsp;&nbsp; vmax=0;<br>
+            &nbsp;&nbsp;&nbsp; vmin=1026;<br>
+            &nbsp;&nbsp;&nbsp; for(int i=0;i&lt;200;i++){<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; vin=analogRead(Ain);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if(vin&gt;vmax) vmax=vin;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if(vin&lt;vmin) vmin=vin;<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp; diff=vmax-vmin;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; Serial.print("vmax=");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; Serial.print(vmax);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; Serial.print("&nbsp; vmin=");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; Serial.print(vmin);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; Serial.print("&nbsp; diff=");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; Serial.println(diff);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; delay(500);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <hr>
+    <hr>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 916px; height: 760px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/mic_003.png" alt=""><br>
+            <a href="svg/ATMEGA_micLED.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 803px; height: 940px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">//2.a
+            聲控LED<br>
+            #define Ain&nbsp; A2<br>
+            #define&nbsp; led&nbsp; 6<br>
+            int vin;<br>
+            int diff;<br>
+            int vmax;<br>
+            int vmin;<br>
+            void setup() {<br>
+            <span class="red24">Serial.begin(9600);</span><br>
+            pinMode(led,OUTPUT);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;&nbsp;&nbsp; vmax=0;<br>
+            &nbsp;&nbsp;&nbsp; vmin=1026;<br>
+            &nbsp;&nbsp;&nbsp; for(int i=0;i&lt;200;i++){<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; vin=analogRead(Ain);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if(vin&gt;vmax) vmax=vin;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if(vin&lt;vmin) vmin=vin;<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp; diff=vmax-vmin;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; <span class="red24">Serial.print("vmax=");<br>
+              &nbsp;&nbsp;&nbsp;&nbsp; Serial.print(vmax);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp; Serial.print("&nbsp; vmin=");<br>
+              &nbsp;&nbsp;&nbsp;&nbsp; Serial.print(vmin);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp; Serial.print("&nbsp; diff=");<br>
+              &nbsp;&nbsp;&nbsp;&nbsp; Serial.println(diff);</span><br>
+            &nbsp;&nbsp;&nbsp; if(diff&gt;10){&nbsp;&nbsp;&nbsp; //可調靈敏度<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            digitalWrite(led,HIGH);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            delay(3000);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            digitalWrite(led,LOW);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            <span class="red24C">//紅色部分 測試完成後可刪除</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 803px; height: 940px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">//2.b
+            聲控開關 LED<br>
+            #define Ain&nbsp; A2<br>
+            #define&nbsp; led&nbsp; 6<br>
+            int vin;<br>
+            int diff;<br>
+            int vmax;<br>
+            int vmin;<br>
+            int flag=0;<br>
+            void setup() {<br>
+            <span class="red24">Serial.begin(9600);</span><br>
+            pinMode(led,OUTPUT);<br>
+            digitalWrite(led,flag);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;&nbsp;&nbsp; vmax=0;<br>
+            &nbsp;&nbsp;&nbsp; vmin=1026;<br>
+            &nbsp;&nbsp;&nbsp; for(int i=0;i&lt;200;i++){<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; vin=analogRead(Ain);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if(vin&gt;vmax) vmax=vin;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if(vin&lt;vmin) vmin=vin;<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp; diff=vmax-vmin;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="red24"> Serial.print("vmax=");<br>
+              &nbsp;&nbsp;&nbsp;&nbsp; Serial.print(vmax);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp; Serial.print("&nbsp; vmin=");<br>
+              &nbsp;&nbsp;&nbsp;&nbsp; Serial.print(vmin);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp; Serial.print("&nbsp; diff=");<br>
+              &nbsp;&nbsp;&nbsp;&nbsp; Serial.println(diff);</span><br>
+            &nbsp;&nbsp;&nbsp; if(diff&gt;10){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            //可調靈敏度<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            flag=1-flag;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            digitalWrite(led,flag);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            delay(500);//why?&nbsp; 註解掉 吹吹看<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp; }<br>
+            <span class="red24C">//紅色部分 測試完成後可刪除</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <table style="width: 759px; height: 854px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/micFC.png" alt=""><br>
+            <br>
+            <a href="docs/mic.pdf" target="_blank">pdf</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 761px; height: 814px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/micanaly.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <hr>
+    <hr>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 988px; height: 760px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/mic_002.png" alt=""><br>
+            <a href="svg/ATMEGA_micLCD.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 584px; height: 590px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">//
+            3. LCD<br>
+            #define Ain&nbsp; A2<br>
+            #include &lt;Wire.h&gt;<br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            int vin;<br>
+            int diff;<br>
+            int vmax;<br>
+            int vmin;<br>
+            void setup() {<br>
+            lcd.init(); // initialize the lcd<br>
+            lcd.backlight();<br>
+            lcd.setCursor(0, 0) ;<br>
+            <br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;&nbsp;&nbsp; vmax=0;<br>
+            &nbsp;&nbsp;&nbsp; vmin=1026;<br>
+            &nbsp;&nbsp;&nbsp; for(int i=0;i&lt;200;i++){<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; vin=analogRead(Ain);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if(vin&gt;vmax) vmax=vin;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if(vin&lt;vmin) vmin=vin;<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp; diff=vmax-vmin;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; lcd.clear();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0, 0) ;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; lcd.print(diff);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if(diff&gt;100){&nbsp;&nbsp; //可調靈敏度<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0, 1) ;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            lcd.print("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0, 1) ;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print(diff);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(3000);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; delay(200);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p> </p>
+  </body>
+</html>

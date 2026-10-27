@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+<title>serial Write Print</title>
+<link type="text/css" rel="stylesheet" href="mystyle.css"></head>
+<body><p><br></p>
+<p></p><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="red36C">Arduino (電腦)<br>
+與 <br>
+Serial monitor(人機介面---電腦與人的翻譯者)&nbsp;
+<br>
+</td></tr></tbody></table><p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24">ASII Code Table(<a href="docs/ASCII_CODE_TABLE.pdf" target="_blank">PDF</a>) (<a href="docs/ASCII_table.pdf" target="_blank">含extended</a>)<br><a href="https://www.rapidtables.com/convert/number/ascii-hex-bin-dec-converter.html" target="_blank">Converter</a><br><img src="images/ascii_000.png" alt=""><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24C" style="text-align: left; background-color: white;">在文字處理中, CR, LF, CR/LF是不同作業系統上使用的換行符.<br><span style="color: #cc0000;">Windows</span>採用回車 換行<span style="color: #990000;">CR/LF</span>表示下一行, <br>而<span style="color: #330099;">UNIX/Linux</span>採用換行符<span style="color: #330099;">LF</span>表示下一行，<br>蘋果機(<span style="color: black;">MAC OS系統</span>)則採用回車符<span style="color: black;">CR</span>表示下一行.<br><br>CR用符號<span class="blue24">'/r’</span>表示, 十進位制ASCII程式碼是13, 十六進位制程式碼為0x0D; <br>LF使用<span class="blue24">'/n’</span>符號表示, 十進位制ASCII程式碼是10, 十六進位制程式碼為0x0A.<br><br>所以Windows平臺上換行在文字檔案中是使用 0x0d 0x0a 兩個位元組表示, <br>而UNIX和蘋果平臺上換行則是使用0x0a或0x0d一個位元組表示.</td></tr></tbody></table><br><img src="images/ascii_001.png" alt=""><br><br><img src="images/ascii_002.png" alt=""><br><img src="images/ascii_003.png" alt=""></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/uart_001.png" alt=""><br><br><img src="images/uart_003.png" alt=""><br><br><img src="images/uart_002.png" alt=""><br><img src="images/uart_004.png" alt=""><br><br></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">PROTOCOLS: UART - I2C - SPI - Serial communications #001(11:57)(<a href="https://www.youtube.com/watch?v=IyGwvGzrqp8&amp;t=33s" target="_blank">YouTube</a>)</td></tr></tbody>
+</table><p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="red36">Serial.write() (<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/write/" target="_blank">Arduino.cc</a>)</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;"><img src="images/U.png" alt=""><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">void setup() {<br>&nbsp; Serial.begin(<span style="color: #990000;">1200</span>);<br>&nbsp; delay(1000);<br>}<br><br>void loop() {<br>Serial.write(0b01010101); <br>//Serial.write(85);<br>&nbsp;//Serial.write(0x55);<br>&nbsp;//&nbsp; Serial.write('U');<br><br>//Serial.write(0b00110011);<br>// Serial.write('3');<br><br>&nbsp; delay(20);<br>}</td></tr></tbody></table><br><br>'U'<br><img src="images/serial_U.png" alt=""><br>下降緣觸發<br>&nbsp;Autoset<br><br>'3'&nbsp;&nbsp;&nbsp; 00110011<br><img src="images/serial_3.png" alt=""><br><br>'5'&nbsp;&nbsp; 00110101<br><img src="images/serial_5.png" alt=""><br><br><br>'U'&nbsp; delay(10)&nbsp; '3'<br><img src="images/serial_U_d10_3.png" alt=""></td></tr></tbody></table></td></tr></tbody></table>
+<p><br></p><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="red36">Serial.print() (<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/print/" target="_blank">Arduino.cc</a>)<br>
+  <span class="blue24C">於Serial Monitor中顯示 印出後<span style="color: #990000;">不</span>換行</span><br>
+</td></tr></tbody>
+</table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="red36">Serial.println() (<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/println/" target="_blank">Arduino.cc</a>)<br><span class="blue24C">於Serial Monitor中顯示 印出後換行</span></td></tr></tbody>
+</table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;"><img src="images/U.png" alt=""><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">void setup() {<br>
+&nbsp; Serial.begin(1200);<br>
+&nbsp; delay(1000);<br>
+}<br>
+  <br>
+void loop() {<br>
+&nbsp;Serial.print(85);<br>
+&nbsp;//Serial.print<span style="color: #990000;">ln</span>(85);<br>
+&nbsp;//Serial.println(0x55,HEX);<br>
+&nbsp;//Serial.println(0b01010101);<br>
+&nbsp;//Serial.println('U');<br>
+&nbsp;delay(100);<br>
+}</td></tr></tbody></table><br>
+</td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24"><span style="color: #990000;">Serial.write()</span> Writes <span style="color: #990000;">binary</span> data to the serial port. <br>This data is sent as a <span style="color: #990000;">byte</span> or <span style="color: #990000;">series of bytes</span>; <br>to send the <span style="color: #330099;">characters representing the digits of a number</span> use the <span style="color: #330099;">Serial.print()</span> function instead.<br><br>Serial.<span style="color: #990000;">write(數)</span>&nbsp; : <span style="color: #990000;"><span style="color: blue;">Serial.write(123)---&gt;0111 1011</span><br></span><br><span style="color: #990000;"><span style="color: #990000;"><img src="images/serial_016.png" alt=""></span><br><span style="color: blue;">serial monitor 收到後印出</span> {<br><img src="images/serial_017.png" alt=""><br><br></span><span style="color: #990000;"><span style="color: blue;">Serial.<span style="color: #990000;">print(字)</span>&nbsp;&nbsp; : Serial.print(123)--&gt;'1' ,'2' ,'3' 一共3個Byte</span><br></span>0011 0001&nbsp; , &nbsp; 0011 0010 , 0011 0011<br><span style="color: #990000;" class="blue24"><img src="images/serial_018.png" alt=""><br><br><span style="color: black;">Serial monitor :<br>一律將收到的binary 轉為ASCII code顯示出來<br>一律將欲傳送的資料一個一個的轉為binary傳送<br>為"人"與"電腦"的翻譯者</span><br></span></td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24"><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">int sno;<br>void setup(){<br>&nbsp; Serial.begin(115200);<br>&nbsp;}<br>void loop(){<br>&nbsp;sno=Serial.<span style="color: #990000;">println</span>(123);<br>&nbsp;Serial.print("number bytes sent=");<br>&nbsp;Serial.println(sno);<br>&nbsp;delay(2000);<br>}</td></tr></tbody></table><br><img src="images/serial_034.png" alt=""><br><br>Serial.<span style="color: #990000;">println</span>(123) 從TX接腳送出5個byte<br>'1'---&gt;00110001<br>'2'---&gt;00110010<br>'3'---&gt;00110011<br>&nbsp;CR---&gt;00001101<br>LF---&gt;00001010<br><img src="images/serial_043.png" alt=""><br>Serial Monitor 由RX接腳收到<br>00110001轉為 '1'<br>
+00110010轉為 '2'<br>
+00110011轉為 '3'<br>印出後,再執行兩個無法顯示之 "控制瑪"<br>&nbsp;00001101--&gt;CR<br>
+00001010--&gt;LF</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24"><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">int sno;<br>void setup(){<br>&nbsp; Serial.begin(115200);<br>&nbsp;}<br>void loop(){<br>&nbsp;sno=Serial.<span style="color: #990000;">print</span>(123);<br>&nbsp;Serial.print("<span style="color: #990000;">\t</span> number bytes sent=");<br>&nbsp;Serial.println(sno);<br>&nbsp;delay(2000);<br>}<br><br><img src="images/serial_040.png" alt=""><br>"<span style="color: #990000;">\t<span style="color: blue;">"</span></span> 為C語言之tab<br>Serial.write(9)---&gt;00001001<br><span style="color: #330099;">Note: 不是</span><br>Serial.print(9) ---&gt;00111001<br><img src="images/serial_041.png" alt=""></td></tr></tbody></table><br><img src="images/serial_035.png" alt=""><br>Serial.print(123) 送出 <span style="color: #990000;">'1'</span>,<span style="color: #990000;">'2'</span>,<span style="color: #990000;">'3'</span>&nbsp; 之binary 共3個byte, <br>Serial Monitor 收到後 使用ASCII Code 對照表 轉為123<br><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">int sno;<br>void setup(){<br>&nbsp; Serial.begin(115200);<br>&nbsp;}<br>void loop(){<br>&nbsp;sno=Serial.<span style="color: #990000;">print</span>(123,<span style="color: #990000;">HEX</span>);<br>&nbsp;Serial.print("<span style="color: #990000;">\t</span> number bytes sent=");<br>&nbsp;Serial.println(sno);<br>&nbsp;delay(2000);<br>}</td></tr></tbody></table><br><img src="file:///C:/Dropbox/myCourse/iotRobot/HwangP/Allen/serial/images/serial_038.png" alt=""><br>Serial.<span style="color: #990000;">print</span>(123,<span style="color: #990000;">HEX</span>);&nbsp; <br>將十進位之123轉為十六進位之7B <br>從TX接腳送出2個byte<br>'7'---&gt;00110111<br>'B'---&gt;01000010<br><img src="images/serial_042.png" alt=""><br>Serial Monitor 由RX接腳收到<br>00110111 轉為&nbsp; '7'印出<br>01000010 轉為&nbsp; 'B'印出<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">int sno;<br>void setup(){<br>&nbsp; Serial.begin(115200);<br>&nbsp;}<br>void loop(){<br>&nbsp;sno=Serial.print(123,<span style="color: #990000;">BIN</span>);<br>&nbsp;Serial.print("\t number bytes sent=");<br>&nbsp;Serial.println(sno);<br>&nbsp;delay(2000);<br>}</td></tr></tbody></table><img src="images/serial_044.png" alt=""><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">int sno;<br>void setup(){<br>&nbsp; Serial.begin(115200);<br>&nbsp;}<br>void loop(){<br>&nbsp;sno=Serial.print(<span style="color: #990000;">256</span>,<span style="color: #330099;">BIN</span>);<br>&nbsp;Serial.print("\t number bytes sent=");<br>&nbsp;Serial.println(sno);<br>&nbsp;delay(2000);<br>}</td></tr></tbody></table><img src="images/serial_045.png" alt=""></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">int sno;<br>void setup(){<br>&nbsp; Serial.begin(115200);<br>&nbsp;}<br>void loop(){<br>&nbsp;sno=Serial.<span style="color: #990000;">write</span>(123);<br>&nbsp;Serial.print("<span style="color: #990000;">\t</span> number bytes sent=");<br>&nbsp;Serial.println(sno);<br>&nbsp;delay(2000);<br>}</td></tr></tbody></table><br><img src="images/serial_036.png" alt=""><br><img src="images/serial_039.png" alt=""></td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+
+</body></html>

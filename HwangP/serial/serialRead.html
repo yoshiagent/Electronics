@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+
+    <title>serialRead</title>
+<link type="text/css" rel="stylesheet" href="mystyle.css"></head>
+<body>
+  <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue36">Serial.read() (<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/read/" target="_blank">Arduino.cc</a>)</td></tr></tbody></table>The first byte of incoming serial data available (or -1 if no data is available). Data type: int.&nbsp; (-1=0xFFFF)</td></tr></tbody>
+  </table><p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue36">Serial.available()(<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/available/" target="_blank">Arduino.cc</a>)</td></tr></tbody></table>
+  Get the number of bytes (characters) available for reading from the serial port. <br>This is data that’s already arrived and stored in the serial <span style="color: #990000;">receive buffer</span> (which holds <span style="color: #990000;">64</span> bytes).<br><br>Returns<br>The number of bytes available to read.</td></tr></tbody>
+</table>
+<p><br></p>
+
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24C">收到什麼就送出什麼</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24"><span style="color: #990000;">int8_t</span>&nbsp; x;<br>void setup(){<br>Serial.<span style="color: #990000;">begin</span>(115200);<br>}<br>void loop(){<br>if(Serial.<span style="color: #990000;">available()</span>)<br>&nbsp;{<br>&nbsp; x=Serial.<span style="color: #990000;">read()</span>;<br>&nbsp; Serial.<span style="color: #990000;">write</span>(x);<br>&nbsp;}<br>}</td></tr></tbody></table><br><span class="red36C">或</span><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">void setup(){<br>Serial.<span style="color: #990000;">begin</span>(115200);<br>}<br>void loop(){<br>if(Serial.<span style="color: #990000;">available()</span>){<br>&nbsp; Serial.<span style="color: #990000;">write</span>(Serial.<span style="color: #990000;">read()</span>);<br>}<br>}</td></tr></tbody></table><br><img src="images/serial_046.png" alt=""><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24C" style="text-align: left; background-color: white;">電腦只認識0,1二進位<br>Serial monitor 將二進位 轉換成"文字"顯示給"人"看。<br>123是"1", "2", "3"三個"文字"<br>ASCII Code 為二進位與"文字"之轉換表<br>Unicode(萬國碼) 亦為二進位與"文字"之轉換表</td></tr></tbody></table><br><img src="images/serial_012.png" alt=""><br><br><img src="images/serial_013.png" alt=""><br><br><img src="images/serial_014.png" alt=""><br><br><img src="images/serial_015.png" alt=""><br><br><br><img src="images/serial_027.png" alt=""><br>
+<hr><br><br><img src="images/serial_020.png" alt=""><br><br><img src="images/serial_028.png" alt=""></td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><br><br>
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">void setup(){<br>
+Serial.begin(115200);<br>
+}<br>
+    <br>
+void loop(){<br>
+if(Serial.available()){<br>
+Serial.<span style="color: #990000;">print</span>(Serial.read());<br>
+}<br>
+}<br>
+    <br>
+</td></tr></tbody></table>
+  <br><img src="images/serial_047.png" alt=""><br><br>
+  <img src="images/serial_029.png" alt=""><br><img src="images/serial_030.png" alt=""><br>
+  <br>
+</td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><br>
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">void setup(){<br>
+Serial.begin(115200);<br>
+}<br>
+    <br>
+void loop(){<br>
+if(Serial.available()){<br>
+Serial.<span style="color: #990000;">print</span>(Serial.read(),<span style="color: #990000;">HEX</span>);<br>
+}<br>
+}</td></tr></tbody>
+  </table>
+  <br>
+  <img src="images/serial_026.png" alt=""></td></tr></tbody>
+</table>
+<p></p>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><br>
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">void setup(){<br>
+Serial.begin(115200);<br>
+}<br>
+    <br>
+void loop(){<br>
+if(Serial.available()){<br>
+Serial.<span style="color: #990000;">println</span>(Serial.read());<br>
+}<br>
+}</td></tr></tbody>
+  </table>
+  <br>
+  <img src="images/serial_031.png" alt=""><br>
+</td></tr></tbody>
+</table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">void setup(){<br>Serial.begin(115200);<br>}<br><br>void loop(){<br>if(Serial.available()){<br>Serial.<span style="color: #cc0000;">println</span>(Serial.read(),<span style="color: #990000;">HEX</span>); <br>}<br>}<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/serial_021.png" alt=""><br><br><img src="images/serial_022.png" alt=""><br><br><img src="images/serial_023.png" alt=""><br><br><img src="images/serial_024.png" alt=""><br><br><img src="images/serial_025.png" alt=""><br><br>
+</td></tr></tbody></table>  
+</td></tr></tbody></table><p></p>
+<p><br></p><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><span class="blue24C">使用中斷</span>(interrupt)<br><span class="blue24C">只要</span>receive buffer<span class="blue24C">不是空的 就會執行</span>serialEvent()<br>於 serial monitor 輸入 12345</td></tr></tbody></table><br>int rno;<br>void setup(){<br>&nbsp; Serial.begin(115200);<br>&nbsp;}<br><br>void <span style="color: #990000;">serialEvent()</span> {<br>&nbsp; delay(1);&nbsp;&nbsp; //註解掉 試試 (會分開讀取)<br>&nbsp; rno=Serial.available();<br>&nbsp; Serial.print("receiced number= ");<br>&nbsp; Serial.println(rno);<br>&nbsp; if(rno&gt;0){<br>&nbsp;&nbsp; for(int i=0;i&lt;rno;i++){<br>&nbsp;&nbsp; Serial.<span style="color: #990000;">println</span>(Serial.read());}<br>&nbsp;&nbsp; }<br>}<br>void loop(){<br>&nbsp;<br>}<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/serial_032.png" alt=""><br>
+<hr><span class="blue24C">沒有</span>delay(1);<br><img src="images/serial_033.png" alt=""></td></tr></tbody></table><br>int rno;<br>void setup(){<br>&nbsp; Serial.begin(115200);<br>&nbsp;}<br><br>void serialEvent() {<br>&nbsp; delay(1);&nbsp;&nbsp; //註解掉 試試 (會分開讀取)<br>&nbsp; rno=Serial.available();<br>&nbsp; Serial.print("receiced number= ");<br>&nbsp; Serial.println(rno);<br>&nbsp; if(rno&gt;0){<br>&nbsp;&nbsp; for(int i=0;i&lt;rno;i++){<br>&nbsp;&nbsp; Serial.<span style="color: #990000;">write</span>(Serial.read());}<br>&nbsp;&nbsp; }<br>}<br>void loop(){<br>&nbsp;<br>}<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/serial_037.png" alt=""><br></td></tr></tbody></table><br><br></td></tr></tbody></table>
+<p></p><br>
+<p><br></p>
+</body></html>

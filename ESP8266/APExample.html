@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>APExample</title>
+    <link type="text/css" rel="stylesheet" href="mystyle.css">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">//
+            預設IP為192.168.4.1<br>
+            #include &lt;ESP8266WiFi.h&gt;<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; Serial.begin(115200);<br>
+            &nbsp; Serial.println();<br>
+            <br>
+            &nbsp; Serial.print("Setting soft-AP ... ");<br>
+            &nbsp; boolean result = WiFi.softAP("SSID", "Password");<br>
+            &nbsp; if(result == true)<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; Serial.println("Ready");<br>
+            &nbsp; }<br>
+            &nbsp; else<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; Serial.println("Failed!");<br>
+            &nbsp; }<br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; Serial.printf("Stations connected = %d\n",
+            WiFi.softAPgetStationNum());<br>
+            &nbsp; delay(3000);<br>
+            }<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">//
+            更改IP<br>
+            #include &lt;ESP8266WiFi.h&gt;<br>
+            //<span class="pur24">11</span> 依各組不同12,21,22,31,32...<br>
+            IPAddress&nbsp; ip(192, 168, <span class="pur24">11</span>, 1);<br>
+            //一般ipGateway與ip設為相同<br>
+            IPAddress&nbsp; ipGateWay(192, 168, <span class="pur24">11</span>,
+            1);<br>
+            IPAddress&nbsp; netmask(255, 255, 255, 0);<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; Serial.begin(115200);<br>
+            &nbsp; Serial.println();<br>
+            <br>
+            &nbsp; Serial.print("Setting soft-AP ... ");<br>
+            &nbsp;<span class="red24"> boolean result = WiFi.softAP("SSID",
+              "Password");</span><br>
+            &nbsp; if(result == true)<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; Serial.println("Ready");<br>
+            &nbsp; }<br>
+            &nbsp; else<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; Serial.println("Failed!");<br>
+            &nbsp; }<br>
+            <br>
+            <span class="black24">&nbsp; WiFi.softAPConfig(ip, </span><span class="black24"><span
+                class="red24">ipGateWay</span>, netmask)</span>; <br>
+            &nbsp; <br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; Serial.printf("Stations connected = %d\n",
+            WiFi.softAPgetStationNum());<br>
+            &nbsp; delay(3000);<br>
+            }<br>
+            /* <br>
+            請以手機連入此AP<br>
+            */<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

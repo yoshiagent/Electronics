@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    
+    <title>DHT11</title>
+    <link type="text/css" rel="stylesheet" href="mystyle.css">
+  <link type="text/css" rel="stylesheet" href="kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+  <body class="f24 w3-container"><br><table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/DHT11_001.png" alt=""><br>
+            <img src="images/DHT11_002.png" alt=""><br>
+            <br>
+            <img src="images/DHT11_001a.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/ThingSpeak_005.png" alt=""><br>
+            <img src="images/ThingSpeak_006.png" alt=""><br>
+            <br>
+            <br>
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24"><img src="images/DHT11_003.png" alt=""><br>
+            <br>
+            <img src="images/DHT11_004.png" alt=""><br>
+            <br>
+            <span class="blue24C">或</span><br>
+            將以下兩個檔案 解壓縮至libraries<br>
+            <a href="files/DHT.zip">DHT.zip</a><br>
+            <a href="files/Adafruit_Sensor.zip">Adafruit_Sensor.zip</a><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">#include
+            "DHT.h"<br>
+            #define dhtPin 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //讀取DHT11 Data&nbsp;
+            (GPIO2接至D8)<br>
+            #define dhtType <span style="color: red;">DHT11</span> //選用DHT11&nbsp;&nbsp; <br>
+            <br>
+            <span style="color: #330099;">DHT dht(dhtPin, dhtType)</span>; // Initialize DHT sensor<br>
+            <br>
+            void setup() {<br>
+            &nbsp; Serial.begin(115200);<br>
+            &nbsp; <span style="color: #330099;">dht.begin()</span>;//啟動DHT<br>&nbsp; delay(2000);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; float h = <span style="color: #330099;">dht.readHumidity()</span>;//讀取濕度<br>&nbsp; delay(2000);<br>
+            &nbsp; float t = <span style="color: #330099;">dht.readTemperature()</span>;//讀取攝氏溫度<br>&nbsp; delay(2000);<br>
+            &nbsp; float f = <span style="color: #330099;">dht.readTemperature(true)</span>;//讀取華氏溫度<br>&nbsp; delay(2000);<br>
+            &nbsp; if (isnan(h) || isnan(t) || isnan(f)) {<br>
+            &nbsp;&nbsp;&nbsp; Serial.println("無法從DHT傳感器讀取！");<br>
+            &nbsp;&nbsp;&nbsp; return;<br>
+            &nbsp; }<br>
+            &nbsp; Serial.print("濕度: ");<br>
+            &nbsp; Serial.print(h);<br>
+            &nbsp; Serial.print("%");<br>
+            &nbsp; Serial.print("&nbsp;&nbsp;&nbsp; 攝氏溫度: ");<br>
+            &nbsp; Serial.print(t);<br>
+            &nbsp; Serial.print("*C");<br>
+            &nbsp; Serial.print("&nbsp;&nbsp;&nbsp; 華氏溫度: ");<br>
+            &nbsp; Serial.print(f);<br>
+            &nbsp; Serial.println("*F");<br>
+            &nbsp; delay(2000);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p>
+<p><a href="../LCDI2C/I2C_LCD.html" target="_blank">I2C LCD</a></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">#include &lt;LiquidCrystal_I2C.h&gt;<br>#include "DHT.h"<br>#define dhtPin 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //讀取DHT11 Data&nbsp; (GPIO2接至D8)<br>#define dhtType DHT11 //選用DHT11&nbsp; <br><br>DHT dht(dhtPin, dhtType); // Initialize DHT sensor<br>LiquidCrystal_I2C lcd(0x3F,16,2);<br>void setup() {<br>&nbsp; Serial.begin(115200);<br>&nbsp; lcd.init();<br>&nbsp; lcd.backlight();<br>&nbsp; dht.begin();//啟動DHT<br>}<br><br>void loop() {<br>&nbsp; <br>&nbsp; float h = dht.readHumidity();//讀取濕度<br>&nbsp; delay(2000);<br>&nbsp; float t = dht.readTemperature();//讀取攝氏溫度<br>&nbsp; delay(2000);<br>&nbsp; if (isnan(h) || isnan(t)) {<br>&nbsp;&nbsp;&nbsp; return;<br>&nbsp; }<br>&nbsp;&nbsp; lcd.setCursor(0,0);<br>&nbsp;&nbsp; lcd.print("h: ");<br>&nbsp;&nbsp; lcd.print(h);<br>&nbsp;&nbsp; lcd.setCursor(0,1);<br>&nbsp;&nbsp; lcd.print("t: ");<br>&nbsp;&nbsp; lcd.print(t);<br>&nbsp;&nbsp; delay(2000);//延時5秒<br>}</td></tr></tbody></table>
+<p><br></p>
+<p><br>
+    </p>
+    <p><br>
+    </p>
+</body></html>

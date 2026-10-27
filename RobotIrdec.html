@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>紅外線遙控機器人</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <table style="width: 697px; height: 55px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C"><a href="iRremoteSerial.html">紅外線遙控器解碼板</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 778px; height: 613px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/PWMBoard.png"><br>
+            <br>
+            <br>
+            <a href="svg/PWMBoard.pdf">pdf</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+              href="svg/PWMBoard.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 1110px; height: 847px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/PWMBoard_002.png"><br>
+            <a href="svg/ATMEGA_PWM_Driver.pdf">pdf&nbsp;</a>&nbsp; <a href="svg/ATMEGA_PWM_Driver.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 761px; height: 420px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/PWMBoard_001.png"><br>
+            <br>
+            <br>
+            <a href="svg/PWMBoard_Motor.pdf">pdf</a>&nbsp; <a href="svg/PWMBoard_Motor.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1222px; height: 849px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/PWMiRdecodControl.png"><br>
+            <br>
+            <a href="svg/ATMEGA_PWM_DriverIrDec.pdf">pdf&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="svg/ATMEGA_PWM_DriverIrDec.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 1159px; height: 730px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/irDecSerial_02.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 961px; height: 479px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/irDcoder_003a.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 981px; height: 864px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;"><br>
+            #define&nbsp;&nbsp; DirR &nbsp;&nbsp; 12<br>
+            #define &nbsp; DirL &nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            int irin;<br>
+            <br>
+            void <span class="red24">cM(int dL,int dR,int sL,int sR)</span>{<br>
+            &nbsp; digitalWrite(DirL,<span class="red24">dL</span>);<br>
+            &nbsp; digitalWrite(DirR,<span class="red24">dR</span>);<br>
+            &nbsp; analogWrite(PwmL,<span class="red24">sL</span>);<br>
+            &nbsp; analogWrite(PwmR,<span class="red24">sR</span>);<br>
+            }<br>
+            <br>
+            void setup()<br>
+            {<br>
+            &nbsp; Serial.begin(<span class="red24">2400</span>);<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; cM(HIGH,HIGH,0,0);<br>
+            <br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp; if (Serial.available() &gt; 0) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; irin= Serial.read();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (irin==0x62) cM(HIGH,HIGH,0,0); //停<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (irin==0x52) cM(HIGH,HIGH,255,255);//前進<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (irin==0x72) cM(LOW,LOW,255,255);//後退<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (irin==0x61) cM(LOW,HIGH,255,255);//順時針<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (irin==0x63) cM(HIGH,LOW,255,255);//逆時針<br>
+            &nbsp;&nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 804px; height: 479px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/irDcoder_003b.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

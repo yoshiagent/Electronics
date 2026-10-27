@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="297mm"
+   height="210mm"
+   id="svg55303"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="Sch_JoyStick.svg"
+   inkscape:export-filename="C:\Dropbox\myCourse\iotRobot\HwangP\Allen\joystick\images\joyStick_005.png"
+   inkscape:export-xdpi="68.722687"
+   inkscape:export-ydpi="68.722687">
+  <defs
+     id="defs55305">
+    <marker
+       inkscape:stockid="DotS"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="DotS"
+       style="overflow:visible">
+      <path
+         id="path12000"
+         d="m 1.0453333,0 c 0,0.5888 -0.47786663,1.0666667 -1.06666663,1.0666667 C -0.61013333,1.0666667 -1.088,0.5888 -1.088,0 c 0,-0.5888 0.47786667,-1.0666667 1.06666667,-1.0666667 0.5888,0 1.06666663,0.4778667 1.06666663,1.0666667 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:0.21333334pt"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Send"
+       style="overflow:visible;">
+      <path
+         id="path55880"
+         d="M -1.28,0 -2.3466667,1.0666667 1.3866667,0 -2.3466667,-1.0666667 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:0.21333334pt"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Send-6"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path55880-0"
+         d="M -1.28,0 -2.3466667,1.0666667 1.3866667,0 -2.3466667,-1.0666667 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:0.21333334pt" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Send-7"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path55880-9"
+         d="M -1.28,0 -2.3466667,1.0666667 1.3866667,0 -2.3466667,-1.0666667 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:0.21333334pt" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     inkscape:document-units="mm"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.92370266"
+     inkscape:cx="496.82656"
+     inkscape:cy="423.30398"
+     inkscape:current-layer="layer1"
+     id="namedview55307"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="657"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata55309">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:4.37803555;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       d="M 211.9008,363.75172 V 313.327 l -28.50861,-8.40412 57.01724,-16.80825 -57.01724,-16.80824 57.01724,-16.80824 -57.01724,-16.80824 57.01724,-16.80824 -28.50863,-8.40412 v -50.42473"
+       id="path55295-6" />
+    <g
+       id="g10941"
+       transform="translate(254.05001,-4.619091)">
+      <g
+         id="g56374">
+        <g
+           id="g56358">
+          <path
+             inkscape:connector-curvature="0"
+             id="path55351"
+             d="m 401.86092,362.97055 c -118.94159,0 -118.94159,0 -118.94159,0"
+             style="fill:none;stroke:#000000;stroke-width:7.55905485;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Send)" />
+          <g
+             id="g56348">
+            <path
+               style="fill:none;stroke:#000000;stroke-width:6.54440737;stroke-linejoin:bevel"
+               inkscape:connector-curvature="0"
+               d="m 240.7701,590.39325 v -105.096 l -30.56438,-17.516 61.12878,-35.032 -61.12878,-35.032 61.12878,-35.03199 -61.12878,-35.03201 61.12878,-35.03199 -30.5644,-17.516 V 170.00925"
+               id="path55295" />
+            <g
+               id="g56321"
+               transform="translate(-10.392955,-11.547728)">
+              <path
+                 inkscape:connector-curvature="0"
+                 id="path56315"
+                 d="M -66.399443,606.62759 625.30944,605.47282"
+                 style="fill:none;stroke:#0000ff;stroke-width:7.55905485;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                 sodipodi:nodetypes="cc" />
+            </g>
+            <path
+               style="fill:none;stroke:#ff0000;stroke-width:7.55905485;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               d="M -79.46282,168.96873 H 620.11296"
+               id="path56338"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="cc" />
+          </g>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.80000019px;line-height:0%;font-family:'Adobe Kaiti Std';-inkscape-font-specification:'Adobe Kaiti Std';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.06666672"
+           x="411.09909"
+           y="375.67303"
+           id="text56370"><tspan
+             sodipodi:role="line"
+             id="tspan56372"
+             x="411.09909"
+             y="375.67303"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:42.66666794px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:1.06666672">RY</tspan></text>
+      </g>
+      <g
+         id="g56374-5"
+         transform="translate(325.64592)">
+        <g
+           id="g56358-6">
+          <path
+             inkscape:connector-curvature="0"
+             id="path55351-1"
+             d="m 401.86092,362.97055 c -118.94159,0 -118.94159,0 -118.94159,0"
+             style="fill:none;stroke:#000000;stroke-width:7.55905485;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Send)" />
+          <g
+             id="g56348-7">
+            <path
+               style="fill:none;stroke:#000000;stroke-width:6.54440737;stroke-linejoin:bevel"
+               inkscape:connector-curvature="0"
+               d="m 240.7701,590.39325 v -105.096 l -30.56438,-17.516 61.12878,-35.032 -61.12878,-35.032 61.12878,-35.03199 -61.12878,-35.03201 61.12878,-35.03199 -30.5644,-17.516 V 170.00925"
+               id="path55295-1" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.80000019px;line-height:0%;font-family:'Adobe Kaiti Std';-inkscape-font-specification:'Adobe Kaiti Std';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.06666672"
+               x="315.35886"
+               y="185.13554"
+               id="text56309-6"><tspan
+                 sodipodi:role="line"
+                 id="tspan56311-3"
+                 x="315.35886"
+                 y="185.13554"
+                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:42.66666794px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ff0000;stroke-width:1.06666672">+5V</tspan></text>
+            <g
+               id="g56321-3"
+               transform="translate(-10.392955,-11.547728)" />
+          </g>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.80000019px;line-height:0%;font-family:'Adobe Kaiti Std';-inkscape-font-specification:'Adobe Kaiti Std';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.06666672"
+           x="411.09909"
+           y="375.67303"
+           id="text56370-2"><tspan
+             sodipodi:role="line"
+             id="tspan56372-7"
+             x="411.09909"
+             y="375.67303"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:42.66666794px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:1.06666672">RX</tspan></text>
+      </g>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.80000019px;line-height:0%;font-family:'Adobe Kaiti Std';-inkscape-font-specification:'Adobe Kaiti Std';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.06666672"
+       x="297.20966"
+       y="470.86963"
+       id="text56370-1"><tspan
+         sodipodi:role="line"
+         id="tspan56372-0"
+         x="297.20966"
+         y="470.86963"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:42.66666794px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:1.06666672">SW</tspan></text>
+    <g
+       id="g943"
+       transform="matrix(-1,0,0,1,416.89152,10.825995)">
+      <path
+         sodipodi:nodetypes="cc"
+         id="path55295-7-1"
+         d="M 175.52546,491.13866 V 394.12605"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-width:6.54440737;stroke-linejoin:bevel" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path55295-7-1-5"
+         d="M 174.37653,442.63235 H 137.41211"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-width:6.54440737;stroke-linejoin:bevel" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:6.54614162;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;marker-start:url(#DotS);marker-end:none"
+       inkscape:connector-curvature="0"
+       d="M 211.9008,418.423 V 313.327"
+       id="path55295-7-6"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:6.54440737;stroke-linejoin:bevel;marker-end:url(#DotS)"
+       inkscape:connector-curvature="0"
+       d="m 211.9008,586.42491 v -105.096"
+       id="path55295-7-6-3"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.80000019px;line-height:0%;font-family:'Adobe Kaiti Std';-inkscape-font-specification:'Adobe Kaiti Std';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.06666672"
+       x="889.17682"
+       y="601.11249"
+       id="text56370-2-5"><tspan
+         sodipodi:role="line"
+         id="tspan56372-7-4"
+         x="889.17682"
+         y="601.11249"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:42.66666794px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#0000ff;stroke-width:1.06666672">GND</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;line-height:1.25;font-family:'Bodoni MT';-inkscape-font-specification:'Bodoni MT';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="256.57608"
+       y="283.79645"
+       id="text962"><tspan
+         sodipodi:role="line"
+         id="tspan960"
+         x="256.57608"
+         y="283.79645"
+         style="font-size:48px">4K</tspan></text>
+  </g>
+</svg>

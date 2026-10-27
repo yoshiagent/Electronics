@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+
+
+    <title>IRLib2_1</title>
+<link type="text/css" rel="stylesheet" href="kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+<body class="w3-container f24"><p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/ir.gif" alt=""><br></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/irRemotes1.jpg" alt="" style="width: 228px; height: 275px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; <img src="images/irReceiver.png" alt="">&nbsp; </td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/extended-nec-protocol-code-message.png" alt=""><br><img src="images/nec-protocol-modulation.png" alt=""><br><br><img src="images/nec-protocol_prog.png" alt=""><br></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>(IRLib2 <a href="https://github.com/cyborg5/IRLib2" target="_blank">GitHub</a>)<br>(<a href="files/IRLib2.zip">IRlib2.zip</a>)解壓縮後 將以下資料夾 <br><img src="images/IRLib2_001.png" alt=""><br>全部放到Arduino libraries下<br>(<a href="docs/IRLibReference.pdf" target="_blank">IRLibReference.pdf</a>)<br>Using an Infrared Library on Arduino(<a href="https://learn.adafruit.com/using-an-infrared-library/overview" target="_blank">ref</a>)</td></tr></tbody></table>
+<p>
+</p><br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>接收</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/light_TSOP38238.png" alt=""><br>#include "<span style="color: red;">IRLibAll.h</span>"<br><span style="color: red;">IRrecvPCI</span> myReceiver(<span style="color: red;">2</span>);<br><span style="color: red;">IRdecode</span> myDecoder;&nbsp;&nbsp; <br><br>void setup() {<br>&nbsp; Serial.begin(115200);<br>&nbsp; myReceiver.<span style="color: red;">enableIRIn()</span>; // Start the receiver<br>&nbsp; Serial.println("Ready to receive IR signals");<br>}<br><br>void loop() {<br>&nbsp; if (myReceiver.<span style="color: red;">getResults()</span>) {<br>&nbsp;&nbsp;&nbsp; myDecoder.<span style="color: red;">decode()</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Decode it<br>&nbsp;&nbsp;&nbsp; myDecoder.<span style="color: red;">dumpResults(<span style="color: #330099;">false</span>)</span>;&nbsp; //Now print results. <span style="color: #330099;">Use true for more detail</span><br>&nbsp;&nbsp;&nbsp; myReceiver.<span style="color: red;">enableIRIn()</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Restart receiver<br>&nbsp; }<br>}<br>//先使用此程式 找出 遙控器 key code<br>//在使用下面程式 做控制應用<br>//Key CH-<br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Ready to receive IR signals<br>Decoded NEC(1): Value:FFA25D Adrs:0 (32 bits) <br>Decoded NEC(1): Value:FFFFFFFF Adrs:0 (0 bits) <br>Decoded NEC(1): Value:FFA25D Adrs:0 (32 bits) <br>Decoded NEC(1): Value:FFFFFFFF Adrs:0 (0 bits) <br>Decoded NEC(1): Value:FFA25D Adrs:0 (32 bits) <br>Decoded NEC(1): Value:FFFFFFFF Adrs:0 (0 bits) <br>Decoded NEC(1): Value:FFA25D Adrs:0 (32 bits) <br>Decoded NEC(1): Value:FFFFFFFF Adrs:0 (0 bits) <br>Decoded NEC(1): Value:FFFFFFFF Adrs:0 (0 bits)<br>Decoded NEC(1): Value:FFFFFFFF Adrs:0 (0 bits)<br>Decoded NEC(1): Value:FFFFFFFF Adrs:0 (0 bits) </td></tr></tbody></table></td></tr></tbody></table>
+<br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>//顯示於I2C LCD<br>#include &lt;LiquidCrystal_I2C.h&gt;<br>LiquidCrystal_I2C lcd(0x3F,16,2);<br>#include &lt;IRLibAll.h&gt;<br>uint32_t val;<br>//Create a receiver object to listen on pin 2<br>IRrecvPCI myReceiver(2);<br><br>//Create a decoder object <br>IRdecode myDecoder;&nbsp;&nbsp; <br><br>void setup() {<br>&nbsp; lcd.init();<br>&nbsp; lcd.backlight();<br>&nbsp; lcd.setCursor(0, 0);<br>&nbsp; myReceiver.enableIRIn(); // Start the receiver<br>&nbsp; lcd.setCursor(0, 0);<br>&nbsp; lcd.print("Ready to receive");<br>}<br><br>void loop() {<br>&nbsp; //Continue looping until you get a complete signal received<br>&nbsp; if (myReceiver.getResults()) {<br>&nbsp;&nbsp;&nbsp; myDecoder.decode();&nbsp;&nbsp;&nbsp; //Decode it<br>&nbsp;&nbsp;&nbsp; val=myDecoder.<span style="color: red;">value</span>;<br>&nbsp;&nbsp;&nbsp; if(val==0xFFFFFFFF)<br>&nbsp;&nbsp;&nbsp;&nbsp; {lcd.setCursor(0, 1);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("Reapeat");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>&nbsp;&nbsp;&nbsp;&nbsp; else if(val==0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {lcd.clear();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("unknown protocol");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {lcd.clear();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("Code:");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(5, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print(val,HEX);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>&nbsp;&nbsp;&nbsp; myReceiver.enableIRIn();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Restart receiver<br>&nbsp; }</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/light_TSOP38238.png" alt=""><br>
+//使用遙控器 控制LED +Serial<br><span style="color: red;">#include &lt;IRLibAll.h&gt;</span><br>#define led 13<br>IRrecvPCI&nbsp; <span style="color: red;">myReceiver(2)</span>;<br>IRdecode&nbsp; <span style="color: red;">myDecoder</span>;&nbsp;&nbsp; <br>uint32_t val;<br>void setup() {<br>pinMode(led,OUTPUT);<br>&nbsp; Serial.begin(9600);<br>&nbsp; <span style="color: red;">myReceiver.enableIRIn()</span>; // Start the receiver<br>&nbsp; Serial.println("Ready to receive IR signals");<br>}<br><br>void loop() {<br>&nbsp; if (<span style="color: red;">myReceiver.getResults()</span>) {<br>&nbsp;&nbsp;&nbsp; <span style="color: red;">myDecoder.decode()</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Decode it<br>&nbsp;&nbsp;&nbsp; val=myDecoder.<span style="color: #330099;">value;</span><br>&nbsp;&nbsp;&nbsp; Serial.println(val<span style="color: #330099;"></span>,HEX);<br><span style="color: #330099;"></span><br>&nbsp;&nbsp;&nbsp; if (val<span style="color: #330099;"><span style="color: black;">==0xFFA25D) digitalWrite(led,1);//key :CH-</span><br></span>&nbsp;&nbsp;&nbsp; if (val==0xFF629D) digitalWrite(led,0);//key: CH<span style="color: #330099;"></span><br>&nbsp;&nbsp;&nbsp; myReceiver.<span style="color: red;">enableIRIn()</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Restart receiver<br>&nbsp; }<br>}</td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>//LCD顯示+遙控<br>#include &lt;LiquidCrystal_I2C.h&gt;<br>LiquidCrystal_I2C lcd(0x3F,16,2);<br>#include &lt;IRLibAll.h&gt;<br>#define led 13<br>IRrecvPCI&nbsp; myReceiver(2);<br>IRdecode&nbsp; myDecoder;&nbsp; <br>uint32_t val;<br>void setup() {<br>pinMode(led,OUTPUT);<br>&nbsp;lcd.init();<br>&nbsp; lcd.backlight();<br>&nbsp; lcd.setCursor(0, 0);<br>&nbsp; myReceiver.enableIRIn(); // Start the receiver<br>&nbsp; lcd.setCursor(0, 0);<br>&nbsp; lcd.print("Ready to receive");<br>&nbsp; }<br><br>void loop() {<br>if (myReceiver.getResults()) {<br>&nbsp;&nbsp;&nbsp; myDecoder.decode();&nbsp;&nbsp;&nbsp; //Decode it<br>&nbsp;&nbsp;&nbsp; val=myDecoder.value;<br>&nbsp;&nbsp;&nbsp; if(val==0xFFFFFFFF)<br>&nbsp;&nbsp;&nbsp;&nbsp; {lcd.setCursor(0, 1);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("Reapeat");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; else if(val==0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {lcd.clear();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("unknown protocol");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {if (val==0xFFA25D) digitalWrite(led,1);//key :CH-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (val==0xFF629D) digitalWrite(led,0);//key: CH<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.clear();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(0, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print("Code:");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.setCursor(5, 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print(val,HEX);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>&nbsp;&nbsp;&nbsp;&nbsp; myReceiver.enableIRIn();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Restart receiver<br>}<br>&nbsp;&nbsp;&nbsp; <br>}</td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>控制繼電器<br>控制夾爪<br>控制輪型機器人</td></tr></tbody></table><br><br>
+</body></html>

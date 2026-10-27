@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>SerialTXRX</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">傳送&nbsp;&nbsp; Transmit</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 763px; height: 236px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;"><span
+              class="red24">int a;</span><br>
+            void setup() {<br>
+            &nbsp; Serial.begin(9600);<br>
+            &nbsp; a=0xffff;<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;&nbsp; Serial.println(a);<br>
+            &nbsp;&nbsp; delay(1000);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 788px; height: 198px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;"><span
+              class="red24">unsigned int a;</span><br>
+            void setup() {<br>
+            &nbsp; Serial.begin(9600);<br>
+            &nbsp; a=0xffff;<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; Serial.println(a);<br>
+            &nbsp; delay(1000);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 876px; height: 267px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">unsigned
+            int a;<br>
+            void setup() {<br>
+            &nbsp; Serial.begin(9600);<br>
+            &nbsp; a=0xffff;<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; Serial.println(a,<span class="red24">HEX</span>);<br>
+            &nbsp; delay(1000);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red36">ASCII Code</td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 718px; height: 422px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/Standard-ASCII-Table_large.jpg"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 782px; height: 190px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">void
+            setup() {<br>
+            &nbsp; Serial.begin(9600);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; Serial.write(65);<br>
+            &nbsp; Serial.write(10);<br>
+            &nbsp; delay(1000);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">接收&nbsp; Receive</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 992px; height: 310px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp;
+            led&nbsp; 11<br>
+            int val;<br>
+            void setup() {<br>
+            &nbsp;Serial.begin(9600);<br>
+            &nbsp;pinMode(led,OUTPUT);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; if(Serial.available()&gt;0)<br>
+            &nbsp;&nbsp; { val=Serial.read();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if(val=='0')<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(led,LOW);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; else if(val=='1')<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(led,HIGH);<br>
+            &nbsp;&nbsp; }<br>
+            }<br>
+            <br>
+            //傳送0熄掉,傳送1亮</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 803px; height: 100px;" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C">使用 中斷(interrupt)--事件(event)&nbsp; </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 802px; height: 430px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define
+            led 11<br>
+            int val;<br>
+            void setup() {<br>
+            &nbsp;Serial.begin(9600);<br>
+            &nbsp;pinMode(led,OUTPUT);<br>
+            <br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; <br>
+            <br>
+            }<br>
+            <br>
+            void <span class="red24">serialEvent</span>() {<br>
+            &nbsp; val=Serial.read();<br>
+            &nbsp; if (val=='0')<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(led,LOW);<br>
+            &nbsp; else if (val=='1')<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(led,HIGH);&nbsp; <br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 784px; height: 936px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define
+            led 11<br>
+            #define led1 10<br>
+            #define sw 8<br>
+            int val;<br>
+            int valloop;<br>
+            void setup() {<br>
+            &nbsp;Serial.begin(9600);<br>
+            &nbsp;pinMode(sw,INPUT_PULLUP);<br>
+            &nbsp;pinMode(led,OUTPUT);<br>
+            pinMode(led1,OUTPUT);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; valloop=digitalRead(sw);<br>
+            &nbsp; if (valloop==HIGH)<br>
+            &nbsp; digitalWrite(led1,LOW);<br>
+            &nbsp; else<br>
+            &nbsp; digitalWrite(led1,HIGH);<br>
+            &nbsp; <br>
+            }<br>
+            <br>
+            void serialEvent() {<br>
+            &nbsp; <br>
+            &nbsp; val=Serial.read();<br>
+            &nbsp; if (val=='0')<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(led,LOW);<br>
+            &nbsp; else if (val=='1')<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(led,HIGH);&nbsp; <br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p> </p>
+    <p><br>
+    </p>
+  </body>
+</html>

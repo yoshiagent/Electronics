@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>ps2_1</title>
+
+<link type="text/css" rel="stylesheet" href="kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+<body class="w3-container f24">
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/ps2_controller.png" alt=""><img src="images/ps2_controller_1.png" alt="" style="width: 167px; height: 159px;"><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24C" style="text-align: left; background-color: white;">手柄的使用、連接配對說明(不同副廠產品會略有不同)<br><br>&nbsp;&nbsp;&nbsp; PS2手柄由手柄和接收器兩個部分組成，手柄需要兩節AAA 1.5V供電，接收器的電源範圍為3~5V,不能接反，不能超電壓，過壓和反接，都會使接收器燒壞。<br><br>&nbsp;&nbsp;&nbsp; 手柄上有個電源開關，ON開/OFF關，將手柄開關打到ON上，在未搜索到接收器的狀況下，手柄上的燈會不停的閃，在一定時間內，還未搜索到接收器，手柄將進入待機模式，手柄上的燈將滅掉，這時，按下“MODE”鍵，喚醒手柄。<br><br>&nbsp;&nbsp;&nbsp; 接收器供電，在<span style="color: red;">未配對</span>的狀況在，<span style="color: red;">綠燈閃</span>。<br><br>&nbsp;&nbsp;&nbsp; 手柄打開，接收器供電，手柄和接收器會自動配對，這時接收器<span style="color: red;">燈常亮</span>，<span style="color: red;">手柄配對成功</span>。<br>
+按鍵“MODE”(手柄批次不同，上面的標識有可能是"ANALOG"，但不會影響使用)，可以選擇“<span style="color: #cc0000;">紅燈模式</span>”、“綠燈模式”。<br><br>若手柄和接收器不能正常配對！<br>多數問題是，接收器的接線不正確，或程式有問題。<br><br>
+解決方法：接收器只接電源（電源線一定要連接正確），不接任何資料線和時鐘線，一般情況下手柄是能夠配對成功。配對成功後燈常亮，說明手柄是好的。這時再檢查接線是否正確，程式移植是否有問題。</td></tr></tbody>
+</table>
+<br><br><br><span><img src="images/ps2_button.jpg" alt="" style="width: 774px; height: 423px;"><br><br></span><span><img src="images/PS2Lib_Control_Labels-600dpi.jpg" alt="" style="width: 600px;"><br></span><br><span><span><img src="images/key.png" alt=""></span><br><br></span></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24">ps2 controller communication protocol(<a href="https://www.google.com/search?sxsrf=ACYBGNQwNF9ecOeuiatGuOo26buclYWJ4g%3A1573866501670&amp;ei=BUzPXeq2KMremAWZ35boDg&amp;q=ps2+controller+communication+protocol&amp;oq=ps2+protocol&amp;gs_l=psy-ab.1.3.35i39j0i7i30l9.18326.18326..27310...0.0..0.68.68.1......0....1..gws-wiz.g6FpGezUaZc" target="_blank">google search</a>)</td></tr></tbody></table>
+<br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><span class="blue24">library(<a href="https://github.com/madsci1016/Arduino-PS2X" target="_blank">GitHub</a>)(<a href="files/PS2X_lib.zip">.zip</a>)<br>
+    <br>
+    <img src="images/lib_001.png" alt=""><br>
+    <br>
+    <img src="images/example_001.png" alt=""><br>
+  </span><br>
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/ps2x-1.png" alt=""><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24"><img src="images/ps2x-pins.png" alt="" style="width: 661px; height: 337px;"><br><br>Data(DI)：&nbsp; D8<br>
+Command(DO)：D7<br>Clock：D6<br>
+Attention(CS)：D5<br><br>
+ps2x.config_gamepad(clock, command, Attention, Data, true, true);<br><br>//接收器上電 ,controller 按MODE 使MODE LED亮紅燈<br>//Arduino 重新開機<br><img src="images/ps2Ready.png" alt=""></td></tr></tbody>
+</table></td></tr></tbody></table>
+  <span></span><span><br></span><span><br><br></span><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>//read controller and set large motor to spin at 'vibrate' speed<br>ps2x.read_gamepad(false, vibrate);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br><br>//this will set the large motor vibrate speed based on<br>//how hard you press the blue (X) button<br>vibrate = ps2x.<span style="color: red;">Analog</span>(PS<span style="color: red;">A</span>B_BLUE);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td></tr></tbody></table><span><br><br></span>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>#include &lt;PS2X_lib.h&gt;&nbsp; //for v1.6<br>#define PS2_DAT&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp; <br>#define PS2_CMD&nbsp;&nbsp; 7&nbsp; <br>#define PS2_CLK&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp; <br>#define PS2_SEL&nbsp;&nbsp;&nbsp; 5&nbsp; <br>byte pressures=true;<br>byte rumble =true;<br><br>PS2X ps2x;<br>int error = 0;<br>byte vibrate =0;<br><br>void setup(){<br>&nbsp; Serial.begin(115200);<br>&nbsp; delay(1000);<br>&nbsp; error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, pressures, rumble);<br>&nbsp; while(error == 1)<br>&nbsp; {<br>&nbsp;&nbsp; error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, pressures, rumble);<br>&nbsp;&nbsp; delay(300);<br>&nbsp; }<br>&nbsp;&nbsp; Serial.println("Found Controller, configured successful ");<br>&nbsp; <br>}<br><br>void loop() {<br>&nbsp;&nbsp;&nbsp; ps2x.read_gamepad(false, vibrate);<br>&nbsp;&nbsp;&nbsp; if(ps2x.<span style="color: red;">ButtonPressed</span>(PSB_CIRCLE))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Circle just pressed");<br>&nbsp;&nbsp;&nbsp; if(ps2x.<span style="color: red;">ButtonReleased</span>(PSB_CIRCLE))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Circle just released");<br>&nbsp;&nbsp;&nbsp; delay(300); <br>}</td></tr></tbody></table><span><br></span>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>#include &lt;PS2X_lib.h&gt;&nbsp; //for v1.6<br>#define PS2_DAT&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp; <br>#define PS2_CMD&nbsp;&nbsp; 7&nbsp; <br>#define PS2_CLK&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp; <br>#define PS2_SEL&nbsp;&nbsp;&nbsp; 5&nbsp; <br>byte pressures=true;<br>byte rumble =true;<br><br>PS2X ps2x;<br>int error = 0;<br>byte vibrate =0;<br><br>void setup(){<br>&nbsp; Serial.begin(115200);<br>&nbsp; delay(1000);<br>&nbsp; error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, pressures, rumble);<br>&nbsp; while(error == 1)<br>&nbsp; {<br>&nbsp;&nbsp; error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, pressures, rumble);<br>&nbsp;&nbsp; delay(300);<br>&nbsp; }<br>&nbsp;&nbsp; Serial.println("Found Controller, configured successful ");<br>&nbsp; <br>}<br><br>void loop() {<br>&nbsp;&nbsp;&nbsp; ps2x.read_gamepad(false, vibrate);<br>&nbsp;&nbsp;&nbsp; if(ps2x.<span style="color: red;">NewButtonState</span>(PSB_CIRCLE))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Circle just changed");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; delay(300); <br>}</td></tr></tbody></table><span><br></span>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>#include &lt;PS2X_lib.h&gt;&nbsp; //for v1.6<br>#define PS2_DAT&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp; <br>#define PS2_CMD&nbsp;&nbsp; 7&nbsp; <br>#define PS2_CLK&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp; <br>#define PS2_SEL&nbsp;&nbsp;&nbsp; 5&nbsp; <br>byte pressures=true;<br>byte rumble =true;<br><br>PS2X ps2x;<br>int error = 0;<br>byte vibrate =0;<br><br>void setup(){<br>&nbsp; Serial.begin(115200);<br>&nbsp; delay(1000);<br>&nbsp; error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, pressures, rumble);<br>&nbsp; while(error == 1)<br>&nbsp; {<br>&nbsp;&nbsp; error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, pressures, rumble);<br>&nbsp;&nbsp; delay(300);<br>&nbsp; }<br>&nbsp;&nbsp; Serial.println("Found Controller, configured successful ");<br>&nbsp; <br>}<br><br>void loop() {<br>&nbsp;&nbsp;&nbsp; ps2x.read_gamepad(false, vibrate);<br>&nbsp;&nbsp;&nbsp; if(ps2x.<span style="color: red;">Button</span>(PSB_CIRCLE))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Circle just pressed and held hard");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; delay(300); <br>}</td></tr></tbody></table><span><br><br><br></span>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>#include &lt;PS2X_lib.h&gt;&nbsp; //for v1.6<br>#define PS2_DAT&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp; <br>#define PS2_CMD&nbsp;&nbsp; 7&nbsp; <br>#define PS2_CLK&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp; <br>#define PS2_SEL&nbsp;&nbsp;&nbsp; 5&nbsp; <br>byte pressures=<span style="color: red;">true</span>;<br>byte rumble =<span style="color: red;">true</span>;<br><br>PS2X ps2x;<br>int error = 0;<br>byte vibrate =0;<br><br>void setup(){<br>&nbsp; Serial.begin(115200);<br>&nbsp; delay(1000);<br>&nbsp; error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, pressures, rumble);<br>&nbsp; while(error == 1)<br>&nbsp; {<br>&nbsp;&nbsp; error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, pressures, rumble);<br>&nbsp;&nbsp; delay(300);<br>&nbsp; }<br>&nbsp;&nbsp; Serial.println("Found Controller, configured successful ");<br>&nbsp; <br>}<br><br>void loop() {<br>&nbsp;&nbsp;&nbsp; ps2x.read_gamepad(false, vibrate);<br>&nbsp;&nbsp;&nbsp; vibrate = ps2x.<span style="color: red;">Analog</span>(PS<span style="color: red;">A</span>B_CIRCLE);<br>&nbsp;&nbsp;&nbsp; Serial.println(vibrate, DEC); <br>&nbsp;&nbsp;&nbsp; delay(300); <br>}</td></tr></tbody></table><span><br><br></span>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>#include &lt;PS2X_lib.h&gt;&nbsp; //for v1.6<br>#define PS2_DAT&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp; <br>#define PS2_CMD&nbsp;&nbsp; 7&nbsp; <br>#define PS2_CLK&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp; <br>#define PS2_SEL&nbsp;&nbsp;&nbsp; 5&nbsp; <br>byte pressures=true;<br>byte rumble =true;<br><br>PS2X ps2x;<br>int error = 0;<br>byte vibrate =0;<br><br>void setup(){<br>&nbsp; Serial.begin(115200);<br>&nbsp; delay(1000);<br>&nbsp; error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, pressures, rumble);<br>&nbsp; while(error == 1)<br>&nbsp; {<br>&nbsp;&nbsp; error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, pressures, rumble);<br>&nbsp;&nbsp; delay(300);<br>&nbsp; }<br>&nbsp;&nbsp; Serial.println("Found Controller, configured successful ");<br>&nbsp; <br>}<br><br>void loop() {<br>&nbsp;&nbsp;&nbsp; ps2x.read_gamepad(false, vibrate);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_L1) || ps2x.Button(PSB_R1)) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(ps2x.<span style="color: red;">Analog</span>(<span style="color: red;">PSS_LY</span>), DEC);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; delay(300);&nbsp; <br>}</td></tr></tbody></table><span><br><br>
+</span><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><span><img src="images/ps2_controller_h6WUIp9OsW.jpg" alt=""><br>
+    <br><img src="images/ps2_button.jpg" alt="" style="width: 774px; height: 423px;"><br><img src="images/PS2Lib_Control_Labels-600dpi.jpg" alt="" style="width: 600px;"><br><img src="images/key.png" alt=""><br>
+    <br>
+  </span><span>Sony game consoles called PlayStation, and you have probably held it at least once. <br>Sony
+ game controllers have 12 analog keys sensitive to pressure, (4 keys for direction, 4 operation keys, Cross, Triangle, Circle, and Square, L1, 
+L2, R1, and R2)<br>and 5 digital keys (MODE, START, SELECT, R3, L3) <br>and 2 analog joysticks.<br><br>There are 2 motors inside controllers that can make vibration because of their imbalance.<br><br>The wireless controller works with 2.4GHz frequency and it has a range of 10 meters.<br>
+    <br>
+    <br>
+  </span><br>
+  <span>The buttons with the coloured shapes can also be referred to by the names <br>
+PSB_TRIANGLE, <br>
+PSB_CIRCLE, <br>
+PSB_CROSS, <br>
+and PSB_SQUARE.<br>
+    <br>
+The buttons can be <span style="color: red;">pressed</span>,<span style="color: red;">ButtonReleased</span>, <span style="color: red;">pressed and held</span>, <br>
+or <span style="color: red;">pressed with a varying pressure</span>, <br>
+so there are a number of methods that can be applied to the buttons <br>
+and joystick. <br>
+The methods are; <br>
+    <span style="color: red;">ButtonPressed</span>, <span style="color: red;">ButtonReleased</span>,<span style="color: red;">Button</span>, <span style="color: red;">NewButtonState</span>,and <span style="color: red;">Analog</span>. <br>
+Here are some examples of how these are used.<br>
+    <br>
+ps2x.<span style="color: red;">ButtonPressed</span>(PSB_RED) is for a simple press of the red circle button.<br>
+    <br>
+ps2x.<span style="color: red;">ButtonReleased</span>(PSB_CIRCLE)<br>
+    <br>
+ps2x.<span style="color: red;">Button</span>(PSB_PAD_DOWN) is for the down button on the pad being pressed and held.<br>
+    <br>
+ps2x.<span style="color: red;">NewButtonState</span>(PSB_CIRCLE)<br>
+    <br>
+ps2x.<span style="color: red;">Analog</span>(PS<span style="color: red;">A</span>B_CROSS)
+ is the command for measuring the pressure applied to the “X” button, if pressure sensitivity has been enabled. As you can see the “PS<span style="color: red;">A</span>B” form of the name has been used for the button.<br>
+    <br>
+ps2x.<span style="color: red;">Analog</span>(PSS_RY) is the command to obtaining readings off the right joystick&nbsp; in the vertical direction.</span></td></tr></tbody>
+</table><span><br>
+  </span></td></tr></tbody>
+</table><p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>雙搖桿 遙控輪型機器人<br><img src="images/car.png" alt=""><br><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>#include &lt;PS2X_lib.h&gt;&nbsp; //for v1.6<br>#define PS2_DAT&nbsp;&nbsp;&nbsp; 8 &nbsp;&nbsp; <br>#define PS2_CMD&nbsp;&nbsp; 7 &nbsp; <br>#define PS2_CLK&nbsp;&nbsp;&nbsp; 6 &nbsp;&nbsp; <br>#define PS2_SEL&nbsp;&nbsp;&nbsp; 5 <br>byte pressures=true;<br>byte rumble =true;<br>#define&nbsp;&nbsp; DirR&nbsp;&nbsp;&nbsp; 12<br>#define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>#define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>#define&nbsp;&nbsp; PwmR&nbsp; 10<br><br>int valL;<br>int valR;<br>uint8_t dL;<br>uint8_t dR;<br>byte vibrate = 0;<br>PS2X&nbsp; ps2x;<br><br>int error = 1;<br><br><br>void setup() {<br>&nbsp;<br>&nbsp; pinMode( DirL , OUTPUT);<br>&nbsp; pinMode( DirR , OUTPUT);<br>&nbsp; while(error==1){<br>&nbsp;&nbsp; error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, pressures, rumble);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(500);<br>&nbsp; }<br>}<br><br>void loop() {<br>&nbsp; if(error == 1) //skip loop if no controller found<br>&nbsp;&nbsp; return;<br>&nbsp; ps2x.read_gamepad(false, vibrate);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valL=ps2x.Analog(PSS_LY);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valR=ps2x.Analog(PSS_RY);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valL=map(valL,0,255,255,-255);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valR=map(valR,0,255,255,-255);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(valL);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(valR);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dL=1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(valL&lt;5 &amp;&amp; valL&gt;-5)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valL=0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (valL&lt;0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {valL=-valL;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dL=0;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dR=1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(valR&lt;5 &amp;&amp; valR&gt;-5)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valR=0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (valR&lt;0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {valR=-valR;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dR=0;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(DirL,dL);<br>&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(DirR,dR);<br>&nbsp;&nbsp;&nbsp;&nbsp; analogWrite(PwmL,valL);<br>&nbsp;&nbsp;&nbsp;&nbsp; analogWrite(PwmR,valR);<br>&nbsp;&nbsp;&nbsp;&nbsp; delay(50);<br>}</td></tr></tbody></table></td></tr></tbody>
+</table>
+<p></p>
+<p><br></p><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>PS2+沿桌面逆時針<br>
+LED熄掉之前 按住 左邊Down鍵&nbsp; 沿桌面<br>
+</td></tr></tbody></table>
+<br>#include &lt;PS2X_lib.h&gt;&nbsp; //for v1.6<br>#define PS2_DAT&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp; <br>#define PS2_CMD&nbsp;&nbsp; 7&nbsp; <br>#define PS2_CLK&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp; <br>#define PS2_SEL&nbsp;&nbsp;&nbsp; 5<br>byte pressures=true;<br>byte rumble =true;<br>#define&nbsp;&nbsp; DirR&nbsp;&nbsp;&nbsp; 12<br>#define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>#define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>#define&nbsp;&nbsp; PwmR&nbsp; 10<br>#define&nbsp;&nbsp; irin&nbsp;&nbsp; A1<br>#define&nbsp;&nbsp; led&nbsp;&nbsp;&nbsp; A5<br>int val;<br>int valL;<br>int valR;<br>uint8_t dL;<br>uint8_t dR;<br>byte vibrate = 0;<br>PS2X&nbsp; ps2x;<br>int sel=0;<br>int error = 1;<br><br><br>void setup() {<br>&nbsp;<br>&nbsp; pinMode( DirL , OUTPUT);<br>&nbsp; pinMode( DirR , OUTPUT);<br>&nbsp; pinMode( A5 , OUTPUT);<br>&nbsp; analogWrite(PwmL,0);<br>&nbsp; analogWrite(PwmR,0);<br>&nbsp; digitalWrite(DirL,HIGH);<br>&nbsp; digitalWrite(DirR,HIGH);<br>&nbsp; <br>&nbsp; while(error==1){<br>&nbsp;&nbsp; error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, pressures, rumble);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(500);<br>&nbsp; }<br>&nbsp; digitalWrite(A5,HIGH);<br>&nbsp; delay(2000);<br>&nbsp; ps2x.read_gamepad(false, vibrate);<br>&nbsp; if(ps2x.Button(PSB_PAD_DOWN)) sel=1;<br>&nbsp; else sel=0; <br><br>&nbsp; digitalWrite(A5,LOW);<br>}<br><br>void loop() {<br>&nbsp; if(sel==1)<br>&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp; val=digitalRead(irin);<br>&nbsp; if(val==HIGH)<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; analogWrite(PwmL,0);<br>&nbsp;&nbsp;&nbsp; analogWrite(PwmR,255);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; else<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; analogWrite(PwmL,255);<br>&nbsp;&nbsp;&nbsp; analogWrite(PwmR,0);<br>&nbsp; }<br>&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; if(sel==0)<br>&nbsp; {<br>&nbsp; if(error == 1) //skip loop if no controller found<br>&nbsp;&nbsp; return;<br>&nbsp; ps2x.read_gamepad(false, vibrate);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valL=ps2x.Analog(PSS_LY);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valR=ps2x.Analog(PSS_RY);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valL=map(valL,0,255,255,-255);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valR=map(valR,0,255,255,-255);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(valL);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(valR);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dL=1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(valL&lt;5 &amp;&amp; valL&gt;-5)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valL=0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (valL&lt;0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {valL=-valL;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dL=0;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dR=1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(valR&lt;5 &amp;&amp; valR&gt;-5)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valR=0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (valR&lt;0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {valR=-valR;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dR=0;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(DirL,dL);<br>&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(DirR,dR);<br>&nbsp;&nbsp;&nbsp;&nbsp; analogWrite(PwmL,valL);<br>&nbsp;&nbsp;&nbsp;&nbsp; analogWrite(PwmR,valR);<br>&nbsp;&nbsp;&nbsp;&nbsp; delay(50);<br>&nbsp; }<br>}</td></tr></tbody></table><p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>搜尋 esp8266 ps2 controller<br><br>PS2 - WEMOS Controller(<a href="https://hackaday.io/project/169661-ps2-wemos-controller" target="_blank">link</a>) (<a href="https://github.com/madsci1016/Arduino-PS2X" target="_blank">gitHub</a>)(<a href="files/Arduino-PS2X-master%20%281%29.zip" target="_blank">zip</a>)<br><br>PsxLib | A small and light lib for ESP32 and Ps2 Controller (<a href="https://kandi.openweaver.com/c++/GiuseppePorcheddu/PsxLib" target="_blank">link</a>) (<a href="https://github.com/GiuseppePorcheddu/PsxLib" target="_blank">gitHub</a>) (<a href="files/PsxLib-master.zip" target="_top">zip</a>)</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>//D1Mini&nbsp; <br>//lib : PS2X_ESP32.zip(<a href="files/PS2X_ESP32.zip">link</a>)<br><br>#include &lt;PS2X_lib.h&gt;&nbsp; //for v1.6<br><br>/******************************************************************<br>&nbsp;* set pins connected to PS2 controller:<br>&nbsp;*&nbsp;&nbsp; - 1e column: original <br>&nbsp;*&nbsp;&nbsp; - 2e colmun: Stef?<br>&nbsp;* replace pin numbers by the ones you use<br>&nbsp;******************************************************************/<br>#define PS2_DAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D1&nbsp; //14&nbsp;&nbsp; &nbsp;<br>#define PS2_CMD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D2&nbsp; //15<br>#define PS2_CLK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D3&nbsp; //17<br>#define PS2_SEL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D4&nbsp; //16<br><br><br>/******************************************************************<br>&nbsp;* select modes of PS2 controller:<br>&nbsp;*&nbsp;&nbsp; - pressures = analog reading of push-butttons <br>&nbsp;*&nbsp;&nbsp; - rumble&nbsp;&nbsp;&nbsp; = motor rumbling<br>&nbsp;* uncomment 1 of the lines for each mode selection<br>&nbsp;******************************************************************/<br>#define pressures&nbsp;&nbsp; true<br>//#define pressures&nbsp;&nbsp; false<br>#define rumble&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; true<br>//#define rumble&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; false<br><br>PS2X ps2x; // create PS2 Controller Class<br><br>//right now, the library does NOT support hot pluggable controllers, meaning <br>//you must always either restart your Arduino after you connect the controller, <br>//or call config_gamepad(pins) again after connecting the controller.<br><br>int error = 0;<br>byte type = 0;<br>byte vibrate = 0;<br><br>void setup(){<br>&nbsp;<br>&nbsp; Serial.begin(115200);<br>&nbsp; <br>&nbsp; delay(1000);&nbsp; //added delay to give wireless ps2 module some time to startup, before configuring it<br>&nbsp; &nbsp;<br>&nbsp; //CHANGES for v1.6 HERE!!! **************PAY ATTENTION*************<br>&nbsp; <br>&nbsp; //setup pins and settings: GamePad(clock, command, attention, data, Pressures?, Rumble?) check for error<br>&nbsp; error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, pressures, rumble);<br>&nbsp; //delay(1000);<br>&nbsp; Serial.println(" ");<br>&nbsp; Serial.println(error);<br>&nbsp; if(error == 0){<br>&nbsp;&nbsp;&nbsp; Serial.println("Found Controller, configured successful ");<br>&nbsp;&nbsp;&nbsp; Serial.print("pressures = ");<br>&nbsp;&nbsp; &nbsp;if (pressures)<br>&nbsp;&nbsp; &nbsp;&nbsp; Serial.println("true ");<br>&nbsp;&nbsp; &nbsp;else<br>&nbsp;&nbsp; &nbsp;&nbsp; Serial.println("false");<br>&nbsp;&nbsp; &nbsp;Serial.print("rumble = ");<br>&nbsp;&nbsp; &nbsp;if (rumble)<br>&nbsp;&nbsp; &nbsp;&nbsp; Serial.println("true)");<br>&nbsp;&nbsp; &nbsp;else<br>&nbsp;&nbsp; &nbsp;&nbsp; Serial.println("false");<br>&nbsp;&nbsp;&nbsp; Serial.println("Try out all the buttons, X will vibrate the controller, faster as you press harder;");<br>&nbsp;&nbsp;&nbsp; Serial.println("holding L1 or R1 will print out the analog stick values.");<br>&nbsp;&nbsp;&nbsp; Serial.println("Note: Go to www.billporter.info for updates and to report bugs.");<br>&nbsp; } &nbsp;<br>&nbsp; else if(error == 1)<br>&nbsp;&nbsp;&nbsp; Serial.println("No controller found, check wiring, see readme.txt to enable debug. visit www.billporter.info for troubleshooting tips");<br>&nbsp; &nbsp;<br>&nbsp; else if(error == 2)<br>&nbsp;&nbsp;&nbsp; Serial.println("Controller found but not accepting commands. see readme.txt to enable debug. Visit www.billporter.info for troubleshooting tips");<br><br>&nbsp; else if(error == 3)<br>&nbsp;&nbsp;&nbsp; Serial.println("Controller refusing to enter Pressures mode, may not support it. ");<br>&nbsp; <br>//&nbsp; Serial.print(ps2x.Analog(1), HEX);<br>&nbsp; <br>&nbsp; type = ps2x.readType(); <br>&nbsp; switch(type) {<br>&nbsp;&nbsp;&nbsp; case 0:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print("Unknown Controller type found ");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>&nbsp;&nbsp;&nbsp; case 1:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print("DualShock Controller found ");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>&nbsp;&nbsp;&nbsp; case 2:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print("GuitarHero Controller found ");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>&nbsp;&nbsp; &nbsp;case 3:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print("Wireless Sony DualShock Controller found ");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>&nbsp;&nbsp; }<br>}<br><br>void loop() {<br>&nbsp; /* You must Read Gamepad to get new values and set vibration values<br>&nbsp;&nbsp;&nbsp;&nbsp; ps2x.read_gamepad(small motor on/off, larger motor strenght from 0-255)<br>&nbsp;&nbsp;&nbsp;&nbsp; if you don't enable the rumble, use ps2x.read_gamepad(); with no values<br>&nbsp;&nbsp;&nbsp;&nbsp; You should call this at least once a second<br>&nbsp;&nbsp; */ &nbsp;<br>&nbsp; if(error == 1) //skip loop if no controller found<br>&nbsp;&nbsp;&nbsp; return; <br>&nbsp; <br>&nbsp; if(type == 2){ //Guitar Hero Controller<br>&nbsp;&nbsp;&nbsp; ps2x.read_gamepad();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //read controller <br>&nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp; if(ps2x.ButtonPressed(GREEN_FRET))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Green Fret Pressed");<br>&nbsp;&nbsp;&nbsp; if(ps2x.ButtonPressed(RED_FRET))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Red Fret Pressed");<br>&nbsp;&nbsp;&nbsp; if(ps2x.ButtonPressed(YELLOW_FRET))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Yellow Fret Pressed");<br>&nbsp;&nbsp;&nbsp; if(ps2x.ButtonPressed(BLUE_FRET))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Blue Fret Pressed");<br>&nbsp;&nbsp;&nbsp; if(ps2x.ButtonPressed(ORANGE_FRET))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Orange Fret Pressed"); <br><br>&nbsp;&nbsp;&nbsp; if(ps2x.ButtonPressed(STAR_POWER))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Star Power Command");<br>&nbsp;&nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp; if(ps2x.Button(UP_STRUM))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //will be TRUE as long as button is pressed<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Up Strum");<br>&nbsp;&nbsp;&nbsp; if(ps2x.Button(DOWN_STRUM))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("DOWN Strum");<br>&nbsp;<br>&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_START))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //will be TRUE as long as button is pressed<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Start is being held");<br>&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_SELECT))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Select is being held");<br>&nbsp;&nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp; if(ps2x.Button(ORANGE_FRET)) {&nbsp;&nbsp;&nbsp;&nbsp; // print stick value IF TRUE<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print("Wammy Bar Position:");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(ps2x.Analog(WHAMMY_BAR), DEC); <br>&nbsp;&nbsp;&nbsp; } <br>&nbsp; }<br>&nbsp; else { //DualShock Controller<br>&nbsp;&nbsp;&nbsp; ps2x.read_gamepad(false, vibrate); //read controller and set large motor to spin at 'vibrate' speed<br>&nbsp;&nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_START))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //will be TRUE as long as button is pressed<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Start is being held");<br>&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_SELECT))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Select is being held");&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br><br>&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_PAD_UP)) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //will be TRUE as long as button is pressed<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print("Up held this hard: ");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(ps2x.Analog(PSAB_PAD_UP), DEC);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_PAD_RIGHT)){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print("Right held this hard: ");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(ps2x.Analog(PSAB_PAD_RIGHT), DEC);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_PAD_LEFT)){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print("LEFT held this hard: ");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(ps2x.Analog(PSAB_PAD_LEFT), DEC);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_PAD_DOWN)){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print("DOWN held this hard: ");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(ps2x.Analog(PSAB_PAD_DOWN), DEC);<br>&nbsp;&nbsp;&nbsp; }&nbsp; &nbsp;<br><br>&nbsp;&nbsp;&nbsp; vibrate = ps2x.Analog(PSAB_CROSS);&nbsp; //this will set the large motor vibrate speed based on how hard you press the blue (X) button<br>&nbsp;&nbsp;&nbsp; if (ps2x.NewButtonState()) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //will be TRUE if any button changes state (on to off, or off to on)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_L3))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("L3 pressed");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_R3))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("R3 pressed");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_L2))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("L2 pressed");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_R2))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("R2 pressed");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_TRIANGLE))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Triangle pressed");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; if(ps2x.ButtonPressed(PSB_CIRCLE))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //will be TRUE if button was JUST pressed<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Circle just pressed");<br>&nbsp;&nbsp;&nbsp; if(ps2x.NewButtonState(PSB_CROSS))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //will be TRUE if button was JUST pressed OR released<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("X just changed");<br>&nbsp;&nbsp;&nbsp; if(ps2x.ButtonReleased(PSB_SQUARE))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //will be TRUE if button was JUST released<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Square just released");&nbsp;&nbsp;&nbsp; &nbsp;<br><br>&nbsp;&nbsp;&nbsp; if(ps2x.Button(PSB_L1) || ps2x.Button(PSB_R1)) { //print stick values if either is TRUE<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print("Stick Values:");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(ps2x.Analog(PSS_LY), DEC); //Left stick, Y axis. Other options: LX, RY, RX &nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(",");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(ps2x.Analog(PSS_LX), DEC); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(",");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(ps2x.Analog(PSS_RY), DEC); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(",");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(ps2x.Analog(PSS_RX), DEC); <br>&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; &nbsp;<br>&nbsp; }<br>&nbsp; delay(50); &nbsp;<br>}</td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<p><br></p><br>
+<p><br></p>
+<p><br><br></p>
+<p><br></p>
+<p></p></body></html>

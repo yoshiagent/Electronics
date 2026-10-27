@@ -1,0 +1,617 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+    <title>7 segment</title>
+    <link type="text/css" rel="stylesheet" href="mystyle.css" />
+  </head>
+  <body>
+    <table width="93" border="1" align="center">
+      <tbody>
+        <tr>
+          <td width="83"><img width="172" height="215" src="images/Seven-Segment-Display-working.gif" /></td>
+        </tr>
+      </tbody>
+    </table>
+    <table width="200" border="1" align="center">
+      <tbody>
+        <tr>
+          <td><img width="410" height="325" src="images/7seg_CC_CA.png" /></td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <table border="1" style="width: 724px; height: 216px;">
+      <tbody>
+        <tr>
+          <td class="blue24C"><img src="images/segment1.gif" alt="" /><br />
+            <br />
+            共陰</td>
+          <td class="blue24C"><img src="images/segment2.gif" alt="" /><br />
+            <br />
+            共陽</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br />
+    </p>
+    <table border="1" style="width: 735px; height: 128px;">
+      <tbody>
+        <tr>
+          <td class="red48C">請先試試 共陰或共陽<br />
+            確認各段LED</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br />
+    </p>
+    <p><br />
+    </p>
+    <table border="1" style="width: 428px; height: 408px;">
+      <tbody>
+        <tr>
+          <td class="blue24C"><img src="images/7Segment_001CC.png" alt="" /><br />
+            <br />
+            共陰</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br />
+    </p>
+    <br />
+    <table border="1" style="width: 768px; height: 331px;">
+      <tbody>
+        <tr>
+          <td><img src="images/7segment_ATMega.png" alt="" /><br />
+            <a href="svg/7segment_ATMega.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br />
+    </p>
+    <table border="1" style="width: 685px; height: 484px;">
+      <tbody>
+        <tr>
+          <td><img style="width: 352px; height: 564px;" alt="" src="images/7SegPinOut.png" /><br />
+            <br />
+            <a href="svg/7SegPinOut.svg">svg</a><br />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <table border="1" style="width: 1012px; height: 56px;" class="blue36">
+      <tbody>
+        <tr>
+          <td>a</td>
+          <td>b</td>
+          <td>c</td>
+          <td>d</td>
+          <td>e</td>
+          <td>f</td>
+          <td>g</td>
+          <td>dot</td>
+        </tr>
+        <tr>
+          <td>D10</td>
+          <td>D9</td>
+          <td>D7</td>
+          <td>D6</td>
+          <td>D5</td>
+          <td>D11</td>
+          <td>D12</td>
+          <td>D8</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br />
+    </p>
+    <p><br />
+    </p>
+    <table border="1" style="width: 997px; height: 1030px;">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white; width: 436.183px;">//
+            共陰 顯示 8.<br />
+            #define  a  10<br />
+            #define  b  9<br />
+            #define  c  7<br />
+            #define  d  6<br />
+            #define  e  5<br />
+            #define  f  11<br />
+            #define  g  12<br />
+            #define  dot  8<br />
+            <br />
+            void setup(){<br />
+            pinMode(a,OUTPUT);<br />
+            pinMode(b,OUTPUT);<br />
+            pinMode(c,OUTPUT);<br />
+            pinMode(d,OUTPUT);<br />
+            pinMode(e,OUTPUT);<br />
+            pinMode(f,OUTPUT);<br />
+            pinMode(g,OUTPUT);<br />
+            pinMode(dot,OUTPUT);<br />
+            <br />
+            digitalWrite(a,1);<br />
+            digitalWrite(b,1);<br />
+            digitalWrite(c,1);<br />
+            digitalWrite(d,1);<br />
+            digitalWrite(e,1);<br />
+            digitalWrite(f,1);<br />
+            digitalWrite(g,1);<br />
+            digitalWrite(dot,1);<br />
+            <br />
+            }<br />
+            <br />
+            void loop(){ }</td>
+          <td style="width: 544.817px;"><img src="images/7SegPinOut1.png" alt="" /><br />
+            <br />
+            <a href="svg/7SegPinOut1.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br />
+    </p>
+    <table border="1" style="width: 709px; height: 330px;">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">共
+            陰<br />
+            顯示0<br />
+            digitalWrite(a,1);<br />
+            digitalWrite(b,1);<br />
+            digitalWrite(c,1);<br />
+            digitalWrite(d,1);<br />
+            digitalWrite(e,1);<br />
+            digitalWrite(f,1);<br />
+            digitalWrite(g,0);<br />
+            digitalWrite(dor,0);</td>
+          <td style="text-align: left; background-color: white;" class="blue24">共
+            陰<br />
+            顯示1<br />
+            digitalWrite(a,0);<br />
+            digitalWrite(b,1);<br />
+            digitalWrite(c,1);<br />
+            digitalWrite(d,0);<br />
+            digitalWrite(e,0);<br />
+            digitalWrite(f,0);<br />
+            digitalWrite(g,0);<br />
+            digitalWrite(dot,0);</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br />
+    </p>
+    <p><br />
+    </p>
+    <table width="200" border="1" align="center">
+      <tbody>
+        <tr>
+          <td><img width="491" height="200" src="images/7Segment_002.png" /></td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br />
+    </p>
+    <table width="200" border="1" align="center">
+      <tbody>
+        <tr>
+          <td class="Blue24 blue36" rowspan="2" colspan="2">
+            <div align="center">COMMON CATHODE</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">D10</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">D9</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">D7</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">D6</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">D5</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">D11</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">D12</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">D8</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="Blue24 blue36">
+            <div align="center">a</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">b</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">c</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">d</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">e</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">f</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">g</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">dot</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="blue36" rowspan="5"><img width="106" height="149" src="images/7Segment_000B.png" /></td>
+          <td class="blue36"><img width="42" height="65" src="images/7Segment_000_00.png" /></td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center" class="Red24">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center" class="Red24">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center" class="Red24">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center" class="Red24">0</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="blue36"><img width="39" height="65" src="images/7Segment_000_1.png" /></td>
+          <td class="Blue24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="blue36"><img width="43" height="67" src="images/7Segment_000_2.png" /></td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="blue36"><img width="44" height="67" src="images/7Segment_003.png" /></td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="blue36"><img width="43" height="67" src="images/7Segment_004.png" /></td>
+          <td class="Blue24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="blue36" rowspan="6"><img width="106" height="149" src="images/7Segment_000B.png" /></td>
+          <td height="32" class="blue36"> </td>
+          <td class="Blue24 blue36">
+            <div align="center">a</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">b</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">c</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">d</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center" class="Blue24">e</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center" class="Blue24">f</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center" class="Blue24">g</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center" class="Blue24">dot</div>
+          </td>
+        </tr>
+        <tr>
+          <td height="74" class="blue36"><img width="43" height="67" src="images/7Segment_005.png" /></td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="blue36"><img width="42" height="67" src="images/7Segment_006.png" /></td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="blue36"><img width="43" height="68" src="images/7Segment_007.png" /></td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="blue36"><img width="41" height="66" src="images/7Segment_008.png" /></td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="blue36"><img width="42" height="67" src="images/7Segment_009.png" /></td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Blue24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">1</div>
+          </td>
+          <td class="Red24 blue36">
+            <div align="center">0</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br />
+    </p>
+    <br />
+    <table border="1" style="width: 1255px; height: 1459px;">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">
+            int segPins[8] = {10, 9, 7,6, 5, 11, 12, 8 };   // { a b c d e f g .
+            )<br />
+            int segCode[11][8] = {<br />
+            //  a  b  c  d  e  f  g  .<br />
+              { 1, 1, 1, 1, 1, 1, 0, 0},  // 0<br />
+              { 0, 1, 1, 0, 0, 0, 0, 0},  // 1<br />
+              { 1, 1, 0, 1, 1, 0, 1, 0},  // 2<br />
+              { 1, 1, 1, 1, 0, 0, 1, 0},  // 3<br />
+              { 0, 1, 1, 0, 0, 1, 1, 0},  // 4<br />
+              { 1, 0, 1, 1, 0, 1, 1, 0},  // 5<br />
+              { 1, 0, 1, 1, 1, 1, 1, 0},  // 6<br />
+              { 1, 1, 1, 0, 0, 0, 0, 0},  // 7<br />
+              { 1, 1, 1, 1, 1, 1, 1, 0},  // 8  <br />
+              { 1, 1, 1, 1, 0, 1, 1, 0},  // 9<br />
+              { 0, 0, 0, 0, 0, 0, 0, 1}   // .<br />
+            };<br />
+               <br />
+            <br />
+            void displayDigit(int digit)<br />
+            {<br />
+              for (int i=0; i &lt; 8; i++)<br />
+              {<br />
+                digitalWrite(segPins[i], segCode[digit][i]);<br />
+              } <br />
+            }<br />
+            <br />
+            <br />
+            void setup()<br />
+            {<br />
+              for (int i=0; i &lt; 8; i++)<br />
+              {<br />
+                pinMode(segPins[i], OUTPUT);<br />
+              }<br />
+              <br />
+             }<br />
+            <br />
+            <br />
+            void loop()<br />
+            {<br />
+               for (int n = 0; n &lt; 11; n++)    // display digits 0 - 9 and
+            decimal point<br />
+              {<br />
+                 displayDigit(n); <br />
+                 delay(1000);    <br />
+              }<br />
+              <br />
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+      <br />
+    <br />
+  </body>
+</html>

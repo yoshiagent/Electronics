@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>ESPUartStation</title>
+<link type="text/css" rel="stylesheet" href="mystyle.css">
+<link type="text/css" rel="stylesheet" href="kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+<body class="f24 w3-container"><p><br></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/esp8266_AP_STA_005b.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<p>
+</p><p><br></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white; width:50%;" class="blue24"><a href="http://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/soft-access-point-class.html" target="_blank">Soft Access Point Class</a><br>
+            <br>
+            <br>
+            <br>
+            #include &lt;ESP8266WiFi.h&gt;<br>
+<span style="font-family: Verdana,Geneva,sans-serif; font-size: 24px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; color: #666666;">WiFi.mode(WIFI_AP)</span><br>
+            WiFi.softAP(ssid, password)<br>
+            WiFi.softAPConfig (local_ip, gateway, subnet)<br>
+            <br>
+            <br>
+            WiFi.softAPIP()</td>
+          <td style="text-align: left; background-color: white; width: 50%;" class="blue24"><a href="http://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/station-class.html" target="_blank"><span style="color: blue;"><span style="font-family: Verdana,Geneva,sans-serif;" class="blue24">Station Class</span></span></a><br>
+            <br>
+            #include &lt;ESP8266WiFi.h&gt;<br>
+<span style="font-family: Verdana,Geneva,sans-serif; font-size: 24px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; color: #666666;">WiFi.mode(WIFI_STA)</span><br>
+            WiFi.begin(APssid, APpw)<br>
+            <br><br>
+            <br><br>
+<span style="color: rgb(255, 0, 0); font-family: Verdana, Geneva, sans-serif; font-size: 24px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">WiFi.mode(WIFI_AP_STA)</span><br>
+            WiFi.softAP(ssid, password)<br>
+            <br>
+<br>
+WiFi.localIP()</td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//連線至ROUTER(AP)&nbsp;&nbsp; ESP8266為Station<br>#define <span style="color: red;">ssid</span>&nbsp; "<span style="color: black;">yourRouterSSID</span>" <br>#define <span style="color: red;">password</span>&nbsp;&nbsp; "<span style="color: black;">yourRouterPassward</span>"<br><span style="color: red;">WiFi.begin(ssid, password); //連進router<br></span><span style="color: #330099;"></span>
+<hr style="color: black; border-style: solid; margin-left: 0px; margin-right: auto;"><span style="color: #330099;">//ESP8266&nbsp; 設為AP+Station <br>WiFi.mode(WIFI_AP_STA);<br>WiFi.softAP(String("IP-"+ String((WiFi.localIP().toString()))),"");<br>//藉以取得ESP所分配到的動態IP 打開WiFi 可搜尋到 IP-xxxxxxx<br></span>
+<hr style="color: black; margin-left: 0px; margin-right: auto;"><span style="color: #330099;">//設定 並啟動Server<br></span><span style="color: red;"><span style="color: #003300;">#define port 9876</span>&nbsp;&nbsp; //若使用RoboRemo 需用此Port<br><span style="color: #003300;">WiFiServer server(port);</span>//設定Server port<br><span style="color: #003300;">WiFiClient client;&nbsp;</span> //連進softAP之client<br></span><span style="color: #003300;">server.begin()</span>;<br>
+<hr style="color: black; margin-left: 0px; margin-right: auto;">//撰寫服務程式 如: void service(){}<br>
+<hr style="color: black; margin-left: 0px; margin-right: auto;">//loop()<br>//Server 等待連線<br>//連入者給于 client 物件<br>//service(client)&nbsp; 服務連入者</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="f36 kai"><span style="color: red;">適用 於內網</span></td></tr></tbody></table><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>先開啟 手機熱點分享</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24"><span style="color: #330033;">//example 1&nbsp; (使用手機熱點分享)<br>#include &lt;ESP8266WiFi.h&gt;<br></span>#define UART_BAUD 115200<br>#define <span style="color: red;">ssid</span>&nbsp; "<span style="color: black;">yourRouterSSID</span>" <br>#define <span style="color: red;">password</span>&nbsp;&nbsp; "<span style="color: black;">yourRouterPassward</span>"<br>#define led&nbsp; 2<br>#define packTimeout 5 // ms<br>#define bufferSize 8192<br>//#define bufferSize 8<br>#define <span style="color: #003300;">port</span> 9876&nbsp;&nbsp; //若使用RoboRemo 需用此Port<br><span style="color: #003300;">WiFiServer server(port);</span>//設定Server port<br><span style="color: #003300;">WiFiClient client;&nbsp;</span> //連進softAP之client<br>byte buf1[bufferSize];<br>byte i1=0;<br>byte buf2[bufferSize];<br>byte i2=0;<br><span style="color: #663300;"></span><br>void setup() {<br>&nbsp; pinMode(led,OUTPUT);<br>&nbsp; digitalWrite(led,1);<br>&nbsp; Serial.begin(UART_BAUD);<br>&nbsp; <span style="color: red;">WiFi.begin(ssid, password); //連進router</span><br>&nbsp; while (WiFi.status() != WL_CONNECTED) {<br>&nbsp;&nbsp;&nbsp; delay(500);<br>&nbsp; }<br>&nbsp; <span style="color: #330099;">WiFi.mode(WIFI_AP_STA);<br>&nbsp; WiFi.softAP(String("<span style="color: #33cc00;">IPGGx</span>-"+ String((WiFi.localIP().toString()))),"");<br>&nbsp; //藉以取得ESP所分配到的動態IP 打開WiFi 可搜尋到 IP-xxxxxxx<br></span>&nbsp; <span style="color: #003300;">server.begin()</span>;<br>&nbsp; digitalWrite(led,0);<br>}<br><br>void loop(){<br>&nbsp; if(!client.connected()) { // if client not connected<br>&nbsp;&nbsp;&nbsp; <span style="color: #003300;">client</span> = <span style="color: #003300;">server.available()</span>; // wait for it to connect<br>&nbsp;&nbsp;&nbsp; return;<br>&nbsp;&nbsp; }<br><br>&nbsp;<span style="color: #663300;">service(<span style="color: #003300;">client</span>);</span><br>&nbsp;}<br><br><span style="color: #663300;">void service(WiFiClient client){<br>&nbsp; // here we have a connected client<br><br>&nbsp; if(client.available()) {<br>&nbsp;&nbsp;&nbsp; while(client.available()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buf1[i1] = (byte)client.read(); // read char from client<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(i1&lt;bufferSize-1) i1++;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; // now send to UART:<br>&nbsp;&nbsp;&nbsp; Serial.write(buf1, i1);<br>&nbsp;&nbsp;&nbsp; i1 = 0;<br>&nbsp; }<br><br>&nbsp; if(Serial.available()) {<br><br>&nbsp;&nbsp;&nbsp; // read the data until pause:<br>&nbsp; <br>&nbsp;&nbsp;&nbsp; while(1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(Serial.available()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buf2[i2] = (char)Serial.read(); // read char from UART<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(i2&lt;bufferSize-1) i2++;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //delayMicroseconds(packTimeoutMicros);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(packTimeout);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(!Serial.available()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; <br>&nbsp;&nbsp;&nbsp; // now send to WiFi:<br></span><span style="color: #663300;"><span style="color: #333300;"><span style="color: #333300;">&nbsp;&nbsp;&nbsp; cl</span>ient.flush();<br></span>&nbsp;&nbsp;&nbsp; client.write((char*)buf2, i2);<br>&nbsp;&nbsp;&nbsp; i2 = 0;<br>&nbsp; }<br>&nbsp;}<br><br></span>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>試試桌機 熱點分享</td></tr></tbody></table><span style="color: #663300;"><br></span></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="f36"><span style="color: red;">router 分配表(<a href="FixedIP.html" target="_blank">link</a>)</span></td></tr></tbody></table>
+<p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="f36 kai"><span style="color: red;">適用 於內網</span></td></tr></tbody>
+</table>
+<p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="black24">//Example 2<br>//要求ROUTER給定 指定動態IP<br>#include &lt;ESP8266WiFi.h&gt;<br>#define UART_BAUD 115200<br>#define <span style="color: red;">ssid</span>&nbsp; "<span style="color: blue;">B505-01</span>" //以第1,2組為例<br>#define <span style="color: red;">password</span>&nbsp;&nbsp; "<span style="color: blue;">b505b505</span>"<br>#define packTimeout 5 // ms<br>#define bufferSize 8192<br>//#define bufferSize 8<br>#define <span style="color: #003300;">port</span> 9876&nbsp;&nbsp; //若使用RoboRemo 需用此Port<br><br><span style="color: red;">IPAddress ip(192, 168,31,<span style="color: black;">10</span>); //&nbsp; 第一位同學指定分配 IP<br>
+            IPAddress netmask(255, 255, 255, 0);<br>
+            IPAddress ip_gateWay(192,168,31,1);//Router 1,2組內網IP<br></span><br><span style="color: #003300;">WiFiServer server(port);</span>//設定Server port<br><span style="color: #003300;">WiFiClient client;</span>&nbsp; //連進softAP之client<br>byte buf1[bufferSize];<br>byte i1=0;<br>byte buf2[bufferSize];<br>byte i2=0;<br><br>void setup() {<br>&nbsp; Serial.begin(UART_BAUD);<br>&nbsp; <span style="color: red;">WiFi.begin(ssid, password);</span><br>&nbsp; <span style="color: red;">WiFi.config(ip, ip_gateWay, netmask);//指定動態IP</span><br>&nbsp; while (WiFi.status() != WL_CONNECTED) {<br>&nbsp;&nbsp;&nbsp; delay(500);<br>&nbsp; }<br>&nbsp; <span style="color: #330033;">WiFi.mode(WIFI_AP_STA);<br>&nbsp; WiFi.softAP(String("<span style="color: #33cc00;">IPGGx</span>-"+String((WiFi.localIP().toString()))),"");</span><br>&nbsp; <span style="color: #003300;">server.begin();</span><br>}<br><br>void loop(){<br>&nbsp; if(!client.connected()) { // if client not connected<br>&nbsp;&nbsp;&nbsp; <span style="color: #003300;">client </span>= <span style="color: #003300;">server.available()</span>; // wait for it to connect<br>&nbsp;&nbsp;&nbsp; return;//若沒有client， 以下程式碼皆不執行(回loop起始點)<br>&nbsp; }<br><span style="color: #663300;">&nbsp; service(<span style="color: #003300;">client</span>);</span><br>&nbsp; <br>&nbsp; }<br><br><span style="color: #663300;">void service(WiFiClient client){<br>&nbsp; // here we have a connected client<br><br>&nbsp; if(client.available()) {<br>&nbsp;&nbsp;&nbsp; while(client.available()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buf1[i1] = (byte)client.read(); // read char from client<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(i1&lt;bufferSize-1) i1++;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; // now send to UART:<br>&nbsp;&nbsp;&nbsp; Serial.write(buf1, i1);<br>&nbsp;&nbsp;&nbsp; i1 = 0;<br>&nbsp; }<br><br>&nbsp; if(Serial.available()) {<br><br>&nbsp;&nbsp;&nbsp; // read the data until pause:<br>&nbsp; <br>&nbsp;&nbsp;&nbsp; while(1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(Serial.available()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buf2[i2] = (char)Serial.read(); // read char from UART<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(i2&lt;bufferSize-1) i2++;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //delayMicroseconds(packTimeoutMicros);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(packTimeout);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(!Serial.available()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; <br>&nbsp;&nbsp;&nbsp; // now send to WiFi:<br>&nbsp;&nbsp;</span><span style="color: #663300;"><span style="color: #333300;"><span style="color: #333300;">&nbsp; cl</span>ient.flush();<br></span>&nbsp;&nbsp;&nbsp; client.write((char*)buf2, i2);<br>&nbsp;&nbsp;&nbsp; i2 = 0;<br>&nbsp; }<br>&nbsp;}</span></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//return (<a href="https://www.arduino.cc/reference/en/language/structure/control-structure/return/" target="_blank">web</a>)<br><br>void loop() {<br>&nbsp; // brilliant code idea to test here<br><br>&nbsp; return;<br><br>&nbsp; // the rest of a dysfunctional sketch here<br>&nbsp; // this code will never be executed<br>}</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="f36 kai"><span style="color: red;">適用 於 外網</span></td></tr></tbody>
+</table>
+<p></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C">以第1,2組 第一位同學為例</td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><br><img src="images/esp8266_AP_STA_005a.png" alt=""></td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="black24">//要求ROUTER給定 指定動態IP<br>#include &lt;ESP8266WiFi.h&gt;<br>#define UART_BAUD 115200<br>#define packTimeout 5 // ms<br>#define bufferSize 8192<br>//#define bufferSize 8<br><br>#define&nbsp; <span style="color: red;">ssid</span>&nbsp; "B505-01"<br>#define <span style="color: red;">password</span>&nbsp;&nbsp; "b505b505"<br>//若欲由外網b50501.ntue.edu.tw(120.127.10.71)<br>//每位同學須照分配的IP 與 port 設定<br>#define <span style="color: #003300;">port</span> <span style="color: red;"><span style="color: #33cc00;">10000</span> </span>&nbsp; //第一位同學指定分配Port 10000<br><span style="color: red;">IPAddress ip(192, 168,<span style="color: #330099;">31</span>,<span style="color: #33cc00;">10</span>); //&nbsp; 第一位同學指定分配 IP<br>
+            IPAddress netmask(255, 255, 255, 0);<br>
+            IPAddress ip_gateWay(192,168,<span style="color: #330099;">31</span>,1);//Router 1,2組內網IP<br></span><br><span style="color: #003300;">WiFiServer server(port);</span>//設定Server port<br><span style="color: #003300;">WiFiClient client;</span>&nbsp; //連進softAP之client<br>byte buf1[bufferSize];<br>byte i1=0;<br>byte buf2[bufferSize];<br>byte i2=0;<br><span style="color: #663300;"></span><br>void setup() {<br>&nbsp; Serial.begin(UART_BAUD);<br>&nbsp; <span style="color: red;">WiFi.begin(ssid, password);</span><br>&nbsp; <span style="color: red;">WiFi.config(ip, ip_gateWay, netmask);//指定動態IP</span><br>&nbsp; while (WiFi.status() != WL_CONNECTED) {<br>&nbsp;&nbsp;&nbsp; delay(500);<br>&nbsp; }<br>&nbsp; <span style="color: #330033;">WiFi.mode(WIFI_AP_STA);<br>&nbsp; WiFi.softAP(String("<span style="color: #009900;">IPGGx</span>-"+String((WiFi.localIP().toString()))),"");</span><br>&nbsp; <span style="color: #003300;">server.begin();</span><br>}<br><br>void loop(){<br>&nbsp; if(!client.connected()) { // if client not connected<br>&nbsp;&nbsp;&nbsp; <span style="color: #003300;">client</span> = <span style="color: #003300;">server.available()</span>; // wait for it to connect<br>&nbsp;&nbsp;&nbsp; return;//若沒有client， 以下程式碼皆不執行(回loop起始點)<br>&nbsp; }<br><span style="color: #663300;">&nbsp; service(<span style="color: #003300;">client</span>);</span><br>&nbsp;}<br><br><span style="color: #663300;">void service(WiFiClient client){<br>&nbsp; // here we have a connected client<br><br>&nbsp; if(client.available()) {<br>&nbsp;&nbsp;&nbsp; while(client.available()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buf1[i1] = (byte)client.read(); // read char from client<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(i1&lt;bufferSize-1) i1++;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; // now send to UART:<br>&nbsp;&nbsp;&nbsp; Serial.write(buf1, i1);<br>&nbsp;&nbsp;&nbsp; i1 = 0;<br>&nbsp; }<br><br>&nbsp; if(Serial.available()) {<br><br>&nbsp;&nbsp;&nbsp; // read the data until pause:<br>&nbsp; <br>&nbsp;&nbsp;&nbsp; while(1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(Serial.available()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buf2[i2] = (char)Serial.read(); // read char from UART<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(i2&lt;bufferSize-1) i2++;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //delayMicroseconds(packTimeoutMicros);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(packTimeout);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(!Serial.available()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; <br>&nbsp;&nbsp;&nbsp; // now send to WiFi:<br>&nbsp;</span><span style="color: #663300;"><span style="color: #333300;"><span style="color: #333300;">&nbsp;&nbsp; cl</span>ient.flush();<br></span>&nbsp;&nbsp;&nbsp; client.write((char*)buf2, i2);<br>&nbsp;&nbsp;&nbsp; i2 = 0;<br>&nbsp; }<br>&nbsp;}<br><br></span>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">連線方式:(以第1,2組第一位同學為例)<br>外網聯入:<br>b50501.ntue.edu.tw:100<span style="color: red;">0</span><br>120.127.10.71:100<span style="color: red;">0</span><br>內網聯入:<br>192.168.31.1<span style="color: red;">0</span>:100<span style="color: red;">0</span><br><br>ESP 當AP:手機聯入<br><span style="color: #330033;">IPGGx-192.168.31.10</span><br><span style="color: red;"></span></td></tr></tbody></table><span style="color: #663300;"><br></span></td></tr></tbody>
+</table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>廣域網路（Wide Area Network，縮寫為 WAN），又稱廣域網路、外網、公網。<br><br><img src="images/port_001.png" alt=""><br><br><img src="images/port_002.png" alt=""></td></tr></tbody></table>
+
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">How to Forward a port(<a href="https://portforward.com/router.htm" target="_blank">web</a>)<br>A port forward is a way of making a computer on your home or business network accessible to computers on the internet, even though they are behind a router.</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>搜尋基地台</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">#include "ESP8266WiFi.h"<br><br>void setup() {<br>&nbsp; Serial.begin(115200);<br><br>&nbsp; // Set WiFi to station mode and disconnect from an AP if it was previously connected<br>&nbsp; WiFi.mode(WIFI_STA);<br>&nbsp; WiFi.disconnect();<br>&nbsp; delay(100);<br><br>&nbsp; Serial.println("Setup done");<br>}<br><br>void loop() {<br>&nbsp; Serial.println("scan start");<br><br>&nbsp; // WiFi.scanNetworks will return the number of networks found<br>&nbsp; int n = WiFi.scanNetworks();<br>&nbsp; Serial.println("scan done");<br>&nbsp; if (n == 0) {<br>&nbsp;&nbsp;&nbsp; Serial.println("no networks found");<br>&nbsp; } else {<br>&nbsp;&nbsp;&nbsp; Serial.print(n);<br>&nbsp;&nbsp;&nbsp; Serial.println(" networks found");<br>&nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; n; ++i) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Print SSID and RSSI for each network found<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(i + 1);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(": ");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(WiFi.SSID(i));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(" (");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(WiFi.RSSI(i));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.print(")");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println((WiFi.encryptionType(i) == ENC_TYPE_NONE) ? " " : "*");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(10);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; }<br>&nbsp; Serial.println("");<br><br>&nbsp; // Wait a bit before scanning again<br>&nbsp; delay(5000);<br>}</td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<p></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br>
+  </p><p><br></p>
+</body></html>

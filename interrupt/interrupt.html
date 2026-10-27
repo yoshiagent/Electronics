@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>interrupt</title>
+    <link type="text/css" rel="stylesheet" href="mystyle.css">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <table style="width: 586px; height: 502px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/interrupt_001.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 393px; height: 55px;" border="0">
+      <tbody>
+        <tr>
+          <td class="red36">Serial Event</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 792px; height: 489px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24">//使用Serial Monitor 控制LED(D6)&nbsp;&nbsp;&nbsp; 0,1<br>
+            #define led&nbsp; 6<br>
+            volatile int inB;<br>
+            void <span style="color: #cc0000;">serialEvent</span>() {<br>
+            &nbsp; inB = Serial.read();<br>
+            }<br>
+            <br>
+            void setup() {<br>
+            &nbsp;&nbsp; Serial.begin(115200);<br>
+            &nbsp;&nbsp; pinMode(led,OUTPUT) ;<br>
+            &nbsp;&nbsp; digitalWrite(led,LOW);<br>
+            }<br>
+            void loop() {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='1') digitalWrite(led,HIGH);//LED
+            ON<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB=='0') digitalWrite(led,LOW); //LED
+            OFF<br>
+            }<br>
+            <br>
+            // <a href="../BlueTooth/BlueTooth.html" target="_top">ref</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 393px; height: 55px;" border="0">
+      <tbody>
+        <tr>
+          <td class="red36">External Interrupt</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 724px; height: 150px;" class="blue24" border="1">
+      <tbody>
+        <tr>
+          <td style="width: 206.684px;">Interrupt No.</td>
+          <td>Interrupt Name</td>
+          <td>Arduino pin</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">0</td>
+          <td style="width: 230.85px; text-align: center;">INT0</td>
+          <td style="width: 225.983px; text-align: center;">D2</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">1</td>
+          <td style="text-align: center;">INT1</td>
+          <td style="text-align: center;">D3</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 553px; height: 74px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24">digitalPinToInterrupt(2)---&gt;0<br>
+            digitalPinToInterrupt(3)---&gt;1</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 665px; height: 603px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24">void setup() {<br>
+            &nbsp; Serial.begin(9600);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            Serial.print("D2's interrupt no.=");&nbsp; <br>
+            Serial.println(digitalPinToInterrupt(2));<br>
+            Serial.print("D3's interrupt no.=");&nbsp; <br>
+            Serial.println(digitalPinToInterrupt(3));<br>
+            Serial.print("D4's interrupt no.=");&nbsp; <br>
+            Serial.println(digitalPinToInterrupt(4));<br>
+            Serial.print("D5's interrupt no.=");&nbsp; <br>
+            Serial.println(digitalPinToInterrupt(5));<br>
+            delay(2000);<br>
+            }<br>
+            <br>
+            <img src="images/interrupt_002.png" alt=""></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1061px; height: 486px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24">attachInterrupt(interupt No., ISR, mode);<br>
+            <br>
+            attachInterrupt(digitalPinToInterrupt(pin), ISR, mode);<br>
+            <br>
+            pin: D2,D3<br>
+            <br>
+            ISR: the ISR to call when the interrupt occurs; <br>
+            this function must take no parameters and return nothing. <br>
+            This function is sometimes referred to as an interrupt service
+            routine.<br>
+            <br>
+            mode: defines when the interrupt should be triggered. <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Four
+            constants are predefined as valid values:<br>
+            &nbsp; LOW to trigger the interrupt whenever the pin is low,<br>
+            &nbsp; CHANGE to trigger the interrupt whenever the pin changes
+            value<br>
+            &nbsp; RISING to trigger when the pin goes from low to high,<br>
+            &nbsp; FALLING for when the pin goes from high to low.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1007px; text-align: left; margin-left: auto; margin-right: auto; height: 551px;"
+      border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">#define
+            ledPin&nbsp; 13<br>
+            #define interruptPin 2<br>
+            volatile int state = LOW;<br>
+            <br>
+            void setup() {<br>
+            &nbsp; pinMode(ledPin, OUTPUT);<br>
+            &nbsp; pinMode(interruptPin, INPUT_PULLUP);<br>
+            &nbsp; attachInterrupt(digitalPinToInterrupt(interruptPin), blink,
+            CHANGE);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; digitalWrite(ledPin, state);<br>
+            }<br>
+            <br>
+            void blink() {<br>
+            &nbsp; state = !state;<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 1017px; height: 646px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24">#define LED1&nbsp; 7<br>
+            #define LED2&nbsp; 8<br>
+            #define SW1&nbsp;&nbsp; 5<br>
+            #define SW2&nbsp;&nbsp; 6<br>
+            void setup() {<br>
+            &nbsp; pinMode(LED1, OUTPUT);<br>
+            &nbsp; pinMode(LED1, OUTPUT);<br>
+            &nbsp; pinMode(SW1,INPUT_PULLUP);<br>
+            &nbsp; pinMode(SW2,INPUT_PULLUP);<br>
+            <br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; if(digitalRead(SW1)==LOW) digitalWrite(LED1,HIGH);<br>
+            &nbsp; delay(20000);<br>
+            &nbsp; digitalWrite(LED1,LOW);<br>
+            &nbsp; if(digitalRead(SW2)==LOW) digitalWrite(LED2,HIGH);<br>
+            &nbsp; delay(20000);<br>
+            &nbsp; digitalWrite(LED2,LOW);<br>
+            }<br>
+            <br>
+            //是否可全亮?</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 1043px; height: 512px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24">#define LED1&nbsp; 7<br>
+            #define LED2&nbsp; 8<br>
+            #define inPin 2<br>
+            void setup() {<br>
+            &nbsp; pinMode(LED1, OUTPUT);<br>
+            &nbsp; pinMode(LED2, OUTPUT);<br>
+            &nbsp; pinMode(inPin, INPUT_PULLUP);<br>
+            &nbsp; }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; digitalWrite(LED1,HIGH);<br>
+            &nbsp; delay(2000);<br>
+            &nbsp; digitalWrite(LED1,LOW);<br>
+            &nbsp; delay(2000);<br>
+            &nbsp; if(digitalRead(inPin)==HIGH) <br>
+            &nbsp; &nbsp; digitalWrite(LED2,HIGH);<br>
+            &nbsp; else<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(LED2,LOW);<br>
+            }<br>
+            <br>
+            //LED2 何時切換?</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 1043px; height: 754px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24">#define LED1&nbsp; 7<br>
+            #define LED2&nbsp; 8<br>
+            #define inPin 2<br>
+            volatile int state = LOW;<br>
+            void setup() {<br>
+            &nbsp; pinMode(LED1, OUTPUT);<br>
+            &nbsp; pinMode(LED2, OUTPUT);<br>
+            &nbsp; pinMode(inPin, INPUT_PULLUP);<br>
+            &nbsp; attachInterrupt(digitalPinToInterrupt(inPin), blink, CHANGE);<br>
+            <br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; digitalWrite(LED1,HIGH);<br>
+            &nbsp; delay(2000);<br>
+            &nbsp; digitalWrite(LED1,LOW);<br>
+            &nbsp; delay(2000);<br>
+            &nbsp; <br>
+            }<br>
+            <br>
+            void blink() {<br>
+            &nbsp; state = !state;<br>
+            &nbsp; digitalWrite(LED2, state);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 859px; height: 105px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24">detachInterrupt()<br>
+            <br>
+            Turns off the given interrupt.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 818px; height: 1px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24C">Bounce (彈跳)<br>
+            <br>
+            所謂的 Bounce 是指我們在按下電源開關時，電壓不會從 0 伏直接升到 Vcc 伏。而是在 0 及 Vcc 間震盪好幾次，最後才在
+            Vcc 端穩定下來。<br>
+            一個電子產品若有彈跳現象的話，最常見到的「症狀」是按下一個開關，結果數字跳好幾下。<br>
+            <img src="images/debouce-graph.png" alt=""></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 780px; height: 553px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/contact_bouncing.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 218px; height: 59px;" border="0">
+      <tbody>
+        <tr>
+          <td class="red36">debounce</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 572px; height: 352px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/debounced_buttons.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 331px; height: 259px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24"><img src="images/Input-Signals1.png" alt=""><br>
+            <br>
+            Schmitt trigger<br>
+            <img src="file:///C:/Dropbox/iotRobot/interrupt/images/Input-Signals.png"
+              alt=""></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+
+
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>應用電子學</title>
+    <link type="text/css" rel="stylesheet" href="mystyle.css">
+    <link type="text/css" rel="stylesheet" href="w3.css">
+    <link type="text/css" rel="stylesheet" href="kai.css">
+    <script>
+  function ShowTime(){
+　document.getElementById('time').innerHTML = new Date();
+　setTimeout('ShowTime()',1000);
+  }
+</script> </head>
+  <body onload="ShowTime()" class="w3-container w3-pale-yellow">
+    <div class="w3-panel w3-xxlarge" style="text-align: center;"> <span class="c">應
+        用電子學</span> </div>
+    <p id="time"></p>
+    <div class="w3-bar w3-light-grey">
+      <div class="w3-dropdown-hover"> <button class="w3-button">Basic Elements</button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4"> <a href="#" class="w3-bar-item w3-button">Resistor</a>
+          <a href="#" class="w3-bar-item w3-button">Capacitor</a> <a href="#" class="w3-bar-item w3-button">Inductor</a>
+          <a href="#" class="w3-bar-item w3-button">Diode</a> <a href="#" class="w3-bar-item w3-button">Transistor</a>
+        </div>
+      </div>
+      <div class="w3-dropdown-hover"> <button class="w3-button">Instruments</button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4"> <a href="#" class="w3-bar-item w3-button">Multi-meter</a>
+          <a href="#" class="w3-bar-item w3-button">Function Generator</a> <a href="#" class="w3-bar-item w3-button">Power Supply</a> <a href="#" class="w3-bar-item w3-button">Oscilloscope</a>
+        </div>
+      </div>
+      <div class="w3-dropdown-hover"> <button class="w3-button">Controllers</button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4"> <a href="#" class="w3-bar-item w3-button">ATmega328</a>
+          <a href="#" class="w3-bar-item w3-button">ESP866</a> <a href="#" class="w3-bar-item w3-button">Raspberry</a>
+        </div>
+      </div>
+      <div class="w3-dropdown-hover"> <button class="w3-button">Sensors</button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4"> <a href="#" class="w3-bar-item w3-button">light</a>
+          <a href="#" class="w3-bar-item w3-button">sonic</a> <a href="#" class="w3-bar-item w3-button">color</a>
+          <a href="#" class="w3-bar-item w3-button">temperature</a> <a href="#" class="w3-bar-item w3-button">Joy Stick</a> </div>
+      </div>
+      <div class="w3-dropdown-hover"> <button class="w3-button">Actuators</button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4"> <a href="#" class="w3-bar-item w3-button">Relay</a>
+          <a href="#" class="w3-bar-item w3-button">DC Motor</a> <a href="#" class="w3-bar-item w3-button">RC
+            servo</a> <a href="#" class="w3-bar-item w3-button">Step Motor</a>
+        </div>
+      </div>
+      <div class="w3-dropdown-hover"> <button class="w3-button">Displays</button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4"> <a href="#" class="w3-bar-item w3-button">I2C
+            LCD</a> <a href="#" class="w3-bar-item w3-button">I2C Oled</a> </div>
+      </div>
+      <div class="w3-dropdown-hover"> <button class="w3-button">Communication</button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4"> <a href="#" class="w3-bar-item w3-button">USART</a>
+          <a href="#" class="w3-bar-item w3-button">I2C</a> <a href="#" class="w3-bar-item w3-button">SPI</a>
+          <a href="#" class="w3-bar-item w3-button">Bluetooth</a> <a href="#" class="w3-bar-item w3-button">nRF24L01+</a>
+          <a href="#" class="w3-bar-item w3-button">Wi-Fi</a> </div>
+      </div>
+    </div>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/DM_002_burneda.png" alt="" style="width: 279px; height: 252px;"><br>
+            (<a href="gallery/gallery.html" target="_blank">其他</a>)<br>
+            (<a href="RobotAssembly/RobotAssembly.html" target="_blank">Assembly</a>)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table class="w3-table-all w3-xlarge">
+      <tbody>
+        <tr>
+          <td><a href="power/PowerCourse.html" target="_blank"><span class="c">電
+                源模組</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="multimeter.html" target="_blank"><span class="c">三用電錶</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="OmhLaw.html" target="_blank"><span class="c">歐姆定律</span></a></td>
+        </tr>
+        <tr>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td><a href="IrLED.html" target="_blank"><span class="c">紅外線遙控器 控制LED</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="Relay.html" target="_blank"><span class="c">繼電器--原理</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="IrRelay.html" target="_blank"><span class="c">繼電器--紅外線遙控器</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="LDS.html" target="_blank"><span class="c">光影控制</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="letryMag.html" target="_blank"><span class="c">黑暗中LED自動亮
+                (補充)</span></a></td>
+        </tr>
+        <tr>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>Micro-Controller--ATmega328P-PU</td>
+        </tr>
+        <tr>
+          <td><a href="ArduinoIDE.html" target="_blank">Arduino IDE </a></td>
+        </tr>
+        <tr>
+          <td><a href="AT_LED.html" target="_blank"><span class="c">程式控制LED(含for
+                loop)</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="ATmegaRelay.html" target="_blank"><span class="c">繼電器--程式
+                控制</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="Dinput.html" target="_blank"><span class="c">數位輸入(含if
+                else用法)</span> </a></td>
+        </tr>
+        <tr>
+          <td><a href="RobotPWM.html" target="_blank"><span class="c">輪型機器人運動控制
+                (PWM馬達驅動板)</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="AnalogInput.html" target="_blank"><span class="c">類比輸入(可變
+                電阻、調光燈)</span></a><br>
+            (<a href="HwangP/serial/serial.html" target="_blank">serial</a>)</td>
+        </tr>
+        <tr>
+          <td><a href="joystick.html" target="_blank"><span class="c">搖桿控制LED與輪型
+                機器人(類比與數位輸入)</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="irSensor.html" target="_blank"><span class="c">紅外線距離感測器控制
+                機器人</span></a><br>
+            <span style="color: blue;"><span style="font-family: &quot;標楷體&quot;,cursive,sans-serif;">(moving
+                average)</span></span></td>
+        </tr>
+        <tr>
+          <td><a href="irDigital.html" target="_blank"><span class="c">紅外線距離感測器控
+                制機器人</span></a>(數位式)</td>
+        </tr>
+        <tr>
+          <td><a href="thermoSensor.html" target="_blank"><span class="c">溫控輪型機器
+                人</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="LedArray.html" target="_blank"><span class="c">排LED與排阻</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="interrupt/interrupt.html" target="_blank">interrupt</a></td>
+        </tr>
+        <tr>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>Actuators</td>
+        </tr>
+        <tr>
+          <td><a href="Motor.html" target="_blank"><span class="c">直流馬達</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="StepMotor.html" target="_blank"><span class="c">步進馬達控制(含紅
+                外線遙控)</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="RCserver/RCservo_1.html" target="_blank">RC Servo</a></td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+          <td><a href="Music.html" target="_blank"><span class="c">我是作曲家(喇叭)</span></a></td>
+        </tr>
+        <tr>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>Displays</td>
+        </tr>
+        <tr>
+          <td><a href="7segment/index.html" target="_blank"><span class="c">7
+                段顯示器</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="LCDI2C/I2C_LCD.html" target="_blank"><span class="c">LCD
+                顯示器 (I2C)</span></a></td>
+        </tr>
+        <tr>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>Sensors</td>
+        </tr>
+        
+        <tr>
+          <td><a href="mic/index.html" target="_blank"><span class="c">聲控(麥克風)</span></a></td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+          <td><a href="ultraSonic/ultraSonic.html" target="_blank"><span class="c">超
+                音波感測</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="DHT11/DHT11.html" target="_blank"><span class="c">DHT11溫濕
+                度感測</span></a></td>
+        </tr>
+        <tr align="left">
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>Comunication</td>
+        </tr>
+        <tr>
+          <td><a href="UART/UART.html" target="_blank">UART</a></td>
+        </tr>
+        <tr>
+<td><a href="SerialTXRX.html" target="_blank"><span class="c">PC
+                串列傳輸控制(UART)</span></a></td></tr>
+<tr>
+<td><br></td></tr>
+<tr>
+          <td><a href="I2C/I2C.html" target="_blank">I2C</a></td>
+        </tr>
+        <tr>
+          <td><a href="SerialTXRX.html" target="_blank"><span class="c"></span></a><br></td>
+        </tr>
+        <tr>
+          <td><a href="BlueTooth/BlueTooth.html" target="_blank"><span class="c">藍
+                芽遙控LED與輪型機器人</span></a></td>
+        </tr>
+        <tr>
+<td><br></td></tr>
+<tr>
+          <td><a href="iRremoteSerial.html" target="_blank"><span class="c">紅外線遙
+                控器(解碼板)串列傳輸(控制LED)(Software Serial)</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="RobotIrdec.html" target="_blank"><span class="c">紅外線遙控器(解
+                碼板)串列傳輸(控制輪型機器人)</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="irDecode/irDecode.html" target="_blank"><span class="kai">紅
+                外線接收器</span>(38kHz)</a><br>
+            <a href="irDecode/IRLib2/raw.html" target="_blank"><span style="color: blue;"><span style="font-family: &quot;標楷體&quot;,&quot;cwTeXKai&quot;,sans-serif;">萬
+                  用外線遙控器(raw data)(Arduino irlib)</span></span></a><br>
+            <a href="irDecode/IRLib2/IRLib2_1.html" target="_blank"><span class="kai">紅
+                外線遙控器(NEC)解碼</span>(Arduino irlib)</a><br>
+            <a href="irDecode/IRLib2/irRemoteCar.html" target="_blank"><span style="color: blue;"><span style="font-family: &quot;標楷體&quot;,&quot;cwTeXKai&quot;,sans-serif;">遙
+                  控輪型機器人(Arduino irlib)</span></span></a><br>
+            <a href="irDecode/IRLib2/IRLib2_2.html" target="_blank"><span style="color: blue;" class="kai">紅外線發射(Arduino irlib)</span></a><span style="color: blue;"><span style="font-family: &quot;標楷體&quot;,&quot;cwTeXKai&quot;,sans-serif;"><br>
+              </span></span></td>
+        </tr>
+        <tr>
+<td><br></td></tr>
+<tr>
+          <td><a href="ps2/ps2_1.html" target="_blank"><span class="c">PS2 無線手把</span></a>(特
+            殊通信協定)</td>
+        </tr>
+        
+        
+        
+        
+        
+        
+        
+        
+        <tr>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+<td>WiFi-Micro-Controller--ESP8266</td></tr>
+<tr>
+<td><a href="ESP8266/First.html" target="_blank">ESP8266 <span class="c">簡介與開發工具</span></a></td></tr>
+<tr>
+<td><a href="ESP8266/ESP2Uart_AP.html" target="_blank">ESP8266 WiFi-UART +
+              Arduino&nbsp; (softAP,_Server)</a> (不需ROUTER)</td></tr>
+<tr>
+<td><a href="ESP8266/ESP2Uart_sta.html" target="_blank">ESP8266 WiFi-UART (station, Server)</a> (需ROUTER、區網)(AP+Sta 獲取 Local IP)</td></tr>
+<tr>
+<td><a href="ESP8266/JavaScript/javaScript.html" target="_blank">STA+AP&nbsp; HTTP server LED <span class="c">控制</span> (Javascript)</a></td></tr>
+<tr>
+<td><br></td></tr>
+<tr>
+          <td class="kai">相關基礎知識</td>
+        </tr>
+        <tr>
+          <td><a href="numberSystem.html"><span class="c">數字系統</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="ASCII.html">ASCII Code</a></td>
+        </tr>
+        <tr>
+          <td><a href="DataType/dataType.html" target="_blank">Data Type</a></td>
+        </tr>
+        <tr>
+          <td><a href="timerUno.html" target="_blank">Arduino Timers</a><br>
+          </td>
+        </tr>
+        <tr>
+          <td><a href="webDesign/webDesign.html" target="_blank">Web Design</a></td>
+        </tr>
+        <tr>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="kai">相關應用軟體</td>
+        </tr>
+        <tr>
+          <td><a href="processing/processing.html" target="_blank">Processing</a></td>
+        </tr>
+        <tr>
+          <td><a href="FlowChart/FlowChart.html" target="_blank">Flowchart</a></td>
+        </tr>
+        <tr>
+          <td><a href="Fritzing/Fritzing.html" target="_blank">Fritzing</a></td>
+        </tr>
+        <tr>
+          <td><a href="InkScape.html" target="_blank">Inkscape</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table class="w3-table-all w3-xlarge">
+      <tbody>
+        <tr>
+          <td><a href="PNJunction/PNJunction.htm">PN Junction</a></td>
+        </tr>
+        <tr>
+          <td><a href="L9110/L9110.html" target="_blank">L9110</a></td>
+        </tr>
+        <tr>
+          <td><a href="HwangP/BasicElectronics/BasicElecronics.html" target="_blank">Electronic
+              Basics</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <table class="w3-table-all w3-xlarge">
+      <tbody>
+        <tr>
+          <td><span class="c">教具:</span><a href="DM/myProduct.html" target="_blank"><span class="c">教學平台</span></a></td>
+        </tr>
+        <tr>
+          <td><a href="equipment/docs/TDS-2000C%E4%B8%AD%E6%96%87%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8A.pdf"><span class="c">示波器使用手冊</span>(pdf)</a></td>
+        </tr>
+        <tr>
+          <td><a href="equipment/docs/GPD%E4%B8%AD%E6%96%87%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8A.pdf"><span class="c">電源供應器使用手冊</span>(pdf)</a></td>
+        </tr>
+        <tr>
+          <td><a href="equipment/docs/AFG-2000FunctionG_Manual.pdf"><span class="c">函
+                數產生器使用手冊</span>(pdf)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+</body></html>

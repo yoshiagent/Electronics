@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>iRremoteCon</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 662px; height: 562px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/irDecodeBoard_001.png"><br>
+            <br>
+            <a href="svg/irDecodeBoard.pdf">pdf</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="svg/irDecodeBoard.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 667px; height: 730px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/irDecSerial_02.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p> </p>
+    <table style="width: 586px; height: 461px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/ATMegaIrLED_003.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1205px; height: 790px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/irDecSerial_003.png"><br>
+            <br>
+            <a href="svg/ATMEGA_Ir_Led.pdf">pdf</a>&nbsp;&nbsp;&nbsp; <a href="svg/ATMEGA_Ir_Led.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 824px; height: 509px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp; led&nbsp; 11<br>
+            int inB;<br>
+            void setup() {<br>
+            &nbsp; <span class="red24">Serial.begin</span>(<span class="red24">2400</span>);<br>
+            &nbsp; pinMode(led,OUTPUT) ;<br>
+            &nbsp; digitalWrite(led,LOW);//LED OFF<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            <br>
+            &nbsp;&nbsp; if (<span class="red24">Serial.available() &gt; 0</span>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; inB = <span class="red24">Serial.read()</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB==0x11)&nbsp;&nbsp; digitalWrite(led,HIGH);//LED ON<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB==0x21)&nbsp;&nbsp; digitalWrite(led,LOW); //LED OFF<br>
+            &nbsp;&nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 759px; height: 59px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36">Software Serial</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 824px; height: 509px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#include &lt;SoftwareSerial.h&gt;<br>
+            #define&nbsp; led&nbsp; 11<br>
+            SoftwareSerial mySerial(9, 10); // 9:RX, 10:TX<br>
+            <br>
+            int inB;<br>
+            void setup() {<br>
+            &nbsp; <span class="red24">mySerial.begin</span>(<span class="red24">2400</span>);<br>
+            &nbsp; pinMode(led,OUTPUT) ;<br>
+            &nbsp; digitalWrite(led,LOW);//LED OFF<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            <br>
+            &nbsp;&nbsp; if (<span class="red24">mySerial.available() &gt; 0</span>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; inB = <span class="red24">mySerial.read()</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB==0x11)&nbsp;&nbsp; digitalWrite(led,HIGH);//LED ON<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (inB==0x21)&nbsp;&nbsp; digitalWrite(led,LOW); //LED OFF<br>
+            &nbsp;&nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 790px; height: 55px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C"><a href="RobotIrdec.html">紅外線遙控器 遙控機器人</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

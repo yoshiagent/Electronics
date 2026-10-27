@@ -1,0 +1,73 @@
+@charset "utf-8";
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+td {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.Blue24 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #00F;
+}
+.Blue24CHT {
+	font-family: "標楷體";
+	font-size: 24px;
+	font-weight: bold;
+	color: #00F;
+}
+.Red24 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #F00;
+}
+.Red24RG {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #FF0;
+}
+.RED24CHTRG {
+	font-family: "標楷體";
+	font-size: 24px;
+	font-weight: bold;
+	color: #FF0;
+}
+.RED24CHT {
+	font-family: "標楷體";
+	font-size: 24px;
+	font-weight: bold;
+	color: #F00;
+}
+.Blue36 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #00F;
+}
+.Red36 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #F00;
+}
+.RED36CHT {
+	font-family: "標楷體";
+	font-size: 36px;
+	font-weight: bold;
+	color: #F00;
+}
+.Blue36CHT {
+	font-family: "標楷體";
+	font-size: 36px;
+	font-weight: bold;
+	color: #00F;
+}

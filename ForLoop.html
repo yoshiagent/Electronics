@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>ForLoop</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="blue36">
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">for 迴圈 (for loop)</td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 840px; height: 748px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24C"><img alt="" src="images/ForLoop0.png"><br>
+            <a href="docs/ForLoop0.pdf">pdf</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 1449px; height: 939px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">
+            <p><span class="Blue24"></span></p>
+            <table style="width: 100%;" border="0">
+              <tbody>
+                <tr>
+                  <td style="text-align: left; background-color: white;"><span
+                      class="blue24">#define &nbsp; LED&nbsp; 11<br>
+                      void setup() {<br>
+                      &nbsp;&nbsp;pinMode(LED,OUTPUT);<br>
+                    </span></td>
+                </tr>
+              </tbody>
+            </table>
+            <table style="width: 100%;" border="0">
+              <tbody>
+                <tr>
+                  <td style="text-align: left; background-color: white;"><span
+                      class="Red24 red24 red36">for (int &nbsp;&nbsp;k=0; &nbsp;k&lt;2;&nbsp; k=k+1<span
+                        style="color: blue;"><span style="font-family: &quot;標楷體&quot;,cursive,sans-serif;"></span></span>)<br>
+                      &nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(LED,HIGH); <br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delay(1000);<br>
+                      &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(LED,LOW);<br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(1000);<br>
+                      &nbsp;&nbsp;&nbsp; }</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <table style="width: 100%;" border="0">
+              <tbody>
+                <tr>
+                  <td style="text-align: left; background-color: white;"
+                    class="blue24">}<br>
+                    void loop() {<br>
+                    } </td>
+                </tr>
+              </tbody>
+            </table>
+            <p><br>
+              &nbsp; <span class="Red24"><br>
+              </span></p>
+            <p class="Blue24">&nbsp;</p>
+          </td>
+          <td class="blue24 blue24C"><br>
+            <img alt="" src="images/ForLoop.png"><br>
+            <a href="docs/ForLoop.pdf"><span style="color: #0000ee;">pdf</span></a><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 1419px; height: 558px;" border="0">
+      <tbody>
+        <tr>
+          <td style="width: 855.633px;"><img alt="" src="images/ForLoop.png"><br>
+          </td>
+          <td style="text-align: left; background-color: white; width: 747.367px;"
+            class="blue24 black36">
+            <p class="Red24">k=0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&lt;2 <span
+                class="RED24CHT">對</span></p>
+            <p><span class="Blue36"><span class="Blue24">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(11,HIGH);</span><span
+                  class="Blue24"><br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delay(1000);<br>
+                  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(11,LOW);</span><span
+                  class="Blue24"><br>
+                  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;delay(1000);</span></span></p>
+            <p class="Red24">k=1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&lt;2&nbsp;&nbsp;<span
+                class="RED24CHT">對</span></p>
+            <p><span class="Blue36"><span class="Blue24">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(11,HIGH);</span><span
+                  class="Blue24"><br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delay(1000);<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(11,LOW);</span><span
+                  class="Blue24"><br>
+                  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;delay(1000);</span></span></p>
+            <p class="Red24">k=2 <span class="RED24CHT">停止執行</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&lt;2 <span
+                class="RED24CHT">錯</span></p>
+            <p class="RED24CHT">共執行 2 次</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 1418px; height: 55px;" border="1">
+      <tbody>
+        <tr>
+          <td><iframe style="height: 510px; width: 100%; margin: 10px 0 10px;"
+              allowtransparency="true" src="https://codebender.cc/embed/sketch:335821"
+              frameborder="0"></iframe> <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">閃100次</td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 983px; height: 839px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">#define&nbsp;&nbsp; LED&nbsp; 11<br>
+            void setup()<br>
+            {<br>
+            &nbsp;&nbsp;&nbsp; pinMode(LED,OUTPUT);<br>
+            for (int&nbsp;&nbsp; k=0;&nbsp; k&lt;<span class="red36">100</span>;&nbsp; k=k+1)<br>
+            &nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(LED,HIGH);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(1000);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(LED,LOW);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(1000);<br>
+            &nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; <br>
+            }<br>
+            <br>
+            void loop()<br>
+            {<br>
+            &nbsp;&nbsp;&nbsp; <br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> <br>
+    </p>
+    <table style="width: 994px; height: 55px;" border="0">
+      <tbody>
+        <tr>
+          <td class="red36" style="text-align: left; background-color: white;">k=k+1&nbsp;&nbsp; 可用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; K++ 取代</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+  </body>
+</html>

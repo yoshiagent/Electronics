@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>javaScript</title>
+<link type="text/css" rel="stylesheet" href="mystyle.css">
+<link type="text/css" rel="stylesheet" href="kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+<body class="f24 w3-container"><p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="red36">javascript &amp; Ajax<br>
+</td></tr></tbody></table><p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>AJAX stands for <span style="color: red;">A</span>synchronous <span style="color: red;">Ja</span>vaScript and <span style="color: red;">X</span>ML.<br>What is AJAX?(<a href="https://www.tutorialspoint.com/ajax/what_is_ajax.htm" target="_blank">web</a>)</td></tr></tbody></table>
+<p><br>
+</p><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/staServer_001.png" alt=""><br></td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/D1Mini_Bread_LED1.png"><br></td></tr></tbody></table><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24">若 使用 D1 mini 上的LED 接腳 D5</td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24"><br>
+            <img src="images/esp01_02.png" alt=""><br>
+            GPIO2&nbsp; 0&nbsp; LED亮<br>
+            GPIO2 1&nbsp; LED熄</td>
+        </tr>
+      </tbody>
+    
+</table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24">ESP8266 : JavaScript and AJAX</td></tr></tbody></table>
+<p>
+</p><br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">AJAX : working(0:54)(<a href="https://www.youtube.com/watch?v=L_gAdrPvKwE" target="_blank">Youtube</a>)(<a href="Utube/AJAX_working.mp4" target="_blank">here</a>)<br><br><img src="images/ajax-diagram-1024x767b.png" style="width: 577px; height: 432px;"><br><br><img src="images/ajax_006.png" alt=""><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//1. 建立物件<br>var <span style="color: #333300;">aReq</span> = new <span style="color: red;">XMLHttpRequest</span>();<br>//2. 掛上事件處理程式(處理Server response)<br><span style="color: #333300;">aReq</span>.<span style="color: red;">onreadystatechange</span> = function() {<br>&nbsp;&nbsp;&nbsp; if (<span style="color: #333300;">aReq</span>.<span style="color: red;">readyState</span> == <span style="color: red;">XMLHttpRequest.DONE</span>) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alert(<span style="color: #333300;">aReq</span>.<span style="color: red;">responseText</span>);<br>&nbsp;&nbsp;&nbsp; }<br>}<br>//3. 提出請求<br><span style="color: #333300;">aReq</span>.open('GET', 'url', true);<br><span style="color: #333300;">aReq</span>.send();</td></tr></tbody></table><br>AJAX uses JavaScript and is a way for websites to get data <span style="color: #990000;">without reloading a whole page</span>. <br><br>AJAX is a developer's dream, because you can:<br>1. Update a web page without reloading the page<br>2. Request data from a server - <span style="color: red;">after</span> the page has loaded<br>3. Receive data from a server - <span style="color: red;">after</span> the page has loaded<br>4. Send data to a server - in the background<br><br>Using AJAX we can receive and send packets of data behind the scenes 
+either automatically or when an event, like a button click, take places.<br>e.g. When the button is clicked, instead of loading a whole new page the 
+page will <span style="color: #990000;">send just the data required</span> to switch the LED.<br><br>AJAX Introduction(<a href="https://www.w3schools.com/xml/ajax_intro.asp" target="_blank">w3school</a>)</td></tr></tbody></table><br>
+<p></p>
+<br><br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/JS_002.png" alt="" style="width: 239px; height: 197px;"><br><img src="images/JS_003.png" alt="" style="width: 248px; height: 213px;"><img src="images/JS_004.png" alt="" style="width: 262px; height: 227px;"><br></td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/ajax-diagram-1024x767a.png" alt="" style="width: 738px; height: 552px;"><br></td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//Example 1<br>//修改藍色部分<br>/*<br><span style="color: blue;">yourRouterSSID<br></span><span style="color: blue;">yourRouterPassward<br></span><span style="color: blue;">IPGGx-</span><br>*/<br>//開啟手機熱點分享<br>//打開WiFi搜尋IPGGx-後之IP<br>//打開瀏覽器連入IP<br><br>#include &lt;ESP8266WebServer.h&gt;<br>
+#define ssid&nbsp; "<span style="color: blue;">yourRouterSSID</span>"&nbsp; //手機熱點分享SSID<br>
+#define password&nbsp;&nbsp; "<span style="color: blue;">yourRouterPassward</span>" //手機熱點分享密碼<br>#define LED_Pin&nbsp; 2<br>ESP8266WebServer server(80);<br>String html = R"=====(<br>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&nbsp;&lt;head&gt;<br>&nbsp;&lt;meta name='viewport' content='width=device-width, initial-scale=1.0'/&gt;<br>&nbsp;&lt;meta charset='utf-8'&gt;<br>&nbsp;&lt;style&gt;<br>&nbsp;body {text-align: center;}<br>&nbsp;input {font-size: 36px;background-color: #50FF50;}<br>&nbsp;p {font-size: 24px;}<br>&nbsp;&lt;/style&gt;<br><span style="color: #003300;">&lt;script&gt;</span><br>var aReq = null;<br>if (window.XMLHttpRequest) <br>&nbsp; { aReq =<span style="color: red;">new XMLHttpRequest()</span>; }<br>else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>&nbsp; { aReq =<span style="color: red;">new ActiveXObject</span>("Microsoft.XMLHTTP"); }<br><br>function <span style="color: red;">switchLED()</span><br>&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp; var button_text = document.getElementById("LED_button").value;<br>&nbsp;&nbsp;&nbsp;&nbsp; if (button_text=="Turn on the LED")<br>&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ajaxLoad('<span style="color: red;">LEDON</span>');<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; else if(button_text=="Turn off the LED")<br>&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ajaxLoad('<span style="color: red;">LEDOFF</span>');<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; }<br>function <span style="color: red;">ajaxLoad</span>(ajaxURL)<br>{<br>&nbsp; <span style="color: #333300;"><span style="color: #666666;">if(!aReq)<br>&nbsp;&nbsp;&nbsp; { alert("AJAX is not supported."); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return; <br>&nbsp;&nbsp;&nbsp; }</span></span><span style="color: #330000;"><span style="color: #666666;"><br>
+</span>&nbsp; <span style="color: #6600cc;">aReq.<span style="color: red;">onreadystatechange</span> = function()<br>
+&nbsp;&nbsp; <span style="color: red;">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(aReq.readyState == XMLHttpRequest.DONE)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #006600;">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var ajaxResult = <span style="color: red;">aReq.responseText</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #6600cc;"> if ( ajaxResult == "LED is on" )&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById("LED_button").value = "Turn off the LED";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("reply").style.color = "#ff0000"; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else if ( ajaxResult == "LED is off" ) <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; { document.getElementById("LED_button").value = "Turn on the LED";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("reply").style.color = "#0000ff";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("reply").innerHTML = ajaxResult;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #006600;">}</span></span><br>&nbsp;&nbsp; <span style="color: red;">}<br></span></span><span style="color: #330000;"> <span style="color: #666666;"></span><span style="color: #330000;"> &nbsp; aReq.open("GET",ajaxURL,true);</span> <br>&nbsp; aReq.send(); </span><br>}<br><span style="color: #003300;">&lt;/script&gt;</span><br><br>&nbsp;&lt;title&gt;LED Control&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&nbsp; &lt;h2&gt;LED Control&lt;/h2&gt;<br>&nbsp; &lt;input type="button" <span style="color: #330099;">id = "LED_button"</span> onclick="<span style="color: red;">switchLED()</span>" value="Turn on the LED"&nbsp; /&gt;<br>&nbsp; &lt;p id = "reply"&gt;Reply appears here&lt;/p&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br>&nbsp;<br>)=====";<br><br>void <span style="color: red;">handleRoot()</span> {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(LED_Pin,HIGH);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server.send(200, "text/html", html);<br>&nbsp;}<br><br>void <span style="color: red;">handleLEDON()</span> {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(LED_Pin, LOW);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server.send(200, "text/plain", "LED is on");//esp--&gt;aReq <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*ESP server送出"LED is on" 給client 端 (由代理人ajaxRequst收)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #6600cc;">即: 代理人aReq&nbsp; 會收到</span> "LED is on"&nbsp; <span style="color: #6600cc;">(aReq.responseText)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */<br>}<br>void <span style="color: red;">handleLEDOFF()</span> {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(LED_Pin, HIGH);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server.send(200, "text/plain", "LED is off"); <br>}<br><br>void setup()<br>{<br>&nbsp;&nbsp;&nbsp; pinMode(LED_Pin, OUTPUT);&nbsp;&nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp; digitalWrite(LED_Pin,HIGH);<br>&nbsp;&nbsp;&nbsp; WiFi.begin(ssid,password);<br>&nbsp;&nbsp;&nbsp;&nbsp; while (WiFi.status() != WL_CONNECTED)<br>&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(500);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp; WiFi.mode(WIFI_AP_STA);<br>&nbsp;&nbsp;&nbsp; WiFi.softAP(String("<span style="color: blue;">IPGGx-</span>"+ String((WiFi.localIP().toString()))),"");&nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp; digitalWrite(LED_Pin,LOW);&nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp; server.on("/", handleRoot);<br>&nbsp;&nbsp;&nbsp; server.on("/LEDON", handleLEDON);<br>&nbsp;&nbsp;&nbsp; server.on("/LEDOFF", handleLEDOFF); &nbsp;<br>&nbsp;&nbsp;&nbsp; server.begin();<br>&nbsp; &nbsp;<br>&nbsp;<br>} <br><br>void loop() {<br>&nbsp;server.handleClient();<br>}<br><br><br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">程式執行流程:<br>1. browser 輸入 192.168.xxx.xxx&nbsp;&nbsp; (espIP)<br>&nbsp;&nbsp;&nbsp; 根據server.on("/", handleRoot); 交由handleRoot()處理:請求ESP server 送出網頁<br><img src="images/ajax_003.png" alt=""><br>2. click button --&gt;觸發onclick 根據:<br>&nbsp;&nbsp;&nbsp; &lt;input type="button" id = "LED_button" onclick="<span style="color: red;">switchLED()</span>" value="Turn on the LED"&nbsp; /&gt; 交由&nbsp; <span style="color: red;">switchLED()</span>&nbsp; 處理<br><br>3. switch():取得目前button上的字--&gt;"Turn on the LED"<br>&nbsp;&nbsp;&nbsp; 執行: ajaxLoad('<span style="color: red;">LEDON</span>');<br>&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #330000;">aReq.open("GET",</span><span style="color: #330000;">'<span style="color: red;">LEDON</span>',true);<br>
+&nbsp;&nbsp;&nbsp;&nbsp; aReq.send();<br><br>&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: black;">送出</span></span><span style="color: #330000;"><span style="color: black;"><span style="color: red;">LEDON</span>給ESP server</span> 相當於在網址列輸入 http://espIP/<span style="color: red;">LEDON</span><br><span style="color: black;">4. ESP server 收到</span></span>espIP\LEDON&nbsp; 根據:&nbsp; server.on("/LEDON", handleLEDON);<br>&nbsp;&nbsp;&nbsp; 交由handleLEDON()處理:<br>&nbsp;&nbsp;&nbsp;&nbsp; 1. ESP server 將LED_Pin (GPIO2)設為低電位(點亮)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(LED_Pin, LOW);<br>&nbsp;&nbsp;&nbsp;&nbsp; 2. ESP server送出"LED is on" 給client <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server.send(200, "text/plain", "LED is on");<br>5. esp server 送出LED is on 觸發client 端&nbsp; <span style="color: #6600cc;">aReq.<span style="color: red;">onreadystatechange</span></span> 事件<br>&nbsp; &nbsp;&nbsp; 由<span style="color: #6600cc;">aReq.<span style="color: red;">onreadystatechange</span></span> <span style="color: #6600cc;">= function(){....}</span> 處理<br>&nbsp;&nbsp;&nbsp;&nbsp; 此時 <span style="color: #6600cc;">ajaxResult == "LED is on"<br>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;"> 1. 將button 字改為:</span></span><span style="color: #6600cc;"><span style="color: black;">"Turn off the LED"<br>&nbsp;&nbsp;&nbsp;&nbsp; 2. 將回應字style.color 改為紅色<br>&nbsp;&nbsp;&nbsp;&nbsp; 3. 將回應字改為:LED is on</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="file:///C:/Dropbox/myCourse/iotRobot/ESP8266/JavaScript/images/ajax_004.png" alt=""><br></span><span style="color: #6600cc;"><span style="color: black;">2a. click button --&gt;觸發onclick 根據:<br>
+&nbsp;&nbsp;&nbsp; &lt;input type="button" id = "LED_button" onclick="<span style="color: red;">switchLED()</span>" value="Turn on the LED"&nbsp; /&gt; 交由&nbsp; <span style="color: red;">switchLED()</span>&nbsp; 處理</span><br>
+<br>
+<span style="color: black;">3a. switch():取得目前button上的字--&gt;"Turn off the LED"<br>
+&nbsp;&nbsp;&nbsp; 執行: ajaxLoad('<span style="color: red;">LEDOFF</span>');<br>
+&nbsp;&nbsp;&nbsp; </span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #330000;">aReq.open("GET",</span><span style="color: #330000;">'<span style="color: red;">LEDOFF</span>',true);<br>
+&nbsp;&nbsp;&nbsp;&nbsp; aReq.send();<br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="color: #6600cc;"><span style="color: #330000;"><span style="color: #330000;"><span style="color: black;">送出</span></span><span style="color: #330000;"><span style="color: black;"><span style="color: red;">LEDOFF</span>給ESP server</span> 相當於在網址列輸入 http://espIP/<span style="color: red;">LEDOFF</span></span></span><span style="color: #330000;"><br>
+  <span style="color: black;">4a. ESP server 收到</span></span><span style="color: black;">espIP\LEDOFF&nbsp; 根據:&nbsp; server.on("/LEDOFF", handleLEDOFF);<br>
+&nbsp;&nbsp;&nbsp; 交由handleLEDOFF()處理:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 1. ESP server 將LED_Pin (GPIO2)設為高電位(熄滅)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(LED_Pin, HIGH);<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 2. ESP server送出"LED is off" 給client <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server.send(200, "text/plain", "LED is off");</span><br>
+<span style="color: black;">5a. </span></span><span style="color: #6600cc;"><span style="color: black;">esp server 送出LED is off 觸發client 端&nbsp; <span style="color: red;">aReq.onreadystatechange</span> 事件<br>
+&nbsp; &nbsp;&nbsp; 由<span style="color: #cc0000;">aReq.onreadystatechange = function(){....}</span> 處理<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 此時 </span><span style="color: #6600cc;"><span style="color: black;">ajaxResult == "LED is off"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;"> 1. 將button 字改為:</span></span><span style="color: #6600cc;"><span style="color: black;">"Turn on the LED"<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 2. 將回應字style.color 改為藍色<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 3. 將回應字改為:LED is off</span></span> <br>&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/ajax_005.png" alt=""><br></span></td></tr></tbody></table></td></tr></tbody></table><p><br></p><br>
+<p></p><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">
+  <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>javascript說明<br>
+</td></tr></tbody></table>
+  <br>
+String html = R"=====(<br>
+&lt;!DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+&nbsp;&lt;head&gt;<br>
+&nbsp;&lt;meta name='viewport' content='width=device-width, initial-scale=1.0'/&gt;<br>
+&nbsp;&lt;meta charset='utf-8'&gt;<br>
+&nbsp;&lt;style&gt;<br>
+&nbsp;body {text-align: center;}<br>
+&nbsp;input {font-size: 36px;background-color: #50FF50;}<br>
+&nbsp;p {font-size: 24px;}<br>
+&nbsp;&lt;/style&gt;<br>
+  <br>
+  <span style="color: #003300;">&lt;script&gt;</span><br>
+var aReq = null;<br>
+if (window.XMLHttpRequest) <br>
+&nbsp; { aReq =<span style="color: red;">new XMLHttpRequest()</span>; }<br>
+else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+&nbsp; { aReq =<span style="color: red;">new ActiveXObject</span>("Microsoft.XMLHTTP"); }<br>
+  <br>
+  <span style="color: red;"></span><br>
+function <span style="color: red;">switchLED()</span><br>
+&nbsp; { /*取得button 上的字*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp; var button_text = document.getElementById("LED_button").value;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; if (button_text=="Turn on the LED")<br>
+&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ajaxLoad('<span style="color: red;">LEDON</span>');<br>
+&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp; else if(button_text=="Turn off the LED")<br>
+&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ajaxLoad('<span style="color: red;">LEDOFF</span>');<br>
+&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+function <span style="color: red;">ajaxLoad</span>(ajaxURL)<br>
+{<br>
+&nbsp; <span style="color: #333300;"><span style="color: #666666;">if(!aReq)<br>&nbsp;&nbsp;&nbsp; { alert("AJAX is not supported."); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return; <br>&nbsp;&nbsp;&nbsp; }</span></span><br>
+&nbsp;<span style="color: #330000;"><br></span><span style="color: #330000;"><span style="color: #666666;">//掛上onreadystatechange event 服務程式(取得server傳來的資料 更新HTML)<br>
+</span>&nbsp; <span style="color: #6600cc;">aReq.<span style="color: red;">onreadystatechange</span> = function()<br>
+&nbsp;&nbsp; <span style="color: red;">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(aReq.readyState == XMLHttpRequest.DONE)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #666666;">//if(aReq.readyState == 4 &amp;&amp; aReq.status==200)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #006600;">{</span>/* 取得server 送來的資料 */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var ajaxResult = <span style="color: red;">aReq.responseText</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="color: #6600cc;"><span style="color: #6600cc;"><span style="color: #666666;">/*update HTML*/<br></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ( ajaxResult == "LED is on" )&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById("LED_button").value = "Turn off the LED";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("reply").style.color = "#ff0000"; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else if ( ajaxResult == "LED is off" ) <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; { document.getElementById("LED_button").value = "Turn on the LED";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("reply").style.color = "#0000ff";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("reply").innerHTML = ajaxResult;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #006600;">}</span></span><br>&nbsp;&nbsp; <span style="color: red;">}<br></span></span><span style="color: #330000;"> <span style="color: #666666;"></span><span style="color: #330000;"> <span style="color: #666666;">//Specifies the type of request&nbsp;</span> <br>&nbsp; aReq.open("GET",ajaxURL,true);</span>&nbsp;&nbsp; //打開通道<br><span style="color: #666666;">//Sends the request to the server (used for GET)</span><br>&nbsp; aReq.send(); </span><span style="color: #330000;">//送出請求&nbsp; aReq--&gt;ESP server</span><br>
+}<br>
+  <span style="color: #003300;">&lt;/script&gt;</span><br>
+  <br>
+&nbsp;&lt;title&gt;LED Control&lt;/title&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&nbsp; &lt;h2&gt;LED Control&lt;/h2&gt;<br>
+&nbsp; &lt;input type="button" <span style="color: #330099;">id = "LED_button"</span> onclick="<span style="color: red;">switchLED()</span>" value="Turn on the LED"&nbsp; /&gt;<br>
+&nbsp; &lt;p id = "reply"&gt;Reply appears here&lt;/p&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+&nbsp;<br>
+)=====";</td></tr></tbody>
+</table>
+<br><br><br>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><span style="color: #666666;">JavaScript has a function called <span style="color: red;">onClick()</span>. <br>This can be attached to elements to capture the click event (mouse click). Add this to the button.</span></td></tr></tbody></table><br><br>&lt;input type="button" id = "LED_button" onclick="<span style="color: red;">switchLED()</span>" value="Turn on the LED"&nbsp; /&gt;<br><br>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><span style="color: #666666;">When the button is clicked the onClick() function is called which in turn calls another function called switchLED().</span></td></tr></tbody></table></td></tr></tbody></table>
+<p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">input type="button" id = "<span style="color: red;">LED_button</span>" onclick="switchLED()" value="<span style="color: #330099;">Turn on the LED</span>" /&gt;</td></tr></tbody></table><br>function switchLED() <br>&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var button_text = document.getElementById("<span style="color: red;">LED_button</span>").value;<br>&nbsp;&nbsp;&nbsp;&nbsp; if (button_text=="<span style="color: #330099;">Turn on the LED</span>")<br>&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("<span style="color: red;">LED_button</span>").value = "Turn off the LED";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #990000;">ajaxLoad</span>('LEDON'); <br>&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; else<br>&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("LED_button").value = "Turn on the LED";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #990000;">ajaxLoad</span>('LEDOFF');<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp; }<br><br>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><span style="color: #666666;">switchLED() <br>1. changes the button text (on to off or off to on)<br>2. sends the LED control code to the function called <span style="color: #990000;">ajaxLoad()</span>.</span></td></tr></tbody></table></td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><span style="color: #666666;"></span>
+  <table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><span style="color: #666666;"><span style="color: blue;"><span style="color: #6600cc;">All modern browsers <span style="color: #990000;">support</span> the XMLHttpRequest object.</span><br>
+The XMLHttpRequest object can be used to <span style="color: #990000;">exchange data with a server behind the scenes</span>. <br>
+This means that it is possible to update parts of a web page, without reloading the whole page.</span></span></td></tr></tbody>
+  </table>
+  <span style="color: #666666;">//Example:<br>
+//<span style="color: #990000;">Create</span> an XMLHttpRequest Object</span><br>
+var aReq = null;<br>
+if (window.XMLHttpRequest)<br>
+  <span style="color: #666666;">// code for modern browsers</span>&nbsp; <br>
+&nbsp;&nbsp; { aReq =<span style="color: red;">new</span> XMLHttpRequest(); }<br>
+else <br>
+  <span style="color: #666666;">// code for old IE browsers </span><br>
+&nbsp;&nbsp; { aReq =new ActiveXObject("Microsoft.XMLHTTP"); }<br>
+  <br>
+  <span style="color: #666666;">//(<a href="https://www.w3schools.com/xml/ajax_xmlhttprequest_create.asp" target="_blank">ref</a>)</span></td></tr></tbody>
+</table><p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><br>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">The ajaxLoad() function is where the AJAX action takes place. <br>The request is made to the ESP8266 server.<br><br>Called in function switchLED() ,<br><span style="color: #990000;">ajaxLoad</span>('LEDON');<br><span style="color: #990000;">ajaxLoad</span>('LEDOFF');</td></tr></tbody></table><br>//Ajax 代理HTTP web 向ESP server 提出請求<br>function <span style="color: #990000;">ajaxLoad</span>(ajaxURL)<br>{<br>&nbsp; aReq.<span style="color: #990000;">open</span>("GET",ajaxURL,true);<br>&nbsp; aReq.<span style="color: #990000;">send</span>();<br>}</td></tr></tbody></table>
+<p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><br>aReq.<span style="color: #990000;">open</span>("GET",ajaxURL,true);<br><br><span style="color: #990000;">Opens the request channel</span> using GET (the other option is PUT).<br>ajaxURL is the <span style="color: #990000;">URL</span> or <span style="color: #990000;">at least the bit to be added to the url</span>. <br>In this case it is the LED control code.('LEDON' or 'LEDOFF')<br><br>The last value “true” means use an asynchronous request. “false” would mean use a synchronous request. <br>Synchronous requests block the browser (they stop everything until they get a reply). <br>Asynchronous requests don’t block, they allow the browser to do other things while waiting for a the reply.<br><br><br>
+aReq.<span style="color: #990000;">open</span>("GET",ajaxURL,true);<br>
+  <br>
+open(method,url,async,user,psw)<br>
+Specifies the request<br>
+  method: the request type GET or POST<br>
+url: the file location<br>
+async: true (asynchronous) or false (synchronous)<br>
+user: optional user name<br>
+psw: optional password<br>
+  <br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">Send a Request To a Server(<a href="https://www.w3schools.com/xml/ajax_xmlhttprequest_send.asp" target="_blank">W3School</a>)<br>
+</td></tr></tbody></table><br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">aReq.<span style="color: #990000;">open</span>("GET",'LEDON',true);<br>aReq.<span style="color: #990000;">send</span>();<br>相當於<br>在瀏覽器中向伺服器送出 http://IP/LEDON</td></tr></tbody></table><br>
+</td></tr></tbody></table><p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Ajax 代理Client端 接收由ESP server 傳來之資料</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">The onreadystatechange Property(<a href="https://www.w3schools.com/xml/ajax_xmlhttprequest_response.asp" target="_blank">W3school</a>)</td></tr></tbody>
+</table><p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><br>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><span style="color: #666666;">When a reply is received, the <span style="color: #009900;">onreadystatechange</span> flag is set which triggers the following.</span></td></tr></tbody></table><br><br>aReq.<span style="color: #009900;">onreadystatechange</span> = function()<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; if(aReq.readyState == <span style="color: #330099;">XMLHttpRequest.DONE</span>)<br>&nbsp;&nbsp;&nbsp;<span style="color: #666666;"> //if(aReq.readyState ==</span> <span style="color: #330099;">4 &amp;&amp; aReq.status==200</span><span style="color: #666666;">)</span><br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var ajaxResult = aReq.<span style="color: #009900;">responseText</span>;<br>&nbsp;&nbsp;&nbsp; }<br><br>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><span style="color: #666666;">Here the reply is checked. <br>A <a href="https://www.w3schools.com/xml/ajax_xmlhttprequest_response.asp" target="_blank">readyState</a> of 4 means the request has finished and a response is ready.<br>A status of 200 means the request was OK. <br>This is the standard <a href="https://www.w3schools.com/tags/ref_httpmessages.asp" target="_blank">status code</a>.<br><br></span></td></tr></tbody></table><br><br>var ajaxResult = aReq.<span style="color: #009900;">responseText</span>;<br><br>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><span style="color: #666666;">The response from the server is assigned to the ajaxResult variable.</span></td></tr></tbody></table></td></tr></tbody>
+</table><p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">使用mDNS (Multicast DNS)<br>多播DNS（mDNS）提供在沒有任何傳統單播DNS伺服器的情況下在本地鏈路上執行類似DNS的操作的能力。此外，多播DNS指定DNS名稱空間的一部分可供本地使用，無需支付任何年費，也無需設定授權或以其他方式配置傳統DNS伺服器來回答這些名稱。</td></tr></tbody></table>
+<p></p>
+<p><br><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//Example 2<br>#include &lt;ESP8266WebServer.h&gt;<br><span style="color: red;">#include &lt;ESP8266mDNS.h&gt;</span><br>#define ssid&nbsp; "<span style="color: #330099;">yourRouterSSID</span>"<br>
+#define password&nbsp;&nbsp; "<span style="color: #330099;">yourRouterPassward</span>"<br>#define LED_Pin&nbsp; 2<br>#define mDns "<span style="color: red;">espggx</span>"&nbsp; <br>ESP8266WebServer server(80);<br><span style="color: red;">MDNSResponder mdns;</span><br>String html = R"=====(<br>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&nbsp;&lt;head&gt;<br>&nbsp;&lt;meta name='viewport' content='width=device-width, initial-scale=1.0'/&gt;<br>&nbsp;&lt;meta charset='utf-8'&gt;<br>&nbsp;&lt;style&gt;<br>&nbsp;body {text-align: center;}<br>&nbsp;input {font-size: 36px;background-color: #50FF50;}<br>&nbsp;p {font-size: 24px;}<br>&nbsp;&lt;/style&gt;<br><br>&lt;script&gt;<br>&nbsp;<br><br>var aReq = null;<br>if (window.XMLHttpRequest)<br>&nbsp; { aReq =new XMLHttpRequest(); }<br>else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp; { aReq =new ActiveXObject("Microsoft.XMLHTTP"); }<br><br><br>function switchLED()<br>&nbsp; { <br>&nbsp;&nbsp;&nbsp;&nbsp; var button_text = document.getElementById("LED_button").value;<br>&nbsp;&nbsp;&nbsp;&nbsp; if (button_text=="Turn on the LED")<br>&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ajaxLoad('LEDON');<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; else<br>&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ajaxLoad('LEDOFF');<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; }<br>function ajaxLoad(ajaxURL)<br>{<br>&nbsp; if(!aReq)<br>&nbsp;&nbsp;&nbsp; { alert("AJAX is not supported.");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp; aReq.onreadystatechange = function()<br>&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(aReq.readyState == XMLHttpRequest.DONE)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var ajaxResult = aReq.responseText;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ( ajaxResult == "LED is on" ) <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("LED_button").value = "Turn off the LED";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("reply").style.color = "#ff0000";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else if ( ajaxResult == "LED is off" )<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { document.getElementById("LED_button").value = "Turn on the LED";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("reply").style.color = "#0000ff";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("reply").innerHTML = ajaxResult;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp; }<br>&nbsp;aReq.open("GET",ajaxURL,true);&nbsp;&nbsp; <br>&nbsp;aReq.send(); //aReq--&gt;ESP server<br>}<br>&lt;/script&gt;<br><br>&nbsp;&lt;title&gt;LED Control&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&nbsp; &lt;h2&gt;LED Control&lt;/h2&gt;<br>&nbsp; &lt;input type="button" id = "LED_button" onclick="switchLED()" value="Turn on the LED"&nbsp; /&gt;<br>&nbsp; &lt;p id = "reply"&gt;Reply appears here&lt;/p&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br>&nbsp;<br>)=====";<br><br><br>void handleRoot() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(LED_Pin,HIGH);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server.send(200, "text/html", html);<br>&nbsp;}<br><br>void handleLEDON() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(LED_Pin, LOW);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*ESP server送出"LED is on" 給client 代理人ajaxRequst<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; aReq&nbsp; 會收到 "LED is on" ---&gt; aReq.responseText<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server.send(200, "text/plain", "LED is on");//esp--&gt;aReq<br>}<br>void handleLEDOFF() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(LED_Pin, HIGH);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server.send(200, "text/plain", "LED is off");<br>}<br><br>void setup()<br>{<br>&nbsp;&nbsp;&nbsp; pinMode(LED_Pin, OUTPUT);&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; digitalWrite(LED_Pin,HIGH);<br>&nbsp;&nbsp;&nbsp; WiFi.begin(ssid,password);<br>&nbsp;&nbsp;&nbsp;&nbsp; while (WiFi.status() != WL_CONNECTED)<br>&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(500);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; <span style="color: red;">mdns.begin(mDns, WiFi.localIP());</span><br>&nbsp;&nbsp; WiFi.mode(WIFI_AP_STA);<br>&nbsp;&nbsp;&nbsp; WiFi.softAP(String("IPGGx-"+ String((WiFi.localIP().toString()))),""); <br>&nbsp;&nbsp;&nbsp; MDNS.begin(mDns);&nbsp; <br>&nbsp;&nbsp;&nbsp; digitalWrite(LED_Pin,LOW);&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; server.on("/", handleRoot);<br>&nbsp;&nbsp;&nbsp; server.on("/LEDON", handleLEDON);<br>&nbsp;&nbsp;&nbsp; server.on("/LEDOFF", handleLEDOFF);&nbsp; <br>&nbsp;&nbsp;&nbsp; server.begin();<br>&nbsp;&nbsp; <br>&nbsp;<br>} // void setup()<br><br>void loop() {<br>&nbsp; <span style="color: red;">mdns.update();</span><br>&nbsp;server.handleClient();<br>}<br><br>//使用mDNS連線 (Android作業系統不支援mDNS)<br>//http://espggx.local</td></tr></tbody></table>
+<p><br></p><br>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br>
+  </p><p><br></p>
+</body></html>

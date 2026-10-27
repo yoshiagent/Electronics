@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>LedArrayADV</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 839px; height: 723px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/ForLoop0a.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1166px; height: 1094px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white; width: 510.85px;">//
+            進階寫法<br>
+            int pin[4]={5,6,7,8};<br>
+            int dt=1000;//delay time<br>
+            void setup() {<br>
+            &nbsp; <span class="red24">for(int i=0; i&lt;4; i=i+1)<br>
+              &nbsp; {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp; pinMode( pin[i] , OUTPUT);<br>
+              &nbsp;&nbsp; }<br>
+            </span> }<br>
+            <br>
+            void loop() {<br>
+            digitalWrite(in1,HIGH);<br>
+            &nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp; digitalWrite(in2,HIGH);<br>
+            &nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp; digitalWrite(in3,HIGH);<br>
+            &nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp; digitalWrite(in4,HIGH);<br>
+            &nbsp; delay(dt);<br>
+            &nbsp;}<br>
+            }</td>
+          <td class="blue36" style="width: 639.15px;"><img style="width: 550px; height: 194px;"
+              alt="" src="images/array_001.png"><br>
+            <br>
+            <img alt="" src="images/LedArrayFor.png"><br>
+            <br>
+            &nbsp;pinMode( 5 , OUTPUT);<br>
+            &nbsp; pinMode( 6 , OUTPUT);<br>
+            &nbsp; pinMode( 7 , OUTPUT);<br>
+            &nbsp; pinMode( 8 , OUTPUT);</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1145px; height: 108px;" border="1">
+      <tbody>
+        <tr>
+          <td class="red36">二維陣列<br>
+            int&nbsp; ar[<span class="blue36">2</span>][<span class="black36">3</span>]={{1,2,3},{4,5,6}};<br>
+            <br>
+            ar[<span class="blue36">0</span>][<span class="black36">0</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            1<br>
+            ar[<span class="blue36">0</span>][<span class="black36">1</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            2<br>
+            ar[<span class="blue36">0</span>][<span class="black36">2</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            3<br>
+            ar[<span class="blue36">1</span>][<span class="black36">0</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            4<br>
+            ar[<span class="blue36">1</span>][<span class="black36">1</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            5<br>
+            ar[<span class="blue36">1</span>][<span class="black36">2</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            6</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 50%" border="1">
+      <tbody>
+        <tr>
+          <td><br>
+          </td>
+          <td class="black36">[0]</td>
+          <td class="black36">[1]</td>
+          <td class="black36">[2]</td>
+        </tr>
+        <tr>
+          <td class="blue36">[0]</td>
+          <td class="red36">1</td>
+          <td class="red36">2</td>
+          <td class="red36">3</td>
+        </tr>
+        <tr>
+          <td class="blue36">[1]</td>
+          <td class="red36">4</td>
+          <td class="red36">4</td>
+          <td class="red36">6</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 50%" border="3">
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 50%" border="1">
+              <tbody>
+                <tr>
+                  <td class="red36">1</td>
+                  <td class="red36">2</td>
+                  <td class="red36">3</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table style="width: 50%" border="1">
+              <tbody>
+                <tr>
+                  <td class="red36">4</td>
+                  <td class="red36">5</td>
+                  <td class="red36">6</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p> </p>
+    <table style="width: 953px; height: 585px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//
+            進階寫法<br>
+            int pin[4]={5,6,7,8};<br>
+            int out[4][4]={{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}};<br>
+            int dt=1000;//delay time<br>
+            void setup() {<br>
+            &nbsp; for(int i=0;i&lt;4;i++)<br>
+            &nbsp; pinMode( pin[i] , OUTPUT);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            for (int i=0;i&lt;4;i++)<br>
+            &nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; for(int j=0;j&lt;4;j++)&nbsp; //四支腳分別送一次<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+            digitalWrite(pin[j],out[i][j]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            &nbsp;}<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1157px; height: 634px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24"><br>
+            for (int i=0;i&lt;4;i++)<br>
+            &nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; for(int j=0;j&lt;4;j++)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            digitalWrite(pin[j],out[i],[j]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            &nbsp;}</td>
+          <td><img alt="" src="images/LedArrayFor2a.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 80%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36">int
+            out[4][4]={{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 50%" border="4">
+      <tbody>
+        <tr>
+          <td><br>
+            <table style="width: 50%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36">1</td>
+                  <td class="blue36">0</td>
+                  <td class="blue36">0</td>
+                  <td class="blue36">0</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+          </td>
+          <td>
+            <table style="width: 50%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36">0</td>
+                  <td class="blue36">1</td>
+                  <td class="blue36">0</td>
+                  <td class="blue36">0</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table style="width: 50%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36">0</td>
+                  <td class="blue36">0</td>
+                  <td class="blue36">1</td>
+                  <td class="blue36">0</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table style="width: 50%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36">0</td>
+                  <td class="blue36">0</td>
+                  <td class="blue36">0</td>
+                  <td class="blue36">1</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">練習 反向循環</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">練習 來回循環</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">一次亮兩個</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table style="width: 869px; height: 370px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">//
+            進階寫法<br>
+            int pin[4]={5,6,7,8};<br>
+            int out[4][4]=<span class="red24">{{1,1,0,0},{0,1,1,0},{0,0,1,1},{1,0,0,1}}</span>;<br>
+            int dt=1000;//delay time<br>
+            void setup() {<br>
+            &nbsp; for(int i=0;i&lt;4;i++)<br>
+            &nbsp; pinMode( pin[i] , OUTPUT);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            for (int i=0;i&lt;4;i++)<br>
+            &nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; for(int j=0;j&lt;4;j++)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(pin[j],out[i][j]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(dt);<br>
+            &nbsp;}<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 80%" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36">int
+            out[4][4]={{1,1,0,0},{0,1,1,0},{0,0,1,1},{1,0,0,1}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 50%" border="4">
+      <tbody>
+        <tr>
+          <td><br>
+            <table style="width: 50%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36">1</td>
+                  <td class="blue36">1</td>
+                  <td class="blue36">0</td>
+                  <td class="blue36">0</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+          </td>
+          <td>
+            <table style="width: 50%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36">0</td>
+                  <td class="blue36">1</td>
+                  <td class="blue36">1</td>
+                  <td class="blue36">0</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table style="width: 50%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36">0</td>
+                  <td class="blue36">0</td>
+                  <td class="blue36">1</td>
+                  <td class="blue36">1</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table style="width: 50%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36">1</td>
+                  <td class="blue36">0</td>
+                  <td class="blue36">0</td>
+                  <td class="blue36">1</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p> </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+    <title>processing</title>
+<link type="text/css" rel="stylesheet" href="Kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+<body class="w3-container f24">
+  <br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>processing(<a href="https://processing.org/" target="_blank">官網</a>)<br>(<a href="https://processing.org/download/" target="_blank">download</a>)(processing-3.5.4<a href="https://processing.org/download" target="_blank">.zip</a>)<br>(<a href="https://processing.org/tutorials/" target="_blank">tutorials</a>)<br>(<a href="https://www.processing.org/reference/" target="_blank">reference</a>)(<a href="https://processing.org/exhibition/" target="_blank">Exhibition</a>)(<a href="https://processing.org/tutorials/" target="_blank">Video Tutorials</a>)<br>作品收集:<br>(processingblogs.org)(<a href="https://www.openprocessing.org/" target="_blank">open processing</a>)<br><br>(<a href="http://processingjs.org/" target="_blank">processing.js</a>)(<a href="template/template.html" target="_blank">template</a>)(<a href="template/arm.html" target="_blank">arm.html</a>)(<a href="template/snake.html" target="_blank">snake.html</a>)<br>(<a href="https://processing.org/tutorials/gettingstarted/" target="_blank">Getting Started</a>)<br>Coordinate System and Shapes(<a href="https://processing.org/tutorials/drawing/" target="_blank">ref</a>)<br>2D Transformations(<a href="https://processing.org/tutorials/transform2d/" target="_blank">ref</a>)<br><br>Processing程式語言回顧_基本語法練習回顧_程式簡化_物件導向_Part1(<a href="http://coolmandiary.blogspot.com/2017/09/processing.html" target="_blank">ref</a>)</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/tutorial_002.png" alt=""><br>void setup() {<br>&nbsp; size(800, 600); <br>&nbsp; background(100);&nbsp; <br>&nbsp; textSize(16);<br>&nbsp; textAlign(CENTER,BOTTOM);<br>&nbsp; <br>} <br><br>void draw() {<br>&nbsp; fill(255);<br>&nbsp; rect(0,0,width,height);<br>&nbsp; <br>&nbsp; <br>&nbsp; line(mouseX,mouseY, mouseX + 10 ,mouseY);<br>&nbsp; line(mouseX,mouseY, mouseX -10 ,mouseY);<br>&nbsp; line(mouseX,mouseY, mouseX ,mouseY + 10);<br>&nbsp; line(mouseX,mouseY, mouseX ,mouseY-10);<br>&nbsp; <br>&nbsp; fill(0);<br>&nbsp; text("mouse at : (" + mouseX + "," + mouseY +")" ,mouseX, mouseY-25);<br>&nbsp; <br>&nbsp; <br>&nbsp; textSize(12);<br>&nbsp; fill(255,0,0);<br>&nbsp; ellipse(0,0,20,20);<br>&nbsp; text("(0,0)", 20, 30);<br>&nbsp; <br>&nbsp; textSize(12);<br>&nbsp; fill(255,0,0);<br>&nbsp; ellipse(width,0,20,20);<br>&nbsp; text("(width,0)", width- 70, 30);<br>&nbsp; <br>&nbsp; textSize(12);<br>&nbsp; fill(255,0,0);<br>&nbsp; ellipse(width,height,20,20);<br>&nbsp; text("(width,height)", width-70, height-30);<br>&nbsp; <br>&nbsp; textSize(12);<br>&nbsp; fill(255,0,0);<br>&nbsp; ellipse(0,height,20,20);<br>&nbsp; text("(0,height)", 35, height-30);<br>&nbsp; <br>&nbsp;&nbsp; textSize(12);<br>&nbsp; fill(255,0,0);<br>&nbsp; ellipse(width/2,height/2,20,20);<br>&nbsp; text("(width/2,height/2)", width/2, height/2 -30);<br>&nbsp; <br>}</td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>void setup() {<br>&nbsp; size(480, 120);<br>}<br><br>void draw() {<br>&nbsp; if (mousePressed) {<br>&nbsp;&nbsp;&nbsp; fill(0);<br>&nbsp; } else {<br>&nbsp;&nbsp;&nbsp; fill(255);<br>&nbsp; }<br>&nbsp; ellipse(mouseX, mouseY, 80, 80);<br>}<br><br><img src="images/tutorial_001.png" alt=""><br>This program creates a window that is 480 pixels wide and 120 pixels high, and then starts drawing white circles at the position of the mouse. <br>When a mouse button is pressed, the circle color changes to black. <br>We'll explain more about the elements of this program in detail later. <br>For now, run the code, move the mouse, and click to see what it does. <br>While the sketch is running, the Run button will change to a square “stop” icon, which you can click to halt the sketch.</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Arduino &lt;----&gt;Processing<br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>//Arduino code<br>int led = 13;<br>
+int button = 12;<br>
+  <br>
+void setup() {<br>
+pinMode(led, OUTPUT);<br>
+pinMode(button, INPUT);<br>
+Serial.begin(9600);<br>
+}<br>
+  <br>
+void loop(){<br>
+if(Serial.available() &gt; 0) {<br>
+char ledState = Serial.read();<br>
+if(ledState == '1'){<br>
+digitalWrite(led, HIGH);<br>
+}<br>
+if(ledState == '0'){<br>
+digitalWrite(led, LOW);<br>
+}<br>
+}<br>
+int buttonState = digitalRead(button);<br>
+if ( buttonState == HIGH){<br>
+Serial.println("Button is pressed.");<br>
+//delay(500);<br>
+}<br>
+}<br>
+</td></tr></tbody></table>
+<br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>//processing code<br>import processing.serial.*;<br>Serial myPort;<br>String myText="";<br>void setup(){<br>size(300, 300);<br>myPort = new Serial(this, "<span style="color: #6600cc;">COM3</span>", 9600);<br>myPort.bufferUntil('.');//Button is pressed<span style="color: red;">.</span><br>}<br>void serialEvent (Serial myPort){<br>myText = myPort.readStringUntil('.');<br>}<br><br>void draw(){<br>background(0,0,0);<br>text(myText, 120, 120);<br>myText="";<br><br>if(mousePressed &amp;&amp; (mouseButton == LEFT)){<br>myPort.write('1');<br>}<br>if (mousePressed &amp;&amp; (mouseButton == RIGHT)){<br>myPort.write('0');<br>}<br>}</td></tr></tbody></table></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/translate.png" alt=""><br>//translate<br>/*<br>The translate() function allows objects to be moved to any location within the window. The first parameter sets the x-axis offset and the second parameter sets the y-axis offset.<br>*/<br>float x, y;<br>float dim = 80.0;<br><br>void setup() {<br>&nbsp; size(640, 360);<br>&nbsp; noStroke();<br>}<br><br>void draw() {<br>&nbsp; background(102);<br>&nbsp; x = x + 0.8;<br>&nbsp; if (x &gt; width + dim) {<br>&nbsp;&nbsp;&nbsp; x = -dim;<br>&nbsp; } <br>&nbsp; translate(x, height/2-dim/2);<br>&nbsp; fill(255);<br>&nbsp; rect(-dim/2, -dim/2, dim, dim);<br>&nbsp; // Transforms accumulate. Notice how this rect moves <br>&nbsp; // twice as fast as the other, but it has the same <br>&nbsp; // parameter for the x-axis value<br>&nbsp; translate(x, dim);<br>&nbsp; fill(0);<br>&nbsp; rect(-dim/2, -dim/2, dim, dim);<br>}</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/rotate.png" alt=""><br>//rotate<br>/*<br>Rotating a square around the Z axis. To get the results you expect, send the rotate function angle parameters that are values between 0 and PI*2 (TWO_PI which is roughly 6.28). If you prefer to think about angles as degrees (0-360), you can use the radians() method to convert your values. For example: scale(radians(90)) is identical to the statement scale(PI/2).<br>*/<br><br>float angle;<br>float jitter;<br><br>void setup() {<br>&nbsp; size(640, 360);<br>&nbsp; noStroke();<br>&nbsp; fill(255);<br>&nbsp; rectMode(CENTER);<br>}<br><br>void draw() {<br>&nbsp; background(51);<br><br>&nbsp; // during even-numbered seconds (0, 2, 4, 6...)<br>&nbsp; if (second() % 2 == 0) {&nbsp; <br>&nbsp;&nbsp;&nbsp; jitter = random(-0.1, 0.1);<br>&nbsp; }<br>&nbsp; angle = angle + jitter;<br>&nbsp; float c = cos(angle);<br>&nbsp; translate(width/2, height/2);<br>&nbsp; rotate(c);<br>&nbsp; rect(0, 0, 180, 180);&nbsp;&nbsp; <br>}</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/scale.png" alt=""><br>//scale<br>/*<br>Paramenters for the scale() function are values specified as decimal percentages. For example, the method call scale(2.0) will increase the dimension of the shape by 200 percent. Objects always scale from the origin.<br><br>*/<br>float a = 0.0;<br>float s = 0.0;<br><br>void setup() {<br>&nbsp; size(640, 360);<br>&nbsp; noStroke();<br>&nbsp; rectMode(CENTER);<br>&nbsp; frameRate(30);<br>}<br><br>void draw() {<br>&nbsp; <br>&nbsp; background(102);<br>&nbsp; <br>&nbsp; a = a + 0.04;<br>&nbsp; s = cos(a)*2;<br>&nbsp; <br>&nbsp; translate(width/2, height/2);<br>&nbsp; scale(s); <br>&nbsp; fill(51);<br>&nbsp; rect(0, 0, 50, 50); <br>&nbsp; <br>&nbsp; translate(75, 0);<br>&nbsp; fill(255);<br>&nbsp; scale(s);<br>&nbsp; rect(0, 0, 50, 50);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>}</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/polar.png" alt=""><br>//atan2()<br>/*<br>Move the mouse to change the direction of the eyes. The atan2() function computes the angle from each eye to the cursor.<br>*/<br>Eye e1, e2, e3;<br><br>void setup() {<br>&nbsp; size(640, 360);<br>&nbsp; noStroke();<br>&nbsp; e1 = new Eye( 250,&nbsp; 16, 120);<br>&nbsp; e2 = new Eye( 164, 185,&nbsp; 80);&nbsp; <br>&nbsp; e3 = new Eye( 420, 230, 220);<br>}<br><br>void draw() {<br>&nbsp; background(102);<br>&nbsp; <br>&nbsp; e1.update(mouseX, mouseY);<br>&nbsp; e2.update(mouseX, mouseY);<br>&nbsp; e3.update(mouseX, mouseY);<br><br>&nbsp; e1.display();<br>&nbsp; e2.display();<br>&nbsp; e3.display();<br>}<br><br>class Eye {<br>&nbsp; int x, y;<br>&nbsp; int size;<br>&nbsp; float angle = 0.0;<br>&nbsp; <br>&nbsp; Eye(int tx, int ty, int ts) {<br>&nbsp;&nbsp;&nbsp; x = tx;<br>&nbsp;&nbsp;&nbsp; y = ty;<br>&nbsp;&nbsp;&nbsp; size = ts;<br>&nbsp;}<br><br>&nbsp; void update(int mx, int my) {<br>&nbsp;&nbsp;&nbsp; angle = atan2(my-y, mx-x);<br>&nbsp; }<br>&nbsp; <br>&nbsp; void display() {<br>&nbsp;&nbsp;&nbsp; pushMatrix();<br>&nbsp;&nbsp;&nbsp; translate(x, y);<br>&nbsp;&nbsp;&nbsp; fill(255);<br>&nbsp;&nbsp;&nbsp; ellipse(0, 0, size, size);<br>&nbsp;&nbsp;&nbsp; rotate(angle);<br>&nbsp;&nbsp;&nbsp; fill(153, 204, 0);<br>&nbsp;&nbsp;&nbsp; ellipse(size/4, 0, size/2, size/2);<br>&nbsp;&nbsp;&nbsp; popMatrix();<br>&nbsp; }<br>}</td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>//(<a href="https://howtomechatronics.com/projects/arduino-radar-project/" target="_blank">ref</a>)<br><img src="images/radar.gif" alt=""><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>//Arduino Code<br>// Includes the Servo library<br>#include &lt;Servo.h&gt;. <br>// Defines Tirg and Echo pins of the Ultrasonic Sensor<br>const int trigPin = 10;<br>const int echoPin = 11;<br>// Variables for the duration and the distance<br>long duration;<br>int distance;<br>Servo myServo; // Creates a servo object for controlling the servo motor<br>void setup() {<br>&nbsp; pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output<br>&nbsp; pinMode(echoPin, INPUT); // Sets the echoPin as an Input<br>&nbsp; Serial.begin(9600);<br>&nbsp; myServo.attach(12); // Defines on which pin is the servo motor attached<br>}<br>void loop() {<br>&nbsp; // rotates the servo motor from 15 to 165 degrees<br>&nbsp; for(int i=15;i&lt;=165;i++){&nbsp; <br>&nbsp; myServo.write(i);<br>&nbsp; delay(30);<br>&nbsp; distance = calculateDistance();// Calls a function for calculating the distance measured by the Ultrasonic sensor for each degree<br>&nbsp; <br>&nbsp; Serial.print(i); // Sends the current degree into the Serial Port<br>&nbsp; Serial.print(","); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing<br>&nbsp; Serial.print(distance); // Sends the distance value into the Serial Port<br>&nbsp; Serial.print("."); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing<br>&nbsp; }<br>&nbsp; // Repeats the previous lines from 165 to 15 degrees<br>&nbsp; for(int i=165;i&gt;15;i--){&nbsp; <br>&nbsp; myServo.write(i);<br>&nbsp; delay(30);<br>&nbsp; distance = calculateDistance();<br>&nbsp; Serial.print(i);<br>&nbsp; Serial.print(",");<br>&nbsp; Serial.print(distance);<br>&nbsp; Serial.print(".");<br>&nbsp; }<br>}<br>// Function for calculating the distance measured by the Ultrasonic sensor<br>int calculateDistance(){ <br>&nbsp; <br>&nbsp; digitalWrite(trigPin, LOW); <br>&nbsp; delayMicroseconds(2);<br>&nbsp; // Sets the trigPin on HIGH state for 10 micro seconds<br>&nbsp; digitalWrite(trigPin, HIGH); <br>&nbsp; delayMicroseconds(10);<br>&nbsp; digitalWrite(trigPin, LOW);<br>&nbsp; duration = pulseIn(echoPin, HIGH); // Reads the echoPin, returns the sound wave travel time in microseconds<br>&nbsp; distance= duration*0.034/2;<br>&nbsp; return distance;<br>}</td></tr></tbody></table><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>//processing code&nbsp; 尺寸待修正<br>import processing.serial.*; // imports library for serial communication<br>import java.awt.event.KeyEvent; // imports library for reading the data from the serial port<br>import java.io.IOException;<br><br>Serial myPort; // defines Object Serial<br>// defubes variables<br>String angle="";<br>String distance="";<br>String data="";<br>String noObject;<br>float pixsDistance;<br>int iAngle, iDistance;<br>int index1=0;<br>int index2=0;<br>PFont orcFont;<br><br>void setup() {<br>&nbsp; <br>&nbsp;size (1920, 1080);<br>&nbsp;smooth();<br>&nbsp;myPort = new Serial(this,"<span style="color: #6600cc;">COM3</span>", 9600); // starts the serial communication<br>&nbsp;myPort.bufferUntil('.');
+ // reads the data from the serial port up to the character '.'. So 
+actually it reads this: angle,distance.<br>&nbsp;orcFont = loadFont("OCRAExtended-30.vlw");<br>}<br><br>void draw() {<br>&nbsp; <br>&nbsp; fill(98,245,31);<br>&nbsp; textFont(orcFont);<br>&nbsp; // simulating motion blur and slow fade of the moving line<br>&nbsp; noStroke();<br>&nbsp; fill(0,4); <br>&nbsp; rect(0, 0, width, 1010); <br>&nbsp; <br>&nbsp; fill(98,245,31); // green color<br>&nbsp; // calls the functions for drawing the radar<br>&nbsp; drawRadar(); <br>&nbsp; drawLine();<br>&nbsp; drawObject();<br>&nbsp; drawText();<br>}<br><br>void serialEvent (Serial myPort) { // starts reading data from the Serial Port<br>&nbsp; // reads the data from the Serial Port up to the character '.' and puts it into the String variable "data".<br>&nbsp; data = myPort.readStringUntil('.');<br>&nbsp; data = data.substring(0,data.length()-1);<br>&nbsp; <br>&nbsp; index1 = data.indexOf(","); // find the character ',' and puts it into the variable "index1"<br>&nbsp;
+ angle= data.substring(0, index1); // read the data from position "0" to
+ position of the variable index1 or thats the value of the angle the 
+Arduino Board sent into the Serial Port<br>&nbsp; distance= 
+data.substring(index1+1, data.length()); // read the data from position 
+"index1" to the end of the data pr thats the value of the distance<br>&nbsp; <br>&nbsp; // converts the String variables into Integer<br>&nbsp; iAngle = int(angle);<br>&nbsp; iDistance = int(distance);<br>}<br><br>void drawRadar() {<br>&nbsp; pushMatrix();<br>&nbsp; translate(960,1000); // moves the starting coordinats to new location<br>&nbsp; noFill();<br>&nbsp; strokeWeight(2);<br>&nbsp; stroke(98,245,31);<br>&nbsp; // draws the arc lines<br>&nbsp; arc(0,0,1800,1800,PI,TWO_PI);<br>&nbsp; arc(0,0,1400,1400,PI,TWO_PI);<br>&nbsp; arc(0,0,1000,1000,PI,TWO_PI);<br>&nbsp; arc(0,0,600,600,PI,TWO_PI);<br>&nbsp; // draws the angle lines<br>&nbsp; line(-960,0,960,0);<br>&nbsp; line(0,0,-960*cos(radians(30)),-960*sin(radians(30)));<br>&nbsp; line(0,0,-960*cos(radians(60)),-960*sin(radians(60)));<br>&nbsp; line(0,0,-960*cos(radians(90)),-960*sin(radians(90)));<br>&nbsp; line(0,0,-960*cos(radians(120)),-960*sin(radians(120)));<br>&nbsp; line(0,0,-960*cos(radians(150)),-960*sin(radians(150)));<br>&nbsp; line(-960*cos(radians(30)),0,960,0);<br>&nbsp; popMatrix();<br>}<br><br>void drawObject() {<br>&nbsp; pushMatrix();<br>&nbsp; translate(960,1000); // moves the starting coordinats to new location<br>&nbsp; strokeWeight(9);<br>&nbsp; stroke(255,10,10); // red color<br>&nbsp; pixsDistance = iDistance*22.5; // covers the distance from the sensor from cm to pixels<br>&nbsp; // limiting the range to 40 cms<br>&nbsp; if(iDistance&lt;40){<br>&nbsp;&nbsp;&nbsp; // draws the object according to the angle and the distance<br>&nbsp; line(pixsDistance*cos(radians(iAngle)),-pixsDistance*sin(radians(iAngle)),950*cos(radians(iAngle)),-950*sin(radians(iAngle)));<br>&nbsp; }<br>&nbsp; popMatrix();<br>}<br><br>void drawLine() {<br>&nbsp; pushMatrix();<br>&nbsp; strokeWeight(9);<br>&nbsp; stroke(30,250,60);<br>&nbsp; translate(960,1000); // moves the starting coordinats to new location<br>&nbsp; line(0,0,950*cos(radians(iAngle)),-950*sin(radians(iAngle))); // draws the line according to the angle<br>&nbsp; popMatrix();<br>}<br><br>void drawText() { // draws the texts on the screen<br>&nbsp; <br>&nbsp; pushMatrix();<br>&nbsp; if(iDistance&gt;40) {<br>&nbsp; noObject = "Out of Range";<br>&nbsp; }<br>&nbsp; else {<br>&nbsp; noObject = "In Range";<br>&nbsp; }<br>&nbsp; fill(0,0,0);<br>&nbsp; noStroke();<br>&nbsp; rect(0, 1010, width, 1080);<br>&nbsp; fill(98,245,31);<br>&nbsp; textSize(25);<br>&nbsp; text("10cm",1180,990);<br>&nbsp; text("20cm",1380,990);<br>&nbsp; text("30cm",1580,990);<br>&nbsp; text("40cm",1780,990);<br>&nbsp; textSize(40);<br>&nbsp; text("Object: " + noObject, 240, 1050);<br>&nbsp; text("Angle: " + iAngle +" °", 1050, 1050);<br>&nbsp; text("Distance: ", 1380, 1050);<br>&nbsp; if(iDistance&lt;40) {<br>&nbsp; text("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + iDistance +" cm", 1400, 1050);<br>&nbsp; }<br>&nbsp; textSize(25);<br>&nbsp; fill(98,245,60);<br>&nbsp; translate(961+960*cos(radians(30)),982-960*sin(radians(30)));<br>&nbsp; rotate(-radians(-60));<br>&nbsp; text("30°",0,0);<br>&nbsp; resetMatrix();<br>&nbsp; translate(954+960*cos(radians(60)),984-960*sin(radians(60)));<br>&nbsp; rotate(-radians(-30));<br>&nbsp; text("60°",0,0);<br>&nbsp; resetMatrix();<br>&nbsp; translate(945+960*cos(radians(90)),990-960*sin(radians(90)));<br>&nbsp; rotate(radians(0));<br>&nbsp; text("90°",0,0);<br>&nbsp; resetMatrix();<br>&nbsp; translate(935+960*cos(radians(120)),1003-960*sin(radians(120)));<br>&nbsp; rotate(radians(-30));<br>&nbsp; text("120°",0,0);<br>&nbsp; resetMatrix();<br>&nbsp; translate(940+960*cos(radians(150)),1018-960*sin(radians(150)));<br>&nbsp; rotate(radians(-60));<br>&nbsp; text("150°",0,0);<br>&nbsp; popMatrix(); <br>}<br><br><br><span style="color: #666666;">/*<br>You
+ don't have to download any .vlw files, but will have to make them 
+yourself out of any font which is installed in your system.<br>The process is simple: In the processing IDE,<br>- go to Tools / Create Font<br>- pick a font and a size and accept.<br>If
+ you click then Sketch / Show sketch folder you'll be able to see the 
+font in the data folder. Now you can use it in your processing sketch 
+with loadFont().<br>*/</span></td></tr></tbody></table><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><br>//修正中<br>import processing.serial.*; // imports library for serial communication<br>import java.awt.event.KeyEvent; // imports library for reading the data from the serial port<br>import java.io.IOException;<br><br>Serial myPort; // defines Object Serial<br>// defubes variables<br>String angle="";<br>String distance="";<br>String data="";<br>String noObject;<br>float pixsDistance;<br>int iAngle, iDistance;<br>int index1=0;<br>int index2=0;<br>PFont orcFont;<br><br>void setup() {<br>&nbsp;<br>&nbsp;size (800, 600);<br>&nbsp;smooth();<br>&nbsp;myPort = new Serial(this,"COM3", 9600); // starts the serial communication<br>&nbsp;myPort.bufferUntil('.'); // reads the data from the serial port up to the character '.'. So actually it reads this: angle,distance.<br>&nbsp;//orcFont = loadFont("OCRAExtended-30.vlw");<br>}<br><br>void draw() {<br>&nbsp;<br>&nbsp; fill(98,245,31);<br>&nbsp;// textFont(orcFont);<br>&nbsp; // simulating motion blur and slow fade of the moving line<br>&nbsp; noStroke();<br>&nbsp; fill(0,4);<br>&nbsp; rect(0, 0, width, height);<br>&nbsp;<br>&nbsp; fill(98,245,31); // green color<br>&nbsp; // calls the functions for drawing the radar<br>&nbsp; drawRadar();<br>&nbsp; drawLine();<br>&nbsp; drawObject();<br>&nbsp; drawText();<br>}<br><br>void serialEvent (Serial myPort) { // starts reading data from the Serial Port<br>&nbsp; // reads the data from the Serial Port up to the character '.' and puts it into the String variable "data".<br>&nbsp; data = myPort.readStringUntil('.');<br>&nbsp; data = data.substring(0,data.length()-1);<br>&nbsp;<br>&nbsp; index1 = data.indexOf(","); // find the character ',' and puts it into the variable "index1"<br>&nbsp; angle= data.substring(0, index1); // read the data from position "0" to position of the variable index1 or thats the value of the angle the Arduino Board sent into the Serial Port<br>&nbsp; distance= data.substring(index1+1, data.length()); // read the data from position "index1" to the end of the data pr thats the value of the distance<br>&nbsp;<br>&nbsp; // converts the String variables into Integer<br>&nbsp; iAngle = int(angle);<br>&nbsp; iDistance = int(distance);<br>}<br><br>void drawRadar() {<br>&nbsp; pushMatrix();<br>&nbsp; translate(width/2,height*3/4); // moves the starting coordinats to new location<br>&nbsp; noFill();<br>&nbsp; strokeWeight(2);<br>&nbsp; stroke(98,245,31);<br>&nbsp; // draws the arc lines<br>&nbsp; arc(0,0,width,width,PI,TWO_PI);<br>&nbsp; arc(0,0,width/2,width/2,PI,TWO_PI);<br>&nbsp; arc(0,0,width/4*3,width/4*3,PI,TWO_PI);<br>&nbsp; arc(0,0,width/4,width/4,PI,TWO_PI);<br>&nbsp; // draws the angle lines<br>&nbsp; line(-width/2,0,width/2,0);<br>&nbsp; line(0,0,width/2*cos(radians(-30)),width/2*sin(radians(-30)));<br>&nbsp; line(0,0,width/2*cos(radians(-60)),width/2*sin(radians(-60)));<br>&nbsp; line(0,0,width/2*cos(radians(-90)),width/2*sin(radians(-90)));<br>&nbsp; line(0,0,width/2*cos(radians(-120)),width/2*sin(radians(-120)));<br>&nbsp; line(0,0,width/2*cos(radians(-150)),width/2*sin(radians(-150)));<br>&nbsp; line(-width/2*cos(radians(30)),0,width/2,0);<br>&nbsp; popMatrix();<br>}<br><br>void drawObject() {<br>&nbsp; pushMatrix();<br>&nbsp; translate(width/2,height*3/4); // moves the starting coordinats to new location<br>&nbsp; strokeWeight(9);<br>&nbsp; stroke(255,10,10); // red color<br>&nbsp; pixsDistance = iDistance*22.5; // covers the distance from the sensor from cm to pixels<br>&nbsp; // limiting the range to 40 cms<br>&nbsp; if(iDistance&lt;40){<br>&nbsp;&nbsp;&nbsp; // draws the object according to the angle and the distance<br>&nbsp; line(pixsDistance*cos(radians(iAngle)),-pixsDistance*sin(radians(iAngle)),width*cos(radians(iAngle)),-width*sin(radians(iAngle)));<br>&nbsp; }<br>&nbsp; popMatrix();<br>}<br><br>void drawLine() {<br>&nbsp; pushMatrix();<br>&nbsp; strokeWeight(9);<br>&nbsp; stroke(30,250,60);<br>&nbsp; translate(width/2,height*3/4); // moves the starting coordinats to new location<br>&nbsp; line(0,0,width*cos(radians(iAngle)),-width*sin(radians(iAngle))); // draws the line according to the angle<br>&nbsp; popMatrix();<br>}<br><br>void drawText() { // draws the texts on the screen<br>&nbsp;<br>&nbsp; pushMatrix();<br>&nbsp; if(iDistance&gt;40) {<br>&nbsp; noObject = "Out of Range";<br>&nbsp; }<br>&nbsp; else {<br>&nbsp; noObject = "In Range";<br>&nbsp; }<br>&nbsp; fill(0,0,0);<br>&nbsp; noStroke();<br>&nbsp; rect(0, 1010, width, 1080);<br>&nbsp; fill(98,245,31);<br>&nbsp; textSize(25);<br>&nbsp; text("10cm",width*5/8,height*3/4);<br>&nbsp; text("20cm",width*6/8,height*3/4);<br>&nbsp; text("30cm",width*7/8,height*3/4);<br>&nbsp; text("40cm",1780,height*3/4);<br>&nbsp; textSize(40);<br>&nbsp; text("Object: " + noObject, 240, 1050);<br>&nbsp; text("Angle: " + iAngle +" °", 1050, 1050);<br>&nbsp; text("Distance: ", 1380, 1050);<br>&nbsp; if(iDistance&lt;40) {<br>&nbsp; text("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + iDistance +" cm", 1400, 1050);<br>&nbsp; }<br>&nbsp; textSize(25);<br>&nbsp; fill(98,245,60);<br>&nbsp; translate(width/2+width/2*cos(radians(30)),3*height/4-width/2*sin(radians(30)));<br>&nbsp; rotate(radians(-30));<br>&nbsp; text("30°",0,0);<br>&nbsp; resetMatrix();<br>&nbsp; translate(width/2+width/2*cos(radians(60)),3*height/4-width/2*sin(radians(60)));<br>&nbsp; rotate(radians(-60));<br>&nbsp; text("60°",0,0);<br>&nbsp; resetMatrix();<br>&nbsp; translate(width/2+width/2*cos(radians(90)),3*height/4-width/2*sin(radians(90)));<br>&nbsp; rotate(radians(0));<br>&nbsp; text("90°",0,0);<br>&nbsp; resetMatrix();<br>&nbsp; translate(width/2+width/2*cos(radians(120)),3*height/4-width/2*sin(radians(120)));<br>&nbsp; rotate(radians(-120));<br>&nbsp; text("120°",0,0);<br>&nbsp; resetMatrix();<br>&nbsp; translate(width/2+width/2*cos(radians(150)),3*height/4-width/2*sin(radians(150)));<br>&nbsp; rotate(radians(-150));<br>&nbsp; text("150°",0,0);<br>&nbsp; popMatrix();<br>}</td></tr></tbody></table><br><br></td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p><br>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+</body></html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>LedArray</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 507px; height: 69px;" border="1">
+      <tbody>
+        <tr>
+          <td class="red48C">LED Array</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1190px; height: 789px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/LEDArray.png"><br>
+            <br>
+            <a href="svg/ATMEGA_LEDArray.pdf">pdf&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="svg/ATMEGA_LEDArray.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 862px; height: 1097px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define
+            in1&nbsp; 5<br>
+            #define in2&nbsp; 6<br>
+            #define in3&nbsp; 7<br>
+            #define in4&nbsp; 8<br>
+            int dt=1000;//delay time<br>
+            <br>
+            void setup() {<br>
+            &nbsp; pinMode( in1 , OUTPUT);<br>
+            &nbsp; pinMode( in2 , OUTPUT);<br>
+            &nbsp; pinMode( in3 , OUTPUT);<br>
+            &nbsp; pinMode( in4 , OUTPUT);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; digitalWrite(in1,HIGH);<br>
+            &nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp; digitalWrite(in2,HIGH);<br>
+            &nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp; digitalWrite(in3,HIGH);<br>
+            &nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp; digitalWrite(in4,HIGH);<br>
+            &nbsp; delay(dt);<br>
+            }<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p><br>
+    </p>
+    <table style="width: 862px; height: 1097px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define
+            in1&nbsp; 5<br>
+            #define in2&nbsp; 6<br>
+            #define in3&nbsp; 7<br>
+            #define in4&nbsp; 8<br>
+            int dt=1000;//delay time<br>
+            <br>
+            void setup() {<br>
+            &nbsp; pinMode( in1 , OUTPUT);<br>
+            &nbsp; pinMode( in2 , OUTPUT);<br>
+            &nbsp; pinMode( in3 , OUTPUT);<br>
+            &nbsp; pinMode( in4 , OUTPUT);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; digitalWrite(in1,HIGH);<br>
+            &nbsp; digitalWrite(in2,HIGH);<br>
+            &nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp; digitalWrite(in2,HIGH);<br>
+            &nbsp; digitalWrite(in3,HIGH);<br>
+            &nbsp; digitalWrite(in4,LOW);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,LOW);<br>
+            &nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp; digitalWrite(in3,HIGH);<br>
+            &nbsp; digitalWrite(in4,HIGH);<br>
+            &nbsp; delay(dt);<br>
+            <br>
+            &nbsp; digitalWrite(in1,HIGH);<br>
+            &nbsp; digitalWrite(in2,LOW);<br>
+            &nbsp; digitalWrite(in3,LOW);<br>
+            &nbsp; digitalWrite(in4,HIGH);<br>
+            &nbsp; delay(dt);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 727px; height: 55px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C"><a href="LedArrayADV.html">進階</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <br>
+    <p><br>
+    </p>
+    <table style="width: 727px; height: 55px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C"><a href="StepMotor.html">步進馬達</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

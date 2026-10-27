@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>joystick</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <table style="width: 836px; height: 39px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/joyStick_007.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 902px; height: 724px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/joyStick_004a.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 168px; height: 279px;" border="1">
+      <tbody>
+        <tr>
+          <td><img style="width: 440px; height: 246px;" alt="" src="images/JoyStickWire.png"><br>
+            <a href="svg/JoyStickWire.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 950px; height: 55px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C"><a href="Dinput.html">數位開關 數位輸入</a><br>
+            <a href="AnalogInput.html">可變電阻 類比輸入 </a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/joyStick_006.png"><br>
+            <br>
+            <a href="svg/ATMEGA_JoyStick.pdf">pdf</a>&nbsp;&nbsp; <a href="svg/ATMEGA_JoyStick.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 902px; height: 270px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp; VRxL&nbsp; A3<br>
+            int xL;<br>
+            <br>
+            void&nbsp;&nbsp; setup(){<br>
+            &nbsp;&nbsp; Serial.begin(9600);<br>
+            }<br>
+            <br>
+            void loop(){<br>
+            &nbsp;&nbsp; xL=analogRead(VRxL);<br>
+            &nbsp;&nbsp; Serial.println(xL);<br>
+            <br>
+            &nbsp;&nbsp; delay(100);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 902px; height: 270px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp; VRxL&nbsp; A3<br>
+            #define&nbsp; led&nbsp;&nbsp; 11<br>
+            int xL;<br>
+            <br>
+            void&nbsp;&nbsp; setup(){<br>
+            &nbsp;&nbsp; <br>
+            }<br>
+            <br>
+            void loop(){<br>
+            &nbsp;&nbsp; xL=analogRead(VRxL);<br>
+            &nbsp;&nbsp; xL=map(xL,0,1023,0,255);<br>
+            &nbsp;&nbsp; analogWrite(led,xL);<br>
+            &nbsp;&nbsp; delay(100);<br>
+            }<br>
+            <br>
+            <img alt="" src="images/map_001.png"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1034px; height: 888px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/JoyStickMotor_001.png"><br>
+            <br>
+            <a href="svg/ATMEGA_Joystick_Motor.pdf">pdf</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="svg/ATMEGA_Joystick_Motor.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 902px; height: 270px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp; VRxL&nbsp; A3<br>
+            int xL;<br>
+            <br>
+            void&nbsp;&nbsp; setup(){<br>
+            &nbsp;&nbsp; Serial.begin(9600);<br>
+            }<br>
+            <br>
+            void loop(){<br>
+            &nbsp;&nbsp; xL=analogRead(VRxL);<br>
+            &nbsp;&nbsp; xL=map(xL,0,1023,255,-255);<br>
+            &nbsp;&nbsp; Serial.println(xL);<br>
+            <br>
+            &nbsp;&nbsp; delay(100);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 614px; height: 460px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/JoyStickMotor_002.png"><br>
+            <br>
+            <a href="svg/PWMBoard_MotorL.pdf">pdf</a>&nbsp;&nbsp;&nbsp; <a href="svg/PWMBoard_MotorL.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <p> </p>
+    <br>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 1027px; height: 904px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp; VRxL&nbsp; A3<br>
+            #define&nbsp; DirL&nbsp;&nbsp; 11<br>
+            #define&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            int xL;<br>
+            <br>
+            void&nbsp;&nbsp; setup(){<br>
+            &nbsp;&nbsp; pinMode(DirL,OUTPUT);<br>
+            &nbsp;&nbsp; digitalWrite(DirL,HIGH);<br>
+            &nbsp;&nbsp; analogWrite(PwmL,0);<br>
+            }<br>
+            <br>
+            void loop(){<br>
+            &nbsp;&nbsp; xL=analogRead(VRxL);<br>
+            &nbsp;&nbsp; xL=map(xL,0,1023,255,-255);<br>
+            &nbsp;&nbsp; if (xL&gt;50)&nbsp;&nbsp;&nbsp;&nbsp; //前進<br>
+            &nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(DirL,HIGH);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; analogWrite(PwmL,xL);<br>
+            &nbsp;&nbsp; }<br>
+            &nbsp;&nbsp; else if (xL&lt;-50)&nbsp; //後退<br>
+            &nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(DirL,LOW);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmL,-xL);<br>
+            &nbsp;&nbsp; }<br>
+            &nbsp;&nbsp; else&nbsp;&nbsp;&nbsp; //停<br>
+            &nbsp;&nbsp; analogWrite(PwmL,0);<br>
+            &nbsp;&nbsp; delay(100);<br>
+            }</td>
+          <td><img alt="" src="images/joyStick_008.png"><br>
+          </td>
+          <td><img alt="" src="images/joystickRobot%20.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 772px; height: 1050px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp; VRxL&nbsp; A3<br>
+            #define&nbsp; DirL&nbsp;&nbsp; 11<br>
+            #define&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp; VRxR&nbsp; A0<br>
+            #define&nbsp; DirR&nbsp;&nbsp; 12<br>
+            #define&nbsp; PwmR&nbsp;&nbsp; 10<br>
+            int xL;<br>
+            int xR;<br>
+            <br>
+            void&nbsp;&nbsp; setup(){<br>
+            &nbsp;&nbsp; pinMode(DirL,OUTPUT);<br>
+            &nbsp;&nbsp; pinMode(DirR,OUTPUT);<br>
+            &nbsp;&nbsp; digitalWrite(DirL,HIGH);<br>
+            &nbsp;&nbsp; digitalWrite(DirR,HIGH);<br>
+            &nbsp;&nbsp; analogWrite(PwmL,0);<br>
+            &nbsp;&nbsp; analogWrite(PwmR,0);<br>
+            }<br>
+            <br>
+            void loop(){<br>
+            &nbsp;&nbsp; xL=analogRead(VRxL);<br>
+            &nbsp;&nbsp; xL=map(xL,0,1023,255,-255);<br>
+            &nbsp;&nbsp; if (xL&gt;50)<br>
+            &nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(DirL,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmL,xL);<br>
+            &nbsp;&nbsp; }<br>
+            &nbsp;&nbsp; else if (xL&lt;-50)<br>
+            &nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(DirL,LOW);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmL,-xL);<br>
+            &nbsp;&nbsp; }<br>
+            &nbsp;&nbsp; else<br>
+            &nbsp;&nbsp; analogWrite(PwmL,0);<br>
+            <br>
+            xR=analogRead(VRxR);<br>
+            &nbsp;&nbsp; xR=map(xR,0,1023,255,-255);<br>
+            &nbsp;&nbsp; if (xR&gt;50)<br>
+            &nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(DirR,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmR,xR);<br>
+            &nbsp;&nbsp; }<br>
+            &nbsp;&nbsp; else if (xR&lt;-50)<br>
+            &nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(DirR,LOW);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmR,-xR);<br>
+            &nbsp;&nbsp; }<br>
+            &nbsp;&nbsp; else<br>
+            &nbsp;&nbsp; analogWrite(PwmR,0);<br>
+            <br>
+            &nbsp;&nbsp; <br>
+            &nbsp;&nbsp; delay(100);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 736px; height: 527px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/joyStick_005.png"><br>
+            <br>
+            <br>
+            <a href="svg/Sch_JoyStick.pdf">pdf</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="svg/Sch_JoyStick.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+  </body>
+</html>

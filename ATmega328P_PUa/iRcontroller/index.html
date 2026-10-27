@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>iR Controller</title>
+<link href="myCSS1.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<p>&nbsp;</p>
+<table width="200" border="1" align="center">
+  <tr>
+    <td><img src="images/NEC_004.png" width="884" height="393" /></td>
+  </tr>
+</table>
+<table width="200" border="1" align="center">
+  <tr>
+    <td><img src="images/necexttrain.gif" width="550" height="110" /></td>
+  </tr>
+</table>
+<table width="200" border="1" align="center">
+  <tr>
+    <td><img src="images/InfraRed_005.png" width="381" height="332" /></td>
+  </tr>
+</table>
+<table width="200" border="1" align="center">
+  <tr>
+    <td><img src="images/InfraRed_004.png" width="638" height="301" /></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<hr />
+<table width="880" border="1" align="center">
+  <tr>
+    <td width="870"><p class="Blue24">//38K, D11 should not be changed</p>
+      <p class="Blue24">// D11<span class="Blue24CHT">接</span>150 Ohm<span class="Blue24CHT">電阻 接紅外線發射二極體之陽極,陰極接地</span></p>
+      <p class="Blue24">int T=560; //us<br />
+        int T16=16*T;//9000<br />
+        int T7p5=7.5*T;//4500<br />
+        int T3=3*T;//1690<br />
+        int i;</p>
+      <p class="Blue24"><span class="Red24">struct stByte</span><br />
+        {<br />
+        &nbsp;&nbsp;unsigned char AddressL; //Lower Address<br />
+        &nbsp;&nbsp;unsigned char AddressH; <br />
+        &nbsp;&nbsp;unsigned char cmd;<br />
+        &nbsp;&nbsp;unsigned char cmdinv; //Higher Address<br />
+        } ;</p>
+      <p class="Blue24">typedef <span class="Red24">struct stByte</span> BYTES;<br />
+        BYTES &nbsp;&nbsp;iRcode;</p>
+      <p class="Blue24"><span class="Red24">union unLONGINT</span><br />
+        {<br />
+        &nbsp;&nbsp;unsigned long uL; //4 bytes<br />
+        &nbsp;&nbsp;BYTES b; //4 bytes<br />
+        };<br />
+        typedef <span class="Red24">union unLONGINT</span>&nbsp; LONGUNION ;<br />
+        LONGUNION &nbsp;&nbsp;iRcodeL;<br />
+      </p>
+      <p class="Blue24">void setup() {</p>
+      <p class="Blue24">&nbsp;&nbsp;DDRB |=_BV(3); //pinMode(11,OUTPUT);<br />
+        &nbsp;&nbsp;TCCR2A &amp;= (~_BV(COM2A1)) &amp; (~_BV(WGM20));<br />
+        &nbsp;&nbsp;TCCR2A |= _BV(COM2A0) | _BV(WGM21);<br />
+        &nbsp;&nbsp;OCR2A=210;<br />
+        &nbsp;&nbsp;TCCR2B &amp;=~_BV(WGM22) &amp; ~_BV(CS22) &amp; ~_BV(CS21);<br />
+        &nbsp;&nbsp;TCCR2B |= _BV(CS20);<br />
+      &nbsp;&nbsp;TCNT2=0;</p>
+      <p class="Blue24">}</p>
+      <p class="Blue24">void loop() {</p>
+      <p class="Blue24"> &nbsp;&nbsp;writeData(0xFE,0x01,0x10);<br />
+        &nbsp;&nbsp;delay(5000);<br />
+        &nbsp;&nbsp;writeData(0xFE,0x01,0x11);<br />
+        &nbsp;&nbsp;delay(5000);<br />
+        }<br />
+      </p>
+      <p class="Blue24">void writeData(unsigned char aH,unsigned char aL,unsigned char keyC)<br />
+        {<br />
+        &nbsp;&nbsp;iRcode.AddressH=aH;<br />
+        &nbsp;&nbsp;iRcode.AddressL=aL;<br />
+        &nbsp;&nbsp;iRcode.cmd=keyC;<br />
+        &nbsp;&nbsp;iRcode.cmdinv=~keyC;<br />
+        &nbsp;&nbsp;iRcodeL.b=iRcode;<br />
+        &nbsp;&nbsp;DDRB &amp;=~_BV(3); //D11  input<br />
+        &nbsp;&nbsp;delay(10);</p>
+      <p class="Blue24">//sending leader code<br />
+        &nbsp;&nbsp;&nbsp;DDRB |=_BV(3);  //38k D11 output<br />
+        &nbsp;&nbsp;&nbsp;delayMicroseconds(T16);<br />
+        &nbsp;&nbsp;&nbsp;DDRB &amp;=~_BV(3); // D11 input, (38KHz is not sending out)<br />
+        &nbsp;&nbsp;&nbsp;delayMicroseconds(T7p5);<br />
+      </p>
+      <p><span class="Blue24">&nbsp;&nbsp;for(i=0;i&lt;32;i++)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;{<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DDRB |=_BV(3);//38k<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delayMicroseconds(T);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DDRB &amp;=~_BV(3); //D11  input<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(iRcodeL.uL &amp; 0x00000001) //1<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delayMicroseconds(T3);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delayMicroseconds(T);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iRcodeL.uL=iRcodeL.uL&gt;&gt;1;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+        //stop bit<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;DDRB |=_BV(3);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;delayMicroseconds(T);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;DDRB &amp;=~_BV(3); <br />
+      }</span></p>
+      <p><span class="Blue24"><a href="files/T2_38Kfn2.zip">T2_38Kfn2.zip</a><br />
+    </span> </p></td>
+  </tr>
+</table>
+&nbsp;
+<table width="200" border="1" align="center">
+  <tr>
+    <td><p><img src="images/structure_001.png" width="760" height="627" /></p>
+      <p><img src="images/structure_002.png" width="736" height="493" /></p>
+      <p class="Blue24"><a href="docs/structure.pdf">PDF</a> <a href="docs/structure.docx">DOCX</a></p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<hr />
+<table width="417" border="1" align="center">
+  <tr>
+    <td class="Blue36CHT">增加遙控距離</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="200" border="1" align="center">
+  <tr>
+    <td><p><img src="images/c8550.png" width="350" height="501" /></p>
+    <p><a href="docs/C8050.pdf">C8050</a> NPN</p></td>
+  </tr>
+</table>
+<table width="200" border="1" align="center">
+  <tr>
+    <td><p><img src="images/c8050amp.png" width="533" height="563" /></p>
+      <p class="Blue24"><a href="docs/amplify.pdf">PDF</a> <a href="svg/amplify.svg">SVG</a></p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<hr />
+<p>&nbsp;</p>
+<table width="569" border="1" align="center">
+  <tr>
+    <td width="487"><p class="Blue24CHT">D11:38KHz</p>
+      <p class="Blue24CHT">D12:控制38KH輸出與否</p>
+      <p class="Blue24CHT">D11與D12接於AND Gate(<a href="docs/HEF4081B.pdf">4081</a>)輸入</p>
+      <p class="Blue24CHT">AND Gate 輸出接紅外線發射器</p></td>
+  </tr>
+</table>
+<table width="200" border="1" align="center">
+  <tr>
+    <td><img src="images/4081_Pinout.svg.png" width="480" height="480" /></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="891" border="1" align="center">
+  <tr>
+    <td width="881"><p class="Blue24">int T=560; //us<br />
+      int T16=16*T;//9000<br />
+      int T7p5=7.5*T;//4500<br />
+      int T3=3*T;//1690<br />
+      int i;</p>
+      <p class="Blue24">struct stByte<br />
+        {<br />
+        unsigned char AddressL; //Lower Address<br />
+        unsigned char AddressH; <br />
+        unsigned char cmd;<br />
+        unsigned char cmdinv; //Higher Address<br />
+        } ;</p>
+      <p class="Blue24">typedef struct stByte BYTES;<br />
+        BYTES iRcode;</p>
+      <p class="Blue24">union unLONGINT<br />
+        {<br />
+        unsigned long uL; //4 bytes<br />
+        BYTES b; //4 bytes<br />
+        };<br />
+        typedef union unLONGINT LONGUNION ;<br />
+        LONGUNION iRcodeL;<br />
+      </p>
+      <p class="Blue24">void setup() {</p>
+      <p class="Blue24">&nbsp;&nbsp;&nbsp;&nbsp;pinMode(11,OUTPUT); //38K, D11 should not be changed<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;pinMode(12,OUTPUT); //Control pin</p>
+      <p class="Blue24">&nbsp;&nbsp;&nbsp;&nbsp;DDRB |=_BV(3);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;TCCR2A &amp;= (~_BV(COM2A1)) &amp; (~_BV(WGM20));<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;TCCR2A |= _BV(COM2A0) | _BV(WGM21);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;OCR2A=210;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;TCCR2B &amp;=~_BV(WGM22) &amp; ~_BV(CS22) &amp; ~_BV(CS21);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;TCCR2B |= _BV(CS20);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;TCNT2=0;</p>
+      <p class="Blue24">}</p>
+      <p class="Blue24">void loop() {</p>
+      <p class="Blue24"> &nbsp;&nbsp;&nbsp;writeData(0xFE,0x01,0x10);<br />
+        &nbsp;&nbsp;&nbsp;delay(5000);<br />
+        &nbsp;&nbsp;&nbsp;writeData(0xFE,0x01,0x11);<br />
+        &nbsp;&nbsp;&nbsp;delay(5000);<br />
+        }<br />
+      </p>
+      <p class="Blue24">void writeData(unsigned char aH,unsigned char aL,unsigned char keyC)<br />
+        {<br />
+        &nbsp;&nbsp;&nbsp;iRcode.AddressH=aH;<br />
+        &nbsp;&nbsp;&nbsp;iRcode.AddressL=aL;<br />
+        &nbsp;&nbsp;&nbsp;iRcode.cmd=keyC;<br />
+        &nbsp;&nbsp;&nbsp;iRcode.cmdinv=~keyC;<br />
+        &nbsp;&nbsp;&nbsp;iRcodeL.b=iRcode;<br />
+        &nbsp;&nbsp;&nbsp;PORTB &amp;=~_BV(4); //D12<br />
+        &nbsp;&nbsp;&nbsp;delay(10);</p>
+      <p class="Blue24">&nbsp;&nbsp;&nbsp;//sending leader code<br />
+        &nbsp;&nbsp;&nbsp;PORTB |=_BV(4);  //38k<br />
+        &nbsp;&nbsp;&nbsp;delayMicroseconds(T16);<br />
+        &nbsp;&nbsp;&nbsp;PORTB &amp;=~_BV(4); // low<br />
+        &nbsp;&nbsp;&nbsp;delayMicroseconds(T7p5);</p>
+      <p class="Blue24">&nbsp;&nbsp;//sending address and data<br />
+      </p>
+      <p><span class="Blue24">&nbsp;&nbsp;&nbsp;for(i=0;i&lt;32;i++)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;{<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PORTB |=_BV(4);//passing through 38KHz signal<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delayMicroseconds(T);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PORTB &amp;=~_BV(4); //low<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(iRcodeL.uL &amp; 0x00000001) //1<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delayMicroseconds(T3);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delayMicroseconds(T);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iRcodeL.uL=iRcodeL.uL&gt;&gt;1;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+        //stop bit<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;PORTB |=_BV(4);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;delayMicroseconds(T);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;PORTB &amp;=~_BV(4); //D12<br />
+        }</span></p>
+      <p><a href="files/T238K_D11_fn1.zip" class="Blue24">source code</a><br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

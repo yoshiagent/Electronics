@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <title>Dinput</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <table style="width: 888px; height: 442px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/SW_000.jpg">&nbsp;&nbsp;&nbsp;&nbsp; <img alt="" src="images/SW_001.jpg"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 822px; height: 608px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/Dinp_001.png"><br>
+            <br>
+            <a href="svg/ATMEGA_Din.pdf">pdf</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="svg/ATMEGA_Din.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 865px; height: 648px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/Dinp_002.png"><br>
+            <br>
+            <a href="svg/ATMEGA_Din1.pdf">pdf</a>&nbsp;&nbsp; <a href="svg/ATMEGA_Din1.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 890px; height: 458px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp;&nbsp;
+            sw&nbsp;&nbsp;&nbsp; 6<br>
+            #define&nbsp;&nbsp; led&nbsp;&nbsp; 11<br>
+            int din;<br>
+            void setup(){<br>
+            &nbsp; pinMode(sw,INPUT);<br>
+            &nbsp; pinMode(led,OUTPUT);<br>
+            }<br>
+            void loop(){<br>
+            &nbsp; din=digitalRead(sw); //讀取D6的狀態<br>
+            &nbsp; if (din==HIGH)&nbsp;&nbsp;&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(led,LOW); //如果D6為高電位(沒按) 則 LED
+            不亮<br>
+            &nbsp; else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(led,HIGH); //否則LED 亮<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 684px; height: 543px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/if_001.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 896px; height: 416px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/flowChart_003.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 1079px; height: 69px;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">請將10K歐姆的電阻拔掉 試試<br>
+            將程式碼更改如下,再試試<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 989px; height: 290px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define
+            &nbsp; sw&nbsp;&nbsp; 6<br>
+            #define&nbsp;&nbsp; led&nbsp;&nbsp; 11<br>
+            int din;<br>
+            void setup(){<br>
+            &nbsp; pinMode(sw,<span class="red24">INPUT_PULLUP</span>);<br>
+            &nbsp; pinMode(led,OUTPUT);<br>
+            }<br>
+            void loop(){<br>
+            &nbsp; din=digitalRead(sw); //讀取D6的狀態<br>
+            &nbsp; if (din==HIGH)&nbsp;&nbsp;&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(led,LOW); //如果D6為高電位(沒按) 則 LED
+            不亮<br>
+            &nbsp; else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(led,HIGH); //否則LED 亮<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 995px; height: 766px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/AT_PULLUP.png"><br>
+            <br>
+            <a href="svg/AT_PULLUP.pdf">pdf</a>&nbsp;&nbsp;&nbsp; <a href="svg/AT_PULLUP.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 472px; height: 177px;" border="1">
+      <tbody>
+        <tr>
+          <td class="red48C">水銀開關<br>
+            <img alt="" src="images/mercury_001.jpg"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 832px; height: 648px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/Dinp_mercury_001.png"><br>
+            <br>
+            <a href="svg/ATMEGA_DinMercury.pdf">pdf</a>&nbsp;&nbsp; <a href="svg/ATMEGA_DinMercury.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 621px; height: 565px;" border="1">
+      <tbody>
+        <tr>
+          <td class="red48C"><br>
+            磁簧開關(reed switch)<br>
+            <img alt="" src="images/mag_013.jpg"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 784px; height: 628px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/Dinp_ReedSW_001.png"><br>
+            <a href="svg/ATMEGA_DinReedSW.pdf">pdf</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="svg/ATMEGA_DinReedSW.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 973px; height: 2713px;" border="1">
+      <tbody>
+        <tr>
+          <td><img style="width: 690px; height: 516px;" alt="" src="images/reed_001.gif"><br>
+            <br>
+            <img style="width: 816px; height: 457px;" alt="" src="images/reed_002.jpg"><br>
+            <br>
+            <img alt="" src="images/reed_003.png"><br>
+            <br>
+            <img style="width: 811px; height: 482px;" alt="" src="images/reed_003.jpg"><br>
+            <br>
+            <br>
+            <img alt="" src="images/reed_004.jpg"><br>
+            <br>
+            <img style="width: 396px; height: 300px;" alt="" src="images/5eed_004.jpg"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 737px; height: 628px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/Sw2LED_000.png"><br>
+            <a href="svg/ATMEGA_2Din.pdf">pdf</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="svg/ATMEGA_2Din.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 806px; height: 59px;" border="1">
+      <tbody>
+        <tr>
+          <td class="red36">邏輯 且 (AND)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &amp;&amp;<br>
+            <img alt="" src="images/AND_010.GIF"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 818px; height: 390px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp;
+            sw1&nbsp; 8<br>
+            #define&nbsp; sw2&nbsp; A1<br>
+            #define&nbsp; led&nbsp; 11<br>
+            int din1;<br>
+            int din2;<br>
+            void setup() {<br>
+            &nbsp;pinMode(sw1,INPUT_PULLUP);<br>
+            &nbsp;pinMode(sw2,INPUT_PULLUP);<br>
+            &nbsp;pinMode(led,OUTPUT);<br>
+            }<br>
+            void loop() {<br>
+            &nbsp;&nbsp; din1=digitalRead(sw1);<br>
+            &nbsp;&nbsp; din2=digitalRead(sw2);<br>
+            &nbsp;&nbsp; if (din1==LOW <span class="red24">&amp;&amp;</span>
+            din2==LOW)&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(led,HIGH);<br>
+            &nbsp; else<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(led,LOW);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 764px; height: 628px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/Sw2LED_001.png"><br>
+            <a href="svg/ATMEGA_2Dina.pdf">pdf&nbsp;</a>&nbsp; <a href="svg/ATMEGA_2Dina.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 852px; height: 69px;" border="1">
+      <tbody>
+        <tr>
+          <td class="red48C">接線如上圖，程式怎麼寫?</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <hr>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 806px; height: 59px;" border="1">
+      <tbody>
+        <tr>
+          <td class="red36">邏輯 或 (OR)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ||<br>
+            <img alt="" src="images/OR_010.GIF"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 818px; height: 390px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp;
+            sw1&nbsp; 6<br>
+            #define&nbsp; sw2&nbsp; A1<br>
+            #define&nbsp; led&nbsp; 11<br>
+            int din1;<br>
+            int din2;<br>
+            void setup() {<br>
+            &nbsp;pinMode(sw1,INPUT_PULLUP);<br>
+            &nbsp;pinMode(sw2,INPUT_PULLUP);<br>
+            &nbsp;pinMode(8,OUTPUT);<br>
+            &nbsp;pinMode(led,OUTPUT);<br>
+            &nbsp;digitalWrite(8,LOW);<br>
+            }<br>
+            void loop() {<br>
+            &nbsp;&nbsp; din1=digitalRead(sw1);<br>
+            &nbsp;&nbsp; din2=digitalRead(sw2);<br>
+            &nbsp;&nbsp; if (din1==LOW <span class="red24">||</span>
+            din2==LOW)&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(led,HIGH);<br>
+            &nbsp; else<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(led,LOW);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">記憶性開關</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <table style="width: 803px; height: 208px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/swMem_000.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 776px; height: 521px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp;
+            sw&nbsp; 6<br>
+            #define&nbsp; led&nbsp; 11<br>
+            int din0;<br>
+            int din1;<br>
+            int out=0;<br>
+            void setup() {<br>
+            &nbsp;pinMode(sw,INPUT_PULLUP);<br>
+            &nbsp;pinMode(led,OUTPUT);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            din0=digitalRead(sw);<br>
+            delay(10);<br>
+            din1=digitalRead(sw);<br>
+            if (din0==LOW &amp;&amp; din1==HIGH)&nbsp;&nbsp; //出現上升緣<br>
+            out=!out;//反相<br>
+            digitalWrite(led,out);<br>
+            }</td>
+          <td><img alt="" src="images/SwMemLED_000.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red48C">以上作法，是否有問題?</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 716px; height: 295px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/swMem_001.png"><br>
+            <br>
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 1116px; height: 947px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white; width: 754.003px;">#define&nbsp;
+            sw&nbsp;&nbsp; 6<br>
+            #define&nbsp; led&nbsp; 11<br>
+            int din;<br>
+            int dinL=HIGH;<br>
+            int out=0;<br>
+            void setup(){<br>
+            pinMode(sw,INPUT_PULLUP);<br>
+            pinMode(led,OUTPUT);<br>
+            digitalWrite(led,out);<br>
+            }<br>
+            void loop(){<br>
+            &nbsp; din=digitalRead(sw);<br>
+            <br>
+            &nbsp; if(din!=dinL)<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; if (din==HIGH)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out=~out;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            digitalWrite(led,out);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp; }<br>
+            <br>
+            &nbsp; dinL=din;<br>
+            &nbsp; delay(10);<br>
+            }</td>
+          <td style="width: 654.37px;"><img alt="" src="images/swMem_003.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 1114px; height: 570px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/swMem_005.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C">切換開關</td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/SW_003.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 100%" border="1">
+              <tbody>
+                <tr>
+                  <td class="red36C">雙切開關<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <img src="images/SW_002.png" alt=""><br>
+            <br>
+            <br>
+            <img src="images/2SW_001.png" alt=""></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/SW_004.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p> </p>
+    <p><br>
+    </p>
+  
+
+</body></html>

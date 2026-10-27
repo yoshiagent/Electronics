@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>我是作曲家</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/ATSPK_001.png"><br>
+            <a href="svg/AT_SPK.pdf">PDF</a>&nbsp;&nbsp;&nbsp; <a href="svg/AT_SPK.svg">SVG</a><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 714px; height: 515px;" border="0">
+      <tbody>
+        <tr>
+          <td class="blue24C"><br>
+            <div class="blue24" style="text-align: left;">#define&nbsp; SPK&nbsp; 8<br>
+              void&nbsp; setup( ) {<br>
+              &nbsp;&nbsp;&nbsp; tone(SPK, 262); <br>
+              }<br>
+              void loop()<br>
+              {<br>
+              }</div>
+            <br>
+            示波器 看波形<img alt="" src="images/spk_010.png"><br>
+            <br>
+            <div style="text-align: left;">改成&nbsp; tone(SPK, 700);<br>
+              <br>
+              改成&nbsp; tone(SPK, 1000);<br>
+              <br>
+              試試</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table class="blue24" style="width: 716px; height: 149px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">#define&nbsp; SPK&nbsp; 8<br>
+            <span class="red24">#define&nbsp; Do&nbsp; 262</span><br>
+            void&nbsp; setup( ) {<br>
+            &nbsp;&nbsp;&nbsp; tone(SPK, Do); <br>
+            }<br>
+            void loop()<br>
+            {<br>
+            }</td>
+          <td style="text-align: left; background-color: white;">#define&nbsp; SPK&nbsp; 8<br>
+            <span class="red24">int&nbsp; Do=262;</span><br>
+            void&nbsp; setup( ) {<br>
+            &nbsp;&nbsp;&nbsp; tone(SPK, Do); <br>
+            }<br>
+            void loop()<br>
+            {<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/squreWave.jpg"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <p></p>
+    <p><br>
+    </p>
+    <br>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><span class="red48C">救護車</span><br>
+            <span class="blue24C">低頻頻率700赫茲(650赫茲至750赫茲)，</span><span class="blue24C"><span class="blue24C">持 續時間0.4秒<br>
+              </span>高頻頻率1000赫茲(900赫茲至1000赫茲)，持續時間0.6秒<br>
+              高、低頻二者交替進行</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 430px; height: 270px; text-align: left; margin-left: auto; margin-right: auto;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">// 700Hz 0.4秒 (400ms)<br>
+            // 1000Hz 0.6秒 (600ms)<br>
+            <br>
+            <br>
+            #define SPK&nbsp; 8<br>
+            void setup() <br>
+            {&nbsp; <br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; tone(SPK,700);<br>
+            &nbsp; delay(400);<br>
+            &nbsp; tone(SPK,1000);<br>
+            &nbsp; delay(600);<br>
+            &nbsp;}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <br>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/Sound_006.jpg"><br>
+            <br>
+            <img alt="" src="images/spk_005.png"><br>
+            <br>
+            <span class="blue36">int&nbsp;&nbsp; Do=262;&nbsp; //#define Do 262&nbsp; <br>
+              int&nbsp;&nbsp; DoS=277;//#define Dos 277<br>
+            </span> </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 860px; height: 55px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C">使用tone函式 &nbsp; D3,D11 PWM無法使用</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 488px; height: 202px;" border="1" align="center">
+      <tbody>
+        <tr>
+          <td style="width: 330px; text-align: left; background-color: white;" width="330"><span class="Blue24 blue24">#define&nbsp; SPK&nbsp; 8<br>
+              void&nbsp; setup(&nbsp;)<br>
+              &nbsp;{<br>
+              &nbsp; &nbsp;&nbsp;tone(SPK, 262,<span class="Red24">2000</span>); <br>
+              &nbsp; }<br>
+              void loop() { }</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 666px; height: 418px;" border="1" align="center">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">
+            <p class="Blue24">#define &nbsp; SPK&nbsp; 8</p>
+            <p class="Blue24">//int &nbsp;&nbsp;Do=262;<br>
+              //int &nbsp;&nbsp;Re=294;</p>
+            <p class="Blue24">#define Do 262<br>
+              #define Re 294<br>
+            </p>
+            <p class="Blue24">void &nbsp;setup()<br>
+              { <br>
+            </p>
+            <p class="Blue24">&nbsp; &nbsp; tone(SPK,Do,1000);&nbsp;<br>
+              &nbsp;&nbsp;&nbsp; tone(SPK,Re,1000); <br>
+              } </p>
+            <p class="Blue24">void &nbsp;&nbsp;loop(){}</p>
+          </td>
+          <td><img src="images/spk_004.png" alt="" width="238" height="385"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 1010px; height: 583px;" border="1" align="center">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">
+            <p class="Blue24">#define&nbsp; SPK&nbsp;&nbsp; 8</p>
+            <p class="Blue24">#define &nbsp; Do&nbsp; 262<br>
+              #define &nbsp; Re&nbsp; 294<br>
+            </p>
+            <p class="Blue24">void &nbsp;setup(){<br>
+              &nbsp;&nbsp; tone(SPK,Do,1000);&nbsp;<br>
+              &nbsp;&nbsp;&nbsp;delay(2000);<br>
+              &nbsp;&nbsp;&nbsp;tone(SPK,Re,1000); <br>
+              &nbsp;&nbsp; //delay(2000);<br>
+              } </p>
+            <p class="Blue24">void &nbsp;&nbsp;loop(){}</p>
+          </td>
+          <td>
+            <p class="Blue24"><img src="images/spk_003.png" width="578" height="536"></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 885px; height: 450px;" border="1" align="center">
+      <tbody>
+        <tr>
+          <td style="width: 358px; text-align: left; background-color: white;" class="blue24" width="358">
+            <p class="Blue24">#define &nbsp; SPK&nbsp;&nbsp; 8</p>
+            <p class="Blue24">#define Do&nbsp; 262<br>
+              #define Re&nbsp; 294<br>
+            </p>
+            <p class="Blue24">void &nbsp;<span class="Red24">setup</span>(){<br>
+              &nbsp;&nbsp; tone(SPK,Do,1000);&nbsp;<br>
+              &nbsp;&nbsp;&nbsp;delay(2000);<br>
+              &nbsp;&nbsp;&nbsp;tone(SPK,Re,1000); <br>
+              &nbsp;&nbsp;<span class="Red24"> //delay(2000);</span><br>
+              } </p>
+            <p class="Blue24">void &nbsp;&nbsp;loop(){}</p>
+          </td>
+          <td style="width: 386px; text-align: left; background-color: white;" class="blue24" width="386">
+            <p class="Blue24">#define &nbsp; SPK&nbsp;&nbsp; 8</p>
+            <p class="Blue24">#define &nbsp; Do&nbsp;&nbsp; 262<br>
+              #define &nbsp; Re&nbsp;&nbsp; 294<br>
+            </p>
+            <p class="Blue24">void &nbsp;setup(){ } </p>
+            <p class="Blue24">void &nbsp;&nbsp;<span class="Red24">loop</span>(){<br>
+              &nbsp;&nbsp;&nbsp;tone(SPK,Do,1000);&nbsp;<br>
+              &nbsp;&nbsp;&nbsp;delay(2000);<br>
+              &nbsp;&nbsp;&nbsp;tone(SPK,Re,1000); <br>
+              &nbsp;&nbsp;<span class="Red24"> //delay(2000);</span><br>
+              }</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">不連音</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 854px; height: 640px;" border="1" align="center">
+      <tbody>
+        <tr>
+          <td style="width: 329px; text-align: left; background-color: white;" class="blue24" width="329">
+            <p class="Blue24">#define &nbsp; SPK&nbsp;&nbsp; 8</p>
+            <p class="Blue24">#define&nbsp;&nbsp; Do&nbsp; 262<br>
+              #define&nbsp;&nbsp; Re&nbsp; 294<br>
+              #define&nbsp;&nbsp; Mi&nbsp;&nbsp; 330<br>
+            </p>
+            <p class="Blue24">void &nbsp;setup(){&nbsp;&nbsp; } </p>
+            <p class="Blue24">void &nbsp;&nbsp;loop(){</p>
+            <p class="Blue24"> &nbsp;&nbsp;&nbsp;tone(SPK,Do,1000);&nbsp;<br>
+              &nbsp;&nbsp;&nbsp;delay(1300);<br>
+              &nbsp;&nbsp;&nbsp;tone(SPK,Re,1000); <br>
+              &nbsp;&nbsp;&nbsp;delay(1300); <br>
+              &nbsp;&nbsp;&nbsp;tone(SPK,Mi,1000); <br>
+              &nbsp;&nbsp;&nbsp;delay(1300);</p>
+            <p class="Blue24">}</p>
+          </td>
+          <td style="width: 341px; text-align: left; background-color: white;" class="blue24" width="341">
+            <p class="Blue24">#define &nbsp; SPK&nbsp;&nbsp; 8</p>
+            <p class="Blue24">#define&nbsp;&nbsp; Do&nbsp; 262<br>
+              #define&nbsp;&nbsp; Re&nbsp; 294<br>
+              #define&nbsp;&nbsp; Mi&nbsp;&nbsp; 330<br>
+              <br>
+              int <span class="Red24">bt</span>=1000;<br>
+              <br>
+              void setup(){ } </p>
+            <p class="Blue24">void loop(){</p>
+            <p class="Blue24">&nbsp;&nbsp;tone(SPK,Do,<span class="Red24">bt</span>); <br>
+              &nbsp;&nbsp;delay(<span class="Red24">bt</span>*1.3);<br>
+              &nbsp;&nbsp;tone(SPK,Re,<span class="Red24">bt</span>); <br>
+              &nbsp;&nbsp;delay(<span class="Red24">bt</span>*1.3); <br>
+              &nbsp;&nbsp;tone(SPK,Mi,<span class="Red24">bt</span>); <br>
+              &nbsp;&nbsp;delay(<span class="Red24">bt</span>*1.3);</p>
+            <p class="Blue24">}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 870px; height: 1345px;" border="1" align="center">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">
+            <p class="Blue24">#define &nbsp; SPK&nbsp;&nbsp; 8</p>
+            <p class="Blue24">#define&nbsp;&nbsp; Do&nbsp; 262<br>
+              #define&nbsp;&nbsp; Re&nbsp; 294<br>
+              #define&nbsp;&nbsp; Mi&nbsp;&nbsp; 330<br>
+              #define&nbsp;&nbsp; Fa&nbsp;&nbsp; 349<br>
+              #define&nbsp;&nbsp; So&nbsp;&nbsp; 392<br>
+              #define&nbsp;&nbsp; La &nbsp; 440<br>
+              #define&nbsp;&nbsp; Si&nbsp;&nbsp;&nbsp; 494</p>
+            <p class="Blue24">#define &nbsp; bt&nbsp;&nbsp; 1000&nbsp;&nbsp;&nbsp; //　每分鐘60拍　,　一拍1000ms<br>
+              #define &nbsp; bt1_4&nbsp;&nbsp; bt/4<br>
+              #define&nbsp;&nbsp; bt1_8&nbsp;&nbsp; bt/8 </p>
+            <p class="Blue24"><br>
+              void setup(){<br>
+              &nbsp;<br>
+              }<br>
+            </p>
+            <p class="Blue24">void loop() {</p>
+            <p class="Blue24">&nbsp;&nbsp;tone(SPK,<span class="Red24">Do</span>,bt1_4 );<br>
+              &nbsp;&nbsp;delay(bt1_4*1.3);<br>
+              &nbsp;&nbsp;tone(SPK,<span class="Red24">So/2</span>,bt1_8 );<br>
+              &nbsp;&nbsp;delay(bt1_8*1.3);<br>
+              &nbsp;&nbsp;tone(SPK,<span class="Red24">So/2</span>,bt1_8 );<br>
+              &nbsp;&nbsp;delay(bt1_8*1.3);<br>
+              &nbsp;&nbsp;tone(SPK,<span class="Red24">La/2</span>,bt1_4 );<br>
+              &nbsp;&nbsp;delay(bt1_4*1.3);<br>
+              &nbsp;&nbsp;tone(SPK,<span class="Red24">So/2</span>,bt1_4 );<br>
+              &nbsp;&nbsp;delay(bt1_4*1.3);<br>
+              &nbsp;&nbsp;tone(SPK,<span class="Red24">0</span>,bt1_4 );<br>
+              &nbsp;&nbsp;delay(bt1_4*1.3);<br>
+              &nbsp;&nbsp;tone(SPK,<span class="Red24">Si/2</span>,bt1_4 );<br>
+              &nbsp;&nbsp;delay(bt1_4*1.3);<br>
+              &nbsp;&nbsp;tone(SPK,<span class="Red24">Do</span>,bt1_4 );<br>
+              &nbsp;&nbsp;delay(bt1_4*1.3);</p>
+            <p class="Blue24">&nbsp;&nbsp;noTone(SPK);<br>
+              &nbsp;&nbsp;delay(5000); </p>
+            <p class="Blue24"> }</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 820px; height: 1px;" border="0" align="center">
+      <tbody>
+        <tr>
+          <td class="Blue36">
+            <p class="red48C"><span class="Blue36CHT">函式</span> (function)</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 1238px; height: 1258px;" border="1" align="center">
+      <tbody>
+        <tr>
+          <td class="blue24" style="width: 458px; text-align: left; background-color: white;" width="458">
+            <p class="Blue24">#define &nbsp; SPK&nbsp;&nbsp; 8</p>
+            <p class="Blue24">#define&nbsp;&nbsp; Do&nbsp; 262<br>
+              #define&nbsp;&nbsp; Re&nbsp; 294<br>
+              #define&nbsp;&nbsp; Mi&nbsp;&nbsp; 330<br>
+              #define&nbsp;&nbsp; Fa&nbsp;&nbsp; 349<br>
+              #define&nbsp;&nbsp; So&nbsp;&nbsp; 392<br>
+              #define&nbsp;&nbsp; La &nbsp; 440<br>
+              #define&nbsp;&nbsp; Si&nbsp;&nbsp;&nbsp; 494 </p>
+            <p class="Blue24">#define &nbsp; bt&nbsp;&nbsp; 1000 //一拍1000ms<br>
+              #define &nbsp; bt1_4&nbsp;&nbsp; bt/4<br>
+              #define&nbsp;&nbsp; bt1_8&nbsp;&nbsp; bt/8 <br>
+              <span class="RED24CHT">//定義函式</span><span class="Red24">***********</span><br>
+              void note(int pin,int DoReMi,int dur )<br>
+              {<br>
+              &nbsp;&nbsp;tone(pin, DoReMi,dur);<br>
+              &nbsp;&nbsp;delay(dur*1.3);<br>
+              }<br>
+              <span class="Red24">//***************</span><br>
+              void setup(){ }</p>
+            <p class="Blue24">void loop(){</p>
+            <p class="Blue24"> &nbsp;&nbsp;&nbsp;note(SPK,<span class="Red24">Do</span>,bt1_4 );<span class="RED24CHT">//呼叫函式</span><br>
+              &nbsp;&nbsp;&nbsp;note(SPK,<span class="Red24">So/2</span>,bt1_8 );<br>
+              &nbsp;&nbsp;&nbsp;note(SPK,<span class="Red24">So/2</span>,bt1_8 );<br>
+              &nbsp;&nbsp;&nbsp;note(SPK,<span class="Red24">La/2</span>,bt1_4 );<br>
+              &nbsp;&nbsp;&nbsp;note(SPK,<span class="Red24">So/2</span>,bt1_4 );<br>
+              &nbsp;&nbsp;&nbsp;note(SPK,<span class="Red24">0</span>,bt1_4 );<br>
+              &nbsp;&nbsp;&nbsp;note(SPK,<span class="Red24">Si/2</span>,bt1_4 );<br>
+              &nbsp;&nbsp;&nbsp;note(SPK,<span class="Red24">Do</span>,bt1_4 );</p>
+            <p class="Blue24">&nbsp;&nbsp;noTone(SPK);<br>
+              &nbsp;&nbsp;delay(5000); </p>
+            <p class="Blue24">}<br>
+            </p>
+          </td>
+          <td width="538">
+            <p class="Blue24">&nbsp;</p>
+            <p class="Blue24"><img src="images/fn_004.png" width="538" height="608"></p>
+            <p class="Blue24">&nbsp;</p>
+            <p class="Blue24"><a href="svg/fn.pdf">pdf</a> <a href="svg/fn.svg">svg</a></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/array_music_001.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 970px; height: 882px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define &nbsp; SPK&nbsp;&nbsp; 8
+            <p class="Blue24">#define&nbsp;&nbsp; Do&nbsp; 262<br>
+              #define&nbsp;&nbsp; Re&nbsp; 294<br>
+              #define&nbsp;&nbsp; Mi&nbsp;&nbsp; 330<br>
+              #define&nbsp;&nbsp; Fa&nbsp;&nbsp; 349<br>
+              #define&nbsp;&nbsp; So&nbsp;&nbsp; 392<br>
+              #define&nbsp;&nbsp; La &nbsp; 440<br>
+              #define&nbsp;&nbsp; Si&nbsp;&nbsp;&nbsp; 494</p>
+            <p class="Blue24">#define &nbsp; bt&nbsp;&nbsp; 1000 //一拍1000ms<br>
+              #define&nbsp;&nbsp; bt2&nbsp;&nbsp;&nbsp; bt*2<br>
+              #define&nbsp;&nbsp; bt1_2&nbsp;&nbsp; bt/2<br>
+              #define &nbsp; bt1_4&nbsp;&nbsp; bt/4<br>
+              #define&nbsp;&nbsp; bt1_8&nbsp;&nbsp; bt/8 <br>
+              <span class="Red24"><br>
+              </span>int scale[ ] = {<span class="Red24"> Do, So/2,So/2, La/2, So/2,0, Si/2, Do </span>};<span class="Red24"><br>
+              </span>int bts[ ] = {<span class="Red24"> bt1_4, bt1_8, bt1_8,bt1_4,bt1_4,bt1_4,bt1_4,bt1_4 </span>};&nbsp;<br>
+              int sNo=sizeof(scale)/sizeof(int);<br>
+              <br>
+              void note(int pin,int DoReMi,int dur )<br>
+              {<br>
+              &nbsp;&nbsp;tone(pin, DoReMi,dur);<br>
+              &nbsp;&nbsp;delay(dur*1.3);<br>
+              }</p>
+            <p class="Blue24">void setup(){ }</p>
+            <p class="Blue24">void loop(){</p>
+            <p class="Blue24">&nbsp;&nbsp;note(SPK, scale[0],bts[0]);<br>
+              &nbsp;&nbsp;note(SPK, scale[1],bts[1]);<br>
+              &nbsp;&nbsp;note(SPK, scale[2],bts[2]);<br>
+              &nbsp;&nbsp;note(SPK, scale[3],bts[3]);<br>
+              &nbsp;&nbsp;note(SPK, scale[4],bts[4]);<br>
+              &nbsp;&nbsp;note(SPK, scale[5],bts[5]);<br>
+              &nbsp;&nbsp;note(SPK, scale[6],bts[6]);<br>
+              &nbsp;&nbsp;note(SPK, scale[7],bts[7]);</p>
+            &nbsp;&nbsp;noTone(SPK);<br>
+            &nbsp;&nbsp;delay(5000); <br>
+            &nbsp;&nbsp;}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 997px; height: 1304px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">
+            <p class="RED36CHT">//範例:使用 for 迴圈</p>
+            <p class="Blue24">#define&nbsp; SPK&nbsp; 8</p>
+            <p class="Blue24">#define&nbsp;&nbsp; Do&nbsp; 262<br>
+              #define&nbsp;&nbsp; Re&nbsp; 294<br>
+              #define&nbsp;&nbsp; Mi&nbsp;&nbsp; 330<br>
+              #define&nbsp;&nbsp; Fa&nbsp;&nbsp; 349<br>
+              #define&nbsp;&nbsp; So&nbsp;&nbsp; 392<br>
+              #define&nbsp;&nbsp; La &nbsp; 440<br>
+              #define&nbsp;&nbsp; Si&nbsp;&nbsp;&nbsp; 494</p>
+            <p class="Blue24">#define &nbsp; bt&nbsp;&nbsp; 1000 //一拍1000ms<br>
+              #define&nbsp;&nbsp; bt2&nbsp;&nbsp;&nbsp; bt*2<br>
+              #define&nbsp;&nbsp; bt1_2&nbsp;&nbsp; bt/2<br>
+              #define &nbsp; bt1_4&nbsp;&nbsp; bt/4<br>
+              #define&nbsp;&nbsp; bt1_8&nbsp;&nbsp; bt/8<br>
+              <span class="Blue24"></span></p>
+            <p class="Blue24">int scale[ ] = {<span class="Red24"> Do, So/2,So/2, La/2, So/2,0, Si/2, Do </span>};<span class="Red24"><br>
+              </span>int bts[ ] = {<span class="Red24"> bt1_4, bt1_8, bt1_8,bt1_4,bt1_4,bt1_4,bt1_4,bt1_4 </span>};&nbsp;<br>
+              int sNo=sizeof(scale)/sizeof(int);<br>
+              void note(int pin,int DoReMi,int dur )<br>
+              {<br>
+              &nbsp;&nbsp;tone(pin, DoReMi,dur);<br>
+              &nbsp;&nbsp;delay(dur*1.3);<br>
+              }</p>
+            <p class="Blue24">void setup(){ }</p>
+            <p class="Blue24">void loop(){</p>
+            <p class="Blue24">&nbsp;&nbsp;for (int k = 0; k &lt; sNo; k++) <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;note(SPK, scale[k],bts[k]);<br>
+              &nbsp;&nbsp;&nbsp; }<br>
+            </p>
+            <p class="Blue24">&nbsp;noTone(SPK);<br>
+              &nbsp;delay(5000);</p>
+            <p class="Blue24">}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 739px; height: 1401px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp; SPK&nbsp; 8<br>
+            #define&nbsp;&nbsp; Do&nbsp; 262<br>
+            #define&nbsp;&nbsp; Re&nbsp; 294<br>
+            #define&nbsp;&nbsp; Mi&nbsp;&nbsp; 330<br>
+            #define&nbsp;&nbsp; Fa&nbsp;&nbsp; 349<br>
+            #define&nbsp;&nbsp; So&nbsp;&nbsp; 392<br>
+            #define&nbsp;&nbsp; La&nbsp;&nbsp; 440<br>
+            #define&nbsp;&nbsp; Si&nbsp;&nbsp;&nbsp; 494<br>
+            <br>
+            #define&nbsp;&nbsp; bt&nbsp;&nbsp; 1000 //一拍1000ms<br>
+            #define&nbsp;&nbsp; bt2&nbsp;&nbsp;&nbsp; bt*2<br>
+            #define&nbsp;&nbsp; bt1_2&nbsp;&nbsp; bt/2<br>
+            #define&nbsp;&nbsp; bt1_4&nbsp;&nbsp; bt/4<br>
+            #define&nbsp;&nbsp; bt1_8&nbsp;&nbsp; bt/8<br>
+            <br>
+            int scale[ ][2] = { <br>
+            {Do,bt1_4},{So/2,bt1_8},<br>
+            {So/2,bt1_8},{La/2,bt1_4},<br>
+            {So/2,bt1_4},{0,bt1_4},<br>
+            {Si/2,bt1_4},{Do,bt1_4} <br>
+            };<br>
+            <br>
+            int sNo=sizeof(scale)/2/sizeof(int);<br>
+            <br>
+            void note(int pin,int DoReMi,int dur )<br>
+            {<br>
+            &nbsp; tone(pin, DoReMi,dur);<br>
+            &nbsp; delay(dur*1.3);<br>
+            }<br>
+            <br>
+            void setup(){ }<br>
+            <br>
+            void loop(){<br>
+            <br>
+            &nbsp; for (int k = 0; k &lt; sNo; k++)<br>
+            &nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; note(SPK, scale[k][0],scale[k][1]);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            <br>
+            &nbsp;noTone(SPK);<br>
+            &nbsp;delay(5000);<br>
+            <br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 1029px; height: 1502px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#include &lt;Wire.h&gt;<br>
+            #include &lt;LiquidCrystal_I2C.h&gt;<br>
+            #define&nbsp; SPK&nbsp; 8<br>
+            #define&nbsp;&nbsp; Do&nbsp; 262<br>
+            #define&nbsp;&nbsp; Re&nbsp; 294<br>
+            #define&nbsp;&nbsp; Mi&nbsp;&nbsp; 330<br>
+            #define&nbsp;&nbsp; Fa&nbsp;&nbsp; 349<br>
+            #define&nbsp;&nbsp; So&nbsp;&nbsp; 392<br>
+            #define&nbsp;&nbsp; La&nbsp;&nbsp; 440<br>
+            #define&nbsp;&nbsp; Si&nbsp;&nbsp;&nbsp; 494<br>
+            #define&nbsp;&nbsp; bt&nbsp;&nbsp; 1000 //一拍1000ms<br>
+            #define&nbsp;&nbsp; bt2&nbsp;&nbsp;&nbsp; bt*2<br>
+            #define&nbsp;&nbsp; bt1_2&nbsp;&nbsp; bt/2<br>
+            #define&nbsp;&nbsp; bt1_4&nbsp;&nbsp; bt/4<br>
+            #define&nbsp;&nbsp; bt1_8&nbsp;&nbsp; bt/8<br>
+            <br>
+            LiquidCrystal_I2C lcd(0x3F,16,2);<br>
+            int scale[ ][2] = { {Do,bt1_4},{So/2,bt1_8},{So/2,bt1_8},{La/2,bt1_4},{So/2,bt1_4},{0,bt1_4}<br>
+            ,{Si/2,bt1_4},{Do,bt1_4} };<br>
+            <br>
+            int sNo=sizeof(scale)/2/sizeof(int);<br>
+            <br>
+            void note(int pin,int DoReMi,int dur )<br>
+            {<br>
+            &nbsp; tone(pin, DoReMi,dur);<br>
+            &nbsp; delay(dur*1.3);<br>
+            }<br>
+            <br>
+            void setup(){ <br>
+            &nbsp; lcd.init();<br>
+            &nbsp; lcd.backlight();<br>
+            &nbsp; }<br>
+            <br>
+            void loop(){<br>
+            <br>
+            &nbsp; for (int k = 0; k &lt; sNo; k++)<br>
+            &nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //lcd.setCursor(0,0);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print(scale[k][0]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lcd.print(" ");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; note(SPK, scale[k][0],scale[k][1]);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            <br>
+            &nbsp;noTone(SPK);<br>
+            &nbsp;delay(5000);<br>
+            <br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <table style="width: 964px; height: 1572px;" border="1" align="center">
+      <tbody>
+        <tr>
+          <td class="blue24" style="width: 550px; text-align: left; background-color: white;" width="550">
+            <p class="RED36CHT">//音樂與閃燈</p>
+            <p class="Blue24"><span style="color: black;"><span class="blue24" style="font-family: sans-serif;">#define SPK &nbsp; 8<br>
+                  #define ledR&nbsp;&nbsp; 7<br>
+                </span></span></p>
+            <p class="Blue24">#define&nbsp;&nbsp; Do&nbsp; 262<br>
+              #define&nbsp;&nbsp; Re&nbsp; 294<br>
+              #define&nbsp;&nbsp; Mi&nbsp;&nbsp; 330<br>
+              #define&nbsp;&nbsp; Fa&nbsp;&nbsp; 349<br>
+              #define&nbsp;&nbsp; So&nbsp;&nbsp; 392<br>
+              #define&nbsp;&nbsp; La &nbsp; 440<br>
+              #define&nbsp;&nbsp; Si&nbsp;&nbsp;&nbsp; 494</p>
+            <p class="Blue24">#define &nbsp; bt&nbsp;&nbsp; 1000 //一拍1000ms<br>
+              #define&nbsp;&nbsp; bt2&nbsp;&nbsp;&nbsp; bt*2<br>
+              #define&nbsp;&nbsp; bt1_2&nbsp;&nbsp; bt/2<br>
+              #define &nbsp; bt1_4&nbsp;&nbsp; bt/4<br>
+              #define&nbsp;&nbsp; bt1_8&nbsp;&nbsp; bt/8 <span class="Blue24"> </span></p>
+            <p class="Red24">int flag=1; </p>
+            <p class="Blue24">int scale[ ][2] = { <br>
+              {Do,bt1_4},{So/2,bt1_8},<br>
+              {So/2,bt1_8},{La/2,bt1_4},<br>
+              {So/2,bt1_4},{0,bt1_4},<br>
+              {Si/2,bt1_4},{Do,bt1_4} <br>
+              };<br>
+              int sNo=sizeof(scale)/2/sizeof(int);<br>
+              <br>
+              void note(int pin,int DoReMi,int dur )<br>
+              {<br>
+              &nbsp;&nbsp;tone(pin, DoReMi,dur);<br>
+              &nbsp;&nbsp;delay(dur*1.3);<br>
+              }</p>
+            <p class="Blue24">void setup(){<br>
+              &nbsp;&nbsp;<span class="Red24">pinMode(ledR,OUTPUT);<br>
+              </span>}</p>
+            <p class="Blue24">void loop(){</p>
+            <p class="Blue24">&nbsp;&nbsp;for (int k = 0; k &lt; sNo; k++) <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;note(SPK, scale[k][0],scale[k][1]);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Red24">digitalWrite(ledR,flag);</span><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Red24">flag=1-flag;</span><br>
+              &nbsp;&nbsp;&nbsp; }<br>
+            </p>
+            <p class="Blue24">&nbsp;noTone(SPK);<br>
+              &nbsp;delay(5000);</p>
+            <p class="Blue24">}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 942px; height: 930px;" border="1" align="center">
+      <tbody>
+        <tr>
+          <td class="blue24" style="width: 523px; text-align: left; background-color: white;" width="523">
+            <p class="RED36CHT">//重複唱兩次</p>
+            <p class="Blue24">#define&nbsp; SPK&nbsp; 8</p>
+            <p class="Blue24">#define&nbsp;&nbsp; Do&nbsp; 262<br>
+              #define&nbsp;&nbsp; Re&nbsp; 294<br>
+              #define&nbsp;&nbsp; Mi&nbsp;&nbsp; 330<br>
+              #define&nbsp;&nbsp; Fa&nbsp;&nbsp; 349<br>
+              #define&nbsp;&nbsp; So&nbsp;&nbsp; 392<br>
+              #define&nbsp;&nbsp; La &nbsp; 440<br>
+              #define&nbsp;&nbsp; Si&nbsp;&nbsp;&nbsp; 494</p>
+            <p class="Blue24">#define &nbsp; bt&nbsp;&nbsp; 1000 //一拍1000ms<br>
+              #define&nbsp;&nbsp; bt2&nbsp;&nbsp;&nbsp; bt*2<br>
+              #define&nbsp;&nbsp; bt1_2&nbsp;&nbsp; bt/2<br>
+              #define &nbsp; bt1_4&nbsp;&nbsp; bt/4<br>
+              #define&nbsp;&nbsp; bt1_8&nbsp;&nbsp; bt/8 <br>
+              <br>
+              <span class="Red24">int repeat=2;</span><br>
+              <br>
+              int scale[ ][2] = { <br>
+              {Do,bt1_4},{So/2,bt1_8},<br>
+              {So/2,bt1_8},{La/2,bt1_4},<br>
+              {So/2,bt1_4},{0,bt1_4},<br>
+              {Si/2,bt1_4},{Do,bt1_4} <br>
+              };<br>
+              int sNo=sizeof(scale)/2/sizeof(int);</p>
+            <p class="Blue24">void note(int pin,int DoReMi,int dur )<br>
+              {<br>
+              tone(pin, DoReMi,dur);<br>
+              delay(dur*1.3);<br>
+              }</p>
+            <p class="Blue24">void setup(){<br>
+              <br>
+              <span class="Red24">for (int m=0;m&lt;repeat;m++){</span></p>
+            <p class="Blue24"> &nbsp;&nbsp;for (int k = 0; k &lt; sNo; k++)<br>
+              &nbsp;&nbsp; {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;note(SPK, scale[k][0],scale[k][1]);<br>
+              &nbsp;&nbsp;&nbsp;}<br>
+              <br>
+              <span class="Red24">&nbsp;&nbsp;noTone(SPK);<br>
+                &nbsp;&nbsp;delay(5000); <br>
+                }</span><br>
+              }</p>
+            <p class="Blue24">void loop(){}</p>
+            <p class="Blue24"><a href="files/DoSo3.zip">DoSo3.zip</a></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1099px; height: 2233px;" border="1" align="center">
+      <tbody>
+        <tr>
+          <td style="width: 727px; text-align: left; background-color: white;" class="blue24" width="727">
+            <p class="Blue24"><img src="images/music_001.png" width="728" height="577"></p>
+            <p class="Blue24">#define&nbsp; SPK&nbsp; 8</p>
+            <p class="Blue24">#define&nbsp;&nbsp; Do&nbsp; 262<br>
+              #define&nbsp;&nbsp; Re&nbsp; 294<br>
+              #define&nbsp;&nbsp; Mi&nbsp;&nbsp; 330<br>
+              #define&nbsp;&nbsp; Fa&nbsp;&nbsp; 349<br>
+              #define&nbsp;&nbsp; So&nbsp;&nbsp; 392<br>
+              #define&nbsp;&nbsp; La &nbsp; 440<br>
+              #define&nbsp;&nbsp; Si&nbsp;&nbsp;&nbsp; 494</p>
+            <p class="Blue24">//#define &nbsp; bt&nbsp;&nbsp; 1000 //一拍1000ms</p>
+            <p class="Blue24"> #define &nbsp; bt&nbsp;&nbsp; 500 //一拍500ms<br>
+              #define&nbsp;&nbsp; bt2&nbsp;&nbsp;&nbsp; bt*2<br>
+              #define&nbsp;&nbsp; bt1_2&nbsp;&nbsp; bt/2<br>
+              #define &nbsp; bt1_4&nbsp;&nbsp; bt/4<br>
+              #define&nbsp;&nbsp; bt1_8&nbsp;&nbsp; bt/8<br>
+              <br>
+              int repeat=<span class="Red24">2</span>;<br>
+              <br>
+              int scale[ ] [2]= { <br>
+              {<span class="Red24">Do,bt},{Do,bt},{So,bt},{So,bt},{La,bt},{La,bt},{So,bt2}, <br>
+                {Fa,bt},{Fa,bt},{Mi,bt},{Mi,bt},{Re,bt},{Re,bt},{Do,bt2},<br>
+                {So,bt},{So,bt},{Fa,bt},{Fa,bt},{Mi,bt},{Mi,bt},{Re,bt2},<br>
+                {So,bt},{So,bt},{Fa,bt},{Fa,bt},{Mi,bt},{Mi,bt},{Re,bt2},<br>
+                {Do,bt},{Do,bt},{So,bt},{So,bt},{La,bt},{La,bt},{So,bt2},<br>
+                {Fa,bt},{Fa,bt}, {Mi,bt},{Mi,bt},{Re,bt},{Re,bt},{Do,bt2}<br>
+              </span>};<br>
+            </p>
+            <p class="Blue24">int sNo=sizeof(scale)/2/sizeof(int); </p>
+            <p class="Blue24">void note(int pin,int DoReMi,int dur )<br>
+              {<br>
+              &nbsp;&nbsp;tone(pin, DoReMi,dur);<br>
+              &nbsp;&nbsp;delay(dur*1.3);<br>
+              }</p>
+            <p class="Blue24">void setup(){<br>
+              &nbsp;&nbsp;pinMode(SPK,OUTPUT); <br>
+              &nbsp;&nbsp;for (int ik=0;ik&lt;<span class="Red24">repeat</span>;ik++)<span class="Red36">{</span></p>
+            <p class="Blue24">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int ii = 0; ii &lt; <span class="Red24">sNo</span>; ii++) <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;note(SPK, scale[ii][0],scale[ii][1]);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            </p>
+            <p class="Blue24"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delay(2000); <br>
+              <span class="Red36">&nbsp;&nbsp;}</span><br>
+              }</p>
+            <p class="Blue24">void loop(){}</p>
+            <p class="Blue24"><a href="files/Lstar1.zip">Lstar1.zip</a></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 1033px; height: 1528px;" border="1" align="center">
+      <tbody>
+        <tr>
+          <td style="width: 773px; text-align: left; background-color: white;" class="blue24" width="773">
+            <p class="Blue24CHT">總鋪師 主題曲</p>
+            <p class="Blue24">#define&nbsp; SPK 8</p>
+            <p class="Blue24">#define&nbsp;&nbsp; Do&nbsp; 262<br>
+              #define&nbsp;&nbsp; Re&nbsp; 294<br>
+              #define&nbsp;&nbsp; Mi&nbsp;&nbsp; 330<br>
+              #define&nbsp;&nbsp; Fa&nbsp;&nbsp; 349<br>
+              #define&nbsp;&nbsp; So&nbsp;&nbsp; 392<br>
+              #define&nbsp;&nbsp; La &nbsp; 440<br>
+              #define&nbsp;&nbsp; Si&nbsp;&nbsp;&nbsp; 494</p>
+            <p class="Blue24">#define &nbsp; bt&nbsp;&nbsp; 500 //每分鐘120拍　,　一拍500ms<br>
+              #define&nbsp;&nbsp; bt2&nbsp;&nbsp;&nbsp; bt*2<br>
+              #define&nbsp;&nbsp; bt4 &nbsp;&nbsp; bt*4<br>
+              #define&nbsp;&nbsp; bt1_2&nbsp;&nbsp; bt/2<br>
+              #define &nbsp; bt1_4&nbsp;&nbsp; bt/4<br>
+              #define&nbsp;&nbsp; bt1_8&nbsp;&nbsp; bt/8</p>
+            <p class="Blue24">int repeat=1; <br>
+              <br>
+              int scale[][2] ={<br>
+              <span class="Red24">{So,bt*1.5},{So,bt1_2}, {Mi*2,bt}, {Re*2,bt1_2}, {Do*2,bt1_2},
+                {Mi,bt},{Re,bt1_2},{Mi,bt1_2},{So,bt2},{Mi*2,bt*1.5},{Re*2,bt1_2},{Do*2,bt},{La,bt1_4},{So,bt1_4},{Mi,bt1_2},{So,bt4}<br>
+              </span>};</p>
+            <p class="Blue24">int sNo=<span class="Blue24">sizeof(scale)</span>/<span class="Blue24">2/sizeof(int)</span>;</p>
+            <p class="Blue24">void note(int pin,int DoReMi,int dur )<br>
+              {<br>
+              &nbsp;&nbsp;tone(pin, DoReMi,dur);<br>
+              &nbsp;&nbsp;delay(dur*1.3);<br>
+              }</p>
+            <p class="Blue24">void setup(){<br>
+              pinMode(SPK,OUTPUT);</p>
+            <p class="Blue24">for(int i=0;i&lt;repeat;i++)<br>
+              {<br>
+              for (int ii = 0; ii &lt; sNo; ii++) {<br>
+              note(SPK, scale[ii][0],scale[ii][1]);<br>
+              }<br>
+              delay(1000);<br>
+              }<br>
+              }<br>
+              void loop() {<span class="Blue24">}<br>
+              </span><a href="files/flower38a.zip">flower38a.zip</a></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C">消防車
+            <p class="Blue24CHT">低頻頻率650赫茲至750赫茲，<br>
+              高頻頻率1450赫茲至1550赫茲，<br>
+              由低頻升至高頻時間1.5 秒，<br>
+              再由高頻降至低頻為3.5秒</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table width="737" border="1" align="center">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">
+            <p>#define SPK&nbsp; 8<br>
+              int fL=700;<br>
+              int fH=1500;<br>
+              int fStep=10;<br>
+              int dtL2H=1500/(1500-700)*fStep;<br>
+              int dtH2L=3500/(1500-700)*fStep;<br>
+              void note(int pin,int DoReMi,int duration )<br>
+              {<br>
+              &nbsp;&nbsp;tone(pin, DoReMi,duration);<br>
+              &nbsp;&nbsp;delay(duration);<br>
+              }<br>
+              void setup() {<br>
+              &nbsp;&nbsp;pinMode(SPK,OUTPUT);<br>
+              }</p>
+            <p class="Blue24">void loop() {<br>
+            </p>
+            <p class="Blue24">for (int f=700;f&lt;=1500;f=f+fStep){<br>
+              &nbsp;&nbsp;note(SPK,f,dtL2H);<br>
+              }</p>
+            <p class="Blue24">for (int f=1500;f&gt;=700;f=f-fStep){<br>
+              &nbsp;&nbsp;note(SPK,f,dtH2L);<br>
+              }</p>
+            <p class="Blue24"><br>
+              }</p>
+            <p class="blue24C">&nbsp;</p>
+            <p class="Blue24CHT"><a href="files/fireEngine2.zip">fireEngine2.zip</a></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 884px; height: 160px;" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C ">警車 <br>
+            以低頻頻率650赫茲至750赫茲，<br>
+            高頻頻率1450赫茲至1550赫茲，<br>
+            由低頻升至高頻時間0.23秒，<br>
+            再由高頻降至低頻為0.1秒</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table width="741" border="1" align="center">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">
+            <p class="Blue24">#define&nbsp; SPK&nbsp; 8<br>
+              int freq;<br>
+              void setup() {<br>
+              pinMode(SPK,OUTPUT);<br>
+              }</p>
+            <p class="Blue24">void loop() {<br>
+              freq=700;<br>
+              while(freq&lt;=1500){<br>
+              tone(SPK,freq,3);<br>
+              delay(3);<br>
+              freq=freq+10;<br>
+              }<br>
+              while(freq&gt;=700){<br>
+              tone(SPK,freq,1);<br>
+              delay(1);<br>
+              freq=freq-10;<br>
+              }</p>
+            <p class="Blue24">}</p>
+            <p class="Blue24CHT">&nbsp;</p>
+            <p class="Blue24CHT"><a href="files/police.zip">police.zip</a></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><a href="docs/%E8%AD%A6%E5%A0%B1%E8%81%B2%E9%A0%BB%E7%8E%87.doc" class="Blue24CHT">內 政部版警報聲</a> </p>
+    <p><br>
+    </p>
+    <table style="width: 867px; height: 981px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/springGod_001.gif"><br>
+            <br>
+            <img alt="" src="images/springGod_002.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 520px; height: 39px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/liBee.jpg"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 645px; height: 321px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/jinglebell.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <br>
+    <p> </p>
+  </body>
+</html>

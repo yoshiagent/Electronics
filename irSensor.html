@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+    
+    <title>irSensor</title>
+    <link href="mystyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">紅外線感測</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 1087px; height: 39px;" border="1">
+      <tbody>
+        <tr>
+          <td><br>
+            <br>
+            <br>
+            <br>
+            <img alt="" src="images/schIr.png"><br>
+            <br>
+            <br>
+            <a href="svg/schIR.pdf">pdf</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="svg/schIR.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1080px; height: 829px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/IrSensor_001.png"><br>
+            <br>
+            <a href="svg/ATMEGA_IrSensor.pdf">pdf</a>&nbsp;&nbsp; <a href="svg/ATMEGA_IrSensor.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 721px; height: 210px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">int
+            val;<br>
+            void setup() {<br>
+            &nbsp;Serial.begin(9600);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; val=analogRead(A1);<br>
+            &nbsp;Serial.println(val);<br>
+            &nbsp;delay(1000);<br>
+            }<br>
+            <br>
+            //套上小黑套</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 1072px; height: 823px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/IrSensor_002.png"><br>
+            <a href="svg/ATMEGA_IrRobot.pdf">pdf</a>&nbsp;&nbsp;&nbsp; <a href="svg/ATMEGA_IrRobot.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p> </p>
+    <table style="width: 728px; height: 440px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/PWMBoard.png"><br>
+            <a href="svg/PWMBoard_Motor.pdf">pdf</a>&nbsp;&nbsp;&nbsp; <a href="svg/PWMBoard_Motor.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 1272px; height: 1119px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white; width: 539px;">#define&nbsp;&nbsp;
+            DirR&nbsp;&nbsp;&nbsp; 12<br>
+            #define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            #define&nbsp;&nbsp; irin&nbsp;&nbsp; A1<br>
+            int val;<br>
+            void setup() {<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; pinMode( PwmL , OUTPUT);<br>
+            &nbsp; pinMode( PwmR , OUTPUT);<br>
+            &nbsp; digitalWrite(PwmL,LOW);<br>
+            &nbsp; digitalWrite(PwmR,LOW);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; val=analogRead(irin);<br>
+            &nbsp; <span class="red24">if</span>(val&gt;800)<br>
+            &nbsp; { digitalWrite(DirL,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(DirR,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(PwmL,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(PwmR,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; <span class="red24">else</span><br>
+            &nbsp; { <br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(DirL,LOW);<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(DirR,LOW);<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(PwmL,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(PwmR,HIGH);<br>
+            &nbsp; }<br>
+            }<br>
+          </td>
+          <td style="width: 717px;"><img alt="" src="images/irRobot1a.png"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 924px; height: 69px;" border="1">
+      <tbody>
+        <tr>
+          <td class="red48C">討論: 前進與後退的程式碼 </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 1176px; height: 1220px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white; width: 519.8px;">#define&nbsp;&nbsp;
+            DirR&nbsp;&nbsp;&nbsp; 12<br>
+            #define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            #define&nbsp;&nbsp; irin&nbsp;&nbsp; A1<br>
+            int val;<br>
+            void setup() {<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; pinMode( PwmL , OUTPUT);<br>
+            &nbsp; pinMode( PwmR , OUTPUT);<br>
+            &nbsp; digitalWrite(PwmL,LOW);<br>
+            &nbsp; digitalWrite(PwmR,LOW);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; val=analogRead(irin);<br>
+            &nbsp; <span class="red24">if</span>(val&gt;800)<br>
+            &nbsp; { digitalWrite(DirL,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(DirR,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(PwmL,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(PwmR,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; <span class="red24">else if</span>(val&lt;500)<br>
+            &nbsp; { <br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(DirL,LOW);<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(DirR,LOW);<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(PwmL,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(PwmR,HIGH);<br>
+            &nbsp; }<br>
+            &nbsp; <span class="red24">else</span><br>
+            &nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(PwmL,LOW);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(PwmR,LOW);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            }</td>
+          <td style="width: 640.2px;"><img alt="" src="images/irRobot3.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <hr>
+    <p><br>
+    </p>
+    <table style="width: 1571px; height: 69px;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">沿桌邊走</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 810px; height: 432px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/irBoard_002.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 618px; height: 348px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue36C"><img alt="" src="images/irboard_wire.png"><br>
+            <br>
+            5mm 黑色熱縮套<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 799px; height: 380px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/irBoard_005.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 748px; height: 643px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/irBoard_004.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/irLego_003.jpg" alt=""><br>
+            <img src="images/irLego_001.jpg" alt=""><br>
+            <img src="images/irLego_002.jpg" alt=""><br>
+            <img src="images/irLego_004.jpg" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 721px; height: 210px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define
+            irin A1<br>
+            int val;<br>
+            int dval;<br>
+            void setup() {<br>
+            &nbsp;Serial.begin(9600);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;val=analogRead(irin);<br>
+            &nbsp;dval=digitalRead(irin);<br>
+            &nbsp;Serial.print("val=");<br>
+            &nbsp;Serial.print(val);<br>
+            &nbsp;Serial.print("&nbsp;&nbsp;&nbsp; dval=");<br>
+            &nbsp;Serial.println(dval);<br>
+            &nbsp;delay(1000);<br>
+            }<br>
+            <br>
+            //套上小黑套</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <br>
+    <br>
+    <table style="width: 721px; height: 210px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define
+            irin A1<br>
+            #define led&nbsp; 8<br>
+            int val;<br>
+            int dval;<br>
+            void setup() {<br>
+            &nbsp;Serial.begin(9600);<br>
+            &nbsp;pinMode(led,OUTPUT);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;val=analogRead(irin);<br>
+            &nbsp;dval=digitalRead(irin);<br>
+            <br>
+            &nbsp;if(dval==HIGH)<br>
+            &nbsp; digitalWrite(led,HIGH);<br>
+            &nbsp;else<br>
+            &nbsp; digitalWrite(led,LOW);<br>
+            <br>
+            &nbsp;Serial.print("val=");<br>
+            &nbsp;Serial.print(val);<br>
+            &nbsp;Serial.print("&nbsp;&nbsp;&nbsp; dval=");<br>
+            &nbsp;Serial.println(dval);<br>
+            &nbsp;delay(1000);<br>
+            }<br>
+            <br>
+            //套上小黑套</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <p><br>
+    </p>
+    <table style="width: 737px; height: 190px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue36C">順
+            時針&nbsp;&nbsp; <br>
+            感測器&nbsp; 放左邊<br>
+            沒收到信號(HIGH)&nbsp; 右轉<br>
+            收到信號 (LOW) &nbsp;&nbsp; 直走</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 871px; height: 937px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">#define&nbsp;&nbsp;
+            DirR&nbsp;&nbsp;&nbsp; 12<br>
+            #define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            #define&nbsp;&nbsp; irin&nbsp;&nbsp; A1<br>
+            int val;<br>
+            void setup() {<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; pinMode( irin , INPUT);<br>
+            &nbsp; analogWrite(PwmL,0);<br>
+            &nbsp; analogWrite(PwmR,0);<br>
+            &nbsp; digitalWrite(DirL,HIGH);<br>
+            &nbsp; digitalWrite(DirR,HIGH);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; val=digitalRead(irin);<br>
+            &nbsp; if(val==HIGH)<br>
+            &nbsp; { <br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmL,150);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmR,0);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; else<br>
+            &nbsp; {//調整數值 直走或稍微向左偏<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmL,150);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmR,150);<br>
+            &nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 737px; height: 190px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue36C">逆
+            時針&nbsp;&nbsp; <br>
+            感測器&nbsp; 放右邊<br>
+            沒收到信號(HIGH)&nbsp; 左轉<br>
+            收到信號 (LOW) &nbsp;&nbsp; 直走</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="width: 871px; height: 937px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">#define&nbsp;&nbsp;
+            DirR&nbsp;&nbsp;&nbsp; 12<br>
+            #define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            #define&nbsp;&nbsp; irin&nbsp;&nbsp; A1<br>
+            int val;<br>
+            void setup() {<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; pinMode( irin , INPUT);<br>
+            &nbsp; analogWrite(PwmL,0);<br>
+            &nbsp; analogWrite(PwmR,0);<br>
+            &nbsp; digitalWrite(DirL,HIGH);<br>
+            &nbsp; digitalWrite(DirR,HIGH);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; val=digitalRead(irin);<br>
+            &nbsp; if(val==HIGH)<br>
+            &nbsp; { <br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmL,0);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmR,150);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; else<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmL,150);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmR,150);<br>
+            &nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+      <br>
+    </p>
+    <table style="width: 737px; height: 190px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue36C">順
+            時針&nbsp;&nbsp; <br>
+            感測器&nbsp; 放左邊<br>
+            沒收到信號(HIGH)&nbsp; 右轉<br>
+            收到信號 (LOW) &nbsp;&nbsp; 左轉</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+      <br>
+    </p>
+    <table style="width: 843px; height: 1001px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">#define&nbsp;&nbsp;
+            DirR&nbsp;&nbsp;&nbsp; 12<br>
+            #define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            #define&nbsp;&nbsp; irin&nbsp;&nbsp; A1<br>
+            int val;<br>
+            void setup() {<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; pinMode( irin , INPUT);<br>
+            &nbsp; analogWrite(PwmL,0);<br>
+            &nbsp; analogWrite(PwmR,0);<br>
+            &nbsp; digitalWrite(DirL,HIGH);<br>
+            &nbsp; digitalWrite(DirR,HIGH);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; val=digitalRead(irin);<br>
+            &nbsp; if(val==HIGH)<br>
+            &nbsp; { <br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmL,150);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmR,0);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; else<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmL,0);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmR,150);<br>
+            &nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p> </p>
+    <table style="width: 737px; height: 190px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue36C">逆
+            時針&nbsp;&nbsp; <br>
+            感測器&nbsp; 放右邊<br>
+            沒收到信號(HIGH)&nbsp; 左轉<br>
+            收到信號 (LOW) &nbsp;&nbsp; 右轉</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 843px; height: 1001px;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;" class="blue24">#define&nbsp;&nbsp;
+            DirR&nbsp;&nbsp;&nbsp; 12<br>
+            #define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            #define&nbsp;&nbsp; irin&nbsp;&nbsp; A1<br>
+            int val;<br>
+            void setup() {<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; pinMode( irin , INPUT);<br>
+            &nbsp; analogWrite(PwmL,0);<br>
+            &nbsp; analogWrite(PwmR,0);<br>
+            &nbsp; digitalWrite(DirL,HIGH);<br>
+            &nbsp; digitalWrite(DirR,HIGH);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; val=digitalRead(irin);<br>
+            &nbsp; if(val==HIGH)<br>
+            &nbsp; { <br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmL,0);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmR,150);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; else<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmL,150);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmR,0);<br>
+            &nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p><br><p><br>
+    </p>
+    <p><br>
+    </p>
+    <hr><br>
+    <table style="width: 716px; height: 605px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/irBoard_003.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 756px; height: 410px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define
+            irin A4<br>
+            int val;<br>
+            int dval;<br>
+            void setup() {<br>
+            &nbsp;pinMode(A2,OUTPUT);<br>
+            &nbsp;pinMode(A3,OUTPUT);<br>
+            &nbsp;digitalWrite(A2,LOW);<br>
+            &nbsp;digitalWrite(A3,HIGH); <br>
+            &nbsp;Serial.begin(9600);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp;val=analogRead(irin);<br>
+            &nbsp;dval=digitalRead(irin);<br>
+            &nbsp;Serial.print("val=");<br>
+            &nbsp;Serial.print(val);<br>
+            &nbsp;Serial.print("&nbsp;&nbsp;&nbsp; dval=");<br>
+            &nbsp;Serial.println(dval);<br>
+            &nbsp;delay(1000);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 739px; height: 187px;" border="1">
+      <tbody>
+        <tr>
+          <td class="red48C">雙功能<br>
+            D7 --&gt;GND 前後<br>
+            D7--&gt;Vcc&nbsp; 沿桌邊順時針走<br>
+            切換模式後 重新上電</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 795px; height: 719px;" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/IrSensor_003.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 757px; height: 1960px;" border="1">
+      <tbody>
+        <tr>
+          <td class="blue24" style="text-align: left; background-color: white;">#define&nbsp;&nbsp;
+            DirR&nbsp;&nbsp;&nbsp; 12<br>
+            #define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+            #define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+            #define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+            #define&nbsp;&nbsp; irin&nbsp;&nbsp; A4<br>
+            #define&nbsp;&nbsp; GND&nbsp;&nbsp; A2<br>
+            #define&nbsp;&nbsp; VCC&nbsp;&nbsp; A3<br>
+            #define&nbsp;&nbsp; LED&nbsp;&nbsp; 8<br>
+            #define&nbsp;&nbsp; modePin&nbsp; 7<br>
+            int val;<br>
+            int mode;<br>
+            void setup() {<br>
+            &nbsp; pinMode( DirL , OUTPUT);<br>
+            &nbsp; pinMode( DirR , OUTPUT);<br>
+            &nbsp; pinMode( GND , OUTPUT);<br>
+            &nbsp; pinMode( VCC , OUTPUT);<br>
+            &nbsp; pinMode( LED , OUTPUT);<br>
+            &nbsp; pinMode( irin , INPUT);<br>
+            &nbsp; pinMode( modePin , INPUT);<br>
+            &nbsp; digitalWrite(GND,LOW);<br>
+            &nbsp; digitalWrite(VCC,HIGH);<br>
+            &nbsp; analogWrite(PwmL,0);<br>
+            &nbsp; analogWrite(PwmR,0);<br>
+            &nbsp; digitalWrite(DirL,HIGH);<br>
+            &nbsp; digitalWrite(DirR,HIGH);<br>
+            &nbsp; mode=digitalRead(modePin);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; val=digitalRead(irin);<br>
+            &nbsp; if(mode==HIGH){ //D7接Vcc<br>
+            &nbsp;&nbsp; if(val==HIGH)<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(LED,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmL,150);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmR,0);<br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; else<br>
+            &nbsp; {digitalWrite(LED,LOW);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmL,0);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmR,150);<br>
+            &nbsp; }<br>
+            &nbsp; }<br>
+            <br>
+            &nbsp; if(mode==LOW){&nbsp; //D7 接地&nbsp;&nbsp; 前後<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmL,150);<br>
+            &nbsp;&nbsp;&nbsp; analogWrite(PwmR,150);<br>
+            &nbsp;&nbsp; if(val==HIGH)<br>
+            &nbsp; {<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(LED,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(DirL,HIGH);<br>
+            &nbsp; digitalWrite(DirR,HIGH);<br>
+            &nbsp;&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp; }<br>
+            &nbsp; else<br>
+            &nbsp; {digitalWrite(LED,LOW);<br>
+            &nbsp;&nbsp;&nbsp; digitalWrite(DirL,LOW);<br>
+            &nbsp; digitalWrite(DirR,LOW);<br>
+            &nbsp; }<br>
+            &nbsp; }<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">圍在黑色圈內</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/lineTracking_006.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/lineTracking_007.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C">沿黑線走</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <br>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/lineTracking_002.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/lineTracking_004.png"><br>
+            <br>
+            <a href="svg/TrackingLine.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/lineTracking_005.png"><br>
+            <br>
+            <a href="svg/TrackingLineS.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24C">LM393 比較器 (<a href="HwangP/Benson/irSenor/docs/lm2903.pdf" target="_blank">pdf</a>)<br>
+</td></tr></tbody></table>
+<p>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/IrSensorLM393a_001.png"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p><br><table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/IrSensorLM393a.png"><br>
+            <br>
+            <a href="svg/ATMEGA_IrLM393_1.pdf">pdf</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="svg/ATMEGA_IrLM393_1.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p><p>
+    </p><br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue36C">遇牆轉彎</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">#define&nbsp;&nbsp; irin&nbsp;&nbsp; A1<br>
+#define&nbsp;&nbsp; DirR&nbsp;&nbsp;&nbsp; 12<br>
+#define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+#define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+#define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+int val;<br>
+void setup() {<br>
+&nbsp;// Serial.begin(9600);<br>
+&nbsp; pinMode( DirL , OUTPUT);<br>
+&nbsp; pinMode( DirR , OUTPUT);<br>
+&nbsp; pinMode( PwmL , OUTPUT);<br>
+&nbsp; pinMode( PwmR , OUTPUT);<br>
+&nbsp; digitalWrite(PwmL,0);<br>
+&nbsp; digitalWrite(PwmR,0);<br>
+&nbsp; digitalWrite(DirL,1);<br>
+&nbsp; digitalWrite(DirR,1);<br>
+}<br>
+  <br>
+void loop() {<br>
+&nbsp; val=analogRead(irin);<br>
+&nbsp;&nbsp; // Serial.println(val);<br>
+&nbsp; if(val&gt;500)<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; digitalWrite(DirL,1);<br>
+&nbsp;&nbsp;&nbsp; digitalWrite(PwmL,1);<br>
+&nbsp;&nbsp;&nbsp; digitalWrite(PwmR,1);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp; else<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; digitalWrite(DirL,0);&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; digitalWrite(PwmL,1);<br>
+&nbsp;&nbsp;&nbsp; digitalWrite(PwmR,1);<br>
+&nbsp;&nbsp;&nbsp; delay(700);<br>
+&nbsp; }<br>
+}</td></tr></tbody>
+</table>
+<p></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue36C">成功?</td></tr></tbody>
+</table><p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue36C">消除雜訊</td></tr></tbody></table>
+<p><br>
+</p><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">#define&nbsp;&nbsp; irin&nbsp;&nbsp; A1<br>#define&nbsp;&nbsp; DirR&nbsp;&nbsp;&nbsp; 12<br>#define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>#define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>#define&nbsp;&nbsp; PwmR&nbsp; 10<br>int val;<br>void setup() {<br>&nbsp; //Serial.begin(9600);<br>&nbsp; pinMode( DirL , OUTPUT);<br>&nbsp; pinMode( DirR , OUTPUT);<br>&nbsp; pinMode( PwmL , OUTPUT);<br>&nbsp; pinMode( PwmR , OUTPUT);<br>&nbsp; digitalWrite(PwmL,1);<br>&nbsp; digitalWrite(PwmR,1);<br>&nbsp; digitalWrite(DirL,1);<br>&nbsp; digitalWrite(DirR,1);<br>}<br><br>void loop() {<br>&nbsp; val=analogRead(irin);<br>&nbsp; val=val+analogRead(irin);<br>&nbsp; val=val+analogRead(irin);<br>&nbsp; val=val+analogRead(irin);<br>
+&nbsp; val=val/4;<br>&nbsp; //Serial.println(val);<br>&nbsp; if(val&gt;500)<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; digitalWrite(DirL,1);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; else<br>&nbsp; { <br>&nbsp;&nbsp;&nbsp; digitalWrite(DirL,0);&nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp; delay(700);<br>&nbsp; }<br>}</td></tr></tbody>
+</table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">//使用for 迴圈<br>
+#define&nbsp;&nbsp; irin&nbsp;&nbsp; A1<br>
+#define&nbsp;&nbsp; DirR&nbsp;&nbsp;&nbsp; 12<br>
+#define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+#define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+#define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+#define&nbsp;&nbsp; n&nbsp;&nbsp;&nbsp;&nbsp; 3<br>
+int val;<br>
+void setup() {<br>
+&nbsp; Serial.begin(9600);<br>
+&nbsp; pinMode( DirL , OUTPUT);<br>
+&nbsp; pinMode( DirR , OUTPUT);<br>
+&nbsp; pinMode( PwmL , OUTPUT);<br>
+&nbsp; pinMode( PwmR , OUTPUT);<br>
+&nbsp; digitalWrite(PwmL,1);<br>
+&nbsp; digitalWrite(PwmR,1);<br>
+&nbsp; digitalWrite(DirL,1);<br>
+&nbsp; digitalWrite(DirR,1);<br>
+}<br>
+  <br>
+void loop() {<br>
+&nbsp; val=analogRead(irin);<br>
+&nbsp; for (int i=0;i&lt;n;i++)<br>
+&nbsp; {val=val+analogRead(irin);}<br>
+&nbsp; <br>
+&nbsp; val=val/(n+1);<br>
+&nbsp; Serial.println(val);<br>
+&nbsp; if(val&gt;500)<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(DirL,1);<br>
+&nbsp;&nbsp; }<br>
+&nbsp; else<br>
+&nbsp; { <br>
+&nbsp;&nbsp;&nbsp; digitalWrite(DirL,0);&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; delay(700);<br>
+&nbsp; }<br>
+&nbsp; <br>
+}</td></tr></tbody>
+</table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">//使用移動平均法(moving average)<br>
+#define&nbsp;&nbsp; irin&nbsp;&nbsp; A1<br>
+#define&nbsp;&nbsp; DirR&nbsp;&nbsp;&nbsp; 12<br>
+#define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+#define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+#define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+#define&nbsp;&nbsp; n&nbsp;&nbsp;&nbsp;&nbsp; 5<br>
+int ind = 0; <br>
+int sum = 0; <br>
+int avg = 0; <br>
+  <br>
+int val[n];<br>
+void setup() {<br>
+&nbsp; //Serial.begin(9600);<br>
+&nbsp; pinMode( DirL , OUTPUT);<br>
+&nbsp; pinMode( DirR , OUTPUT);<br>
+&nbsp; pinMode( PwmL , OUTPUT);<br>
+&nbsp; pinMode( PwmR , OUTPUT);<br>
+&nbsp; digitalWrite(PwmL,1);<br>
+&nbsp; digitalWrite(PwmR,1);<br>
+&nbsp; digitalWrite(DirL,1);<br>
+&nbsp; digitalWrite(DirR,1);<br>
+&nbsp; delay(1000);<br>
+&nbsp; for(int i=0;i&lt;n;i++)<br>
+&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; val[i]=analogRead(irin);<br>
+&nbsp;&nbsp;&nbsp; sum=sum+val[i];<br>
+&nbsp;&nbsp; }<br>
+}<br>
+  <br>
+void loop() {<br>
+&nbsp; sum=sum-val[ind];<br>
+&nbsp; val[ind]=analogRead(irin);<br>
+&nbsp; sum=sum+val[ind];<br>
+&nbsp; ind++;<br>
+&nbsp; if (ind&gt;=n)&nbsp; ind=0;<br>
+&nbsp; avg=sum/n;<br>
+&nbsp; //Serial.println(avg);<br>
+&nbsp; if(avg&gt;500)<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(DirL,1);<br>
+&nbsp;&nbsp; }<br>
+&nbsp; else<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; digitalWrite(DirL,0);&nbsp; <br>
+&nbsp;&nbsp;&nbsp; delay(700);<br>
+&nbsp; }<br>
+&nbsp;<br>
+}</td></tr></tbody>
+</table>
+<p></p>
+<p><br></p>
+<p>
+    </p><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue36C">使用 digitalRead</td></tr></tbody>
+</table><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">#define&nbsp;&nbsp; irin&nbsp;&nbsp; A1<br>
+#define&nbsp;&nbsp; DirR&nbsp;&nbsp;&nbsp; 12<br>
+#define&nbsp;&nbsp; DirL&nbsp;&nbsp;&nbsp; 11<br>
+#define&nbsp;&nbsp; PwmL&nbsp;&nbsp; 9<br>
+#define&nbsp;&nbsp; PwmR&nbsp; 10<br>
+#define&nbsp;&nbsp; n&nbsp;&nbsp;&nbsp;&nbsp; 20<br>
+int val;<br>
+void setup() {<br>
+&nbsp; //Serial.begin(9600);<br>
+&nbsp; pinMode( DirL , OUTPUT);<br>
+&nbsp; pinMode( DirR , OUTPUT);<br>
+&nbsp; pinMode( PwmL , OUTPUT);<br>
+&nbsp; pinMode( PwmR , OUTPUT);<br>
+&nbsp; digitalWrite(PwmL,1);<br>
+&nbsp; digitalWrite(PwmR,1);<br>
+&nbsp; digitalWrite(DirL,1);<br>
+&nbsp; digitalWrite(DirR,1);<br>
+}<br>
+  <br>
+void loop() {<br>
+&nbsp; val=digitalRead(irin);<br>
+&nbsp; for (int i=0;i&lt;n;i++)<br>
+&nbsp; {val=val+digitalRead(irin);}<br>
+&nbsp; <br>
+&nbsp; //Serial.println(val);<br>
+&nbsp; if(val==0)<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(DirL,0);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(700);<br>
+&nbsp;&nbsp; }<br>
+&nbsp; else <br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; digitalWrite(DirL,1);&nbsp; <br>
+&nbsp;&nbsp; }<br>
+&nbsp;<br>
+}</td></tr></tbody>
+</table>
+<p>
+</p><p><br></p>
+<p><br></p>
+<p>
+    </p>
+    <p><br>
+    </p>
+</body></html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+    
+    <title>超音波感測器 HC-SR04</title>
+    <link type="text/css" rel="stylesheet" href="mystyle.css">
+  <link type="text/css" rel="stylesheet" href="kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+  <body class="w3-container f24">
+    <br><br>
+    <br>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/HCSR04_001.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%; " border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/Ultrasonic-Sensor-top-view.png" alt=""><br>
+            <span style="color: rgb(0, 0, 255); font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">Range:
+              2 cm to 3 m</span> </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>音速(<a href="http://www.nani.com.tw/jlearn/natu/ability/a2/3_a2_5.htm" target="_blank">web</a>)</td></tr></tbody></table>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/Ultrasonic-Sensor-Equasions.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/HCSR04_002.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 986px; height: 760px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/HCSR04_003.png" alt=""><br>
+            <a href="svg/ultraSonic.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td>
+            <p style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; color: rgb(0, 0, 255); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">pulseIn(pin,
+              value)&nbsp;<br>
+              pulseIn(pin, value, timeout)</p>
+            <h4 style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; color: rgb(0, 0, 255); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">Parameters</h4>
+            <p style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; color: rgb(0, 0, 255); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span class="Red24" style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; color: rgb(255, 0, 0);">pin</span>:
+              the number of the pin on which you want to read the pulse. (<em>int</em>)</p>
+            <p style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; color: rgb(0, 0, 255); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span class="Red24" style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; color: rgb(255, 0, 0);">value</span>:
+              type of pulse to read: either&nbsp;<a href="http://arduino.cc/en/Reference/Constants">HIGH</a>&nbsp;or&nbsp;<a href="http://arduino.cc/en/Reference/Constants">LOW</a>. (<em>int</em>)</p>
+            <p style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; color: rgb(0, 0, 255); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span class="Red24" style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; color: rgb(255, 0, 0);">timeout</span><span>&nbsp;</span>(optional):
+              the number of microseconds to wait for the pulse to start;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span></span><span class="Red24" style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; color: rgb(255, 0, 0);">default</span>
+              is<span>&nbsp;</span><span class="Red24" style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; color: rgb(255, 0, 0);">one
+                second</span><span>&nbsp;</span>(<em>unsigned long</em>)</p>
+            <h4 style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; color: rgb(0, 0, 255); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">Returns</h4>
+            <p style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; color: rgb(0, 0, 255); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">the
+              length of the pulse (in<span>&nbsp;</span><span class="Red24" style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; color: rgb(255, 0, 0);">microseconds</span>)
+              <br>
+              or 0 if no pulse started before the timeout (<em>unsigned long</em>)</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">unsigned
+            long ul;<br>
+            void setup() {<br>
+            &nbsp; Serial.begin(9600);<br>
+            }<br>
+            <br>
+            void loop() {<br>
+            &nbsp; Serial.println(sizeof(ul));<br>
+            &nbsp; delay(1000);<br>
+            }<br>
+            <br>
+            //4 byte</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;"><br>
+            #define trigPin &nbsp; 7<br>
+            #define echoPin &nbsp; 8<br>
+            <br>
+            <em>unsigned </em>long duration;<br>
+            int distance;<br>
+            <br>
+            void setup() {<br>
+            pinMode(trigPin, OUTPUT); <br>
+            //pinMode(echoPin, INPUT);<br>
+            Serial.begin(9600); <br>
+            }<br>
+            <br>
+            void loop() {<br>
+            // Clears the trigPin<br>
+            digitalWrite(trigPin, LOW);<br>
+            delayMicroseconds(2);<br>
+            <br>
+            // Sets the trigPin on HIGH state for 10 micro seconds<br>
+            digitalWrite(trigPin, HIGH);<br>
+            delayMicroseconds(10);<br>
+            digitalWrite(trigPin, LOW);<br>
+            <br>
+            // Reads the echoPin, <br>
+            //returns the sound wave travel time in microseconds<br>
+            duration = pulseIn(echoPin, HIGH);<br>
+            <br>
+            // Calculating the distance<br>
+            distance= duration*0.034/2;<br>
+            <br>
+            Serial.print("Distance: ");<br>
+            Serial.println(distance);<br>
+            delay(100);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 1020px; height: 760px;" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/HCSR04_004.png" alt=""><br>
+            <a href="svg/ultraSonicLCD.svg">svg</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width:100%;" border="1">
+      <tbody>
+        <tr>
+          <td>Library: &nbsp;&nbsp; <a href="../LCDI2C/files/LiquidCrystal_I2C.zip">LiquidCrystal_I2C.zip</a><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </p>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: left; background-color: white;">#include
+            &lt;Wire.h&gt;<br>
+            #include &lt;<span class="red24">LiquidCrystal_I2C.h</span>&gt;<br>
+            #define trigPin &nbsp; 7<br>
+            #define echoPin &nbsp; 8<br>
+            LiquidCrystal_I2C lcd(<span class="red24">0x3F</span>,16,2); <br>
+            <br>
+            long <em>unsigned</em> duration;<br>
+            int distance;<br>
+            <br>
+            void setup() {<br>
+            pinMode(trigPin, OUTPUT); <br>
+            //pinMode(echoPin, INPUT);<br>
+            &nbsp;&nbsp; lcd.init(); <br>
+            &nbsp;&nbsp; lcd.<span class="red24">backlight</span>(); <br>
+            }<br>
+            <br>
+            void loop() {<br>
+            // Clears the trigPin<br>
+            digitalWrite(trigPin, LOW);<br>
+            delayMicroseconds(2);<br>
+            <br>
+            // Sets the trigPin on HIGH state for 10 micro seconds<br>
+            digitalWrite(trigPin, HIGH);<br>
+            delayMicroseconds(10);<br>
+            digitalWrite(trigPin, LOW);<br>
+            <br>
+            // Reads the echoPin, <br>
+            //returns the sound wave travel time in microseconds<br>
+            duration = pulseIn(echoPin, HIGH);<br>
+            <br>
+            // Calculating the distance<br>
+            distance= duration*0.034/2;<br>
+            &nbsp; lcd.clear();<br>
+            &nbsp; lcd.setCursor(0,0);<br>
+            &nbsp; lcd.print("Distance:");<br>
+            &nbsp; lcd.print(distance);<br>
+            &nbsp; delay(100);<br>
+            }</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img src="images/HCSR04_MG90S.png" alt=""><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//倒車雷達<br>int buzPin = 7;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //declare pin for Buzzer;<br>int trigPin = 8;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //declare pin for trigger pin of UltraSonic sensor; <br>int echoPin = 4;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //declare pin for echo pin of UltraSonic sensor;<br>float speed = 0.0347; //declare speed of sound in air @ room temp;<br>float dist;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //declare variable for containing distance sensed;<br>float pingTime;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //declare variable for containing echo time;<br>int buzNear = 20;&nbsp;&nbsp;&nbsp;&nbsp; //declare buzzing time for very close proximity;<br>int buzHigh = 50;&nbsp;&nbsp;&nbsp;&nbsp; //declare buzzing time for close proximity;<br>int buzMid&nbsp; =130;&nbsp;&nbsp;&nbsp;&nbsp; //declare buzzing time for mid proximity;<br>int buzFar = 600;&nbsp;&nbsp;&nbsp;&nbsp; //declare buzzing time for far off object;<br>int delayFar = 260;<br><br><br>void setup() {<br>&nbsp; pinMode(buzPin,OUTPUT);&nbsp;&nbsp;&nbsp;&nbsp; //set buzzer &amp; trigger pin as outpin;<br>&nbsp; pinMode(trigPin,OUTPUT);&nbsp;&nbsp;&nbsp; <br>&nbsp; pinMode(echoPin,INPUT);&nbsp;&nbsp;&nbsp;&nbsp; //set echo pin as input;<br><br>}<br><br>void loop() {<br>&nbsp; digitalWrite(trigPin,LOW);<br>&nbsp; delayMicroseconds(20);<br>&nbsp; digitalWrite(trigPin,HIGH);<br>&nbsp; delayMicroseconds(10);<br>&nbsp; digitalWrite(trigPin,LOW);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //creating a pulse for sensing distance;<br>&nbsp; pingTime = pulseIn(echoPin,HIGH);&nbsp;&nbsp; //read the echoTime, &amp;hence the distance;<br>&nbsp; dist = (speed*pingTime*0.5);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp; <br>&nbsp; if(dist&lt;=10.0){<br>&nbsp;&nbsp;&nbsp; digitalWrite(buzPin,HIGH);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //simple conditional statements changing frequency based upon the distance sensed<br>&nbsp;&nbsp;&nbsp; delay(20);<br>&nbsp;&nbsp;&nbsp; digitalWrite(buzPin,LOW);<br>&nbsp;&nbsp;&nbsp; delay(20);<br>&nbsp; }&nbsp; <br>&nbsp; else if(dist&lt;=30.0 &amp;&amp; dist&gt;10.0)<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; digitalWrite(buzPin,HIGH);<br>&nbsp;&nbsp;&nbsp; delay(buzHigh);<br>&nbsp;&nbsp;&nbsp; digitalWrite(buzPin,LOW);<br>&nbsp;&nbsp;&nbsp; delay(buzHigh);<br>&nbsp; }<br>&nbsp; else if((dist&gt;30.0) &amp;&amp; (dist&lt;60.0))<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; digitalWrite(buzPin,HIGH);<br>&nbsp;&nbsp;&nbsp; delay(buzMid);<br>&nbsp;&nbsp;&nbsp; digitalWrite(buzPin,LOW);<br>&nbsp;&nbsp;&nbsp; delay(buzMid);<br>&nbsp; }<br>&nbsp; else if(dist&gt;=60.0 &amp;&amp; dist&lt;120.0)<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; digitalWrite(buzPin,HIGH);<br>&nbsp;&nbsp;&nbsp; delay(buzFar);<br>&nbsp;&nbsp;&nbsp; digitalWrite(buzPin,LOW);<br>&nbsp;&nbsp;&nbsp; delay(delayFar);<br>&nbsp; }<br>&nbsp; <br>}</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>使用NewPing函數庫</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><img src="images/newPing_002.png" alt=""><br><img src="images/newPing_001.png" alt=""><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">NewPing 函式庫提供之函數如下 :<br><br>&nbsp;函數&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 說明<br>&nbsp;ping()&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 送出偵測訊號, 若收到回應傳回回應時間 (毫秒), 否則傳回 0.<br>&nbsp;ping_in()&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 送出偵測訊號, 若收到回應傳回距離 (英吋), 否則傳回 0.<br>&nbsp;ping_cm()&nbsp;&nbsp;&nbsp; &nbsp;送出偵測訊號, 若收到回應傳回距離 (公分), 否則傳回 0.<br>&nbsp;ping_median([iterations]) &nbsp;&nbsp;&nbsp; &nbsp;重複送出偵測訊號 (預設 5 次), 傳回回應時間之中數 (微秒).<br>&nbsp;convert_in(echoTime)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 傳入毫秒數傳回距離 (英吋)<br>&nbsp;convert_cm(echoTime)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 傳入毫秒數傳回距離 (公分)<br>&nbsp;ping_timer(func)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 送出偵測訊號, 並呼叫 func 函數以檢查收到回應.<br>&nbsp;check_timer()&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 檢查是否在指定距離內收到回應.<br>&nbsp;timer_us(freq, func)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 啟動計時器每 freq 微秒呼叫 func 函數<br>&nbsp;timer_ms(freq, func)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 啟動計時器每 freq 毫秒呼叫 func 函數<br>&nbsp;timer_stop()&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 停止計時器.<br><br>常用的函數是 ping_cm(), ping_median(), convert_cm() 等. 注意, 有整數傳回值者型態為 unsigned int.</td></tr></tbody></table></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">測試 1 :&nbsp; 測試距離 (公分)<br>#include &lt;NewPing.h&gt;<br>#define TRIGGER_PIN&nbsp; 5<br>#define ECHO_PIN&nbsp;&nbsp;&nbsp;&nbsp; 6<br>#define MAX_DISTANCE 200<br><br>NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);<br><br>void setup() {<br>&nbsp; Serial.begin(9600);<br>&nbsp; }<br><br>void loop() {<br>&nbsp; Serial.print("Ping: ");<br>&nbsp; Serial.print(sonar.ping_cm());&nbsp; //傳回距離 (公分)<br>&nbsp; Serial.println("cm");<br>&nbsp; delay(500);<br>&nbsp; }</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">測試 2 :&nbsp; 測試距離 (公分, 傳回多次偵測回應時間之中數) <br>#include &lt;NewPing.h&gt;<br>#define TRIGGER_PIN&nbsp; 5<br>#define ECHO_PIN&nbsp;&nbsp;&nbsp;&nbsp; 6<br>#define MAX_DISTANCE 200<br><br>NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);<br><br>void setup() {<br>&nbsp; Serial.begin(9600);<br>&nbsp; }<br><br>void loop() {<br>&nbsp; Serial.print("Ping: ");<br>&nbsp; unsigned int us=sonar.ping_median();&nbsp;&nbsp;&nbsp;&nbsp; //傳回 5 次偵測的回應時間中數 (微秒)<br>&nbsp; Serial.print(sonar.convert_cm(us));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //將回應時間 (微秒) 轉成距離 (公分)<br>&nbsp; Serial.println("cm");<br>&nbsp; delay(500);<br>&nbsp; }</td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;">//Example 3 using NewPing timer<br>#include &lt;NewPing.h&gt;<br>#define TRIGGER_PIN&nbsp;&nbsp; 5 <br>#define ECHO_PIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6<br> // Maximum sensor distance is rated at 400-500cm. <br>#define MAX_DISTANCE 200 <br>// NewPing setup of pins and maximum distance.<br>NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); <br>/* How frequently are we going to send out a ping (in milliseconds). 50ms would be 20 times a second.<br>*/<br>unsigned int pingSpeed = 50; <br> // Holds the next ping time.<br>unsigned long pingTimer;&nbsp;&nbsp;&nbsp; <br><br>void setup() {<br>&nbsp; Serial.begin(115200); <br>&nbsp; pingTimer = millis(); // Start now.<br>}<br><br>void loop() {<br>&nbsp; /* Notice how there's no delays in this sketch to allow you to do other processing in-line while doing distance pings.<br>*/<br>&nbsp; if (millis() &gt;= pingTimer) {&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; pingTimer += pingSpeed;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Set the next ping time.<br>&nbsp;&nbsp;&nbsp; sonar.ping_timer(echoCheck); <br>&nbsp; }<br>&nbsp; // Do other stuff here, really. Think of it as multi-tasking.<br>}<br><br>void echoCheck() { <br>&nbsp; /* Timer2 interrupt calls this function every 24uS where you can check the ping status.<br>*/<br>&nbsp; // Don't do anything here!<br>&nbsp; if (sonar.check_timer()) <br>{ /* This is how you check to see if the ping was received.*/<br>&nbsp;&nbsp;&nbsp; // Here's where you can add code.<br>&nbsp;&nbsp;&nbsp; Serial.print("Ping: ");<br>/* Ping returned, uS result in ping_result, <br>convert to cm with US_ROUNDTRIP_CM.<br>*/<br>&nbsp;&nbsp;&nbsp; Serial.print(sonar.ping_result / US_ROUNDTRIP_CM); <br>&nbsp;&nbsp;&nbsp; Serial.println("cm");<br>&nbsp; }<br>&nbsp; // Don't do anything here!<br>}</td></tr></tbody></table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br>
+    </p>
+</body></html>

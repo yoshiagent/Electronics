@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Ardu_Ardu</title>
+<link type="text/css" rel="stylesheet" href="mystyle.css"></head>
+<body><br><br><p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Arduino 1---Transmitter</td></tr></tbody></table><br>void setup(){<br>Serial.begin(115200);<br>}<br>void loop(){<br>Serial.<span style="color: #990000;">write</span>(1);<br>delay(2000);<br>Serial.<span style="color: #990000;">write</span>(0);<br>delay(2000);<br><br>}</td></tr></tbody></table><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>Arduino 2---Receiver</td></tr></tbody></table><br>#define led 12<br>void setup(){<br>Serial.begin(115200);<br>pinMode(led,OUTPUT);<br>digitalWrite(led,LOW);<br>}<br>void loop(){<br>if(Serial.<span style="color: #990000;">available()</span>){<br>&nbsp;&nbsp;&nbsp; if(Serial.<span style="color: #990000;">read()</span>==1)<br>&nbsp; digitalWrite(led,HIGH);<br>&nbsp; else<br>&nbsp; digitalWrite(led,LOW);<br>&nbsp; delay(2000);<br>}<br>}</td></tr></tbody></table></td></tr></tbody></table>
+<p></p>
+<p><br></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C">晶片&lt;-----&gt;晶片<br>2 個 Arduino<br>使用Serial.write() 與Serial.read()傳送2 Byte data</td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td class="red36C"><br>
+            <table style="width: 100%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36C">傳送端</td>
+                </tr>
+              </tbody>
+            </table>
+            <br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24"><span style="color: #330099;">union uData<br>{<br>byte b[2];<br>int value;<br>};</span><br><br>union uData data;<br>void setup() {<br>Serial.begin(9600);<br>delay(1000);<br>}<br><br>void loop() {<br>data.value=0x3456;<br><span style="color: #990000;">Serial.write</span>(0x21);//起始 字元<br><span style="color: #990000;">Serial.write</span>(data.b[0]);<br><span style="color: #990000;">Serial.write</span>(data.b[1]);<br>delay(1000);<br>}</td></tr></tbody></table>或<br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">union uData<br>{<br>byte b[2];<br>int value;<br>};<br><br>union uData data;<br>void setup() {<br>Serial.begin(9600);<br>delay(1000);<br>}<br><br>void loop() {<br>data.value=0x3456;<br>Serial.write(0x21);//起始 字元<br>Serial.write(<span style="color: #990000;">data.b,2</span>);<br>delay(1000);<br>}</td></tr></tbody></table><br><br><br>
+            <table style="width: 100%" border="1">
+              <tbody>
+                <tr>
+                  <td class="blue36C">接收端<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">#define Led&nbsp; 12<br>union uData<br>{<br>byte b[2];<br>int value;<br>};<br><br>union uData data;<br>&nbsp; <br>void setup() {<br>&nbsp;Serial.begin(9600);<br>pinMode(Led,OUTPUT);<br>digitalWrite(Led,1);<br>}<br><br>void loop() {<br>&nbsp; if(Serial.available()&gt;0)<br>{ <br>&nbsp; if(<span style="color: #990000;">Serial.read()</span>==0x21) //判斷是否為起始字元<br>&nbsp; {<br>&nbsp;&nbsp; //delay(10);//若資料傳遞不正確 可再加長<br>&nbsp;&nbsp; // Wait until data is received&nbsp; (不用delay)<br>&nbsp;&nbsp; while ( !(UCSR0A &amp; (1 &lt;&lt; RXC0)) )&nbsp; ;<br>&nbsp;&nbsp; <span style="color: #6600cc;">data.b[0]</span>=<span style="color: #990000;">Serial.read()</span>;<br>&nbsp;&nbsp; <br>//delay(10);//若資料傳遞不正確 可再加長<br>&nbsp; // Wait until data is received&nbsp; (不 用delay)&nbsp; <br>&nbsp;&nbsp; while ( !(UCSR0A &amp; (1 &lt;&lt; RXC0)) )&nbsp; ;<br>&nbsp;&nbsp; <span style="color: #6600cc;">data.b[1]</span>=<span style="color: #990000;">Serial.read()</span>;<br>&nbsp;&nbsp; if(<span style="color: #6600cc;">data.value</span>==0x3456)<br>&nbsp;&nbsp;&nbsp; { //Toggle D12<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(Led,1-digitalRead(Led));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //asm("SBI 0x03,4"); <br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; }<br>&nbsp;<br>&nbsp; }<br>&nbsp;}</td></tr></tbody></table><br>
+或<br>
+<br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;" class="blue24">#define Led&nbsp; 12<br>
+union uData<br>
+{<br>
+byte b[2];<br>
+int value;<br>
+};<br>
+  <br>
+union uData data;<br>
+&nbsp;<br>
+void setup() {<br>
+&nbsp;Serial.begin(9600);<br>
+pinMode(Led,OUTPUT);<br>
+digitalWrite(Led,1);<br>
+}<br>
+  <br>
+void loop() {<br>
+&nbsp; if(Serial.available()&gt;0)<br>
+{<br>
+&nbsp; if(Serial.read()==0x21) //判斷是否為起始字元<br>
+&nbsp; {<br>
+&nbsp;// delay(10);//若資料傳遞不正確 可再加長<br>
+&nbsp; Serial.<span style="color: #990000;">readBytes</span>(<span style="color: #990000;">data.b</span>,2);<br>
+&nbsp;&nbsp; if(data.value==0x3456)<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp; //Toggle D12<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(Led,1-digitalRead(Led));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //asm("SBI 0x03,4"); <br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp; }<br>
+&nbsp;<br>
+&nbsp; }<br>
+&nbsp;}</td></tr></tbody>
+</table>或 使用interrupt<br><table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">#define Led&nbsp; 12<br>union uData<br>{<br>byte b[2];<br>int value;<br>};<br><br>union uData data;<br><br>void <span style="color: #cc0000;">serialEvent()</span> {<br>&nbsp;&nbsp; if(Serial.available()&gt;0)<br>{<br>&nbsp; if(Serial.read()==0x21) //判斷是否為起始字元<br>&nbsp; {<br>&nbsp;&nbsp; Serial.readBytes(data.b,2);<br>&nbsp;&nbsp; if(data.value==0x3456)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp; //Toggle D12<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(Led,1-digitalRead(Led));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //asm("SBI 0x03,4");<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; }<br>&nbsp;<br>&nbsp; }<br>}<br>&nbsp;<br>void setup() {<br>&nbsp;Serial.begin(9600);<br>pinMode(Led,OUTPUT);<br>digitalWrite(Led,1);<br>}<br><br>void loop() {<br>&nbsp; <br>&nbsp;}</td></tr></tbody></table><br>或<br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td class="blue24" style="text-align: left; background-color: white;">#define Led&nbsp; 12<br><span style="color: #990000;">volatile</span> int flag=0;<br>union uData<br>{<br>byte b[2];<br>int value;<br>};<br><br>union uData data;<br><br>void <span style="color: #990000;">serialEvent()</span> {<br>&nbsp;&nbsp; if(Serial.available()&gt;0)<br>{<br>&nbsp; if(Serial.read()==0x21) //判斷是否為起始字元<br>&nbsp; {<br>&nbsp;<br>&nbsp; Serial.readBytes(data.b,2);<br>&nbsp;&nbsp; if(data.value==0x3456)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flag=1-flag;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; }<br>&nbsp;<br>&nbsp; }<br>}<br>&nbsp;<br>void setup() {<br>&nbsp;Serial.begin(9600);<br>pinMode(Led,OUTPUT);<br>digitalWrite(Led,1);<br>}<br><br>void loop() {<br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(Led,flag);<br>&nbsp;&nbsp; }</td></tr></tbody></table><br>            </td>
+        </tr>
+      </tbody>
+    </table><p></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br>
+  </p><p><br></p>
+
+
+</body></html>

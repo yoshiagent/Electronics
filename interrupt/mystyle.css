@@ -1,0 +1,297 @@
+.red24 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #F00;
+}
+.red24C {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #F00;
+}
+
+.red36 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #F00;
+}
+.red36C {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #F00;
+}
+.red48C {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 48px;
+	font-weight: bold;
+	color: #F00;
+}
+
+
+
+.red24U {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #F00;
+	text-decoration: underline;
+}
+.red24CU {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #F00;
+	text-decoration: underline;
+}
+
+.red36U {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #F00;
+	text-decoration: underline;
+}
+.red36CU {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #F00;
+	text-decoration: underline;
+}
+
+
+
+
+.blue24 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #00F;
+}
+.blue24C {
+	font-size: 24px;
+	font-weight: bold;
+	color: #00F;
+	font-family: "標楷體", cursive, sans-serif;
+}
+
+.blue36 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #00F;
+}
+.blue36C {
+	font-size: 36px;
+	font-weight: bold;
+	color: #00F;
+	font-family: "標楷體", cursive, sans-serif;
+}
+
+
+
+
+.blue24U {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #00F;
+}
+.blue24CU {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #00F;
+	text-decoration: underline;
+}
+
+.blue36U {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #00F;
+	text-decoration: underline;
+}
+.blue36CU {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #00F;
+	text-decoration: underline;
+}
+
+
+
+
+.pur24 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #C3F;
+}
+.pur24C {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #C3F;
+}
+.pur36 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #C3F;
+}
+.pur36C {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #C3F;
+}
+.gray24 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #999;
+}
+.gray24C {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #999;
+}
+.gray36 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #999;
+}
+.gray36C {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #999;
+}
+
+
+.pur24U {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #C3F;
+	text-decoration: underline;
+}
+.pur24CU {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #C3F;
+	text-decoration: underline;
+}
+.pur36U {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #C3F;
+	text-decoration: underline;
+}
+.pur36CU {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #C3F;
+	text-decoration: underline;
+}
+.gray24U {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #999;
+	text-decoration: underline;
+}
+.gray24CU {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #999;
+	text-decoration: underline;
+}
+.gray36U {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #999;
+	text-decoration: underline;
+}
+.gray36CU {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #999;
+	text-decoration: underline;
+}
+
+
+
+
+.black24U {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #000;
+	text-decoration: underline;
+}
+.black24CU {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #000;
+	text-decoration: underline;
+}
+.black24 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #000;
+}
+.black24C {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #000;
+}
+.black36U {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #000;
+	text-decoration: underline;
+}
+.black36CU {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #000;
+	text-decoration: underline;
+}
+.black36 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #000;
+}
+.black36C {
+	font-family: "標楷體", cursive, sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+	color: #000;
+}
+table {
+	margin: auto;
+	text-align:center;
+}
+td{
+  text-align: left;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+    
+    <title>irProtocol</title>
+    
+  <link type="text/css" rel="stylesheet" href="kai.css">
+<link type="text/css" rel="stylesheet" href="w3.css"></head>
+  <body class="w3-container f24">
+    <br><br>
+    <br>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/irDcoder_003.png">&nbsp;&nbsp;&nbsp;<img alt="" src="images/IrBoard.png"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/ir.gif"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td><img alt="" src="images/irProtocol_002.png"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <table style="width: 100%;" border="0">
+      <tbody>
+        <tr>
+          <td class="red48C"><a href="ATmega328P_PUa/iRcontroller/index.html" target="_blank">進
+              階篇</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p>
+<p><br>
+    </p>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td>EEVblog #506 - IR Remote Control Arduino Protocol Tutorial(23:56)(<a href="https://www.youtube.com/watch?v=BUvFGTxZBG8" target="_blank">YouTube</a>)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>&nbsp;38KHz IR Remote Control Transmitter and Receiver(<a href="https://www.hobbyprojects.com/projects/jsingh-projects/38KHz-IR-remote-control-transmitter-receiver-arduino-NANO.html" target="_blank">ref</a>)(21:39)(<a href="https://www.youtube.com/watch?v=UzC5BpFpd-M" target="_blank">YouTube</a>)<br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><img src="images/ir_001a.png"><br><br>// hobbyprojects<br>//&nbsp; 08-05-2020 38KHz_IR_Remote_Control_Transmitter.ino<br><br>#define toneOutput_pin 8<br><br>int key1 = 5;&nbsp;&nbsp; // HR- <br>int key2 = 4;&nbsp;&nbsp; // HR+<br>int key3 = 6;&nbsp;&nbsp; // MIN-<br>int key4 = 3;&nbsp;&nbsp; // MIN+<br>int key5 = 7;&nbsp;&nbsp; // SEC_RESET<br>int key6 = 2;&nbsp;&nbsp; // Mode<br><br>int val;<br><br>void setup() <br>{<br>&nbsp; pinMode(key1,INPUT_PULLUP);&nbsp;&nbsp;&nbsp; <br>&nbsp; pinMode(key2,INPUT_PULLUP); <br>&nbsp; pinMode(key3,INPUT_PULLUP); <br>&nbsp; pinMode(key4,INPUT_PULLUP); <br>&nbsp; pinMode(key5,INPUT_PULLUP); <br>&nbsp; pinMode(key6,INPUT_PULLUP); <br>&nbsp; <br>&nbsp; Serial.begin(1200);<br>&nbsp; tone(toneOutput_pin, 38000);<br>}<br><br>void loop() {<br>&nbsp;&nbsp;&nbsp; val = digitalRead(key1);&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; while (val == LOW)<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; Serial.print("1");<br>&nbsp;&nbsp;&nbsp; delay(250);<br>&nbsp;&nbsp;&nbsp; val = digitalRead(key1);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; val = digitalRead(key2);&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; while (val == LOW)<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; Serial.print("2");<br>&nbsp;&nbsp;&nbsp; delay(250);<br>&nbsp;&nbsp;&nbsp; val = digitalRead(key2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; val = digitalRead(key3);&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; while (val == LOW)<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; Serial.print("3");<br>&nbsp;&nbsp;&nbsp; delay(250);<br>&nbsp;&nbsp;&nbsp; val = digitalRead(key3);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; val = digitalRead(key4);&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; while (val == LOW)<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; Serial.print("4");<br>&nbsp;&nbsp;&nbsp; delay(250);<br>&nbsp;&nbsp;&nbsp; val = digitalRead(key4);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; val = digitalRead(key5);&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; if (val == LOW)<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; Serial.print("5");<br>&nbsp;&nbsp;&nbsp; delay(250);<br><br>&nbsp;&nbsp;&nbsp; while (val == LOW)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp; val = digitalRead(key5);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; }&nbsp; <br>&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; val = digitalRead(key6);&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; if (val == LOW)<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; Serial.print("6");<br>&nbsp;&nbsp;&nbsp; delay(250);<br><br>&nbsp;&nbsp;&nbsp; while (val == LOW)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp; val = digitalRead(key6);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; }&nbsp; <br>&nbsp; }<br>&nbsp; <br>}</td></tr></tbody></table><br><br>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td style="text-align: left; background-color: white;"><br><img src="images/ir_002a.png"><br>// hobbyprojects<br>//08-05-2020&nbsp;&nbsp;&nbsp; 38KHz_IR_Remote_Control_Receiver.ino<br><br>int LED1 = 2;<br>int LED2 = 3;<br>int LED3 = 4;<br>int LED4 = 5;<br><br>String s;<br><br>void setup() <br>{<br>&nbsp; Serial.setTimeout(50);&nbsp; <br>&nbsp; Serial.begin(1200);&nbsp; <br>&nbsp;&nbsp;&nbsp; <br>&nbsp; pinMode(LED1,OUTPUT);&nbsp; <br>&nbsp; pinMode(LED2,OUTPUT);&nbsp; <br>&nbsp; pinMode(LED3,OUTPUT);&nbsp; <br>&nbsp; pinMode(LED4,OUTPUT);&nbsp; <br>}<br><br>void loop() <br>{<br>&nbsp; if(Serial.available()) <br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; s = Serial.readString();<br><br>&nbsp; if (s == "1")<br>&nbsp; {&nbsp; <br>&nbsp; digitalWrite(LED1,HIGH);&nbsp; <br>&nbsp; }<br><br>&nbsp; if (s == "2")<br>&nbsp; {&nbsp; <br>&nbsp; digitalWrite(LED1,LOW);&nbsp; <br>&nbsp; }&nbsp; <br><br>&nbsp; if (s == "3")<br>&nbsp; {&nbsp; <br>&nbsp; digitalWrite(LED2,HIGH);&nbsp; <br>&nbsp; }<br><br>&nbsp; if (s == "4")<br>&nbsp; {&nbsp; <br>&nbsp; digitalWrite(LED2,LOW);&nbsp; <br>&nbsp; }<br><br>&nbsp; if (s == "5")<br>&nbsp; {<br>&nbsp; digitalWrite(LED3, !digitalRead(LED3));&nbsp; <br>&nbsp; }<br><br>&nbsp; if (s == "6")<br>&nbsp; {&nbsp; <br>&nbsp; digitalWrite(LED4, !digitalRead(LED4)); <br>&nbsp; }<br>}&nbsp;&nbsp; <br>}</td></tr></tbody></table></td></tr></tbody></table>
+<p><br></p>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/irEmitter_001.png" alt="">&nbsp;&nbsp; <img alt="" src="images/ir.gif"><br><br>#define toneOutput_pin 7<br>int key1 = 12; <br>int val;<br><br>void setup() <br>{<br>&nbsp; pinMode(key1,INPUT_PULLUP);&nbsp;&nbsp;&nbsp; <br>&nbsp; <br>&nbsp; <br>&nbsp; Serial.begin(1200);<br>&nbsp; tone(toneOutput_pin, 38000);<br>}<br><br>void loop() {<br>&nbsp;&nbsp;&nbsp; val = digitalRead(key1);&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; while (val == LOW)<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; Serial.print("1");<br>&nbsp;&nbsp;&nbsp; delay(250);<br>&nbsp;&nbsp;&nbsp; val = digitalRead(key1);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp; }<br>}</td></tr></tbody></table>
+<table style="width: 100%" border="1">
+<tbody>
+<tr>
+<td>int LED1 = 9;<br>String s;<br>void setup()<br>{<br>&nbsp; Serial.setTimeout(50);<br>&nbsp; Serial.begin(1200);<br>&nbsp; pinMode(LED1,OUTPUT);<br>&nbsp;<br>}<br><br>void loop()<br>{<br>&nbsp; if(Serial.available())<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; s = Serial.readString();<br>&nbsp;&nbsp;&nbsp; if (s == "1")<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(LED1,HIGH);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(1000);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(LED1,LOW);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp; &nbsp;<br>} <br><br>}</td></tr></tbody></table>
+<p><br></p>
+<p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  
+
+</body></html>
