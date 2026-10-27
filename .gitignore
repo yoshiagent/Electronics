@@ -1,6 +1,12 @@
-# 影片不進版控:14 個 mp4 共 947 MB
+# 影片原則上不進版控:13 個轉載自 YouTube 的 mp4 共 886 MB
 #  - 其中 2 個超過 GitHub 單檔 100MB 硬上限(488MB / 142MB),任何方案都推不上去
-#  - 全站含影片 1206MB,超過 GitHub Pages 的 1GB 發佈上限
+#  - 全站含全部影片 1206MB,超過 GitHub Pages 的 1GB 發佈上限
 #  - Git LFS 也不行:Pages 不提供 LFS 內容,只會吐出指標檔
-# 本機 C:\CludeHome\Electronics 仍保有完整影片,僅線上版沒有。
+# 這 13 個在網頁上都已附原始 YouTube 連結(本地檔只是「YouTube 看不到時」的備援),
+# 所以線上版缺它們不影響教學內容。
+# 本機 C:\CludeHome\Electronics 仍保有完整影片。
 *.mp4
+
+# 例外:getEmoji.mp4 是自錄的 Inkscape 操作示範(非 YouTube 轉載),
+# 網頁上沒有替代連結,且僅 61MB 未超限 → 納入版控,線上版才看得到。
+!Inkscape/mp4/getEmoji.mp4
